@@ -4,9 +4,10 @@ import AppContainer from './src/Routers/App Container'
 export default class App extends React.Component {
   render() {
     return (
-      <AppContainer/>
+      <AppContainer />
     );
   }
 }
 
 
+//persistenceKey={"NavigationState"}

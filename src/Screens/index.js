@@ -13,6 +13,7 @@ import Settings from './Settings'
 import SingleQuestion from './Single Question'
 import UserProfile from './User Profile'
 import UserRegisteration from './User Registeration'
+import AuthLoading from './Auth Loading'
 
 export{
   About,
@@ -29,5 +30,6 @@ export{
   Settings,
   SingleQuestion,
   UserProfile,
-  UserRegisteration
+  UserRegisteration,
+  AuthLoading
 }
