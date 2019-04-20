@@ -1,0 +1,1 @@
+export const MenuImage = require('./menu3x.png')
