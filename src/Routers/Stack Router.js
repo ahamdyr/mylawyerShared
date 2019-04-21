@@ -3,36 +3,26 @@ import React from 'react'
 
 import { createStackNavigator} from "react-navigation";
 import TabRouter from './Tab Router'
+
 import MenuIcon from '../Components/Menu Icon'
+import SearchIcon from '../Components/Search Icon'
+import HeaderTitle from '../Components/Header Title'
 
 const StackRouter = createStackNavigator({
   TabRouter:{
     screen: TabRouter,
     
     navigationOptions: ({ navigation }) => ({
+      headerRight: <SearchIcon onPress={() =>navigation.toggleDrawer()}/>,
+      headerLeft: <MenuIcon onPress={() =>navigation.toggleDrawer()}/>  ,
+      //headerBackTitle: 'null',
+      headerTitle:<HeaderTitle title={`My Lawyer`}/>,
       
-      headerLeft:<MenuIcon onPress={() =>navigation.toggleDrawer()}/>  ,
-      headerBackTitle: 'null',
-      title:`Home`,
       
     }),
   }
-},{
-  headerBackTitleVisible:false,
-  headerMode:"float",
-  headerTransitionPreset :"fade-in-place",
-  headerLayoutPreset :"center",
-  
-  defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: '#fff',
-    },
-    headerTintColor: '#000',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-    
-  },
+},{  
+  headerLayoutPreset :"center"
 });
 
 export default StackRouter

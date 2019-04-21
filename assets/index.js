@@ -1,1 +1,5 @@
 export const MenuImage = require('./menu3x.png')
+export const SearchImage = require('./search3x.png')
+export const HomeImage = require('./home3x.png')
+//export const AskIcon =require('')
+export const QuestionsImage = require('./questions3x.png')

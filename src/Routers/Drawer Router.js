@@ -3,6 +3,7 @@ import { Feather as Icon } from 'react-native-vector-icons'
 import {createDrawerNavigator} from 'react-navigation'
 import {Settings, About, UserProfile} from '../Screens'
 import StackRouter from './Stack Router'
+import TabRouter from './Tab Router'
 import {ScrollView, StyleSheet, View, Text} from 'react-native'
 import { DrawerItems, SafeAreaView } from 'react-navigation';
 import {  Constants, Updates } from 'expo'
@@ -38,9 +39,10 @@ const styles = StyleSheet.create({
 
 const DrawerRouter = createDrawerNavigator({
   Home : {
-    screen: StackRouter,
+    screen: TabRouter,
     navigationOptions: {
       drawerLabel: 'Home',
+      
       drawerIcon: ({ tintColor }) => <Icon name={"home"} size={17} />,
     }
   },
