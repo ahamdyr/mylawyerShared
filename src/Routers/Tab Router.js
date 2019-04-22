@@ -14,13 +14,18 @@ const  TabRouter = createBottomTabNavigator(
       screen: Home,
       navigationOptions: ({ navigation }) => ({
           title: "",
-          tabBarIcon: ({ tintColor }) => (<HomeIcon onPress={() =>navigation.navigate('Home')}/>),
+          tabBarIcon: ({focused}) => (<HomeIcon focused={focused} onPress={() =>navigation.navigate('Home')}/>),
           // tabBarLabel:({focused}) => (
-          //   <Text 
-          //     style={{alignSelf:'baseline'}}       
-          //   >
-          //     {focused?'____':''}
-          //   </Text>
+            
+          //     focused?
+          //     <Text style={{
+          //       marginBottom:4,
+          //       fontWeight:'bold',
+          //       color:'#0b7f7c',
+          //       fontSize: 16
+          //     }}>___________</Text>
+          //     :null
+               
           // )
       })
     },
@@ -29,7 +34,7 @@ const  TabRouter = createBottomTabNavigator(
       navigationOptions: ({ navigation }) => ({
           title: "",
           //tabBarButtonComponent: () => (<QuestionsIcon/>),
-          tabBarIcon: ({ tintColor }) => (<AskIcon onPress={() =>navigation.navigate('AskQuestion')}/>),
+          tabBarIcon: ({focused}) => (<AskIcon onPress={() =>navigation.navigate('AskQuestion')}/>),
           // tabBarLabel:({focused}) => (
           //   <Text 
           //     style={{alignSelf:'center'}}          
@@ -43,7 +48,7 @@ const  TabRouter = createBottomTabNavigator(
       screen: MyQuestions,
       navigationOptions: ({ navigation }) => ({
           title: "",
-          tabBarIcon: ({ tintColor }) => (<QuestionsIcon onPress={() =>navigation.navigate('MyQuestions')}/>),
+          tabBarIcon: ({focused}) => (<QuestionsIcon focused={focused} onPress={() =>navigation.navigate('MyQuestions')}/>),
           // tabBarLabel:({focused}) => (
           //   <Text 
           //     style={{alignSelf:'center'}}          
@@ -57,10 +62,17 @@ const  TabRouter = createBottomTabNavigator(
   {
     initialRouteName:"Home",
     
-    // tabBarOptions:{
-    //   showLabel:false,
-    //   showIcon:false
-    // }
+    tabBarOptions:{
+      // showLabel:false,
+      // showIcon:false
+      //activeTintColor: '#222',
+      //showLabel:true,
+      
+      tabStyle: {
+         marginBottom:-7   //Padding 0 here
+      },
+        //activeBackgroundColor :'yellow',  //Doesn't work
+    }
   }
 );
 
