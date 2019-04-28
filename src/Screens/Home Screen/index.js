@@ -14,7 +14,10 @@ export default HomeStack = createStackNavigator({
       headerRight: <SearchIcon onPress={() =>navigation.toggleDrawer()}/>,
       headerLeft: <MenuIcon onPress={() =>navigation.toggleDrawer()}/>  ,
       //headerBackTitle: 'null',
-      headerTitle:<HeaderTitle title={`My Lawyer`}/>,      
+      headerTitle:<HeaderTitle title={`My Lawyer`}/>,
+      headerStyle :{
+        backgroundColor:'#f6f6f6',
+      }
     }),
   }
 },{  
