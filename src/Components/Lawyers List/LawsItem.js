@@ -4,7 +4,7 @@ import RatingView from './RatingView';
 
 export default class LawsItem extends React.Component {
   render() {
-    const {MainPhotoURL, Name, office, rating} = this.props.item.item
+    const {MainPhotoURL, Name, office, rating, major} = this.props.item.item
     return (
       <View style={styles.lawsCard}>
         <TouchableOpacity
@@ -32,6 +32,9 @@ export default class LawsItem extends React.Component {
                     <Text style={{color:'white',  fontSize:13.5}}>
                       {office}
                     </Text>
+                    <Text style={{color:'white',  fontSize:13.5}}>
+                      {major}
+                    </Text>
                     <RatingView rating={rating}/>
                   {/* </View>                 
                 </View> */}
@@ -47,8 +50,9 @@ export default class LawsItem extends React.Component {
 
 const styles = StyleSheet.create({
   lawsCard: {
-    borderColor: '#ddd',
+    borderColor: '#f6f6f6',
     borderBottomWidth: 0,
+    borderRadius: 8,
     // shadowColor: '#000',
     // shadowOffset: { width: 0, height: 2 },
     // shadowOpacity: 0.1,
@@ -57,8 +61,8 @@ const styles = StyleSheet.create({
     margin: 7.5,
     height: 263,
     width: 156.3,
-    elevation: 10,
-    backgroundColor: '#fff'
+    //elevation: 10,
+    backgroundColor: '#f6f6f6'
   },
   lowerThird: {
     position: 'absolute',
@@ -83,7 +87,8 @@ const styles = StyleSheet.create({
   lawyerPhoto: {
     flex: 1,
     overflow: 'hidden',
-    elevation: 10
+    elevation: 10,
+    borderRadius: 8
   },
   lawyerImage: {
     position: 'absolute', top: 0, right: 0, left: 0, bottom: 0

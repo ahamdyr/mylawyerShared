@@ -8,24 +8,28 @@ export default class LawsList extends React.Component {
       MainPhotoURL:'https://i1.wp.com/theremba.com/wp-content/uploads/2018/05/taylor-grote-415993-unsplash-1-e1527710649885.jpg?ssl=1',
       Name:'Amir Fawzy',
       office : 'Offica A',
+      major:'legal',
       rating:0
     },
     {
       MainPhotoURL:'https://i1.wp.com/theremba.com/wp-content/uploads/2018/05/taylor-grote-415993-unsplash-1-e1527710649885.jpg?ssl=1',
       Name:'Amir Fawzy',
       office:'Offica A',
+      major:'legal',
       rating:1
     },
     {
       MainPhotoURL:'https://i1.wp.com/theremba.com/wp-content/uploads/2018/05/taylor-grote-415993-unsplash-1-e1527710649885.jpg?ssl=1',
       Name:'Amir Fawzy',
       office:'Offica A',
+      major:'legal',
       rating:3
     },
     {
       MainPhotoURL:'https://i1.wp.com/theremba.com/wp-content/uploads/2018/05/taylor-grote-415993-unsplash-1-e1527710649885.jpg?ssl=1',
       Name:'Amir Fawzy',
       office:'Offica A',
+      major:'legal',
       rating:5
     }
   ]
@@ -56,7 +60,10 @@ export default class LawsList extends React.Component {
           // }
           style={{
             flex: 1,
-            alignSelf: 'stretch'
+            alignSelf: 'stretch',
+            paddingLeft:18.5,
+            paddingRight:27.5,
+            backgroundColor:'#f6f6f6'
           }}
         />
     )
@@ -67,11 +74,10 @@ export default class LawsList extends React.Component {
       <View style={{
         flex: 1,
           alignSelf: 'stretch',
-          backgroundColor: '#fff',
+          backgroundColor: '#f6f6f6',
           alignItems: 'center',
           justifyContent: 'center',
-          paddingLeft:18.5,
-          paddingRight:27.5
+          
       }}>
         {this.renderLawyers(this.lawyers)}
       </View>
