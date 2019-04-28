@@ -1,6 +1,6 @@
 import React from 'react'
 import {Image, TouchableWithoutFeedback, Text } from 'react-native';
-import {HomeImage} from '../../assets'
+import {HomeImage} from '../../../assets'
 
 class HomeIcon extends React.Component {
   render(){

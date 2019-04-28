@@ -1,21 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator} from "react-navigation";
+import AllQuestionsScreen from '../AllQuestionsScreen'
 
-export default class AllQuestions extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>{this.props.navigation.state.params.data}</Text>
-      </View>
-    );
+export default AllQuestionsStack = createStackNavigator({
+  AllQuestions:{
+    screen: AllQuestionsScreen,
   }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor:'#f6f6f6',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+},{
+  headerMode:'none'
 });

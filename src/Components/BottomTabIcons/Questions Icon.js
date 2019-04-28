@@ -1,6 +1,6 @@
 import React from 'react'
 import {Image, TouchableWithoutFeedback, Text} from 'react-native';
-import {QuestionsImage} from '../../assets'
+import {QuestionsImage} from '../../../assets'
 
 class QuestionsIcon extends React.Component {
   render(){

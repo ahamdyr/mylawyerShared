@@ -3,10 +3,10 @@ import {Text} from 'react-native'
 import { Feather as Icon } from 'react-native-vector-icons'
 import { createBottomTabNavigator} from "react-navigation";
 import {Home, AskQuestion, Questions} from '../Screens'
-import HomeIcon from '../Components/Home Icon'
-import QuestionsIcon from '../Components/Questions Icon'
-import AskIcon from '../Components/Ask Icon'
-import MenuIcon from '../Components/Menu Icon';
+import HomeIcon from '../Components/BottomTabIcons/Home Icon'
+import QuestionsIcon from '../Components/BottomTabIcons/Questions Icon'
+import AskIcon from '../Components/BottomTabIcons/Ask Icon'
+import MenuIcon from '../Components/HomeHeaderIcons/Menu Icon';
 
 const  TabRouter = createBottomTabNavigator(
   {
