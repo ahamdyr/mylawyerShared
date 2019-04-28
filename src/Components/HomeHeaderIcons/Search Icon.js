@@ -1,6 +1,6 @@
 import React from 'react'
 import {Image, TouchableWithoutFeedback } from 'react-native';
-import {SearchImage} from '../../assets'
+import {SearchImage} from '../../../assets'
 
 class SearchIcon extends React.Component {
   render(){

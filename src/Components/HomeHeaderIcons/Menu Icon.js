@@ -1,6 +1,6 @@
 import React from 'react'
 import {Image, TouchableWithoutFeedback } from 'react-native';
-import {MenuImage} from '../../assets'
+import {MenuImage} from '../../../assets'
 
 class MenuIcon extends React.Component {
   render(){
