@@ -2,7 +2,7 @@ import React from 'react';
 import {Text} from 'react-native'
 import { Feather as Icon } from 'react-native-vector-icons'
 import { createBottomTabNavigator} from "react-navigation";
-import {Home, AskQuestion, MyQuestions} from '../Screens'
+import {Home, AskQuestion, Questions} from '../Screens'
 import HomeIcon from '../Components/Home Icon'
 import QuestionsIcon from '../Components/Questions Icon'
 import AskIcon from '../Components/Ask Icon'
@@ -45,7 +45,7 @@ const  TabRouter = createBottomTabNavigator(
       })
     },
     MyQuestions: {
-      screen: MyQuestions,
+      screen: Questions,
       navigationOptions: ({ navigation }) => ({
           title: "",
           tabBarIcon: ({focused}) => (<QuestionsIcon focused={focused} onPress={() =>navigation.navigate('MyQuestions')}/>),

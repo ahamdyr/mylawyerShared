@@ -6,7 +6,9 @@ import GeneralQuestions from './General Questions'
 import Home from './Home Screen'
 import Login from './Login'
 import Menu from './Menu'
+import Questions from './Questions'
 import MyQuestions from './My Questions'
+import AllQuestions from './All Questions'
 import ReviewLawyer from './Review lawyer'
 import Search from './Search'
 import Settings from './Settings'
@@ -24,12 +26,14 @@ export{
   Home,
   Login,
   Menu,
-  MyQuestions,
+  Questions,  
   ReviewLawyer,
   Search,
   Settings,
   SingleQuestion,
   UserProfile,
   UserRegisteration,
-  AuthLoading
+  AuthLoading,
+  MyQuestions,
+  AllQuestions
 }
