@@ -14,7 +14,7 @@ export default class AllQuestions extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor:'#f6f6f6',
     alignItems: 'center',
     justifyContent: 'center',
   },

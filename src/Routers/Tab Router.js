@@ -44,7 +44,7 @@ const  TabRouter = createBottomTabNavigator(
           // )
       })
     },
-    MyQuestions: {
+    Questions: {
       screen: Questions,
       navigationOptions: ({ navigation }) => ({
           title: "",
@@ -60,7 +60,7 @@ const  TabRouter = createBottomTabNavigator(
     }
   },
   {
-    initialRouteName:"Home",
+    initialRouteName:"Questions",
     
     tabBarOptions:{
       // showLabel:false,

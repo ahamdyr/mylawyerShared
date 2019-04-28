@@ -8,12 +8,14 @@ class HeaderTitle extends React.Component {
       <TouchableWithoutFeedback >     
         <Text
           style = {{
-            width: 97.5, 
-            height: 18.5, 
+            // width: 97.5, 
+            // height: 18.5, 
             alignContent:'center',
-            paddingLeft:20 , 
+            // paddingLeft:20 , 
             color:'#0b7f7c',
-            fontSize:15    
+            fontSize:20  ,
+            fontFamily:'LuxiSerif'  ,
+            //fontWeight:'bold'
           }}          
         >
           {this.props.title}
