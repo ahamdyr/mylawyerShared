@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity , Image, Dimensions } from 'react-native';
-import { WIDTH } from '../Constants';
+import { timeDifference } from '../Constants';
 
 export default class AnswerBy extends React.PureComponent{
   render(){
