@@ -26,12 +26,12 @@ export default class SelectComponent extends React.PureComponent {
             style={styles.downArrow}
           />         
           
-          <View
+          {/* <View
             style={{
               borderBottomColor: '#d5d5e0',
               borderBottomWidth: 0.5,
             }}
-          />        
+          />         */}
       </View>
     )
   }
@@ -40,9 +40,10 @@ export default class SelectComponent extends React.PureComponent {
 const styles = StyleSheet.create({
   selectContainer : {
     width: WIDTH,
-    height: 53 ,
+    height: 55 ,
     flexDirection: 'row',
-    borderColor: '#d5d5e0',
+    backgroundColor: '#f6f6f6',
+    borderBottomColor: '#d5d5e0',
     borderBottomWidth: 0.5
   },
   topicIcon:{
