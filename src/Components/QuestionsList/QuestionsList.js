@@ -9,6 +9,7 @@ export default class QuestionsList extends React.Component {
       authorName:'Emma Brown',
       qIndex: 1,
       content: "الشيك بدون رصيد وإشكالياته وكيفية مواجهته في النظام السعودي",
+      isAnswered : true,
       answeredBy : 'Lawyer1',
       answerDate : ''
     },
@@ -17,6 +18,7 @@ export default class QuestionsList extends React.Component {
       authorName:'Emma Brown',
       qIndex: 1,
       content: "الشيك بدون رصيد وإشكالياته وكيفية مواجهته في النظام السعودي",
+      isAnswered : false,
       answeredBy : 'Lawyer1',
       answerDate : ''
     },
@@ -25,6 +27,7 @@ export default class QuestionsList extends React.Component {
       authorName:'Emma Brown',
       qIndex: 1,
       content: "الشيك بدون رصيد وإشكالياته وكيفية مواجهته في النظام السعودي",
+      isAnswered : true,
       answeredBy : 'Lawyer1',
       answerDate : ''
     }

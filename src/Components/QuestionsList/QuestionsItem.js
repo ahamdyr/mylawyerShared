@@ -3,10 +3,11 @@ import { StyleSheet, Text, View,TouchableOpacity ,ImageBackground, Dimensions } 
 import { WIDTH } from '../Constants';
 import Topic from '../Common/Topic'
 import AnswerBy from '../Common/AnswerBy'
+import WaitingAnswer from '../Common/WaitingAnswer'
 
 export default class QuestionsItem extends React.Component {
   render() {
-    const {MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate} = this.props.item.item
+    const {MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate, isAnswered } = this.props.item.item
     return (
       <View style={styles.questCard}>
         <TouchableOpacity
@@ -17,17 +18,22 @@ export default class QuestionsItem extends React.Component {
             qIndex={qIndex}
             content={content}
           />
+          {
+            isAnswered ?
+            <AnswerBy
+              MainPhotoURL={MainPhotoURL}
+              answeredBy={answeredBy}
+              answerDate={answerDate}
+              style={{
+                marginLeft: 16,
+                marginTop: 15.5,
+                marginBottom: 23              
+              }}
+            />
+            :<WaitingAnswer/>
+          }
           
-          <AnswerBy
-            MainPhotoURL={MainPhotoURL}
-            answeredBy={answeredBy}
-            answerDate={answerDate}
-            style={{
-              marginLeft: 16,
-              marginTop: 15.5,
-              marginBottom: 23              
-            }}
-          />
+          
         </TouchableOpacity>
       </View>
     );
