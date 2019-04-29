@@ -45,6 +45,8 @@ const styles = StyleSheet.create({
     flex: 1,
     marginBottom: 7.5,
     //height: 157.5,
+    // borderBottomWidth: 3,
+    // borderBottomColor: '#0b7f7c',
     width: WIDTH,
     backgroundColor: 'white'
   }
