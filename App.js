@@ -31,7 +31,8 @@ export default class App extends React.Component {
         // We include SpaceMono because we use it in HomeScreen.js. Feel free
         // to remove this if you are not using it in your app
         'LuxiSerif': require('./assets/fonts/luxirb.ttf'),
-        'Lato-Regular': require('./assets/fonts/Lato-Regular.ttf')
+        'Lato-Regular': require('./assets/fonts/Lato-Regular.ttf'),
+        'Lato-Bold': require('./assets/fonts/Lato-Bold.ttf')
       }),
     ]);
   };
