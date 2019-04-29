@@ -31,7 +31,7 @@ export default  QuestionsTabs = createMaterialTopTabNavigator({
     style :{      
       marginTop: statusBarHeight,
       backgroundColor:'#f6f6f6',
-      height: 46 + statusBarHeight ,
+      height: 55 ,
     },
     activeTintColor : '#0b7f7c',
     inactiveTintColor : '#9e9ea3',
@@ -46,7 +46,7 @@ export default  QuestionsTabs = createMaterialTopTabNavigator({
       fontSize: 18,
       alignContent: 'center',
       paddingBottom: 13.5,
-      paddingTop: 33.5 -  statusBarHeight
+      //paddingTop: 33.5 -  statusBarHeight
     },
     upperCaseLabel : false
   },  
