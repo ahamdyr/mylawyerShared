@@ -32,7 +32,8 @@ export default class App extends React.Component {
         // to remove this if you are not using it in your app
         'LuxiSerif': require('./assets/fonts/luxirb.ttf'),
         'Lato-Regular': require('./assets/fonts/Lato-Regular.ttf'),
-        'Lato-Bold': require('./assets/fonts/Lato-Bold.ttf')
+        'Lato-Bold': require('./assets/fonts/Lato-Bold.ttf'),
+        'Cairo-Bold': require('./assets/fonts/Cairo-Bold.ttf')
       }),
     ]);
   };

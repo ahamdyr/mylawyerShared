@@ -14,7 +14,7 @@ export default class SelectComponent extends React.PureComponent {
       <View style={styles.selectContainer}> 
         
           <Image 
-            source={require('../../../assets/73x.png')}
+            source={require('../../../assets/topic.png')}
             style={styles.topicIcon}
           />
           <Text style={styles.filterText}>
