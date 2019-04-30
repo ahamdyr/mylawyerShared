@@ -6,9 +6,6 @@ import PublicQuestionScreen from '../Public Question Screen'
 export default AllQuestionsStack = createStackNavigator({
   AllQuestions:{
     screen: AllQuestionsScreen,
-  },
-  PublicQuestionScreen:{
-    screen: PublicQuestionScreen,
   }
 },{
   headerMode:'none'

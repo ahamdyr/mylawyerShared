@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 
 const DrawerRouter = createDrawerNavigator({
   Home : {
-    screen: TabRouter,
+    screen: StackRouter,
     navigationOptions: {
       drawerLabel: 'Home',
       
