@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import Topic from '../../Components/Common/Topic'
 import AnswerBy from '../../Components/Common/AnswerBy'
 import CloseIcon from '../../Components/Common/CloseIcon'
@@ -10,7 +10,7 @@ export default class PublicQuestionScreen extends React.Component {
     
     return (
       <View style={styles.container}>
-      
+
         <CloseIcon 
           style={styles.closeIcon}
           onPress={()=>this.props.navigation.goBack()}
@@ -29,11 +29,11 @@ export default class PublicQuestionScreen extends React.Component {
           style={styles.answered}
         />
         
-        {/* <View style={styles.textConatin}> */}
+        <ScrollView>
           <Text style={styles.answer}>
             {answer}
           </Text>
-        {/* </View> */}        
+        </ScrollView>
         
       </View>
     );
