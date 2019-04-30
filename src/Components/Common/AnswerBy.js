@@ -35,7 +35,7 @@ export default class AnswerBy extends React.PureComponent{
 const styles = StyleSheet.create({
   container:{
     flexDirection:'row',
-    flex: 1,
+    //flex: 1,
   },
   imageStyle:{
     width:28,
