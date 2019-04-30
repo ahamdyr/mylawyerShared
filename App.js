@@ -26,14 +26,12 @@ export default class App extends React.Component {
       //   require('./assets/images/robot-prod.png'),
       // ]),
       Font.loadAsync({
-        // This is the font that we are using for our tab bar
         ...Icon.Ionicons.font,
-        // We include SpaceMono because we use it in HomeScreen.js. Feel free
-        // to remove this if you are not using it in your app
         'LuxiSerif': require('./assets/fonts/luxirb.ttf'),
         'Lato-Regular': require('./assets/fonts/Lato-Regular.ttf'),
         'Lato-Bold': require('./assets/fonts/Lato-Bold.ttf'),
-        'Cairo-Bold': require('./assets/fonts/Cairo-Bold.ttf')
+        'Cairo-Bold': require('./assets/fonts/Cairo-Bold.ttf'),
+        'Cairo-Regular': require('./assets/fonts/Cairo-Regular.ttf')
       }),
     ]);
   };

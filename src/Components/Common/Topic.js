@@ -6,7 +6,7 @@ export default class Topic extends React.PureComponent{
   render(){
     const {authorName, qIndex, content} = this.props
     return(
-      <View style={styles.container}>
+      <View style={[styles.container, this.props.style]}>
 
         <View style={styles.upper}>
 
@@ -40,7 +40,6 @@ export default class Topic extends React.PureComponent{
 
 const styles = StyleSheet.create({
   container:{
-    flex:1,
     flexDirection: 'column',
     width: WIDTH,
     backgroundColor: 'white'

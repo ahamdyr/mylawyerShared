@@ -4,14 +4,16 @@ import { WIDTH } from '../Constants';
 import Topic from '../Common/Topic'
 import AnswerBy from '../Common/AnswerBy'
 import WaitingAnswer from '../Common/WaitingAnswer'
+import { withNavigation } from 'react-navigation';
 
-export default class QuestionsItem extends React.Component {
+class QuestionsItem extends React.Component {
   render() {
     const {MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate, isAnswered } = this.props.item.item
     return (
       <View style={styles.questCard}>
         <TouchableOpacity
           style={{ flex: 1, flexDirection:'column' }}
+          onPress={()=>this.props.navigation.navigate('PublicQuestionScreen',{question:this.props.item.item})}
         >
           <Topic
             authorName={authorName}
@@ -39,7 +41,7 @@ export default class QuestionsItem extends React.Component {
     );
   }
 }
-
+export default withNavigation(QuestionsItem)
 const styles = StyleSheet.create({
   questCard: {
     flex: 1,
