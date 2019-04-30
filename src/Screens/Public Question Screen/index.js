@@ -2,13 +2,19 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Topic from '../../Components/Common/Topic'
 import AnswerBy from '../../Components/Common/AnswerBy'
-import { STATUS_BAR_HEIGHT, WIDTH } from '../../Components/Constants';
+import CloseIcon from '../../Components/Common/CloseIcon'
+import { STATUS_BAR_HEIGHT, WIDTH } from '../../Components/Constants'
 export default class PublicQuestionScreen extends React.Component {
   render() {
     const {MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate, isAnswered, answer} = this.props.navigation.getParam('question')
     
     return (
       <View style={styles.container}>
+      
+        <CloseIcon 
+          style={styles.closeIcon}
+          onPress={()=>this.props.navigation.goBack()}
+        />
         <Topic
           style={styles.topic}
           authorName={authorName}
@@ -42,7 +48,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     // alignItems: 'flex-start',
     // justifyContent: 'flex-start',
-    marginTop: STATUS_BAR_HEIGHT +55
+    marginTop: STATUS_BAR_HEIGHT 
   },
   topic:{
     paddingBottom: 21,
@@ -66,5 +72,13 @@ const styles = StyleSheet.create({
     letterSpacing: 0.11,
     color: '#131314',
     marginHorizontal:16
+  },
+  closeIcon:{
+    width:16.5,
+    height: 16.5,
+    borderRadius: 0.8,
+    position: 'absolute',
+    top: 20,
+    right: 16
   }
 });
