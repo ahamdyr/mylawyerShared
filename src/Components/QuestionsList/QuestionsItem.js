@@ -13,7 +13,7 @@ class QuestionsItem extends React.Component {
       <View style={styles.questCard}>
         <TouchableOpacity
           style={{ flex: 1, flexDirection:'column' }}
-          onPress={()=>this.props.navigation.navigate('PublicQuestionScreen',{question:this.props.item.item})}
+          onPress={()=>this.props.navigation.navigate('PrivateQuestionScreen',{question:this.props.item.item})}
         >
           <Topic
             authorName={authorName}
