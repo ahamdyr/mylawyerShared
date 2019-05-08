@@ -4,7 +4,7 @@ import Topic from '../../Components/Common/Topic'
 import AnswerBy from '../../Components/Common/AnswerBy'
 import CloseIcon from '../../Components/Common/CloseIcon'
 import { STATUS_BAR_HEIGHT, WIDTH } from '../../Components/Constants'
-import Attachments from '../../Components/Common/Attachments'
+import AttachmentBtn from '../../Components/Common/AttachmentBtn'
 
 export default class PrivateQuestionScreen extends React.Component {
   render() {
@@ -23,7 +23,7 @@ export default class PrivateQuestionScreen extends React.Component {
           qIndex={qIndex}
           content={content}
         />
-        <Attachments
+        <AttachmentBtn
           //style={styles.Attachments}
         />
         <AnswerBy

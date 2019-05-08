@@ -6,7 +6,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-
+import {MAIN_COLOR} from '../../Components/Constants'
 class AuthLoadingScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -26,7 +26,10 @@ class AuthLoadingScreen extends React.Component {
   render() {
     return (
       <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-        <ActivityIndicator size={30}/>
+        <ActivityIndicator 
+          size="large"
+          color={MAIN_COLOR}
+        />
         <StatusBar barStyle="default" />
       </View>
     );

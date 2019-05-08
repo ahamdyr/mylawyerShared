@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, FlatList, RefreshControl } from 'react-native';
 import LawsItem from './LawsItem'
 
-export default class LawsList extends React.Component {
+  export default class LawsList extends React.Component {
   lawyers = [
     {
       MainPhotoURL:'https://i1.wp.com/theremba.com/wp-content/uploads/2018/05/taylor-grote-415993-unsplash-1-e1527710649885.jpg?ssl=1',
@@ -24,6 +24,20 @@ export default class LawsList extends React.Component {
       office:'Offica A',
       major:'legal',
       rating:3
+    },
+    {
+      MainPhotoURL:'https://i1.wp.com/theremba.com/wp-content/uploads/2018/05/taylor-grote-415993-unsplash-1-e1527710649885.jpg?ssl=1',
+      Name:'Amir Fawzy',
+      office:'Offica A',
+      major:'legal',
+      rating:5
+    },
+    {
+      MainPhotoURL:'https://i1.wp.com/theremba.com/wp-content/uploads/2018/05/taylor-grote-415993-unsplash-1-e1527710649885.jpg?ssl=1',
+      Name:'Amir Fawzy',
+      office:'Offica A',
+      major:'legal',
+      rating:5
     },
     {
       MainPhotoURL:'https://i1.wp.com/theremba.com/wp-content/uploads/2018/05/taylor-grote-415993-unsplash-1-e1527710649885.jpg?ssl=1',
