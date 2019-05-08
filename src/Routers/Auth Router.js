@@ -1,8 +1,20 @@
 import { createStackNavigator} from 'react-navigation'
-import {Login} from '../Screens'
+import {LoginScreen, SignUpScreen} from '../Screens'
 
 const AuthRouter = createStackNavigator({
-  Login : Login
+  Login : {
+    screen: LoginScreen,
+  },
+  SignUp: {
+    screen: SignUpScreen,
+  }
+},{
+  defaultNavigationOptions:{
+    headerStyle:{
+      elevation:0,
+      shadowOpacity:0
+    }
+  }
 })
 
 export default AuthRouter

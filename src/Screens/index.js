@@ -4,7 +4,7 @@ import ContactUs from './Contact Us'
 import EditProfile from './Edit Profile'
 import GeneralQuestions from './General Questions'
 import Home from './Home Screen'
-import Login from './Login'
+import LoginScreen from './Login'
 import Menu from './Menu'
 import Questions from './Questions'
 import MyQuestions from './My Questions'
@@ -16,7 +16,7 @@ import SingleQuestion from './Single Question'
 import UserProfile from './User Profile'
 import UserRegisteration from './User Registeration'
 import AuthLoading from './Auth Loading'
-
+import SignUpScreen from './SignUp'
 export{
   About,
   AskQuestion,
@@ -24,12 +24,13 @@ export{
   EditProfile,
   GeneralQuestions,
   Home,
-  Login,
+  LoginScreen,
   Menu,
   Questions,  
   ReviewLawyer,
   Search,
   Settings,
+  SignUpScreen,
   SingleQuestion,
   UserProfile,
   UserRegisteration,
