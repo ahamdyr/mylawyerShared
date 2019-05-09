@@ -4,10 +4,11 @@ import { TouchableWithoutFeedback, Text } from 'react-native';
 class HeaderTitle extends React.Component {
   
   render(){
+    const {style} = this.props
     return (      
       <TouchableWithoutFeedback >     
         <Text
-          style = {{
+          style = {[{
             // width: 97.5, 
             // height: 18.5, 
             alignContent:'center',
@@ -16,7 +17,7 @@ class HeaderTitle extends React.Component {
             fontSize:20  ,
             fontFamily:'LuxiSerif'  ,
             //fontWeight:'bold'
-          }}          
+          },style]}          
         >
           {this.props.title}
         </Text>        

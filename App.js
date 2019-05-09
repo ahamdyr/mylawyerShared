@@ -31,7 +31,9 @@ export default class App extends React.Component {
         'Lato-Regular': require('./assets/fonts/Lato-Regular.ttf'),
         'Lato-Bold': require('./assets/fonts/Lato-Bold.ttf'),
         'Cairo-Bold': require('./assets/fonts/Cairo-Bold.ttf'),
-        'Cairo-Regular': require('./assets/fonts/Cairo-Regular.ttf')
+        'Cairo-Regular': require('./assets/fonts/Cairo-Regular.ttf'),
+        'Lora-Regular' : require('./assets/fonts/Lora-Regular.ttf'),
+        'Lato-Light': require('./assets/fonts/Lato-Light.ttf')
       }),
     ]);
   };
