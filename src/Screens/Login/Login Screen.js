@@ -23,7 +23,7 @@ export default class LoginScreen extends React.Component {
           <View style={styles.footer}>
             <Text 
               style={styles.footerText}
-              //onPress={navigation.navigate('SignUp')}
+              onPress={()=>{navigation.navigate('SignUp')}}
             >
                 Don't have an account ?
             </Text>

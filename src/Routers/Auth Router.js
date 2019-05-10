@@ -25,7 +25,8 @@ const AuthRouter = createStackNavigator({
       backgroundColor: MAIN_COLOR,
     }
   }),
-  headerLayoutPreset :"center"
+  headerLayoutPreset :"center",
+  initialRouteName:'SignUp'
 })
 
 export default AuthRouter
