@@ -9,7 +9,7 @@ const AppRouter = createSwitchNavigator({
   Auth : AuthRouter,
   AuthLoading : AuthLoading
 },{
-  initialRouteName:'Auth'
+  initialRouteName:'App'
 })
 
 export default createAppContainer(AppRouter);

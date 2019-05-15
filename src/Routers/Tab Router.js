@@ -60,7 +60,7 @@ const  TabRouter = createBottomTabNavigator(
     }
   },
   {
-    initialRouteName:"Questions",
+    initialRouteName:"Home",
     
     tabBarOptions:{
       // showLabel:false,

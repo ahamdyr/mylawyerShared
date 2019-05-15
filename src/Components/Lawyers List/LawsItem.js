@@ -1,14 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity ,ImageBackground, Dimensions } from 'react-native';
 import RatingView from './RatingView';
-
-export default class LawsItem extends React.Component {
+import {withNavigation} from 'react-navigation'
+class LawsItem extends React.Component {
   render() {
     const {MainPhotoURL, Name, office, rating, major} = this.props.item.item
     return (
       <View style={styles.lawsCard}>
         <TouchableOpacity
           style={{ flex: 1 }}
+          onPress={()=>this.props.navigation.navigate('SocialScreen')}
         >
           <View style={styles.lawyerPhoto}>
             <ImageBackground
@@ -47,6 +48,8 @@ export default class LawsItem extends React.Component {
     );
   }
 }
+
+export default withNavigation(LawsItem)
 
 const styles = StyleSheet.create({
   lawsCard: {

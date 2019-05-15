@@ -14,6 +14,10 @@ export default class LoginForm extends React.PureComponent {
   _onPassChange = (val) => {
     this.password = val
   }
+  _loginSubmit = () =>{
+    // check mail and password valid
+    // check credentials
+  }
   render(){
     return(
       <KeyboardAvoidingView 
@@ -62,7 +66,7 @@ export default class LoginForm extends React.PureComponent {
           style={{
             marginTop: 26
           }}
-          //onPress={}
+          onPress={this._loginSubmit}
         />
 
       </KeyboardAvoidingView>
