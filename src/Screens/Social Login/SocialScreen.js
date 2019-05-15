@@ -1,45 +1,81 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet, TouchableOpacity, StatusBar} from 'react-native';
+import {HEIGHT, MAIN_COLOR, WIDTH, STATUS_BAR_HEIGHT} from '../../Components/Constants'
+export default class SocialScreen extends React.PureComponent {
 
-export default class SocialScreen extends React.Component {
+  // static navigationOptions = ()=>{
+  //   return {
+  //     layout: {
+  //       backgroundColor: 'transparent',
+  //   },
+  //   screenBackgroundColor: 'transparent',
+  //   modalPresentationStyle: 'overCurrentContext',
+  //   };
+  // }
+
+  componentWillUnmount(){
+    this.props.closeSocialModal()
+  }
   render() {
+    const {socialModalOpen, closeSocialModal, openSocialModal} = this.props
     return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'flex-end',
-          // position: 'absolute',
-          // bottom: 0,
-          // height: 200,
-          
-          backgroundColor: 'transparent',
-          opacity: 0.5
+      
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={socialModalOpen}
+        onRequestClose={() => {
+          closeSocialModal()
         }}
+        closeOnClick
       >
-        <View style={{
-          flex: 0,
-          justifyContent: 'center',
-          alignItems: 'center',
-          paddingVertical: 100,
-          backgroundColor: 'tomato', 
+        <View 
+          style = {{
+            flex:1,
+            marginTop: STATUS_BAR_HEIGHT,
+            backgroundColor: 'rgba(0,0,0,0.3)',
           }}
         >
-          <Text>Modal!</Text>
-          <Button
-            title="Hide popup"
-            onPress={() => this.props.navigation.goBack()}
-          />
+          <View style={styles.container}>
+            <Text>
+              aknajhhbfdsf
+              </Text>
+          </View>
+          <TouchableOpacity
+              style={styles.shadowBack}
+              onPress={()=>closeSocialModal()}
+              activeOpacity={0.8}
+            />
         </View>
-      </View>
+          
+      </Modal>
+
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    position: 'absolute',
+    bottom: 0,
+    height: 273,
+    width: WIDTH,
+    borderTopLeftRadius: 48,
+    borderTopRightRadius: 48,
+    backgroundColor: '#EFEFEF',
     alignItems: 'center',
-    justifyContent: 'center',
+    //justifyContent: 'center',  
   },
+  shadowBack: {
+    marginTop: 100,
+    width: WIDTH,
+    height: HEIGHT,
+    //alignSelf: 'stretch',
+    backgroundColor: 'transparent',
+
+  },
+  barStyle:{
+
+  }
+  
 });

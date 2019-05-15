@@ -2,14 +2,15 @@ import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity ,ImageBackground, Dimensions } from 'react-native';
 import RatingView from './RatingView';
 import {withNavigation} from 'react-navigation'
+//import {openModal} from '../../Services/SocialModal'
 class LawsItem extends React.Component {
-  render() {
+  render() {    
     const {MainPhotoURL, Name, office, rating, major} = this.props.item.item
     return (
       <View style={styles.lawsCard}>
         <TouchableOpacity
           style={{ flex: 1 }}
-          onPress={()=>this.props.navigation.navigate('SocialScreen')}
+          //onPress={()=>openModal()}
         >
           <View style={styles.lawyerPhoto}>
             <ImageBackground

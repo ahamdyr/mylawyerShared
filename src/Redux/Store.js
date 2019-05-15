@@ -4,9 +4,9 @@ import createSagaMiddleware  from 'redux-saga'
 import Reducer from './Reducers'
 import Saga from './Saga'
 
-export let configureStore = (initialState ) =>{
-  const enhancer = compose(applyMiddleware(sagaMiddleware))
+const configureStore = (initialState ) =>{
   const sagaMiddleware = createSagaMiddleware()
+  const enhancer = compose(applyMiddleware(sagaMiddleware))
   const store = createStore(
     Reducer,
     initialState,
@@ -15,3 +15,5 @@ export let configureStore = (initialState ) =>{
   sagaMiddleware.run(Saga)
   return store
 }
+const Store = configureStore()
+export default Store
