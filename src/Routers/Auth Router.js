@@ -1,6 +1,10 @@
 import React from 'react'
 import { createStackNavigator} from 'react-navigation'
-import {LoginScreen, SignUpScreen} from '../Screens'
+import {
+  LoginScreen,
+  SignUpWithMail,
+  SignUpWithPhone
+} from '../Screens'
 import HeaderTitle from '../Components/HomeHeaderIcons/Header Title'
 import AuthBackArrow from '../Components/AuthComponents/AuthBackArrow'
 import {MAIN_COLOR} from '../Components/Constants'
@@ -8,8 +12,11 @@ const AuthRouter = createStackNavigator({
   Login : {
     screen: LoginScreen,
   },
-  SignUp: {
-    screen: SignUpScreen,
+  SignUpWithMail: {
+    screen: SignUpWithMail,
+  },
+  SignUpWithPhone:{
+    screen: SignUpWithPhone,
   }
 },{
   defaultNavigationOptions: ({navigation}) => ({

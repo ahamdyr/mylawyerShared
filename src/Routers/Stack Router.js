@@ -19,6 +19,7 @@ const RootStack = createStackNavigator({
     screen: PrivateQuestionScreen,
   }  
 },{  
+  initialRouteName: 'TabRouter',
   mode: 'modal',
   headerMode: 'none',    
 });
@@ -28,11 +29,11 @@ export default createStackNavigator({
   SocialScreen: SocialScreen,
   Spinner: Spinner
 },{
+  initialRouteName: 'RootStack',
   mode: 'modal',
   headerMode: 'none',
   
   cardStyle: {
-    //backgroundColor: 'transparent',
     backgroundColor: 'rgba(19,19,20,0.5)',
     opacity: 1,
   },

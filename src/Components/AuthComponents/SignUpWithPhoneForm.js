@@ -7,7 +7,7 @@ import MailLogo from '../Common/MailIcon'
 import ImageIcon from '../Common/ImageIcon'
 import {PhoneIcon, UserIcon } from '../../../assets'
 
-export default class SignUpForm extends React.PureComponent {
+export default class SignUpWithPhoneForm extends React.PureComponent {
   mail = '';
   phone = '';
   userName = '';
@@ -44,7 +44,7 @@ export default class SignUpForm extends React.PureComponent {
           />
         </View>
 
-        <SeperatorLine />
+        {/* <SeperatorLine />
 
         <View style={styles.inputContainer}>
           <MailLogo/>
@@ -56,7 +56,7 @@ export default class SignUpForm extends React.PureComponent {
             autoFocus
             onChangeText={this._onMailChange}
           />
-        </View>
+        </View> */}
 
         <SeperatorLine />
 
@@ -67,7 +67,7 @@ export default class SignUpForm extends React.PureComponent {
           />
           <TextInput            
             //underlineColorAndroid={'transparent'}
-            placeholder={'Phone number' }            
+            placeholder={'+20 100 712 1821' }            
             keyboardType={'phone-pad'}
             style={styles.nmberStyle}
             autoFocus

@@ -1,25 +1,45 @@
 import React from 'react';
 import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet, TouchableOpacity, StatusBar} from 'react-native';
 import {HEIGHT, MAIN_COLOR, WIDTH, STATUS_BAR_HEIGHT} from '../../Components/Constants'
-export default class SocialScreen extends React.PureComponent {
+import SocialBtns from '../../Components/Social Components/SocialBtns'
+import {CloseIcon} from '../../Components/Social Components/SocialBtns'
+import {withNavigation} from 'react-navigation'
 
-
-  componentWillUnmount(){
-  }
+class SocialScreen extends React.PureComponent {
+  
   render() {
-    const {socialModalOpen, closeSocialModal, openSocialModal} = this.props
+    const {nanigation} = this.props
     return (
       <View style={{
         flex: 1,
         backgroundColor: 'transparent'
       }}>
-
         <View style={styles.container}>
-          <Text>
-            aknajhhbfdsf
-              </Text>
-        </View>
-        
+
+          <Text style={styles.continue}>
+            Continue with
+          </Text>
+
+          <SocialBtns/>
+
+          <View style={styles.termsContainer}>
+            <Text style={styles.termsText}>
+              By clicking Sign up you agree to our
+          </Text>
+            <Text
+              style={[styles.termsText, { textDecorationLine: 'underline' }]}
+            //onPress={() => navigation.navigate('Terms')}
+            >
+              Terms of Service
+          </Text>
+          </View>
+
+          <CloseIcon 
+            style={styles.close} 
+            onPress={()=> navigation.goBack()}
+          />
+
+        </View>        
       </View>
       
 
@@ -27,6 +47,8 @@ export default class SocialScreen extends React.PureComponent {
   }
 }
 
+export default withNavigation(SocialScreen
+  )
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
@@ -39,6 +61,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     //justifyContent: 'center',  
   },
-  
-  
+  continue:{
+    fontFamily: 'Lato-Bold',
+    fontSize: 14,
+    letterSpacing: 0.35,
+    color: 'rgb(19,19,20)',
+    marginTop: 28,
+  },
+  close:{
+    marginTop: 12
+  },
+  termsContainer:{    
+    marginTop: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  termsText:{
+    fontFamily:'Lato-Light',
+    fontSize: 12,
+    color: 'rgb(82, 82, 82)',
+  },
 });

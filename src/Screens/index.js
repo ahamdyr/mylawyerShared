@@ -16,7 +16,8 @@ import SingleQuestion from './Single Question'
 import UserProfile from './User Profile'
 import UserRegisteration from './User Registeration'
 import AuthLoading from './Auth Loading'
-import SignUpScreen from './SignUp'
+import SignUpWithMail from './SignUpWithMail'
+import SignUpWithPhone from './SignUpWithPhone'
 export{
   About,
   AskQuestion,
@@ -30,7 +31,8 @@ export{
   ReviewLawyer,
   Search,
   Settings,
-  SignUpScreen,
+  SignUpWithMail,
+  SignUpWithPhone,
   SingleQuestion,
   UserProfile,
   UserRegisteration,
