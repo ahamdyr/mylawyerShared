@@ -4,17 +4,17 @@ import {closeSocialModal, openSocialModal} from '../../Redux/Social Modal/action
 
 
 const mapStateToProps = state => ({
-  socialModalOpen : state.socialModalOpen
+  //socialModalOpen : state.socialModalOpen
 })
 
 
 const mapDispatchersToProps = dispatch => ({
-  closeSocialModal: ()=>{
-    dispatch(closeSocialModal())
-  },
-  openSocialModal : ()=>{
-    dispatch(openSocialModal())
-  }
+  // closeSocialModal: ()=>{
+  //   dispatch(closeSocialModal())
+  // },
+  // openSocialModal : ()=>{
+  //   dispatch(openSocialModal())
+  // }
 })
 
 export default connect(mapStateToProps, mapDispatchersToProps)(SocialScreen)

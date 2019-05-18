@@ -5,10 +5,10 @@ import SocialBtns from '../../Components/Social Components/SocialBtns'
 import {CloseIcon} from '../../Components/Social Components/SocialBtns'
 import {withNavigation} from 'react-navigation'
 
-class SocialScreen extends React.PureComponent {
+class SocialScreen extends React.Component {
   
   render() {
-    const {nanigation} = this.props
+    const {navigation} = this.props
     return (
       <View style={{
         flex: 1,
@@ -36,7 +36,9 @@ class SocialScreen extends React.PureComponent {
 
           <CloseIcon 
             style={styles.close} 
-            onPress={()=> navigation.goBack()}
+            onPress={()=> {
+              navigation.goBack()
+            }}
           />
 
         </View>        
@@ -47,8 +49,8 @@ class SocialScreen extends React.PureComponent {
   }
 }
 
-export default withNavigation(SocialScreen
-  )
+export default withNavigation(SocialScreen)
+
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',

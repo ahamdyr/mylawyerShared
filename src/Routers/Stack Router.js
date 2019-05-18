@@ -19,32 +19,36 @@ const RootStack = createStackNavigator({
     screen: PrivateQuestionScreen,
   }  
 },{  
-  initialRouteName: 'TabRouter',
+  initialRouteName: "TabRouter",
   mode: 'modal',
-  headerMode: 'none',    
+  headerMode: 'none'  
 });
 
-export default createStackNavigator({
-  RootStack: RootStack,
+const ModalStack =  createStackNavigator({
+  RootStack: {
+    screen: RootStack,
+  },
   SocialScreen: SocialScreen,
   Spinner: Spinner
 },{
-  initialRouteName: 'RootStack',
+  initialRouteName: "RootStack",
   mode: 'modal',
   headerMode: 'none',
-  
+
   cardStyle: {
-    backgroundColor: 'rgba(19,19,20,0.5)',
+    backgroundColor: 'rgba(19,19,20,0.5)',    
     opacity: 1,
+    
   },
-  transitionConfig: () => ({
-    transitionSpec: {
-      duration: 0,
-      timing: Animated.timing,
-      easing: Easing.step0,
-      },
+  transitionConfig: () => ({    
+    // transitionSpec: {
+    //   duration: 0,
+    //   timing: Animated.timing,
+    //   easing: Easing.step0,
+    //   },
   }),
 
-  transparentCard : true
+  //transparentCard : true
 })
 
+export default ModalStack
