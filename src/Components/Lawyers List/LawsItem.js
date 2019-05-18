@@ -3,7 +3,7 @@ import { StyleSheet, Text, View,TouchableOpacity ,ImageBackground, Dimensions } 
 import RatingView from './RatingView';
 import {withNavigation} from 'react-navigation'
 //import {openModal} from '../../Services/SocialModal'
-class LawsItem extends React.Component {
+class LawsItem extends React.PureComponent {
   render() {    
     const {MainPhotoURL, Name, office, rating, major} = this.props.item.item
     return (
@@ -11,6 +11,7 @@ class LawsItem extends React.Component {
         <TouchableOpacity
           style={{ flex: 1 }}
           //onPress={()=>openModal()}
+          onPress={()=>this.props.navigation.navigate('SocialScreen')}
         >
           <View style={styles.lawyerPhoto}>
             <ImageBackground

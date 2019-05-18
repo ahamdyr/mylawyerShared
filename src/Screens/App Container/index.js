@@ -3,7 +3,7 @@ import {View, StatusBar} from 'react-native';
 import AppRouter from '../../Routers/App Router'
 import { useScreens } from 'react-native-screens';
 import { Provider } from 'react-redux'
-import SocialScreen from '../Social Login'
+//import SocialScreen from '../Social Login'
 import Store from '../../Redux/Store' 
 import {SafeAreaView} from 'react-navigation'
 
@@ -14,8 +14,8 @@ export default class AppContainer extends React.Component {
     return (
       <Provider store={Store}>
         <View style={{ flex: 1 }}>
-        <StatusBar translucent barStyle={'light-content'}/>
-        <SocialScreen />
+        <StatusBar translucent barStyle={'dark-content'}/>
+        {/* <SocialScreen /> */}
           <AppRouter />
           
         </View>
