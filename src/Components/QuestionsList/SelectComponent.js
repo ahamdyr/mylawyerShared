@@ -9,9 +9,8 @@ export default class SelectComponent extends React.PureComponent {
     text:''
   }
   render(){
-    var data = [["C", "Java", "JavaScript", "PHP"], ];
     return(
-      <View style={styles.selectContainer}> 
+      <View style={[styles.selectContainer, this.props.style]}> 
         
           <Image 
             source={require('../../../assets/topic.png')}
