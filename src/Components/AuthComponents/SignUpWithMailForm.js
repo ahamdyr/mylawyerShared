@@ -6,13 +6,23 @@ import LoginButton from '../Common/LoginButton'
 import MailLogo from '../Common/MailIcon'
 import ImageIcon from '../Common/ImageIcon'
 import {PhoneIcon, UserIcon } from '../../../assets'
-
+import Store from '../../Redux/Store'
+import {
+  setMail,
+  setPassword,
+  setPhoneNumber
+} from '../../Redux/Auth/actions'
 export default class SignUpWithMailForm extends React.PureComponent {
   mail = '';
   phone = '';
   userName = '';
   _onMailChange = (val) =>{
     this.mail = val
+    Store.dispatch(setMail(val))
+  }
+  _onPassChange = (val) => {
+    this.password = val
+    Store.dispatch(setPassword(val))
   }
   _onPhoneChange = (val) => {
     this.phone = val
@@ -58,31 +68,34 @@ export default class SignUpWithMailForm extends React.PureComponent {
           />
         </View>
 
-        {/* <SeperatorLine /> */}
-
-        {/* <View style={styles.inputContainer}>
-          <ImageIcon
-            style={styles.phoneIconStyle}
-            source={PhoneIcon}
-          />
-          <TextInput            
-            //underlineColorAndroid={'transparent'}
-            placeholder={'Phone number' }            
-            keyboardType={'phone-pad'}
-            style={styles.nmberStyle}
-            autoFocus
-            onChangeText={this._onPhoneChange}
-          />
-        </View> */}
-
         <SeperatorLine />
+
+        <View style={styles.inputContainer}>
+          <LockImage/>
+          <TextInput
+            //underlineColorAndroid={'transparent'}
+            secureTextEntry
+            placeholder={'***********' }            
+            //keyboardType={''}
+            style={styles.inputStyle}
+            onChangeText={this._onPassChange}
+          />
+          <Text
+            style={styles.forgot}
+            //onPress={()=>console.log('ajbfh')}
+          >
+            Forgot?
+          </Text>
+        </View>
+
+        <SeperatorLine/>
 
         <LoginButton
           text={'Sign up'}
           style={{
             marginTop: 36
           }}
-          //onPress={}
+          onPress={this.props.onPress}
         />
 
       </KeyboardAvoidingView>

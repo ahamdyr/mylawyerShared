@@ -6,6 +6,7 @@ import {
   SignUpWithMail,
   SignUpWithPhone
 } from '../Screens'
+import PhoneVerification from '../Screens/PhoneVerification'
 import HeaderTitle from '../Components/HomeHeaderIcons/Header Title'
 import AuthBackArrow from '../Components/AuthComponents/AuthBackArrow'
 import {MAIN_COLOR} from '../Components/Constants'
@@ -22,7 +23,8 @@ const AuthRouter = createStackNavigator({
   },
   SignUpWithPhone:{
     screen: SignUpWithPhone,
-  }
+  },
+  PhoneVerification:PhoneVerification
 },{
   defaultNavigationOptions: ({navigation}) => ({
     

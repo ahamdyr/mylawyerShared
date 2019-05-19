@@ -6,7 +6,12 @@ import LoginButton from '../Common/LoginButton'
 import MailLogo from '../Common/MailIcon'
 import ImageIcon from '../Common/ImageIcon'
 import {PhoneIcon, UserIcon } from '../../../assets'
-
+import Store from '../../Redux/Store'
+import {
+  setMail,
+  setPassword,
+  setPhoneNumber
+} from '../../Redux/Auth/actions'
 export default class SignUpWithPhoneForm extends React.PureComponent {
   mail = '';
   phone = '';
@@ -16,6 +21,7 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
   }
   _onPhoneChange = (val) => {
     this.phone = val
+    Store.dispatch(setPhoneNumber(val))
   }
   _onNameChange = (val) =>{
     this.userName = val
@@ -76,13 +82,13 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
         </View>
 
         <SeperatorLine />
-
+        
         <LoginButton
           text={'Sign up'}
           style={{
             marginTop: 36
           }}
-          //onPress={}
+          onPress={this.props.onPress}
         />
 
       </KeyboardAvoidingView>

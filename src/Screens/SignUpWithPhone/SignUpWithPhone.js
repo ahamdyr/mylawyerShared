@@ -20,7 +20,7 @@ class SignUpWithPhone extends React.Component {
         </View>
 
         <View style={styles.formContainer}>
-          <SignUpWithPhoneForm />
+          <SignUpWithPhoneForm onPress={()=>this.props.navigation.navigate('PhoneVerification')}/>
         </View>
 
         <View style={styles.termsContainer}>

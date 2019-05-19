@@ -6,6 +6,12 @@ import LoginButton from '../Common/LoginButton'
 import ImageIcon from '../Common/ImageIcon'
 import LockImage from '../Common/LockImage'
 import {PhoneIcon, UserIcon } from '../../../assets'
+import Store from '../../Redux/Store'
+import {
+  setMail,
+  setPassword,
+  setPhoneNumber
+} from '../../Redux/Auth/actions'
 export default class LoginWithPhoneForm extends React.PureComponent {
   mail = '';
   password = '';
@@ -15,9 +21,12 @@ export default class LoginWithPhoneForm extends React.PureComponent {
   _onPassChange = (val) => {
     this.password = val
   }
+  _onPhoneChange = (val) => {
+    this.phone = val
+    Store.dispatch(setPhoneNumber(val))
+  }
   _loginSubmit = () =>{
-    // check mail and password valid
-    // check credentials
+    this.props.onPress
   }
   render(){
     return(
@@ -45,7 +54,7 @@ export default class LoginWithPhoneForm extends React.PureComponent {
 
         <SeperatorLine/>
 
-        <View style={styles.inputContainer}>
+        {/* <View style={styles.inputContainer}>
           <LockImage/>
           <TextInput
             //underlineColorAndroid={'transparent'}
@@ -63,7 +72,7 @@ export default class LoginWithPhoneForm extends React.PureComponent {
           </Text>
         </View>
 
-        <SeperatorLine/>
+        <SeperatorLine/> */}
 
         <LoginButton
           text={'Login'}

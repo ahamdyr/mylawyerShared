@@ -5,19 +5,25 @@ import SeperatorLine from '../Common/SeperatorLine'
 import LoginButton from '../Common/LoginButton'
 import MailLogo from '../Common/MailIcon'
 import LockImage from '../Common/LockImage'
-
+import Store from '../../Redux/Store'
+import {
+  setMail,
+  setPassword,
+  setPhoneNumber
+} from '../../Redux/Auth/actions'
 export default class LoginWithMailForm extends React.PureComponent {
   mail = '';
   password = '';
   _onMailChange = (val) =>{
     this.mail = val
+    Store.dispatch(setMail(val))
   }
   _onPassChange = (val) => {
     this.password = val
+    Store.dispatch(setPassword(val))
   }
   _loginSubmit = () =>{
-    // check mail and password valid
-    // check credentials
+    this.props.onPress
   }
   render(){
     return(
