@@ -26,7 +26,7 @@ export default  QuestionsTabs = createMaterialTopTabNavigator({
 },{
   //swipeEnabled :false,
   //animationEnabled :false,
-  //lazy:false,
+  lazy:true,
   tabBarOptions :{
     style :{      
       marginTop: statusBarHeight,

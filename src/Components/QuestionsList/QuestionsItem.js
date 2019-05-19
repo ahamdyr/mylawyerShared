@@ -6,14 +6,19 @@ import AnswerBy from '../Common/AnswerBy'
 import WaitingAnswer from '../Common/WaitingAnswer'
 import { withNavigation } from 'react-navigation';
 
-class QuestionsItem extends React.Component {
+class QuestionsItem extends React.PureComponent {
   render() {
+    const routeName =  this.props.navigation.state.routeName
     const {MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate, isAnswered } = this.props.item.item
     return (
       <View style={styles.questCard}>
         <TouchableOpacity
           style={{ flex: 1, flexDirection:'column' }}
-          onPress={()=>this.props.navigation.navigate('PrivateQuestionScreen',{question:this.props.item.item})}
+          onPress={()=>{
+            routeName == 'AllQuestions' 
+            ? this.props.navigation.navigate('PublicQuestionScreen', {question:this.props.item.item})
+            : this.props.navigation.navigate('PrivateQuestionScreen', {question:this.props.item.item})
+          }}
         >
           <Topic
             authorName={authorName}
