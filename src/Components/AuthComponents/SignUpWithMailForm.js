@@ -105,7 +105,8 @@ const styles = StyleSheet.create({
     fontFamily:'Lato-Light',
     fontSize: 16,
     marginLeft: 16,
-    color: 'white'
+    color: 'white',
+    width: 200,
   },
   forgot:{
     fontFamily:'Lato-Light',
@@ -123,7 +124,8 @@ const styles = StyleSheet.create({
     fontFamily:'Lato-Light',
     fontSize: 16,
     marginLeft: 21,
-    color: 'white'
+    color: 'white',
+    width: 200,
   },
   phoneIconStyle:{
     height: 16,

@@ -4,7 +4,8 @@ import ContactUs from './Contact Us'
 import EditProfile from './Edit Profile'
 import GeneralQuestions from './General Questions'
 import Home from './Home Screen'
-import LoginScreen from './Login'
+import LoginWithMail from './LoginWithMail'
+import LoginWithPhone from './LoginWithPhone'
 import Menu from './Menu'
 import Questions from './Questions'
 import MyQuestions from './My Questions'
@@ -25,7 +26,8 @@ export{
   EditProfile,
   GeneralQuestions,
   Home,
-  LoginScreen,
+  LoginWithMail,
+  LoginWithPhone,
   Menu,
   Questions,  
   ReviewLawyer,

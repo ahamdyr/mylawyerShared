@@ -2,8 +2,9 @@ import React from 'react';
 import {Text, View, Button } from 'react-native';
 import {styles} from './Styles'
 import SignUpWithMailForm from '../../Components/AuthComponents/SignUpWithMailForm'
+import {withNavigation} from 'react-navigation'
 
-export default class SignUpWithMail extends React.Component {
+class SignUpWithMail extends React.Component {
   render() {
     const {navigation} = this.props
     return (
@@ -37,7 +38,7 @@ export default class SignUpWithMail extends React.Component {
         <View style={styles.footer}>
           <Text
             style={styles.footerText}
-            onPress={() => navigation.navigate('Login')}
+            onPress={() => navigation.navigate('LoginWithMail')}
           >
             Already have an Account?
             </Text>
@@ -47,3 +48,5 @@ export default class SignUpWithMail extends React.Component {
     );
   }
 }
+
+export default withNavigation(SignUpWithMail) 

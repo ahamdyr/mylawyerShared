@@ -5,7 +5,8 @@ import SeperatorLine from '../Common/SeperatorLine'
 import LoginButton from '../Common/LoginButton'
 import MailLogo from '../Common/MailIcon'
 import LockImage from '../Common/LockImage'
-export default class LoginForm extends React.PureComponent {
+
+export default class LoginWithMailForm extends React.PureComponent {
   mail = '';
   password = '';
   _onMailChange = (val) =>{
@@ -89,7 +90,8 @@ const styles = StyleSheet.create({
     fontFamily:'Lato-Light',
     fontSize: 16,
     marginLeft: 16,
-    color: 'white'
+    color: 'white',
+    width: 200,
   },
   forgot:{
     fontFamily:'Lato-Light',

@@ -1,8 +1,10 @@
 import React from 'react';
 import {Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import {styles} from './Styles'
-import LoginForm from '../../Components/AuthComponents/LoginForm'
-export default class LoginScreen extends React.Component {
+import LoginWithPhoneForm from '../../Components/AuthComponents/LoginWithPhoneForm'
+import {withNavigation} from 'react-navigation'
+
+class LoginWithPhone extends React.Component {
   render() {
     const {navigation} = this.props
     return (
@@ -16,14 +18,14 @@ export default class LoginScreen extends React.Component {
         
             {/* login form */}
           <View style={styles.formContainer}>
-            <LoginForm/>
+            <LoginWithPhoneForm/>
           </View>
 
             {/* footer */}
           <View style={styles.footer}>
             <Text 
               style={styles.footerText}
-              onPress={()=>{navigation.navigate('SignUp')}}
+              onPress={()=>{navigation.navigate('SignUpWithPhone')}}
             >
                 Don't have an account ?
             </Text>
@@ -34,3 +36,4 @@ export default class LoginScreen extends React.Component {
   }
 }
 
+export default withNavigation(LoginWithPhone) 

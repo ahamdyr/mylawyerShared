@@ -2,8 +2,9 @@ import React from 'react';
 import {Text, View, Button } from 'react-native';
 import {styles} from './Styles'
 import SignUpWithPhoneForm from '../../Components/AuthComponents/SignUpWithPhoneForm'
+import {withNavigation} from 'react-navigation'
 
-export default class SignUpWithPhone extends React.Component {
+class SignUpWithPhone extends React.Component {
   render() {
     const {navigation} = this.props
     return (
@@ -37,7 +38,7 @@ export default class SignUpWithPhone extends React.Component {
         <View style={styles.footer}>
           <Text
             style={styles.footerText}
-            onPress={() => navigation.navigate('Login')}
+            onPress={() => navigation.navigate('LoginWithPhone')}
           >
             Already have an Account?
             </Text>
@@ -47,3 +48,4 @@ export default class SignUpWithPhone extends React.Component {
     );
   }
 }
+export default withNavigation(SignUpWithPhone)  

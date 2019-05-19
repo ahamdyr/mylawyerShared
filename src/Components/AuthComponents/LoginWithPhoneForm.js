@@ -3,22 +3,21 @@ import {StyleSheet, Text, View, TouchableOpacity, TextInput, KeyboardAvoidingVie
 import {MAIN_COLOR, WIDTH} from '../Constants'
 import SeperatorLine from '../Common/SeperatorLine'
 import LoginButton from '../Common/LoginButton'
-import MailLogo from '../Common/MailIcon'
 import ImageIcon from '../Common/ImageIcon'
+import LockImage from '../Common/LockImage'
 import {PhoneIcon, UserIcon } from '../../../assets'
-
-export default class SignUpWithPhoneForm extends React.PureComponent {
+export default class LoginWithPhoneForm extends React.PureComponent {
   mail = '';
-  phone = '';
-  userName = '';
+  password = '';
   _onMailChange = (val) =>{
     this.mail = val
   }
-  _onPhoneChange = (val) => {
-    this.phone = val
+  _onPassChange = (val) => {
+    this.password = val
   }
-  _onNameChange = (val) =>{
-    this.userName = val
+  _loginSubmit = () =>{
+    // check mail and password valid
+    // check credentials
   }
   render(){
     return(
@@ -26,37 +25,6 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
         style={styles.container}
         behavior={'padding'}
       >
-
-        <SeperatorLine />
-
-        <View style={styles.inputContainer}>
-          <ImageIcon
-            style={styles.userIcon}
-            source={UserIcon}
-          />
-          <TextInput
-            //underlineColorAndroid={'transparent'}
-            //secureTextEntry
-            placeholder={'username'}
-            keyboardType={'default'}
-            style={styles.userNameText}
-            onChangeText={this._onNameChange}
-          />
-        </View>
-
-        {/* <SeperatorLine />
-
-        <View style={styles.inputContainer}>
-          <MailLogo/>
-          <TextInput            
-            //underlineColorAndroid={'transparent'}
-            placeholder={'name@mail.com' }            
-            keyboardType={'email-address'}
-            style={styles.inputStyle}
-            autoFocus
-            onChangeText={this._onMailChange}
-          />
-        </View> */}
 
         <SeperatorLine />
 
@@ -75,14 +43,34 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
           />
         </View>
 
-        <SeperatorLine />
+        <SeperatorLine/>
+
+        <View style={styles.inputContainer}>
+          <LockImage/>
+          <TextInput
+            //underlineColorAndroid={'transparent'}
+            secureTextEntry
+            placeholder={'***********' }            
+            //keyboardType={''}
+            style={styles.inputStyle}
+            onChangeText={this._onPassChange}
+          />
+          <Text
+            style={styles.forgot}
+            //onPress={()=>console.log('ajbfh')}
+          >
+            Forgot?
+          </Text>
+        </View>
+
+        <SeperatorLine/>
 
         <LoginButton
-          text={'Sign up'}
+          text={'Login'}
           style={{
-            marginTop: 36
+            marginTop: 26
           }}
-          //onPress={}
+          onPress={this._loginSubmit}
         />
 
       </KeyboardAvoidingView>
@@ -96,7 +84,7 @@ const styles = StyleSheet.create({
     alignItems : 'center',
   },
   inputContainer:{
-    width: 250,
+    width: 230,
     height: 60,
     flexDirection: 'row',
     alignItems: 'center',
@@ -105,7 +93,8 @@ const styles = StyleSheet.create({
     fontFamily:'Lato-Light',
     fontSize: 16,
     marginLeft: 16,
-    color: 'white'
+    color: 'white',
+    width: 200,
   },
   forgot:{
     fontFamily:'Lato-Light',
@@ -114,15 +103,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 0
   },
-  userIcon:{
-    width:11,
-    height: 16,
-    marginLeft: 12
-  },
-  userNameText:{
+  nmberStyle:{
     fontFamily:'Lato-Light',
     fontSize: 16,
-    marginLeft: 21,
+    marginLeft: 18.5,
     color: 'white',
     width: 200,
   },
@@ -131,11 +115,4 @@ const styles = StyleSheet.create({
     width: 16,
     marginLeft: 11.5
   },
-  nmberStyle:{
-    fontFamily:'Lato-Light',
-    fontSize: 16,
-    marginLeft: 18.5,
-    color: 'white',
-    width: 200,
-  }
 })
