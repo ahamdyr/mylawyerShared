@@ -26,3 +26,12 @@ export const userPassword = (state = '', action) => {
       return state
   }
 }
+
+export const isLoggedUser = (state = false, action) => {
+  switch (action.type) {
+    case 'setLoggedUser':
+      return action.isLogged
+    default:
+      return state
+  }
+}

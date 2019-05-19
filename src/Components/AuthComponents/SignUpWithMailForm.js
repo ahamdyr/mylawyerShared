@@ -5,6 +5,7 @@ import SeperatorLine from '../Common/SeperatorLine'
 import LoginButton from '../Common/LoginButton'
 import MailLogo from '../Common/MailIcon'
 import ImageIcon from '../Common/ImageIcon'
+import LockImage from '../Common/LockImage'
 import {PhoneIcon, UserIcon } from '../../../assets'
 import Store from '../../Redux/Store'
 import {
@@ -80,12 +81,12 @@ export default class SignUpWithMailForm extends React.PureComponent {
             style={styles.inputStyle}
             onChangeText={this._onPassChange}
           />
-          <Text
+          {/* <Text
             style={styles.forgot}
             //onPress={()=>console.log('ajbfh')}
           >
             Forgot?
-          </Text>
+          </Text> */}
         </View>
 
         <SeperatorLine/>

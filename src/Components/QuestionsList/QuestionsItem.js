@@ -5,9 +5,12 @@ import Topic from '../Common/Topic'
 import AnswerBy from '../Common/AnswerBy'
 import WaitingAnswer from '../Common/WaitingAnswer'
 import { withNavigation } from 'react-navigation';
-
+import {navigate} from '../../Services/NavigationServices'
+import Store from '../../Redux/Store'
 class QuestionsItem extends React.PureComponent {
   render() {
+    let isLoggedUser = Store.getState().isLoggedUser
+    console.log('isLoggedUser',isLoggedUser)
     const routeName =  this.props.navigation.state.routeName
     const {MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate, isAnswered } = this.props.item.item
     return (
@@ -15,9 +18,11 @@ class QuestionsItem extends React.PureComponent {
         <TouchableOpacity
           style={{ flex: 1, flexDirection:'column' }}
           onPress={()=>{
+            isLoggedUser?
             routeName == 'AllQuestions' 
             ? this.props.navigation.navigate('PublicQuestionScreen', {question:this.props.item.item})
             : this.props.navigation.navigate('PrivateQuestionScreen', {question:this.props.item.item})
+            : navigate('SocialScreen')
           }}
         >
           <Topic

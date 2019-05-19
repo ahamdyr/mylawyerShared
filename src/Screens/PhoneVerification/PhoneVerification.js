@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 
 import {
@@ -13,17 +12,15 @@ import {
 } from 'react-native';
 
 import 'firebase/auth'
-import {MAIN_COLOR, WIDTH} from '../../Components/Constants'
+import { MAIN_COLOR, WIDTH } from '../../Components/Constants'
 
-import { sendVerificationCode } from "../../Services/PhoneVerify";
+import { sendVerificationCode, confirmVerificationCode } from "../../Services/PhoneVerify";
 
 export default class PhoneVerification extends Component {
 
-  confirmationResult = null;
   confCode = "";
   constructor(props) {
     super(props);
-    this._onSubmitVerfCode = this._onSubmitVerfCode.bind(this)
     this.state = {
       spinner: false,
       confCode: false
@@ -38,12 +35,11 @@ export default class PhoneVerification extends Component {
       </TouchableOpacity>
     );
   }
-  _tryAgain = async () => {
-    this.confirmationResult = await sendVerificationCode(this.props.phoneNumber)
+  _tryAgain = () => {
+    sendVerificationCode(this.props.phoneNumber)
   }
-  async componentDidMount() {
-    this.confirmationResult = await sendVerificationCode(this.props.phoneNumber)
-
+  componentDidMount() {
+    sendVerificationCode(this.props.phoneNumber)
   }
   _onChangeCodeText = (val) => {
     this.confCode = val;
@@ -55,18 +51,7 @@ export default class PhoneVerification extends Component {
     }
   }
   _onSubmitVerfCode = () => {
-
-    this.confirmationResult.confirm(this.confCode).then((credential) => {
-      // navigate to spinner 
-      //Authrize  with backend with credential
-      // navigate to app
-      this.props.navigation.navigate('App')
-    }).catch(function (error) {
-      // User couldn't sign in (bad verification code?)
-      // ...
-      // We can alert message here
-      Alert.alert("error", "Try again!")
-    })
+    confirmVerificationCode(this.confCode)
   }
 
 
@@ -75,71 +60,46 @@ export default class PhoneVerification extends Component {
     let headerText = `What's your verification code?`
     let buttonText = 'Verify confirmation code';
     let hintText = 'Enter 6-digit code'
-    let textStyle = {
-
-      textAlign: 'center',
-      fontSize: 40,
-      height: 50,
-      fontWeight: 'bold',
-      //   fontFamily: 'Courier'
-    };
 
     return (
-
       <View style={styles.container}>
 
         <Text style={styles.header}>{headerText}</Text>
-
-        
-          <View style={{ flexDirection: 'row' }}>
-
-
-
-
-
-            <TextInput
-              ref={'textInput'}
-              name={'code'}
-              type={'TextInput'}
-              underlineColorAndroid={'transparent'}
-              autoCapitalize={'none'}
-              autoCorrect={false}
-              placeholder={'_ _ _ _ _ _'}
-              keyboardType={Platform.OS === 'ios' ? 'number-pad' : 'numeric'}
-              style={[styles.textInput]}
-              returnKeyType='go'
-              autoFocus
-              placeholderTextColor={'black'}
-              selectionColor={'black'}
-              onChangeText={this._onChangeCodeText}
-              maxLength={6} />
-
-          </View>
-          <Text style={styles.hint}>
-            {hintText}
+        <View style={{ flexDirection: 'row' }}>
+          <TextInput
+            ref={'textInput'}
+            name={'code'}
+            type={'TextInput'}
+            underlineColorAndroid={'transparent'}
+            autoCapitalize={'none'}
+            autoCorrect={false}
+            placeholder={'_ _ _ _ _ _'}
+            keyboardType={Platform.OS === 'ios' ? 'number-pad' : 'numeric'}
+            style={[styles.textInput]}
+            returnKeyType='go'
+            autoFocus
+            placeholderTextColor={'black'}
+            selectionColor={'black'}
+            onChangeText={this._onChangeCodeText}
+            maxLength={6}
+          />
+        </View>
+        <Text style={styles.hint}>
+          {hintText}
+        </Text>
+        <TouchableOpacity
+          style={[styles.button, {
+            backgroundColor: this.state.confCode ? MAIN_COLOR : '#abaaaa'
+          }]}
+          onPress={this.state.confCode ? this._onSubmitVerfCode : () => { }}
+        >
+          <Text style={styles.buttonText}>
+            {this.state.confCode ? buttonText : 'Enter code'}
           </Text>
-
-
-          <TouchableOpacity
-            style={[styles.button, {
-              backgroundColor: this.state.confCode ? MAIN_COLOR : '#abaaaa'
-            }]}
-            onPress={this.state.confCode ? this._onSubmitVerfCode : () => { }}
-          >
-            <Text style={styles.buttonText}>
-              {this.state.confCode ? buttonText : 'Enter code'}
-            </Text>
-          </TouchableOpacity>
-
-
-          {this._renderFooter()}
-
-        
-
-        
+        </TouchableOpacity>
+        {this._renderFooter()}
 
       </View>
-
     );
   }
 }

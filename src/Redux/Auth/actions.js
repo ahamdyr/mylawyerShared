@@ -1,5 +1,10 @@
 
-
+export const setLoggedUser = (isLogged) => {
+  return{
+    type: 'setLoggedUser',
+    isLogged
+  }
+}
 
 
 export const setPhoneNumber = (phoneNumber) => {
