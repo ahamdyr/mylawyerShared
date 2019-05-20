@@ -6,16 +6,13 @@ import BlackX from '../../Components/Common/BlackX'
 import { STATUS_BAR_HEIGHT, WIDTH } from '../../Components/Constants'
 export default class PublicQuestionScreen extends React.Component {
   render() {
-    const {MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate, isAnswered, answer} = this.props.navigation.getParam('question')
-    
+    const { MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate, isAnswered, answer } = this.props.navigation.getParam('question')
+
     return (
       <View style={styles.container}>
 
-        <BlackX 
-          style={styles.closeIcon}
-          onPress={()=>{
-            this.props.navigation.goBack()
-          }}
+        <BlackX
+          onPress={() => this.props.navigation.goBack()}
         />
         <Topic
           style={styles.topic}
@@ -23,20 +20,20 @@ export default class PublicQuestionScreen extends React.Component {
           qIndex={qIndex}
           content={content}
         />
-        
+
         <AnswerBy
           MainPhotoURL={MainPhotoURL}
           answeredBy={answeredBy}
           answerDate={answerDate}
           style={styles.answered}
         />
-        
+
         <ScrollView>
           <Text style={styles.answer}>
             {answer}
           </Text>
         </ScrollView>
-        
+
       </View>
     );
   }
@@ -50,33 +47,34 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     // alignItems: 'flex-start',
     // justifyContent: 'flex-start',
-    marginTop: STATUS_BAR_HEIGHT 
+    marginTop: STATUS_BAR_HEIGHT
   },
-  topic:{
+  topic: {
+    marginTop: 50,
     paddingBottom: 21,
-      borderBottomWidth: 0.5,
-      borderBottomColor: '#d5d5e0'
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#d5d5e0'
   },
-  answered:{
+  answered: {
     marginLeft: 16,
     marginTop: 19,
     marginBottom: 17,
   },
-  textConatin:{
-    flexDirection:'row',
+  textConatin: {
+    flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'flex-start'
   },
-  answer:{
-    fontFamily:'Cairo-Regular',
+  answer: {
+    fontFamily: 'Cairo-Regular',
     fontSize: 14,
     lineHeight: 20,
     letterSpacing: 0.11,
     color: '#131314',
-    marginHorizontal:16
+    marginHorizontal: 16
   },
-  closeIcon:{
-    width:16.5,
+  closeIcon: {
+    width: 16.5,
     height: 16.5,
     borderRadius: 0.8,
     position: 'absolute',

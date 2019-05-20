@@ -1,18 +1,32 @@
 import React from 'react';
-import { Image, TouchableWithoutFeedback, View } from "react-native"
+import { Image, TouchableOpacity, View, StyleSheet } from "react-native"
 import { WIDTH } from '../Constants';
 import {blackX} from '../../../assets'
 export default class BlackX extends React.PureComponent{
   render(){
     return(
-      <TouchableWithoutFeedback onPress={this.props.onPress}>
-        <View style={{height:50}}>
+      <TouchableOpacity 
+        style={styles.container}
+        onPress={this.props.onPress}
+      >
           <Image
             source={blackX}
-            style={this.props.style}
-          />
-        </View>        
-      </TouchableWithoutFeedback>
+            style={styles.closeIcon}
+          />      
+      </TouchableOpacity>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container:{
+    position: 'absolute',
+    top: 20,
+    right: 16,
+  },
+  closeIcon:{
+    width:16.5,
+    height: 16.5,
+    borderRadius: 0.8
+  }
+})

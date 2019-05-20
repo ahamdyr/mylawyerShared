@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     height: 14.5,
     marginLeft: 18,
     //marginTop: 19.5,
-    color: '#0b7f7c'    
+    //color: '#0b7f7c'    
   },
   downArrow:{
     width:11,
