@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import Topic from '../../Components/Common/Topic'
 import AnswerBy from '../../Components/Common/AnswerBy'
-import CloseIcon from '../../Components/Common/CloseIcon'
+import BlackX from '../../Components/Common/BlackX'
 import { STATUS_BAR_HEIGHT, WIDTH } from '../../Components/Constants'
 import AttachmentBtn from '../../Components/Common/AttachmentBtn'
 
@@ -13,7 +13,7 @@ export default class PrivateQuestionScreen extends React.Component {
     return (
       <View style={styles.container}>
 
-        <CloseIcon 
+        <BlackX 
           style={styles.closeIcon}
           onPress={()=>this.props.navigation.goBack()}
         />

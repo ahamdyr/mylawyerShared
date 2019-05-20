@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity , Image, Dimensions } from 'react-native';
-
+import {waiting} from '../../../assets'
 export default class WaitingAnswer extends React.PureComponent{
   render(){
     return(
       <View style={[styles.container, this.props.style]}>
         <Image
-          source={require('../../../assets/waiting.png')}
+          source={waiting}
           style={styles.imageStyle}
         />
         <Text style={styles.textStyle}>

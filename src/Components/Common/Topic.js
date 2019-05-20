@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity , Image, Dimensions } from 'react-native';
 import { WIDTH } from '../Constants';
-
+import {topic} from '../../../assets'
 export default class Topic extends React.PureComponent{
   render(){
     const {authorName, qIndex, content} = this.props
@@ -15,7 +15,7 @@ export default class Topic extends React.PureComponent{
           </Text>
 
           <Image 
-            source={require('../../../assets/topic.png')}
+            source={topic}
             style={styles.topicIcon}
           />
 

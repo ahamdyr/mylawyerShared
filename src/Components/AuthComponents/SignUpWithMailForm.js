@@ -11,7 +11,7 @@ import Store from '../../Redux/Store'
 import {
   setMail,
   setPassword,
-  setPhoneNumber
+  setPhoneNumber,  
 } from '../../Redux/Auth/actions'
 export default class SignUpWithMailForm extends React.PureComponent {
   mail = '';
@@ -48,6 +48,7 @@ export default class SignUpWithMailForm extends React.PureComponent {
           <TextInput
             //underlineColorAndroid={'transparent'}
             //secureTextEntry
+            autoCapitalize={'none'}
             placeholder={'username'}
             keyboardType={'default'}
             style={styles.userNameText}
@@ -61,6 +62,7 @@ export default class SignUpWithMailForm extends React.PureComponent {
           <MailLogo/>
           <TextInput            
             //underlineColorAndroid={'transparent'}
+            autoCapitalize={'none'}
             placeholder={'name@mail.com' }            
             keyboardType={'email-address'}
             style={styles.inputStyle}
@@ -75,7 +77,8 @@ export default class SignUpWithMailForm extends React.PureComponent {
           <LockImage/>
           <TextInput
             //underlineColorAndroid={'transparent'}
-            secureTextEntry
+            autoCapitalize={'none'}
+            secureTextEntry            
             placeholder={'***********' }            
             //keyboardType={''}
             style={styles.inputStyle}

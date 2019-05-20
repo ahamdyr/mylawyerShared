@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, TextInput, KeyboardAvoidingView  } from 'react-native';
+import {StyleSheet, Text, View, TouchableWithoutFeedback, TextInput, KeyboardAvoidingView, Keyboard  } from 'react-native';
 import {MAIN_COLOR, WIDTH} from '../Constants'
 import SeperatorLine from '../Common/SeperatorLine'
 import LoginButton from '../Common/LoginButton'
@@ -38,6 +38,7 @@ export default class LoginWithMailForm extends React.PureComponent {
           <MailLogo/>
           <TextInput            
             //underlineColorAndroid={'transparent'}
+            autoCapitalize={'none'}
             placeholder={'name@mail.com' }            
             keyboardType={'email-address'}
             style={styles.inputStyle}
@@ -57,6 +58,7 @@ export default class LoginWithMailForm extends React.PureComponent {
             //keyboardType={''}
             style={styles.inputStyle}
             onChangeText={this._onPassChange}
+            enablesReturnKeyAutomatically={true}
           />
           <Text
             style={styles.forgot}
@@ -73,9 +75,8 @@ export default class LoginWithMailForm extends React.PureComponent {
           style={{
             marginTop: 26
           }}
-          onPress={this._loginSubmit}
+          onPress={this.props.onPress}
         />
-
       </KeyboardAvoidingView>
 
     )

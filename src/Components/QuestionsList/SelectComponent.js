@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View,TouchableOpacity, Image } from 'react-native';
 import {STATUS_BAR_HEIGHT, WIDTH, HEIGHT} from '../Constants'
 import DropdownMenu from 'react-native-dropdown-menu';
-
+import {arrow, topic} from '../../../assets'
 export default class SelectComponent extends React.PureComponent {
   state={
     language:'c#',
@@ -13,7 +13,7 @@ export default class SelectComponent extends React.PureComponent {
       <View style={[styles.selectContainer, this.props.style]}> 
         
           <Image 
-            source={require('../../../assets/topic.png')}
+            source={topic}
             style={styles.topicIcon}
           />
           <Text style={styles.filterText}>
@@ -21,7 +21,7 @@ export default class SelectComponent extends React.PureComponent {
           </Text>
 
           <Image 
-            source={require('../../../assets/arrow3x.png')}
+            source={arrow}
             style={styles.downArrow}
           />         
           

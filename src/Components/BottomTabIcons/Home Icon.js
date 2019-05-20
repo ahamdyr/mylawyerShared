@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image, TouchableWithoutFeedback, Text } from 'react-native';
+import {Image, TouchableWithoutFeedback, Text, StyleSheet} from 'react-native';
 import {HomeImage} from '../../../assets'
 
 class HomeIcon extends React.Component {
@@ -13,13 +13,9 @@ class HomeIcon extends React.Component {
         />
         {
           this.props.focused?
-          <Text style={{
-            marginBottom:-16,
-            marginTop:-4,
-            fontWeight:'bold',
-            color:'#0b7f7c',
-            fontSize: 16
-          }}>___________</Text>
+          <Text style={styles.label}>
+            ___________
+          </Text>
           :null
         }        
         </React.Fragment>
@@ -28,3 +24,13 @@ class HomeIcon extends React.Component {
   }
 }
 export default  HomeIcon
+
+const styles = StyleSheet.create({
+  label: {
+    marginBottom: -16,
+    marginTop: -4,
+    fontWeight: 'bold',
+    color: '#0b7f7c',
+    fontSize: 16
+  }
+})

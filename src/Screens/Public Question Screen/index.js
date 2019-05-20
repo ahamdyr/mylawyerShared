@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import Topic from '../../Components/Common/Topic'
 import AnswerBy from '../../Components/Common/AnswerBy'
-import CloseIcon from '../../Components/Common/CloseIcon'
+import BlackX from '../../Components/Common/BlackX'
 import { STATUS_BAR_HEIGHT, WIDTH } from '../../Components/Constants'
 export default class PublicQuestionScreen extends React.Component {
   render() {
@@ -11,9 +11,11 @@ export default class PublicQuestionScreen extends React.Component {
     return (
       <View style={styles.container}>
 
-        <CloseIcon 
+        <BlackX 
           style={styles.closeIcon}
-          onPress={()=>this.props.navigation.goBack()}
+          onPress={()=>{
+            this.props.navigation.goBack()
+          }}
         />
         <Topic
           style={styles.topic}

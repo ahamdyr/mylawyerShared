@@ -1,5 +1,5 @@
 import React from 'react'
-import {Image, TouchableWithoutFeedback, Text} from 'react-native';
+import {Image, TouchableWithoutFeedback, Text, StyleSheet} from 'react-native';
 import {QuestionsImage} from '../../../assets'
 
 class QuestionsIcon extends React.Component {
@@ -13,15 +13,11 @@ class QuestionsIcon extends React.Component {
             source={QuestionsImage}
           />
           {
-            this.props.focused?
-            <Text style={{
-              marginBottom:-16,
-              marginTop:-4,
-              fontWeight:'bold',
-              color:'#0b7f7c',
-              fontSize: 16
-            }}>___________</Text>
-            :null
+            this.props.focused ?
+              <Text style={styles.label}>
+                ___________
+              </Text>
+              : null
           }
         </React.Fragment>             
       </TouchableWithoutFeedback>  
@@ -30,3 +26,13 @@ class QuestionsIcon extends React.Component {
   }
 }
 export default  QuestionsIcon
+
+const styles = StyleSheet.create({
+  label: {
+    marginBottom: -16,
+    marginTop: -4,
+    fontWeight: 'bold',
+    color: '#0b7f7c',
+    fontSize: 16
+  }
+})

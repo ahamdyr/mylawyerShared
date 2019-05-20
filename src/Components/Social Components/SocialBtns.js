@@ -9,7 +9,7 @@ import {
   PhoneIcon,
   twitter,
   linkedIn,
-  close
+  whiteX
 } from '../../../assets'
 import{
   loginWithFacebook,
@@ -19,12 +19,12 @@ import{
   loginWithlinkedIn,
 } from '../../Services/Login Services/Social Login'
 
-export class CloseIcon extends React.PureComponent{
+export class WhiteX extends React.PureComponent{
   render(){
     return(
       <SocialBtn
           style={[styles.closeStyle, this.props.style]}
-          icon={close}
+          icon={whiteX}
           iconStyle={styles.closeIconStyle}
           onPress={this.props.onPress}
         />

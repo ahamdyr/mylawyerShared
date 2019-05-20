@@ -79,7 +79,7 @@ export default class LoginWithPhoneForm extends React.PureComponent {
           style={{
             marginTop: 26
           }}
-          onPress={this._loginSubmit}
+          onPress={this.props.onPress}
         />
 
       </KeyboardAvoidingView>

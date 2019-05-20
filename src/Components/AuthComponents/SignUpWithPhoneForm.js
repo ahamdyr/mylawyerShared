@@ -43,6 +43,7 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
           <TextInput
             //underlineColorAndroid={'transparent'}
             //secureTextEntry
+            autoCapitalize={'none'}
             placeholder={'username'}
             keyboardType={'default'}
             style={styles.userNameText}

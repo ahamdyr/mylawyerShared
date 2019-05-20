@@ -4,7 +4,7 @@ import {STATUS_BAR_HEIGHT, WIDTH, HEIGHT} from '../Constants'
 import DropdownMenu from 'react-native-dropdown-menu';
 import { Entypo } from '@expo/vector-icons';
 import AttachmentView from './AttachmentView'
-
+import {upArrow, arrow, attachment} from '../../../assets'
 export default class AttachmentBtn extends React.PureComponent {
   state={
     isOpened: false
@@ -23,25 +23,25 @@ export default class AttachmentBtn extends React.PureComponent {
           onPress={this._toggleAttach}
         >   
           <View style={[styles.attachContainer,this.props.style]}>        
-              {/* <Image 
-                source={require('../../../assets/attachment.png')}
-                style={styles.attachmentIcon}
-              /> */}
-              <Entypo
-                name="attachment"
+              <Image 
+                source={attachment}
                 style={styles.attachmentIcon}
               />
+              {/* <Entypo
+                name="attachment"
+                style={styles.attachmentIcon}
+              /> */}
               <Text style={styles.filterText}>
                 ATTACHMENTS
               </Text>
 
               { isOpened ? 
                   <Image 
-                    source={require('../../../assets/upArrow3x.png')}
+                    source={upArrow}
                     style={styles.downArrow}
                   />
                 : <Image 
-                    source={require('../../../assets/arrow3x.png')}
+                    source={arrow}
                     style={styles.downArrow}
                   />  
               }           

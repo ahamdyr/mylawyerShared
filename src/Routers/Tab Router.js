@@ -14,7 +14,10 @@ const  TabRouter = createBottomTabNavigator(
       screen: Home,
       navigationOptions: ({ navigation }) => ({
           title: "",
-          tabBarIcon: ({focused}) => (<HomeIcon focused={focused} onPress={() =>navigation.navigate('Home')}/>),
+          tabBarIcon: ({focused}) => (<HomeIcon 
+            focused={focused} 
+            //onPress={() =>navigation.navigate('Home')}
+            />),
           // tabBarLabel:({focused}) => (
             
           //     focused?
@@ -35,7 +38,9 @@ const  TabRouter = createBottomTabNavigator(
           title: "",
           tabBarVisible: false,
           //tabBarButtonComponent: () => (<QuestionsIcon/>),
-          tabBarIcon: ({focused}) => (<AskIcon onPress={() =>navigation.navigate('AskQuestion')}/>),
+          tabBarIcon: ({focused}) => (<AskIcon 
+            //onPress={() =>navigation.navigate('AskQuestion')}
+          />),
           // tabBarLabel:({focused}) => (
           //   <Text 
           //     style={{alignSelf:'center'}}          
@@ -49,7 +54,10 @@ const  TabRouter = createBottomTabNavigator(
       screen: Questions,
       navigationOptions: ({ navigation }) => ({
           title: "",
-          tabBarIcon: ({focused}) => (<QuestionsIcon focused={focused} onPress={() =>navigation.navigate('MyQuestions')}/>),
+          tabBarIcon: ({focused}) => (<QuestionsIcon 
+            focused={focused} 
+            //onPress={() =>navigation.navigate('MyQuestions')}
+          />),
           // tabBarLabel:({focused}) => (
           //   <Text 
           //     style={{alignSelf:'center'}}          

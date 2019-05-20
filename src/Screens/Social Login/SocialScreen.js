@@ -2,7 +2,7 @@ import React from 'react';
 import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet, TouchableOpacity, StatusBar} from 'react-native';
 import {HEIGHT, MAIN_COLOR, WIDTH, STATUS_BAR_HEIGHT} from '../../Components/Constants'
 import SocialBtns from '../../Components/Social Components/SocialBtns'
-import {CloseIcon} from '../../Components/Social Components/SocialBtns'
+import {WhiteX} from '../../Components/Social Components/SocialBtns'
 import {withNavigation} from 'react-navigation'
 
 class SocialScreen extends React.Component {
@@ -34,7 +34,7 @@ class SocialScreen extends React.Component {
           </Text>
           </View>
 
-          <CloseIcon 
+          <WhiteX 
             style={styles.close} 
             onPress={()=> {
               navigation.goBack()
