@@ -1,7 +1,7 @@
 import { Linking, WebBrowser } from 'expo'
-import firebase from '../firebase'
+import firebase from './FirebaseApp'
 import 'firebase/auth'
-import {goBack, navigate} from './NavigationServices'
+import {goBack, navigate} from '../NavigationServices'
 import { AsyncStorage } from "react-native"
 
 const captchaUrl = `https://my-lawyer-dea44.web.app/?appurl=${Linking.makeUrl('')}`

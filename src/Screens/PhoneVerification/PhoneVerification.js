@@ -14,7 +14,10 @@ import {
 import 'firebase/auth'
 import { MAIN_COLOR, WIDTH } from '../../Components/Constants'
 
-import { sendVerificationCode, confirmVerificationCode } from "../../Services/PhoneVerify";
+import { 
+  sendVerificationCode, 
+  confirmVerificationCode 
+} from "../../Services/FirebaseServices/PhoneVerify";
 
 export default class PhoneVerification extends Component {
 

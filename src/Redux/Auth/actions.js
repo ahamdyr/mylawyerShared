@@ -5,8 +5,18 @@ export const setLoggedUser = (isLogged) => {
     isLogged
   }
 }
-
-
+export const setUserName = (userName) => {
+  return{
+    type: 'setUserName',
+    userName
+  }
+}
+export const setCurrentUser = (currentUser) =>{
+  return{
+    type: 'setCurrentUser',
+    currentUser
+  }
+}
 export const setPhoneNumber = (phoneNumber) => {
   return {
     type:'setPhoneNumber',

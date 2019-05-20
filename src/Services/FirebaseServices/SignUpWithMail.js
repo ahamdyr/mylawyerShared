@@ -1,9 +1,9 @@
-import firebase from '../firebase'
+import firebase from './FirebaseApp'
 import 'firebase/auth'
-import { goBack, navigate } from './NavigationServices'
+import { goBack, navigate } from '../NavigationServices'
 import { AsyncStorage } from "react-native"
-import Store from '../Redux/Store'
-import { setLoggedUser } from '../Redux/Auth/actions'
+import Store from '../../Redux/Store'
+import { setLoggedUser } from '../../Redux/Auth/actions'
 
 
 export const SignUpWithMailAndPassword = async () => {
@@ -11,7 +11,7 @@ export const SignUpWithMailAndPassword = async () => {
   const password = Store.getState().userPassword
   navigate('Spinner')
 
-  firebase.auth().currentUser.  createUserWithEmailAndPassword(email, password)
+  firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(async userCredential => {
       //firebase.auth().currentUser.sendEmailVerification()
       let userToken = await  userCredential.user.getIdToken()

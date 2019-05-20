@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, } from 'react-native';
 import SocialBtn from '../Common/SocialBtn'
-import {WIDTH} from '../Constants'
-import {withNavigation} from 'react-navigation'
+import { WIDTH } from '../Constants'
+import { withNavigation } from 'react-navigation'
 import {
   facebookIcon,
   Mail,
@@ -11,69 +11,63 @@ import {
   linkedIn,
   whiteX
 } from '../../../assets'
-import{
-  loginWithFacebook,
-  loginWithMail,
-  loginWithPhone,
-  loginWithTwitter,
-  loginWithlinkedIn,
-} from '../../Services/Login Services/Social Login'
 
-export class WhiteX extends React.PureComponent{
-  render(){
-    return(
+import { LoginWithFacebook } from '../../Services/FacebookServices/FacebookLogin'
+export class WhiteX extends React.PureComponent {
+  render() {
+    return (
       <SocialBtn
-          style={[styles.closeStyle, this.props.style]}
-          icon={whiteX}
-          iconStyle={styles.closeIconStyle}
-          onPress={this.props.onPress}
-        />
+        style={[styles.closeStyle, this.props.style]}
+        icon={whiteX}
+        iconStyle={styles.closeIconStyle}
+        onPress={this.props.onPress}
+      />
     )
   }
 }
 class SocialBtns extends React.PureComponent {
-  render(){
-    const {navigation} = this.props
-    return(
+  render() {
+    const { navigation } = this.props
+    return (
       <View style={styles.Btns}>
         <SocialBtn
           style={styles.faceBookStyle}
           icon={facebookIcon}
           iconStyle={styles.faceBookIconStyle}
-          onPress={()=>loginWithFacebook()}
+          onPress={() => LoginWithFacebook()}
         />
         <SocialBtn
           style={styles.twitterStyle}
           icon={twitter}
           iconStyle={styles.twitterIconStyle}
-          onPress={()=>loginWithTwitter()}
+        //onPress={()=>loginWithTwitter()}
         />
         <SocialBtn
           style={styles.linkedInStle}
           icon={linkedIn}
           iconStyle={styles.linkedInIconStle}
-          onPress={()=>loginWithlinkedIn()}
+        //onPress={()=>loginWithlinkedIn()}
         />
         <SocialBtn
           style={styles.mailStyle}
           icon={Mail}
           iconStyle={styles.mailIconStyle}
-          onPress={()=>navigation.navigate('SignUpWithMail')}
+          onPress={() => navigation.navigate('SignUpWithMail')}
         />
         <SocialBtn
           style={styles.phoneStyle}
           icon={PhoneIcon}
           iconStyle={styles.phoneIconStyle}
-          onPress={()=>navigation.navigate('SignUpWithPhone')}
+          onPress={() => navigation.navigate('SignUpWithPhone')}
         />
-        
+
       </View>
     )
   }
 }
 export default withNavigation(SocialBtns)
 const styles = StyleSheet.create({
-  Btns:{
+  Btns: {
     height: 56,
     width: WIDTH,
     flexDirection: 'row',
@@ -81,45 +75,45 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginTop: 28
   },
-  faceBookStyle:{
+  faceBookStyle: {
     backgroundColor: 'rgb(61, 90, 150)'
   },
-  linkedInStle:{
+  linkedInStle: {
     backgroundColor: 'rgb(17, 124, 179)'
   },
-  twitterStyle:{
+  twitterStyle: {
     backgroundColor: 'rgb(89, 173, 235)'
   },
-  mailStyle:{
+  mailStyle: {
     backgroundColor: 'rgb(11, 127, 124)'
   },
-  phoneStyle:{
+  phoneStyle: {
     backgroundColor: 'rgb(11, 127, 124)'
   },
-  closeStyle:{
+  closeStyle: {
     backgroundColor: 'rgb(11, 127, 124)'
   },
-  faceBookIconStyle:{
+  faceBookIconStyle: {
     width: 9,
     height: 20
   },
-  linkedInIconStle:{
+  linkedInIconStle: {
     width: 18,
     height: 18
   },
-  twitterIconStyle:{
+  twitterIconStyle: {
     width: 21,
     height: 17
   },
-  mailIconStyle:{
+  mailIconStyle: {
     width: 23,
     height: 18
   },
-  phoneIconStyle:{
+  phoneIconStyle: {
     width: 20,
     height: 20
   },
-  closeIconStyle:{
+  closeIconStyle: {
     width: 16.5,
     height: 16.5
   }

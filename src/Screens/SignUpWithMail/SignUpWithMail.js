@@ -3,7 +3,7 @@ import {Text, View, Button } from 'react-native';
 import {styles} from './Styles'
 import SignUpWithMailForm from '../../Components/AuthComponents/SignUpWithMailForm'
 import {withNavigation} from 'react-navigation'
-import {SignUpWithMailAndPassword} from '../../Services/SignUpWithMail'
+import {SignUpWithMailAndPassword} from '../../Services/FirebaseServices/SignUpWithMail'
 class SignUpWithMail extends React.Component {
   render() {
     const {navigation} = this.props

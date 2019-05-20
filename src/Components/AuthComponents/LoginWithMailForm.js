@@ -8,8 +8,7 @@ import LockImage from '../Common/LockImage'
 import Store from '../../Redux/Store'
 import {
   setMail,
-  setPassword,
-  setPhoneNumber
+  setPassword
 } from '../../Redux/Auth/actions'
 export default class LoginWithMailForm extends React.PureComponent {
   mail = '';

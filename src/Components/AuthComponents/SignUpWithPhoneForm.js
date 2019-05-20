@@ -8,23 +8,19 @@ import ImageIcon from '../Common/ImageIcon'
 import {PhoneIcon, UserIcon } from '../../../assets'
 import Store from '../../Redux/Store'
 import {
-  setMail,
-  setPassword,
+  setUserName,
   setPhoneNumber
 } from '../../Redux/Auth/actions'
 export default class SignUpWithPhoneForm extends React.PureComponent {
-  mail = '';
   phone = '';
   userName = '';
-  _onMailChange = (val) =>{
-    this.mail = val
-  }
   _onPhoneChange = (val) => {
     this.phone = val
     Store.dispatch(setPhoneNumber(val))
   }
   _onNameChange = (val) =>{
     this.userName = val
+    Store.dispatch(setUserName(val))
   }
   render(){
     return(

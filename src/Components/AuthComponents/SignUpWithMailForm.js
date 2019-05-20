@@ -11,11 +11,11 @@ import Store from '../../Redux/Store'
 import {
   setMail,
   setPassword,
-  setPhoneNumber,  
+  setUserName,  
 } from '../../Redux/Auth/actions'
 export default class SignUpWithMailForm extends React.PureComponent {
   mail = '';
-  phone = '';
+  password = '';
   userName = '';
   _onMailChange = (val) =>{
     this.mail = val
@@ -25,11 +25,9 @@ export default class SignUpWithMailForm extends React.PureComponent {
     this.password = val
     Store.dispatch(setPassword(val))
   }
-  _onPhoneChange = (val) => {
-    this.phone = val
-  }
   _onNameChange = (val) =>{
     this.userName = val
+    Store.dispatch(setUserName(val))
   }
   render(){
     return(

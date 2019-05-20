@@ -8,6 +8,23 @@ export const userMail = (state = '', action) => {
       return state
   }
 }
+export const userName = (state = '', action) => {
+  switch (action.type) {
+    case 'setUserName':
+      return action.userName
+    default:
+      return state
+  }
+}
+
+export const currentUser = (state = {}, action) => {
+  switch (action.type) {
+    case 'setCurrentUser':
+      return action.currentUser
+    default:
+      return state
+  }
+}
 
 export const userPhoneNumber = (state = '', action) => {
   switch (action.type) {

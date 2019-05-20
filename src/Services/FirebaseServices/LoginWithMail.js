@@ -1,9 +1,9 @@
-import firebase from '../firebase'
+import firebase from './FirebaseApp'
 import 'firebase/auth'
-import {goBack, navigate} from './NavigationServices'
+import {goBack, navigate} from '../NavigationServices'
 import { AsyncStorage } from "react-native"
-import Store from '../Redux/Store'
-import {setLoggedUser} from '../Redux/Auth/actions'
+import Store from '../../Redux/Store'
+import {setLoggedUser} from '../../Redux/Auth/actions'
 
 export const LoginWithMailAndPassword = async()=>{
 
