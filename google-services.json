@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "357729817077",
+    "firebase_url": "https://my-lawyer-dea44.firebaseio.com",
+    "project_id": "my-lawyer-dea44",
+    "storage_bucket": "my-lawyer-dea44.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357729817077:android:a0c908250ed8b1e7",
+        "android_client_info": {
+          "package_name": "com.mylawyer.MyLawyer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357729817077-ltefo5uju0rui7slu0l5mncpuulrj358.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTjiLeRYRnAr5PZtcR6K9_NF59Lbd36fc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "357729817077-ltefo5uju0rui7slu0l5mncpuulrj358.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "357729817077-uurcodove6tkqg566209vs3n637i8sjd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mylawyer.MyLawyer"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -6,12 +6,11 @@ import {
   setLoggedUser,
   setCurrentUser   
 } from '../../Redux/Auth/actions'
-import { AuthFacebook } from '../FirebaseServices/FacebookAuth'
+import { FacebookAuth } from '../FirebaseServices/FacebookAuth'
 
 
 const FACEBOOK_APP_ID = "397884547607821"
 const FACEBOOK_APP_SECRET = "192cab05f1eb403b690ca981db3a1974"
-
 const iOSBundleID = 'host.exp.Exponent'
 const Androidkeyhash = 'rRW++LUjmZZ+58EbN5DVhGAnkX4='
 
@@ -31,7 +30,7 @@ export const LoginWithFacebook = async () => {
       const {
         currentUser,
         userToken
-      } = await AuthFacebook(token)
+      } = await FacebookAuth(token)
 
       // register back end
 

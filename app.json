@@ -17,13 +17,35 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 1000
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    }
+      "bundleIdentifier": "com.mylawyer.MyLawyer",
+      "supportsTablet": true,
+      "buildNumber": "1.0.1",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "This app uses the photos to update your profile picture."
+      },
+      "config": {
+        "usesNonExemptEncryption": false,
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.357729817077-uurcodove6tkqg566209vs3n637i8sjd"
+        }
+      }
+    },
+    "android": {
+      "package": "com.mylawyer.MyLawyer",
+      "versionCode": 10,
+      "googleServicesFile":"./google-services.json"         
+    },
+    "scheme": "mylawyer",
+    "facebookScheme": "fb397884547607821",
+    "facebookAppId": "397884547607821",
+    "facebookDisplayName": "MyLawyer"
   }
 }

@@ -1,7 +1,7 @@
 import firebase from './FirebaseApp'
 
-export const FacebookAuth = async (token) => {
-  const credential = firebase.auth.FacebookAuthProvider.credential(token)
+export const GoogleAuth = async (token) => {
+  const credential = firebase.auth.GoogleAuthProvider.credential(null, token)
   return firebase
     .auth()
     .signInAndRetrieveDataWithCredential(credential)

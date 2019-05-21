@@ -9,10 +9,12 @@ import {
   PhoneIcon,
   twitter,
   linkedIn,
-  whiteX
+  whiteX,
+  google
 } from '../../../assets'
 
 import { LoginWithFacebook } from '../../Services/FacebookServices/FacebookLogin'
+import { LoginWithGoogle } from '../../Services/GoogleServices/GoogleLogin'
 export class WhiteX extends React.PureComponent {
   render() {
     return (
@@ -36,6 +38,12 @@ class SocialBtns extends React.PureComponent {
           iconStyle={styles.faceBookIconStyle}
           onPress={() => LoginWithFacebook()}
         />
+        {/* <SocialBtn
+          style={styles.googleStyle}
+          icon={google}
+          iconStyle={styles.googleIconStyle}
+          onPress={()=>LoginWithGoogle()}
+        /> */}
         <SocialBtn
           style={styles.twitterStyle}
           icon={twitter}
@@ -84,6 +92,9 @@ const styles = StyleSheet.create({
   twitterStyle: {
     backgroundColor: 'rgb(89, 173, 235)'
   },
+  googleStyle:{
+    backgroundColor: '#fffafa'
+  },
   mailStyle: {
     backgroundColor: 'rgb(11, 127, 124)'
   },
@@ -96,6 +107,10 @@ const styles = StyleSheet.create({
   faceBookIconStyle: {
     width: 9,
     height: 20
+  },
+  googleIconStyle: {
+    width: 25,
+    height: 25
   },
   linkedInIconStle: {
     width: 18,
