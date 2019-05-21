@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image, TouchableWithoutFeedback } from "react-native";
 import {WIDTH} from '../Constants'
 import { DocumentPicker } from 'expo'
-
+import AttachmentList from './AttachmentList'
 export default class AttachmentView extends React.PureComponent {
 
   _uploadFile = async () =>{
@@ -13,7 +13,7 @@ export default class AttachmentView extends React.PureComponent {
   render(){
     return(
       <View style={styles.container}>
-        <View style={styles.btnsContainer}>
+        {/* <View style={styles.btnsContainer}>
           <TouchableOpacity onPress={this._uploadFile}>
             <View
               style={styles.btnStyle}
@@ -24,9 +24,9 @@ export default class AttachmentView extends React.PureComponent {
             </View>
             
           </TouchableOpacity>
-        </View>
+        </View> */}
         <View style={styles.filesContainer}>
-
+          <AttachmentList/>
         </View>
       </View>
     )
@@ -50,10 +50,11 @@ const styles = StyleSheet.create({
     height: 99
   },
   filesContainer:{
-    flexDirection:'row',
-    width: WIDTH,
-    height: 160,
-    marginLeft: 16
+    //flexDirection:'row',
+    //width: WIDTH,
+    height: 240,
+    marginLeft: 16,
+    marginTop: 24
   },
   btnStyle:{
     width: 87.5,
