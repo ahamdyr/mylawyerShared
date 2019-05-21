@@ -38,24 +38,24 @@ class SocialBtns extends React.PureComponent {
           iconStyle={styles.faceBookIconStyle}
           onPress={() => LoginWithFacebook()}
         />
-        {/* <SocialBtn
+        <SocialBtn
           style={styles.googleStyle}
           icon={google}
           iconStyle={styles.googleIconStyle}
           onPress={()=>LoginWithGoogle()}
-        /> */}
+        />
         <SocialBtn
           style={styles.twitterStyle}
           icon={twitter}
           iconStyle={styles.twitterIconStyle}
         //onPress={()=>loginWithTwitter()}
         />
-        <SocialBtn
+        {/* <SocialBtn
           style={styles.linkedInStle}
           icon={linkedIn}
           iconStyle={styles.linkedInIconStle}
         //onPress={()=>loginWithlinkedIn()}
-        />
+        /> */}
         <SocialBtn
           style={styles.mailStyle}
           icon={Mail}

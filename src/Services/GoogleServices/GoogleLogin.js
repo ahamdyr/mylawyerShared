@@ -1,49 +1,40 @@
 import { Google } from 'expo'
 import { goBack, navigate } from '../NavigationServices'
-import { AsyncStorage } from "react-native"
-import Store from '../../Redux/Store'
-import { 
-  setLoggedUser,
-  setCurrentUser   
-} from '../../Redux/Auth/actions'
+import {saveUser} from '../AuthServices'
+
 import { GoogleAuth } from '../FirebaseServices/GoogleAuth'
 
 
-const iOSClientId = "357729817077-uurcodove6tkqg566209vs3n637i8sjd.apps.googleusercontent.com" 
-const androidClientId = "357729817077-ltefo5uju0rui7slu0l5mncpuulrj358.apps.googleusercontent.com"
+const iOSClientId = "357729817077-pc4lpp2oramc13sopec41m5fbmdgk5ib.apps.googleusercontent.com"
+const androidClientId = "357729817077-m8729cqlpeuq7ovf0skaqvmehgaa4t5n.apps.googleusercontent.com"
 const webClientId = "357729817077-ltefo5uju0rui7slu0l5mncpuulrj358.apps.googleusercontent.com"
 
-export const LoginWithGoogle = async()=>{  
+export const LoginWithGoogle = async () => {
   try {
     navigate('Spinner')
 
-    const { type,  user, accessToken } = await Google.logInAsync(
+    const { type, accessToken } = await Google.logInAsync(
       {
         // behavior: 'web',
-        clientId: iOSClientId,
+        androidClientId: androidClientId,
+        iosClientId: iOSClientId,
         scopes: ['profile', 'email']
       }
     )
 
     if (type === 'success') {
 
-      console.log(user);
-      // const {
-      //   currentUser,
-      //   userToken
-      // } = await GoogleAuth(token)
 
-      // // register back end
+      const {
+        currentUser,
+        userToken
+      } = await GoogleAuth(accessToken)
 
-      // AsyncStorage.setItem('userToken', userToken)
-      //   .then(() => {
-      //     AsyncStorage.setItem('currentUser', currentUser)
-      //       .then(()=>{
-      //         Store.dispatch(setCurrentUser(currentUser))
-      //         Store.dispatch(setLoggedUser(true))
-      //         navigate('App')
-      //       })         
-      //   })
+      // register back end
+      saveUser(userToken, currentUser)
+      
+      navigate('App')
+
     }
     else {
       alert('Login Cancelled \nTry again')

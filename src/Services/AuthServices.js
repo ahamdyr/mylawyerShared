@@ -1,5 +1,23 @@
 import Store from '../Redux/Store'
-import {AsyncStorage} from 'react-native'
+import { AsyncStorage } from 'react-native'
+import {
+  setLoggedUser,
+  setCurrentUser
+} from '../Redux/Auth/actions'
 
-
-export var isLoggedUser = async() => await AsyncStorage.getItem('userToken')
+export const saveUser = async (userToken, currentUser) => {
+  Store.dispatch(setCurrentUser(currentUser))
+  Store.dispatch(setLoggedUser(true))
+  AsyncStorage.setItem('userToken', userToken)
+    .then(()=>{})
+    .catch(async err=>{
+      await AsyncStorage.removeItem('userToken')
+      await AsyncStorage.setItem('userToken', userToken)
+    })
+  AsyncStorage.setItem('currentUser', currentUser)
+    .then(()=>{})
+    .catch(async err=>{
+      await AsyncStorage.removeItem('currentUser')
+      await AsyncStorage.setItem('currentUser', currentUser)
+    })
+}
