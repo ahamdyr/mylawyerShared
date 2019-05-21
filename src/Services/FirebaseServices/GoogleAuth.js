@@ -16,7 +16,6 @@ export const GoogleAuth = async (token) => {
         }
       })
       .catch(err=>{
-        console.log(err)
         alert(err)
       })
   } catch (error) {

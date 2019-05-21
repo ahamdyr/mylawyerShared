@@ -8,7 +8,7 @@ export default class AttachmentView extends React.PureComponent {
   _uploadFile = async () =>{
     let doc = await DocumentPicker.getDocumentAsync()
     // doc.name = '+201007121821.jpg'
-    // console.log('doc',doc)
+     console.log('doc',doc)
   }
   render(){
     return(

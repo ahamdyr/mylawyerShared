@@ -31,11 +31,11 @@ export const sendVerificationCode = async phoneNumber => {
         .then(res => {
           confirmResult = res
         })
-        .catch(err => console.log(err))
+        .catch(err => alert(err))
 
 
     } catch (e) {
-      console.log(e)      
+      alert(e)      
     }
 
   }
@@ -53,6 +53,6 @@ export const confirmVerificationCode = async confCode => {
       navigate('App')
     })
     .catch(err=>{
-      console.log(err)
+      alert(err)
     })
 }

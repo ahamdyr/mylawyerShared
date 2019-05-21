@@ -17,7 +17,7 @@ export default class SearchComponent extends React.PureComponent {
             <TextInput
               style={styles.searchText}
               placeholder={'Search'}
-              onSubmitEditing={(event)=>console.log(event.nativeEvent.text)}
+              //onSubmitEditing={(event)=>console.log(event.nativeEvent.text)}
               shouldCancelWhenOutside ={true}
             />
           </View>  

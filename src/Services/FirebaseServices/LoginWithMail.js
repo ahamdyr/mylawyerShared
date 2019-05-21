@@ -23,7 +23,6 @@ export const LoginWithMailAndPassword = async()=>{
         
     })
     .catch(err => {
-      console.log(err)
       alert(err)
       navigate('App')
     })

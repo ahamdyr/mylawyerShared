@@ -22,14 +22,12 @@ export const SignUpWithMailAndPassword = async () => {
               navigate('App')
             })
             .catch(err => {
-              console.log(err)
               alert(err)
               navigate('App')
             })
         
     })
     .catch(err => {
-      console.log(err)
       alert(err)
       navigate('App')
     })

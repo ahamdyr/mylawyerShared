@@ -7,7 +7,6 @@ import { STATUS_BAR_HEIGHT, WIDTH, MAIN_COLOR } from '../../Components/Constants
 
 export default class AskQuestion extends React.Component {
   render() {
-    console.log(this.props.navigation.state)
     return (
       <View style={styles.container}>
 

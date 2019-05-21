@@ -10,7 +10,6 @@ import Store from '../../Redux/Store'
 class QuestionsItem extends React.PureComponent {
   render() {
     let isLoggedUser = Store.getState().isLoggedUser
-    console.log('isLoggedUser',isLoggedUser)
     const routeName =  this.props.navigation.state.routeName
     const {MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate, isAnswered } = this.props.item.item
     return (
