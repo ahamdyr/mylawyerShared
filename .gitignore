@@ -1,5 +1,6 @@
 node_modules/**/*
 .expo/*
+local/**/*
 npm-debug.*
 *.jks
 *.p12
@@ -7,3 +8,4 @@ npm-debug.*
 *.mobileprovision
 *.watchmanconfig
 *yarn.lock
+yarn-error.log
