@@ -1,12 +1,12 @@
 import React from 'react'
-import {Text, View,TouchableWithoutFeedback } from 'react-native';
+import {Text, View,TouchableOpacity } from 'react-native';
 //import {AskImage} from '../../assets'
 
 class AskIcon extends React.Component {
   render(){
     return (   
       // <TouchableWithoutFeedback onPress={this.props.onPress}>   
-        <View
+        <TouchableOpacity
           style={{
             width: 44,
               height: 44,
@@ -25,9 +25,9 @@ class AskIcon extends React.Component {
               color:'#fff'
             }}
           >
-            {"ASK"}
+            {this.props.text || "ASK"}
           </Text>
-        </View>
+        </TouchableOpacity>
       // </TouchableWithoutFeedback>  
     );
   }

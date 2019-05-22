@@ -7,13 +7,10 @@
     "platforms": [
       "ios",
       "android"
-    ],
-    "androidStatusBar":{
-      "barStyle":"dark-content"
-    },
+    ],    
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/Icon-1024.png",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -30,7 +27,7 @@
     "ios": {
       "bundleIdentifier": "com.mylawyer.MyLawyer",
       "supportsTablet": true,
-      "buildNumber": "1.0.1",
+      "buildNumber": "1.0.0",
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "This app uses the photos to update your profile picture."
       },
@@ -49,6 +46,34 @@
           "certificateHash": "07:02:84:0C:D8:06:94:0B:53:52:02:F5:96:13:CA:0D:E1:F5:06:A5"
         }
       },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "CAMERA",
+        "MANAGE_DOCUMENTS",
+        "READ_CONTACTS",
+        "READ_CALENDAR",
+        "WRITE_CALENDAR",
+        "READ_EXTERNAL_STORAGE",
+        "READ_PHONE_STATE",
+        "RECORD_AUDIO",
+        "USE_FINGERPRINT",
+        "READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE",
+        "VIBRATE",
+        "WAKE_LOCK",
+        "WRITE_EXTERNAL_STORAGE",
+        "com.anddoes.launcher.permission.UPDATE_COUNT",
+        "com.android.launcher.permission.INSTALL_SHORTCUT",
+        "com.google.android.c2dm.permission.RECEIVE",
+        "com.google.android.gms.permission.ACTIVITY_RECOGNITION",
+        "com.google.android.providers.gsf.permission.READ_GSERVICES",
+        "com.htc.launcher.permission.READ_SETTINGS",
+        "com.htc.launcher.permission.UPDATE_SHORTCUT",
+        "com.majeur.launcher.permission.UPDATE_BADGE",
+        "com.sec.android.provider.badge.permission.READ",
+        "com.sec.android.provider.badge.permission.WRITE",
+        "com.sonyericsson.home.permission.BROADCAST_BADGE"
+      ],
       "package": "com.mylawyer.MyLawyer",
       "versionCode": 10,
       "googleServicesFile":"./google-services.json"         

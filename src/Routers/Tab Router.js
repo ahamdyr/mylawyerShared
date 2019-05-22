@@ -39,7 +39,7 @@ const  TabRouter = createBottomTabNavigator(
           tabBarVisible: false,
           //tabBarButtonComponent: () => (<QuestionsIcon/>),
           tabBarIcon: ({focused}) => (<AskIcon 
-            //onPress={() =>navigation.navigate('AskQuestion')}
+            onPress={() =>navigation.navigate('AskQuestion')}
           />),
           // tabBarLabel:({focused}) => (
           //   <Text 

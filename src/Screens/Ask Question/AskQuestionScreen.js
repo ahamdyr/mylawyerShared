@@ -2,9 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from "react-native";
 import SelectComponent from '../../Components/QuestionsList/SelectComponent'
 import BlackX from '../../Components/Common/BlackX'
-import { STATUS_BAR_HEIGHT, WIDTH, MAIN_COLOR } from '../../Components/Constants'
-
-
+import { STATUS_BAR_HEIGHT, WIDTH, MAIN_COLOR, HEIGHT } from '../../Components/Constants'
+import QuestionComponent from '../../Components/QuestionComponents/Question'
+import Footer from '../../Components/QuestionComponents/Footer'
+import Attachments from '../../Components/QuestionComponents/Attachments'
 export default class AskQuestion extends React.Component {
   render() {
     return (
@@ -25,13 +26,16 @@ export default class AskQuestion extends React.Component {
 
         <SelectComponent style={styles.select} />
 
-        <View style={styles.question}>
+        
+          <QuestionComponent
 
-        </View>
-
-        <View style={styles.footer}>
-
-        </View>
+          />
+        
+        {/* <Attachments style={{
+          position: 'absolute',
+          top: HEIGHT - 200
+          }} /> */}
+        <Footer />
 
       </View>
     );
@@ -75,7 +79,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
     marginRight: 16,
     marginLeft: 16,
-    height: 450,
+    //height: 450,
     backgroundColor: 'white',
     elevation: 16,
     shadowOpacity: 0.5
