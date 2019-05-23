@@ -8,7 +8,7 @@ import {camera, attachment} from '../../../assets'
 import ImageIcon from '../Common/ImageIcon'
 import Store from '../../Redux/Store'
 import {setQFiles, setQImages, submitQ} from '../../Redux/AddQuestion/actions'
-
+import {navigate} from '../../Services/NavigationServices'
 export default class Footer extends React.PureComponent {
   _uploadFile = async () =>{
     
@@ -32,8 +32,14 @@ export default class Footer extends React.PureComponent {
      
   }
   _submit = ()=>{
-    Store.dispatch(submitQ())
-    alert('Your question has been submitted')
+    let isLoggedUser = Store.getState().isLoggedUser
+    if(isLoggedUser){
+      Store.dispatch(submitQ())
+      alert('Your question has been submitted')
+    }
+    else{
+      navigate('SocialScreen')
+    }
   }
   render() {
     return (

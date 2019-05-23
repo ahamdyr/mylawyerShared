@@ -17,10 +17,10 @@ export const LoginWithGoogle = async () => {
     const { type, accessToken } = await Google.logInAsync(
       {
         // behavior: 'web',
+        androidStandaloneAppClientId: androidStandAlone,
         androidClientId: androidClientId,
         iosStandaloneAppClientId: iOSStandAlone,
         iosClientId: iOSClientId,
-        androidStandaloneAppClientId: androidStandAlone,
         scopes: ['profile', 'email']
       }
     )
