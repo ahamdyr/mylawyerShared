@@ -35,7 +35,7 @@
       "config": {
         "usesNonExemptEncryption": false,
         "googleSignIn": {
-          "reservedClientId": "357729817077-j8codho5u6os0c5qf12iq968g3jh4tl9.apps.googleusercontent.com"
+          "reservedClientId": "com.googleusercontent.apps.357729817077-j8codho5u6os0c5qf12iq968g3jh4tl9"
         }
       }
     },
@@ -75,8 +75,7 @@
         "com.sonyericsson.home.permission.BROADCAST_BADGE"
       ],
       "package": "com.mylawyer.MyLawyer",
-      "versionCode": 10,
-      "googleServicesFile":"./google-services.json"         
+      "versionCode": 10    
     },
     "scheme": "mylawyer",
     "facebookScheme": "fb397884547607821",
