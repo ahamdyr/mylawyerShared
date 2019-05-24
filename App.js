@@ -1,8 +1,13 @@
 import React from 'react';
-import { AppLoading, Asset, Font, Icon } from 'expo';
+import { AppLoading, Asset, Font, Icon, Updates } from 'expo';
 import AppContainer from './src/Screens/App Container'
 export default class App extends React.Component {
-
+  
+  componentDidMount(){
+    if(!__DEV__){
+      this._checkForUpdates()
+    }    
+  }
   state = {
     isLoadingComplete: false,
   };
@@ -18,6 +23,12 @@ export default class App extends React.Component {
         />
       );
     }    
+  }
+  _checkForUpdates = async () => {
+    let { isAvailable } = await Updates.checkForUpdateAsync()
+    if(isAvailable){
+      Updates.reload()
+    }
   }
   _loadResourcesAsync = async () => {
     return Promise.all([
