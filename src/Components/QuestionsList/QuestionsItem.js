@@ -17,11 +17,11 @@ class QuestionsItem extends React.PureComponent {
         <TouchableOpacity
           style={{ flex: 1, flexDirection:'column' }}
           onPress={()=>{
-            isLoggedUser?
+            // isLoggedUser?
             routeName == 'AllQuestions' 
             ? this.props.navigation.navigate('PublicQuestionScreen', {question:this.props.item.item})
             : this.props.navigation.navigate('PrivateQuestionScreen', {question:this.props.item.item})
-            : navigate('SocialScreen')
+            // : navigate('SocialScreen')
           }}
         >
           <Topic
