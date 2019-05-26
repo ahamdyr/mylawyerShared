@@ -26,11 +26,8 @@ export default class AskQuestion extends React.Component {
 
         <SelectComponent style={styles.select} />
 
-        
-          <QuestionComponent
+        <QuestionComponent />
 
-          />
-        
         {/* <Attachments style={{
           position: 'absolute',
           top: HEIGHT - 200

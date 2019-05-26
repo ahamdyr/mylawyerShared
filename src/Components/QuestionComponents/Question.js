@@ -58,7 +58,7 @@ export default class QuestionComponent extends React.PureComponent {
           >
             <TextInput
               style={styles.bodyText}
-              ref={(ref) => this._bodyRef = ref}              
+              ref={(ref) => this._bodyRef = ref} 
               underlineColorAndroid="transparent"
               placeholder={'Write your problem here'}
               onChangeText={this._bodyChange}
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#74747a',
     alignSelf: 'center',
-    width: 250,
+    width: 200,
     marginTop: 21
   },
   seperator: {
