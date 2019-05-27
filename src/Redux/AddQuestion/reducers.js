@@ -1,34 +1,58 @@
-export const qTitle = (state = '', action) => {
+import {
+  DEL_QUESTION_DOC,
+  DEL_QUESTION_IMG,
+  SET_QUESTION_BODY,
+  SET_QUESTION_DOC,
+  SET_QUESTION_IMG,
+  SET_QUESTION_TITLE,
+  ADD_QUESTION,
+  SET_QUESTION_TOPIC
+} from './actions'
+
+export const questionTopic = (state = '', action) => {
   switch (action.type) {
-    case 'setQTitle':
+    case SET_QUESTION_TOPIC:
+      return action.topic
+    default:
+      return state
+  }
+}
+
+export const questionTitle = (state = '', action) => {
+  switch (action.type) {
+    case SET_QUESTION_TITLE:
       return action.title
     default:
       return state
   }
 }
 
-export const qBody = (state = '', action) => {
+export const questionBody = (state = '', action) => {
   switch (action.type) {
-    case 'setQBody':
+    case SET_QUESTION_BODY:
       return action.body
     default:
       return state
   }
 }
 
-export const qFiles = (state = [], action) => {
+export const questionDocs = (state = [], action) => {
   switch (action.type) {
-    case 'setQFiles':
-      return [...state, action.files]
+    case SET_QUESTION_DOC:
+      return [...state, action.doc]
+    case DEL_QUESTION_DOC:
+      return state.filter(e=> e.uuid !== action.doc.uuid )  
     default:
       return state
   }
 }
 
-export const qImages = (state = [], action) => {
+export const questionImgs = (state = [], action) => {
   switch (action.type) {
-    case 'setQImages':
-      return [...state, action.images]
+    case SET_QUESTION_IMG:
+      return [...state, action.img]
+    case DEL_QUESTION_IMG:
+      return state.filter(e => e.uuid !== action.img.uuid)
     default:
       return state
   }
@@ -36,7 +60,7 @@ export const qImages = (state = [], action) => {
 
 export const questions = (state = [], action) => {
   switch (action.type) {
-    case 'submitQ':
+    case ADD_QUESTION:
       return [...state, action.question]
     default:
       return state

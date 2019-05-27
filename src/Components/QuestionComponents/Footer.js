@@ -1,74 +1,60 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import { STATUS_BAR_HEIGHT, WIDTH, HEIGHT , MAIN_COLOR} from '../Constants'
-import { DocumentPicker, ImagePicker, Permissions } from 'expo'
+import { WIDTH } from '../Constants'
 import Ask from '../BottomTabIcons/Ask Icon'
-import { SimpleLineIcons } from '@expo/vector-icons';
-import {camera, attachment} from '../../../assets'
+import { camera, attachment } from '../../../assets'
 import ImageIcon from '../Common/ImageIcon'
-import Store from '../../Redux/Store'
-import {setQFiles, setQImages, submitQ} from '../../Redux/AddQuestion/actions'
-import {navigate} from '../../Services/NavigationServices'
+import { navigate } from '../../Services/NavigationServices'
+import { uploadFile, uploadImage } from '../../Services/FilesServices'
 export default class Footer extends React.PureComponent {
-  _uploadFile = async () =>{
-    
-    let doc = await DocumentPicker.getDocumentAsync()
-    // doc.name = '+201007121821.jpg'
-    Store.dispatch(setQFiles(doc))
-     console.log('doc',doc)
+  
+  _uploadFile = async () => {
+    let doc = await uploadFile()
+    doc ? this.props.setQuestionDoc(doc) : null
   }
-  _uploadImage = async () =>{
-    await Permissions.askAsync(Permissions.CAMERA);
-    await Permissions.askAsync(Permissions.CAMERA_ROLL);
-    
-      let doc = await ImagePicker.launchImageLibraryAsync({
-        allowsEditing: true,
-        aspect: [4, 3],
-        base64: false,
-      })
-      Store.dispatch(setQImages(doc))
-      console.log('doc',doc)
-    
-     
+  _uploadImage = async () => {
+    let img = await uploadImage()
+    img ? this.props.setQuestionImg(img) : null
   }
-  _submit = ()=>{
-    let isLoggedUser = Store.getState().isLoggedUser
-    if(isLoggedUser){
-      Store.dispatch(submitQ())
-      alert('Your question has been submitted')
+  _submit = () => {
+    if (this.props.isLoggedUser) {
+      if (this.props.questionTitle && this.props.questionBody && this.props.questionTopic){
+        this.props.submitQuestion()
+        alert('Your question has been submitted')
+      }
+      else{
+        alert('Your query must have at least topic, title and body')
+      }
     }
-    else{
+    else {
       navigate('SocialScreen')
     }
   }
+
   render() {
     return (
       <View style={styles.footer}>
-        <TouchableOpacity 
+        <TouchableOpacity
           onPress={this._uploadImage}
           style={styles.cameratIconContainer}>
-        {/* <SimpleLineIcons
-          name={'camera'}
-          style={styles.cameratIcon}
-        />     */}
-        <ImageIcon
-          style={styles.cameratIcon}
-          source={camera}
-        />
+          <ImageIcon
+            style={styles.cameratIcon}
+            source={camera}
+          />
         </TouchableOpacity>
-        <Ask 
-          text={'Send'} 
+        <Ask
+          text={'Send'}
           onPress={this._submit}
         />
-        <TouchableOpacity 
+        <TouchableOpacity
           onPress={this._uploadFile}
           style={styles.attachmentIcon}>
-        <ImageIcon
-          style={styles.attachmentIcon}
-          source={attachment}
-        />
+          <ImageIcon
+            style={styles.attachmentIcon}
+            source={attachment}
+          />
         </TouchableOpacity>
-        
+
       </View>
 
     )
@@ -77,8 +63,9 @@ export default class Footer extends React.PureComponent {
 
 const styles = StyleSheet.create({
   footer: {
-    position: 'absolute',
-    bottom: 0,
+    // position: 'absolute',
+    // bottom: 0,
+    alignSelf: 'flex-end',
     height: 55,
     width: WIDTH,
     backgroundColor: 'white',
@@ -92,17 +79,17 @@ const styles = StyleSheet.create({
       width: 0
     },
   },
-  attachmentIcon:{
+  attachmentIcon: {
     width: 21,
     height: 21,
     //color: MAIN_COLOR,
     //marginTop: 10
   },
-  cameratIconContainer:{
+  cameratIconContainer: {
     width: 22,
     height: 20,
   },
-  cameratIcon:{
+  cameratIcon: {
     width: 22,
     height: 20,
     //color: MAIN_COLOR,

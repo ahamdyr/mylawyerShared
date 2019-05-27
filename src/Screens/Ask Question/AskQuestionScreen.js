@@ -6,8 +6,26 @@ import { STATUS_BAR_HEIGHT, WIDTH, MAIN_COLOR, HEIGHT } from '../../Components/C
 import QuestionComponent from '../../Components/QuestionComponents/Question'
 import Footer from '../../Components/QuestionComponents/Footer'
 import Attachments from '../../Components/QuestionComponents/Attachments'
+import AskTitle from '../../Components/QuestionComponents/AskTitle'
 export default class AskQuestion extends React.Component {
   render() {
+    const {
+      docs,
+      imgs,
+      setQuestionBody,
+      setQuestionTitle,
+      setQuestionDoc,
+      setQuestionImg,
+      submitQuestion,
+      delQuestionImg,
+      delQuestionDoc,
+      setQuestionTopic,
+      isLoggedUser,
+      questionBody,
+      questionTitle,
+      questionTopic
+    } = this.props
+    var attachs = [...docs, ...imgs]
     return (
       <View style={styles.container}>
 
@@ -15,24 +33,38 @@ export default class AskQuestion extends React.Component {
           onPress={() => this.props.navigation.goBack()}
         />
 
-        <View style={styles.titleContainer}>
-          <Text style={styles.Ask} >
-            ASK
-            </Text>
-          <Text style={styles.titleText}>
-            Any avaliable lawyer
-            </Text>
-        </View>
+        <AskTitle />
 
-        <SelectComponent style={styles.select} />
+        <SelectComponent
+          setQuestionTopic={(topic) => setQuestionTopic(topic)}
+          style={styles.select}
+        />
 
-        <QuestionComponent />
-
-        {/* <Attachments style={{
-          position: 'absolute',
-          top: HEIGHT - 200
-          }} /> */}
-        <Footer />
+        <QuestionComponent 
+          partial={attachs.length}
+          setQuestionBody={(body)=>setQuestionBody(body)}
+          setQuestionTitle={(title)=>setQuestionTitle(title)}
+        />
+    
+        <Attachments
+          attachs={attachs}
+          delQuestionDoc={(doc)=>delQuestionDoc(doc)}
+          delQuestionImg={(img)=>delQuestionImg(img)}
+          style={{
+            flex: 1,
+            marginBottom: 55
+          }}
+        />
+           
+        <Footer
+          setQuestionDoc={(x) => setQuestionDoc(x)}
+          setQuestionImg={(y) => setQuestionImg(y)}
+          submitQuestion={() => submitQuestion()}
+          isLoggedUser={isLoggedUser}
+          questionBody={questionBody}
+          questionTitle={questionTitle}
+          questionTopic={questionTopic}
+        />
 
       </View>
     );
@@ -48,23 +80,6 @@ const styles = StyleSheet.create({
     //alignItems: 'center',
     // justifyContent: 'flex-start',
     marginTop: STATUS_BAR_HEIGHT
-  },
-  titleContainer: {
-    marginTop: 10,
-    width: 200,
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  Ask: {
-    fontFamily: 'Lato-Bold',
-    fontSize: 18,
-    color: MAIN_COLOR,
-  },
-  titleText: {
-    fontFamily: 'Lato-Regular',
-    fontSize: 12,
-    color: 'rgba(19, 19, 20, 0.8)'
   },
   select: {
     backgroundColor: 'white',
