@@ -1,9 +1,10 @@
 import { Google } from 'expo'
-import { goBack, navigate } from '../NavigationServices'
-import {saveUser} from '../AuthServices'
-
 import { GoogleAuth } from '../FirebaseServices/GoogleAuth'
-
+import { base64Token } from '../Guid'
+import { Register } from '../BackendServices/AccountServices'
+import { saveUser } from '../AuthServices'
+import { Alert } from 'react-native'
+import { goBack, navigate } from '../NavigationServices'
 
 const iOSClientId = "357729817077-pc4lpp2oramc13sopec41m5fbmdgk5ib.apps.googleusercontent.com"
 const androidClientId = "357729817077-m8729cqlpeuq7ovf0skaqvmehgaa4t5n.apps.googleusercontent.com"
@@ -12,8 +13,6 @@ const iOSStandAlone = "357729817077-j8codho5u6os0c5qf12iq968g3jh4tl9.apps.google
 
 export const LoginWithGoogle = async () => {
   try {
-    navigate('Spinner')
-
     const { type, accessToken } = await Google.logInAsync(
       {
         // behavior: 'web',
@@ -26,18 +25,21 @@ export const LoginWithGoogle = async () => {
     )
 
     if (type === 'success') {
-
-
+      navigate('Spinner')
       const {
         currentUser,
-        userToken
+        userToken,
+        uid,
+        refreshToken
       } = await GoogleAuth(accessToken)
 
-      // register back end
-      saveUser(userToken, currentUser)
+      //let backendToken = base64Token(uid, userToken)
       
-      navigate('App')
-
+      //await Register('user',backendToken)
+      //await saveUser()
+      Alert.alert('LogIn', 'You logged in successfully')
+      goBack()
+      goBack()
     }
     else {
       alert('Login Cancelled \nTry again')

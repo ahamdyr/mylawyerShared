@@ -13,8 +13,8 @@ import {
   google
 } from '../../../assets'
 
-import { LoginWithFacebook } from '../../Services/FacebookServices/FacebookLogin'
-import { LoginWithGoogle } from '../../Services/GoogleServices/GoogleLogin'
+import { LoginWithFacebook } from '../../Services/Login Services/FacebookLogin'
+import { LoginWithGoogle } from '../../Services/Login Services/GoogleLogin'
 export class WhiteX extends React.PureComponent {
   render() {
     return (

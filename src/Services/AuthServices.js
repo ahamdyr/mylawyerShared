@@ -5,19 +5,15 @@ import {
   setCurrentUser
 } from '../Redux/Auth/actions'
 
-export const saveUser = async (userToken, currentUser) => {
-  Store.dispatch(setCurrentUser(currentUser))
-  Store.dispatch(setLoggedUser(true))
-  AsyncStorage.setItem('userToken', userToken)
-    .then(()=>{})
-    .catch(async err=>{
-      await AsyncStorage.removeItem('userToken')
-      await AsyncStorage.setItem('userToken', userToken)
-    })
-  AsyncStorage.setItem('currentUser', currentUser)
-    .then(()=>{})
-    .catch(async err=>{
-      await AsyncStorage.removeItem('currentUser')
-      await AsyncStorage.setItem('currentUser', currentUser)
-    })
+export const saveUser = async (userToken, currentUser, refreshToken) => {
+  try {
+    Store.dispatch(setCurrentUser(currentUser))
+    Store.dispatch(setLoggedUser(true))
+    await AsyncStorage.setItem('userToken', JSON.stringify(userToken)) 
+    await AsyncStorage.setItem('refreshToken', JSON.stringify(refreshToken))      
+    await AsyncStorage.setItem('currentUser', JSON.stringify(currentUser))
+      
+  } catch (error) {
+    console.log(error)
+  }
 }

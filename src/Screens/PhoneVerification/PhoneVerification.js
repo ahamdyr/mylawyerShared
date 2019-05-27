@@ -11,13 +11,12 @@ import {
   Alert
 } from 'react-native';
 
-import 'firebase/auth'
 import { MAIN_COLOR, WIDTH } from '../../Components/Constants'
 
 import { 
-  sendVerificationCode, 
-  confirmVerificationCode 
-} from "../../Services/FirebaseServices/PhoneVerify";
+  requestCode,
+  confirmCode
+} from '../../Services/Login Services/PhoneLogin'
 
 export default class PhoneVerification extends Component {
 
@@ -39,10 +38,10 @@ export default class PhoneVerification extends Component {
     );
   }
   _tryAgain = () => {
-    sendVerificationCode(this.props.phoneNumber)
+    requestCode(this.props.phoneNumber)
   }
   componentDidMount() {
-    sendVerificationCode(this.props.phoneNumber)
+    requestCode(this.props.phoneNumber)
   }
   _onChangeCodeText = (val) => {
     this.confCode = val;
@@ -54,7 +53,7 @@ export default class PhoneVerification extends Component {
     }
   }
   _onSubmitVerfCode = () => {
-    confirmVerificationCode(this.confCode)
+    confirmCode(this.confCode)
   }
 
 
@@ -91,6 +90,9 @@ export default class PhoneVerification extends Component {
           {hintText}
         </Text>
         <TouchableOpacity
+          activeOpacity={
+            this.state.confCode ? 0.2 : 1
+          }
           style={[styles.button, {
             backgroundColor: this.state.confCode ? MAIN_COLOR : '#abaaaa'
           }]}

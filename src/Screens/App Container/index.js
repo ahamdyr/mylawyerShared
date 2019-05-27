@@ -1,17 +1,17 @@
 import React from 'react';
 import {View, StatusBar} from 'react-native';
 import AppRouter from '../../Routers/App Router'
-// import { useScreens } from 'react-native-screens';
 import { Provider } from 'react-redux'
 import Store from '../../Redux/Store' 
 import {SafeAreaView} from 'react-navigation'
 import {setTopLevelNavigator} from '../../Services/NavigationServices'
 import {setLoggedUser} from '../../Redux/Auth/actions'
 import {AsyncStorage} from 'react-native'
-// useScreens();
+import axios from 'axios'
 
 export default class AppContainer extends React.Component {
   async componentDidMount(){
+    axios.defaults.baseURL = 'http://hlogicodesk.pythonanywhere.com'
     let userToken = await AsyncStorage.getItem('userToken')
     if(userToken){
       Store.dispatch(setLoggedUser(true))

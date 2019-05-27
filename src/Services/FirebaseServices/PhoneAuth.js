@@ -1,10 +1,19 @@
 import firebase from './FirebaseApp'
+import 'firebase/auth'
 
-export const FacebookAuth = async (token) => {
-  const credential = firebase.auth.FacebookAuthProvider.credential(token)
-  return firebase
-    .auth()
-    .signInAndRetrieveDataWithCredential(credential)
+var confirmResult;
+
+export const confirmationResult = async (phoneNumber, captchaVerifier) => {
+  try {
+    confirmResult = await firebase.auth().signInWithPhoneNumber(phoneNumber, captchaVerifier)
+  } catch (e) {
+    alert(e)
+  }
+}
+
+export const PhoneAuth = async (confCode) => {
+  return confirmResult
+    .confirm(confCode)
     .then(async userCredential => {
       let user = userCredential.user
       let currentUser = (({

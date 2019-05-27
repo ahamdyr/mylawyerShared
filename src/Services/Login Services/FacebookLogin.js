@@ -1,13 +1,10 @@
 import { Facebook } from 'expo'
-import { goBack, navigate } from '../NavigationServices'
-import { AsyncStorage } from "react-native"
-import Store from '../../Redux/Store'
-import { 
-  setLoggedUser,
-  setCurrentUser   
-} from '../../Redux/Auth/actions'
 import { FacebookAuth } from '../FirebaseServices/FacebookAuth'
-
+import { base64Token } from '../Guid'
+import { Register } from '../BackendServices/AccountServices'
+import { saveUser } from '../AuthServices'
+import { Alert } from 'react-native'
+import { goBack, navigate } from '../NavigationServices'
 
 const FACEBOOK_APP_ID = "397884547607821"
 const FACEBOOK_APP_SECRET = "192cab05f1eb403b690ca981db3a1974"
@@ -15,7 +12,7 @@ const iOSBundleID = 'host.exp.Exponent'
 const Androidkeyhash = 'rRW++LUjmZZ+58EbN5DVhGAnkX4='
 
 export const LoginWithFacebook = async () => {
-  //navigate('Spinner')
+  
   try {
     const { type, token } = await Facebook.logInWithReadPermissionsAsync(
       FACEBOOK_APP_ID,
@@ -26,23 +23,22 @@ export const LoginWithFacebook = async () => {
     )
 
     if (type === 'success') {
-
-      const {
+      navigate('Spinner')
+      var {
         currentUser,
-        userToken
+        userToken,
+        uid,
+        refreshToken
       } = await FacebookAuth(token)
 
-      // register back end
+      let backendToken = base64Token(uid, userToken)
+      
+      await Register('user',backendToken)
+      //await saveUser()
 
-      AsyncStorage.setItem('userToken', userToken)
-        .then(() => {
-          AsyncStorage.setItem('currentUser', currentUser)
-            .then(()=>{
-              Store.dispatch(setCurrentUser(currentUser))
-              Store.dispatch(setLoggedUser(true))
-              navigate('App')
-            })         
-        })
+      Alert.alert('LogIn', 'You logged in successfully')
+      goBack()
+      goBack()
     }
     else {
       alert('Login Failed \nTry again')
