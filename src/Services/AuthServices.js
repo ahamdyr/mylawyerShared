@@ -8,15 +8,26 @@ import {
 
 export const saveUser = async (currentUser, refreshToken) => {
   try {
-    let accessToken = currentUser.accessToken
     Store.dispatch(setCurrentUser(currentUser))
-    Store.dispatch(setAccessToken(accessToken))
-    Store.dispatch(setLoggedUser(true))
-    await AsyncStorage.setItem('accessToken', JSON.stringify(accessToken)) 
-    await AsyncStorage.setItem('refreshToken', JSON.stringify(refreshToken))      
+    Store.dispatch(setLoggedUser(true))     
     await AsyncStorage.setItem('currentUser', JSON.stringify(currentUser))
+    await AsyncStorage.setItem('refreshToken', JSON.stringify(refreshToken))
+    // let accessToken = currentUser.accessToken
+    // Store.dispatch(setAccessToken(accessToken))
+    // await AsyncStorage.setItem('accessToken', JSON.stringify(accessToken))  
       
   } catch (error) {
     console.log(error)
+  }
+}
+
+export const getUser = async () => {
+  let currentUserJson = await AsyncStorage.getItem('currentUser')
+  if(currentUserJson !== null){    
+    let currentUser = JSON.parse(currentUserJson)  
+    Store.dispatch(setCurrentUser(currentUser))
+    Store.dispatch(setLoggedUser(true))
+    // let accessToken = currentUser.accessToken
+    // Store.dispatch(setAccessToken(accessToken))
   }
 }
