@@ -2,18 +2,23 @@ import React from 'react'
 import { Text, View, TouchableOpacity, Image, Picker } from 'react-native';
 import DropdownMenu from 'react-native-dropdown-menu';
 import { arrow, topic } from '../../../../assets'
-import {styles} from './Styles'
+import { styles } from './Styles'
 
 export default class SelectComponent extends React.PureComponent {
-  componentDidMount(){
+  componentDidMount() {
     this.props.getTopicsRequest()
   }
-  state = { choosenLabel: '', choosenindex: '' }
+  _onChange = (itemValue) => {
+    this.setState({
+      choosenLabel: itemValue
+    })
+  }
+  state = { choosenLabel: ''}
   render() {
-    var {
-      getTopicsSuccess,
-      getTopicsLoading
+    var { 
+      getTopicsSuccess 
     } = this.props
+    //console.log('el data  ', this.state)
     return (
       <View style={[styles.selectContainer, this.props.style]}>
 
@@ -24,43 +29,35 @@ export default class SelectComponent extends React.PureComponent {
         {/* <Text style={styles.filterText}>
             ALL TOPICS
           </Text> */}
-        <View style={styles.container}>
-          {/*Text to show selected picker value*/}
-          {/* <Text style={styles.text}>{this.state.choosenLabel}</Text> */}
-          {/*Text to show selected index */}
-          {/* <Text style={styles.text}>{this.state.choosenindex}</Text> */}
-          {/*Picker with multiple chose to choose*/}
-          {/*selectedValue to set the preselected value if any*/}
-          {/*onValueChange will help to handle the changes*/}
-          <Picker 
-            mode={'dropdown'}
-            // itemStyle={
-              
-            // }
-            // style={
-
-            // }
-            selectedValue={this.state.choosenLabel}
-            onValueChange={
-              (itemValue, itemIndex) => this.setState({
-                choosenLabel: itemValue,
-                choosenindex: itemIndex
-              })
-            }
-            
-          >
-            <Picker.Item label="Hello" value="word1" />
-            <Picker.Item label="React" value="word2" />
-            <Picker.Item label="Native" value="word3" />
-            <Picker.Item label="How" value="word4" />
-            <Picker.Item label="are" value="word5" />
-            <Picker.Item label="you" value="word6" />
-          </Picker>
+        {
+          getTopicsSuccess.length ?
+              <Picker
+                style={styles.picker}
+                mode={'dropdown'}
+                itemStyle={styles.pickerItem}
+                selectedValue={this.state.choosenLabel}
+                onValueChange={(itemValue) => this._onChange(itemValue)}
+              >
+                {
+                  getTopicsSuccess.map(topic=>{
+                    return(
+                      <Picker.Item
+                        label={topic.name} 
+                        value={topic} 
+                        key={topic.id}                    
+                      />
+                    )
+                  })
+                }
+              </Picker>
+            : null
+        }
+        <View style={styles.arrowContain}>
+          <Image
+            source={arrow}
+            style={styles.downArrow}
+          />
         </View>
-        <Image
-          source={arrow}
-          style={styles.downArrow}
-        />
 
         {/* <View
             style={{

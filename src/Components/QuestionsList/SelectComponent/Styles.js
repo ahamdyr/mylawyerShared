@@ -2,13 +2,19 @@ import { StyleSheet } from 'react-native';
 import { WIDTH } from '../../Constants'
 
 export const styles = StyleSheet.create({
-  container: {
+  picker: {
+    marginLeft: 14.5,
+    //width: 200,
     flex: 1,
-    marginTop: 20,
-    // marginLeft: 14.5,
-    justifyContent: 'center',
-    flexDirection: 'column'
+    height: 50,    
+    color: '#0b7f7c',
   },
+  pickerItem:{
+    fontFamily: 'Lato-Bold',
+    fontSize: 14,
+    letterSpacing: 0.35,
+    color: '#0b7f7c',
+  },  
   selectContainer: {
     width: WIDTH,
     height: 55,
@@ -30,6 +36,14 @@ export const styles = StyleSheet.create({
     right: 15,
     top: 24
   },
+  arrowContain:{
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    bottom: 0,
+    backgroundColor: '#f6f6f6',
+    width: 40
+  },  
   filterText: {
     fontFamily: 'Lato-Bold',
     fontSize: 14,

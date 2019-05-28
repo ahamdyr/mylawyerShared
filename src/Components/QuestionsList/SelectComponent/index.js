@@ -8,7 +8,7 @@ import {
 
 const mapStateToProps =  state => ({
   getTopicsSuccess : state.getTopicsSuccess,
-  getTopicsLoading: state.getTopicsLoading
+  // getTopicsLoading: state.getTopicsLoading
 })
 
   

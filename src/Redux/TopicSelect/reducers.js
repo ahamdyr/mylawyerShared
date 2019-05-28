@@ -1,6 +1,7 @@
 import {
   GET_TOPICS_LOADING,
   GET_TOPICS_SUCCESS,
+  TOPICS_PAGE_TOKEN
   // SELECT_ASK_TOPIC
 } from './actions'
 
@@ -22,6 +23,14 @@ export const getTopicsLoading = (state = false, action) => {
   }
 }
 
+export const topicsPageToken = (state = null, action) => {
+  switch (action.type) {
+    case TOPICS_PAGE_TOKEN:
+      return action.pageToken
+    default:
+      return state
+  }
+}
 // export const askTopic = (state = {}, action) => {
 //   switch (action.type) {
 //     case SELECT_ASK_TOPIC:
