@@ -7,24 +7,18 @@ export default class SocialBtn extends React.PureComponent {
   render() {
     const { style, icon, iconStyle, onPress } = this.props
     return (
-
-      <View
-        style={[styles.view, style]}
-      >
         <TouchableOpacity
           onPress={onPress}
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
+          style={[
+            styles.view, 
+            style
+          ]}
         >
           <Image
             source={icon}
             style={iconStyle}
           />
         </TouchableOpacity>
-      </View>
     )
   }
 }
