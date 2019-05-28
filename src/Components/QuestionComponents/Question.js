@@ -145,8 +145,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     marginLeft: 20,
-    marginRight: 20,
-    backgroundColor: 'red'
+    marginRight: 20
   },
   bodyText:{
     // flex: 1,

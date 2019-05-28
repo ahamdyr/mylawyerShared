@@ -13,8 +13,8 @@
     "icon": "./assets/images/logo2x.png",
     "splash": {
       "image": "./assets/images/Splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#0b7f7c"
     },
     "updates": {
       "enabled": true,
