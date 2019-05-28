@@ -12,6 +12,7 @@ export default class SelectComponent extends React.PureComponent {
     this.setState({
       choosenLabel: itemValue
     })
+    this.props.onSelected(itemValue)
   }
   state = { choosenLabel: ''}
   render() {
@@ -52,7 +53,7 @@ export default class SelectComponent extends React.PureComponent {
               </Picker>
             : null
         }
-        <View style={styles.arrowContain}>
+        <View style={[styles.arrowContain, {backgroundColor: '#f6f6f6'}]}>
           <Image
             source={arrow}
             style={styles.downArrow}

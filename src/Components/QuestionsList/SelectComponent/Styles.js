@@ -41,8 +41,7 @@ export const styles = StyleSheet.create({
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundColor: '#f6f6f6',
-    width: 40
+    width: 50
   },  
   filterText: {
     fontFamily: 'Lato-Bold',

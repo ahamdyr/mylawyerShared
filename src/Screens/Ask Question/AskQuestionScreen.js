@@ -36,7 +36,7 @@ export default class AskQuestion extends React.Component {
         <AskTitle />
 
         <SelectComponent
-          setQuestionTopic={(topic) => setQuestionTopic(topic)}
+          onSelected={(topic) => setQuestionTopic(topic)}
           style={styles.select}
         />
 

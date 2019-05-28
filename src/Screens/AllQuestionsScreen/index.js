@@ -7,7 +7,9 @@ export default class AllQuestionsScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <SelectComponent></SelectComponent>
+        <SelectComponent 
+          onSelected={()=>{}}
+        />
         <SearchComponent></SearchComponent>
         <QuestionsList></QuestionsList>
       </View>
