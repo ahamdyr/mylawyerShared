@@ -7,26 +7,20 @@ import ImageIcon from '../Common/ImageIcon'
 import LockImage from '../Common/LockImage'
 import {PhoneIcon, UserIcon } from '../../../assets'
 import Store from '../../Redux/Store'
-import {
-  setMail,
-  setPassword,
-  setPhoneNumber
-} from '../../Redux/Auth/actions'
+import { setPhoneNumber } from '../../Redux/Auth/actions'
 export default class LoginWithPhoneForm extends React.PureComponent {
-  mail = '';
-  password = '';
-  _onMailChange = (val) =>{
-    this.mail = val
-  }
-  _onPassChange = (val) => {
-    this.password = val
-  }
+  phone = '';  
   _onPhoneChange = (val) => {
     this.phone = val
     Store.dispatch(setPhoneNumber(val))
   }
   _loginSubmit = () =>{
-    this.props.onPress
+    if (this.phone.length < 10) {
+      alert('Provide valid phone number !')
+    }
+    else {
+      this.props.onPress()
+    }
   }
   render(){
     return(
@@ -54,32 +48,12 @@ export default class LoginWithPhoneForm extends React.PureComponent {
 
         <SeperatorLine/>
 
-        {/* <View style={styles.inputContainer}>
-          <LockImage/>
-          <TextInput
-            //underlineColorAndroid={'transparent'}
-            secureTextEntry
-            placeholder={'***********' }            
-            //keyboardType={''}
-            style={styles.inputStyle}
-            onChangeText={this._onPassChange}
-          />
-          <Text
-            style={styles.forgot}
-            //onPress={()=>console.log('ajbfh')}
-          >
-            Forgot?
-          </Text>
-        </View>
-
-        <SeperatorLine/> */}
-
         <LoginButton
           text={'Login'}
           style={{
             marginTop: 26
           }}
-          onPress={this.props.onPress}
+          onPress={()=>this._loginSubmit()}
         />
 
       </KeyboardAvoidingView>

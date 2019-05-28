@@ -10,6 +10,7 @@ import {
   setMail,
   setPassword
 } from '../../Redux/Auth/actions'
+import { isValidEmailAddress } from '../../Utils/InputValidation'
 export default class LoginWithMailForm extends React.PureComponent {
   mail = '';
   password = '';
@@ -22,7 +23,15 @@ export default class LoginWithMailForm extends React.PureComponent {
     Store.dispatch(setPassword(val))
   }
   _loginSubmit = () =>{
-    this.props.onPress
+    if (!isValidEmailAddress(this.mail)) {
+      alert('Badly formatted email !')
+    }
+    else if (this.password.length < 8) {
+      alert('password must be 8 digits or more !')
+    }
+    else {
+      this.props.onPress()
+    }
   }
   render(){
     return(
@@ -74,7 +83,7 @@ export default class LoginWithMailForm extends React.PureComponent {
           style={{
             marginTop: 26
           }}
-          onPress={this.props.onPress}
+          onPress={()=>this._loginSubmit()}
         />
       </KeyboardAvoidingView>
 

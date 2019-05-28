@@ -31,10 +31,13 @@ export const LoginWithFacebook = async () => {
         refreshToken
       } = await FacebookAuth(token)
 
-      let backendToken = base64Token(uid, userToken)
+      // let backendToken = base64Token(uid, userToken)
       
-      await Register('user',backendToken)
-      //await saveUser()
+      // let pickedUser =  await Register('user',backendToken) 
+
+      // currentUser = Object.assign(currentUser, pickedUser)
+
+      //await saveUser(currentUser, refreshToken)
 
       Alert.alert('LogIn', 'You logged in successfully')
       goBack()
@@ -42,10 +45,12 @@ export const LoginWithFacebook = async () => {
     }
     else {
       alert('Login Failed \nTry again')
-      navigate('App')
+      goBack()
+      goBack()
     }
   } catch (error) {
     alert(`${error} \nTry again`)
-    navigate('App')
+    goBack()
+    goBack()
   }
 }

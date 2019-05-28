@@ -22,6 +22,15 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
     this.userName = val
     Store.dispatch(setUserName(val))
   }
+  _onSubmit = () => {
+    if (this.phone.length < 10) {
+      alert('Provide valid phone number !')
+    }
+    else if (this.userName.length == 0) alert('Invalid user name !')
+    else {
+      this.props.onPress()
+    }
+  }
   render(){
     return(
       <KeyboardAvoidingView 
@@ -47,20 +56,6 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
           />
         </View>
 
-        {/* <SeperatorLine />
-
-        <View style={styles.inputContainer}>
-          <MailLogo/>
-          <TextInput            
-            //underlineColorAndroid={'transparent'}
-            placeholder={'name@mail.com' }            
-            keyboardType={'email-address'}
-            style={styles.inputStyle}
-            autoFocus
-            onChangeText={this._onMailChange}
-          />
-        </View> */}
-
         <SeperatorLine />
 
         <View style={styles.inputContainer}>
@@ -85,7 +80,7 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
           style={{
             marginTop: 36
           }}
-          onPress={this.props.onPress}
+          onPress={()=>this._onSubmit()}
         />
 
       </KeyboardAvoidingView>

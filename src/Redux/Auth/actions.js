@@ -17,6 +17,12 @@ export const setCurrentUser = (currentUser) =>{
     currentUser
   }
 }
+export const setAccessToken = (accessToken) =>{
+  return{
+    type: 'setAccessToken',
+    accessToken
+  }
+}
 export const setPhoneNumber = (phoneNumber) => {
   return {
     type:'setPhoneNumber',

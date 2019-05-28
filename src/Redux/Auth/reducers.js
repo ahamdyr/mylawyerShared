@@ -17,6 +17,14 @@ export const userName = (state = '', action) => {
   }
 }
 
+export const accessToken = (state = '', action) => {
+  switch (action.type) {
+    case 'setAccessToken':
+      return action.accessToken
+    default:
+      return state
+  }
+}
 export const currentUser = (state = {}, action) => {
   switch (action.type) {
     case 'setCurrentUser':

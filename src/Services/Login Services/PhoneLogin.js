@@ -39,26 +39,22 @@ export const confirmCode = async (confCode) => {
     uid,
     refreshToken
   } = await PhoneAuth(confCode)
+
+  // signUp with phone
   const userName = Store.getState().userName
   if (userName) {
     currentUser.displayName = userName
     updateUserName(userName)
   }
-  let backendToken = base64Token(uid, userToken)
-  // console.log('uid : ',uid)
-  // console.log('token : ',backendToken)
-  //await Register('user',backendToken)
-  //await saveUser()
+
+  // let backendToken = base64Token(uid, userToken)
+
+  // let pickedUser =  await Register('user',backendToken) 
+
+  // currentUser = Object.assign(currentUser, pickedUser)
+
+  //await saveUser(currentUser, refreshToken)
 
   Alert.alert('LogIn', 'You logged in successfully')
   navigate('App')
 }
-
-const checkUserName = (currentUser) => {
-  const userName = Store.getState().userName
-  if (userName) {
-    currentUser.displayName = userName
-    updateUserName(userName)
-    return currentUser
-  }
-} 

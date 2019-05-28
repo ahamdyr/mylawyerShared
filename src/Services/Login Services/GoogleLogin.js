@@ -33,20 +33,26 @@ export const LoginWithGoogle = async () => {
         refreshToken
       } = await GoogleAuth(accessToken)
 
-      //let backendToken = base64Token(uid, userToken)
+      // let backendToken = base64Token(uid, userToken)
       
-      //await Register('user',backendToken)
-      //await saveUser()
+      // let pickedUser =  await Register('user',backendToken) 
+
+      // currentUser = Object.assign(currentUser, pickedUser)
+
+      //await saveUser(currentUser, refreshToken)
+
       Alert.alert('LogIn', 'You logged in successfully')
       goBack()
       goBack()
     }
     else {
       alert('Login Cancelled \nTry again')
-      navigate('App')
+      goBack()
+      goBack()
     }
   } catch (error) {
     alert(`${error.message} \nTry again`)
-    navigate('App')
+    goBack()
+    goBack()
   }
 }

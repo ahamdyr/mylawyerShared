@@ -3,7 +3,7 @@ import {Text, View, Button } from 'react-native';
 import {styles} from './Styles'
 import SignUpWithMailForm from '../../Components/AuthComponents/SignUpWithMailForm'
 import {withNavigation} from 'react-navigation'
-import {SignUpWithMailAndPassword} from '../../Services/FirebaseServices/SignUpWithMail'
+import { SignUp } from '../../Services/Login Services/MailLogin'
 class SignUpWithMail extends React.Component {
   render() {
     const {navigation} = this.props
@@ -20,7 +20,7 @@ class SignUpWithMail extends React.Component {
         </View>
 
         <View style={styles.formContainer}>
-          <SignUpWithMailForm onPress={()=>SignUpWithMailAndPassword()}/>
+          <SignUpWithMailForm onPress={()=>SignUp()}/>
         </View>
 
         <View style={styles.termsContainer}>
