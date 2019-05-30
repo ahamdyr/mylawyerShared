@@ -3,7 +3,7 @@ import {Text, View } from 'react-native';
 import {styles} from './Styles'
 import LoginWithMailForm from '../../Components/AuthComponents/LoginWithMailForm'
 import {withNavigation} from 'react-navigation'
-import { Login } from '../../Services/Login Services/MailLogin'
+import { SignIn } from '../../Services/Login Services/MailLogin'
 class LoginWithMail extends React.Component {
   render() {
     const {navigation} = this.props
@@ -18,7 +18,7 @@ class LoginWithMail extends React.Component {
         
             {/* login form */}
           <View style={styles.formContainer}>
-            <LoginWithMailForm onPress={()=>Login()} />
+            <LoginWithMailForm onPress={()=>SignIn()} />
           </View>
 
             {/* footer */}

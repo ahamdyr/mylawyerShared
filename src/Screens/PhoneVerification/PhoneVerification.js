@@ -15,7 +15,8 @@ import { MAIN_COLOR, WIDTH } from '../../Components/Constants'
 
 import { 
   requestCode,
-  confirmCode
+  SignIn,
+  SignUp
 } from '../../Services/Login Services/PhoneLogin'
 
 export default class PhoneVerification extends Component {
@@ -52,8 +53,10 @@ export default class PhoneVerification extends Component {
       this.setState({ confCode: false })
     }
   }
-  _onSubmitVerfCode = () => {
-    confirmCode(this.confCode)
+  _onSubmitVerfCode = () => {    
+    let action = this.props.navigation.state.params.action
+    if(action == 'login') SignIn(this.confCode)
+    else if (action == 'signUp') SignUp(this.confCode, this.props.userName)
   }
 
 
@@ -76,7 +79,7 @@ export default class PhoneVerification extends Component {
             autoCapitalize={'none'}
             autoCorrect={false}
             placeholder={'_ _ _ _ _ _'}
-            keyboardType={Platform.OS === 'ios' ? 'number-pad' : 'numeric'}
+            keyboardType={'phone-pad'}
             style={[styles.textInput]}
             returnKeyType='go'
             autoFocus

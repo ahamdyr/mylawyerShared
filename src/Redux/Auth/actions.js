@@ -1,4 +1,9 @@
-
+export const setUserType = (userType) => {
+  return{
+    type: 'setUserType',
+    userType
+  }
+}
 export const setLoggedUser = (isLogged) => {
   return{
     type: 'setLoggedUser',

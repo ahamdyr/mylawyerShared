@@ -1,23 +1,11 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import LawyersScreen from './LawyersScreen'
+import {connect} from 'react-redux'
 
-import LawsList from '../../Components/Lawyers List/LawsList';
+const mapStateToProps =  state => ({
 
-export default class LawyersScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <LawsList/>
-      </View>
-    );
-  }
-}
+})
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f6f6f6',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const mapDispatchersToProps = dispatch => ({
+  setQuestionBody: (body) => dispatch(setQuestionBody(body)),
+})  
+export default connect(mapStateToProps, mapDispatchersToProps)(LawyersScreen)

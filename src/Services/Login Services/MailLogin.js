@@ -1,6 +1,6 @@
 import { base64Token } from '../Guid'
-import { Register } from '../BackendServices/AccountServices'
-import { saveUser } from '../AuthServices'
+import { Register, Login } from '../BackendServices/AccountServices'
+import { saveUser, getUserType } from '../AuthServices'
 import { Alert } from 'react-native'
 import { goBack, navigate } from '../NavigationServices'
 import { MailLogin, MailSignUp } from '../FirebaseServices/MailAuth'
@@ -22,19 +22,21 @@ export const SignUp = async () => {
   // add userName
   currentUser.displayName = userName
   updateUserName(userName)
-  // let backendToken = base64Token(uid, userToken)
+  let backendToken = base64Token(uid, userToken)
 
-  // let pickedUser =  await Register('user',backendToken) 
+  let userType = getUserType()
 
-  // currentUser = Object.assign(currentUser, pickedUser)
+  let pickedUser = await Register(userType, backendToken)
 
-  //await saveUser(currentUser, refreshToken)
+  currentUser = Object.assign(currentUser, pickedUser)
+
+  await saveUser(currentUser, refreshToken)
 
   Alert.alert('LogIn', 'You logged in successfully')
   navigate('App')
 }
 
-export const Login = async () => {
+export const SignIn = async () => {
   const email = Store.getState().userMail
   const password = Store.getState().userPassword
 
@@ -45,14 +47,14 @@ export const Login = async () => {
     uid,
     refreshToken
   } = await MailLogin(email, password)
-  
-  // let backendToken = base64Token(uid, userToken)
 
-  // let pickedUser =  await Register('user',backendToken) 
+  let backendToken = base64Token(uid, userToken)
 
-  // currentUser = Object.assign(currentUser, pickedUser)
+  let pickedUser = await Login(backendToken)
 
-  //await saveUser(currentUser, refreshToken)
+  currentUser = Object.assign(currentUser, pickedUser)
+
+  await saveUser(currentUser, refreshToken)
 
   Alert.alert('LogIn', 'You logged in successfully')
   navigate('App')

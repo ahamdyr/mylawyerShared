@@ -1,6 +1,6 @@
 import { base64Token } from '../Guid'
-import { Register } from '../BackendServices/AccountServices'
-import { saveUser } from '../AuthServices'
+import { Register, Login } from '../BackendServices/AccountServices'
+import { saveUser, getUserType } from '../AuthServices'
 import { Alert } from 'react-native'
 import { goBack, navigate } from '../NavigationServices'
 import { Linking, WebBrowser } from 'expo'
@@ -9,6 +9,54 @@ import { updateUserName } from '../FirebaseServices/UpdateUser'
 import Store from '../../Redux/Store'
 
 const captchaUrl = `https://my-lawyer-dea44.web.app/?appurl=${Linking.makeUrl('')}`
+
+export const SignUp = async (confCode, userName) => {
+  navigate('Spinner')
+  const {
+    currentUser,
+    userToken,
+    uid,
+    refreshToken
+  } = await PhoneAuth(confCode)
+
+  // console.log('1')
+  currentUser.displayName = userName
+  updateUserName(userName)
+  // console.log('2')
+  let backendToken = base64Token(uid, userToken)
+
+  let userType = getUserType()
+
+  let pickedUser = await Register(userType, backendToken)
+  // console.log('3')
+  currentUser = Object.assign({},currentUser, pickedUser)
+
+  await saveUser(currentUser, refreshToken)
+  // console.log('4')
+  Alert.alert('LogIn', 'You logged in successfully')
+  navigate('App')
+}
+
+export const SignIn = async (confCode) => {
+  navigate('Spinner')
+  const {
+    currentUser,
+    userToken,
+    uid,
+    refreshToken
+  } = await PhoneAuth(confCode)
+
+  let backendToken = base64Token(uid, userToken)
+
+  let pickedUser = await Login(backendToken)
+
+  currentUser = Object.assign(currentUser, pickedUser)
+
+  await saveUser(currentUser, refreshToken)
+
+  Alert.alert('LogIn', 'You logged in successfully')
+  navigate('App')
+}
 
 export const requestCode = async phoneNumber => {
   let token = null
@@ -29,32 +77,4 @@ export const requestCode = async phoneNumber => {
     }
     await confirmationResult(phoneNumber, captchaVerifier)
   }
-}
-
-export const confirmCode = async (confCode) => {
-  navigate('Spinner')
-  const {
-    currentUser,
-    userToken,
-    uid,
-    refreshToken
-  } = await PhoneAuth(confCode)
-
-  // signUp with phone
-  const userName = Store.getState().userName
-  if (userName) {
-    currentUser.displayName = userName
-    updateUserName(userName)
-  }
-
-  // let backendToken = base64Token(uid, userToken)
-
-  // let pickedUser =  await Register('user',backendToken) 
-
-  // currentUser = Object.assign(currentUser, pickedUser)
-
-  //await saveUser(currentUser, refreshToken)
-
-  Alert.alert('LogIn', 'You logged in successfully')
-  navigate('App')
 }

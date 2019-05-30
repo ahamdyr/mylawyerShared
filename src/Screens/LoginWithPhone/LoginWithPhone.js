@@ -18,7 +18,8 @@ class LoginWithPhone extends React.Component {
         
             {/* login form */}
           <View style={styles.formContainer}>
-            <LoginWithPhoneForm onPress={()=>this.props.navigation.navigate('PhoneVerification')}/>
+            <LoginWithPhoneForm 
+              onPress={()=>this.props.navigation.navigate('PhoneVerification',{action: 'login'})}/>
           </View>
 
             {/* footer */}

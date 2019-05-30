@@ -7,7 +7,7 @@
     "platforms": [
       "ios",
       "android"
-    ],    
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo2x.png",
@@ -25,13 +25,14 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.mylawyer.MyLawyer",
+      "bundleIdentifier": "com.mylawyer.MyLawyer.xXx",
       "supportsTablet": true,
       "buildNumber": "1.0.0",
       "infoPlist": {
-        "NSPhotoLibraryUsageDescription": "This app uses the photos to update your profile picture."
+        "NSPhotoLibraryUsageDescription": "This app uses the photos to update your profile picture.",
+        "NSCameraUsageDescription": "Allow My Lawyer experiences to use your camera"
       },
-      "usesIcloudStorage":true,
+      "usesIcloudStorage": true,
       "config": {
         "usesNonExemptEncryption": false,
         "googleSignIn": {
@@ -40,9 +41,9 @@
       }
     },
     "android": {
-      "config":{
-        "googleSignIn":{
-          "apiKey":"AIzaSyCuLfdKl1paE35pA_Rwoen-YQbFgeHtZPE",
+      "config": {
+        "googleSignIn": {
+          "apiKey": "AIzaSyCB76Ry4sEcSICgIhdP7EDRzRYhCNg8QhQ",          
           "certificateHash": "07:02:84:0C:D8:06:94:0B:53:52:02:F5:96:13:CA:0D:E1:F5:06:A5"
         }
       },
@@ -75,7 +76,7 @@
         "com.sonyericsson.home.permission.BROADCAST_BADGE"
       ],
       "package": "com.mylawyer.MyLawyer",
-      "versionCode": 10    
+      "versionCode": 10
     },
     "scheme": "mylawyer",
     "facebookScheme": "fb397884547607821",

@@ -7,6 +7,7 @@ export const FacebookAuth = async (token) => {
     .signInAndRetrieveDataWithCredential(credential)
     .then(async userCredential => {
       let user = userCredential.user
+      let isNewUser = userCredential.additionalUserInfo.isNewUser
       let currentUser = (({
         displayName,
         email,
@@ -25,7 +26,8 @@ export const FacebookAuth = async (token) => {
         currentUser,
         userToken,
         uid,
-        refreshToken
+        refreshToken,
+        isNewUser
       }
     })
     .catch(err => {

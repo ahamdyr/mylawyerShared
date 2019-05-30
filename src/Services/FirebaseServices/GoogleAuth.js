@@ -7,7 +7,8 @@ export const GoogleAuth = async (token) => {
       .auth()
       .signInAndRetrieveDataWithCredential(credential)
       .then(async userCredential => {  
-        let user = userCredential.user        
+        let user = userCredential.user       
+        let isNewUser = userCredential.additionalUserInfo.isNewUser 
         let currentUser = (({ 
           displayName,
           email,
@@ -26,7 +27,8 @@ export const GoogleAuth = async (token) => {
           currentUser,
           userToken,
           uid,
-          refreshToken
+          refreshToken,
+          isNewUser
         }
       })
       .catch(err => {

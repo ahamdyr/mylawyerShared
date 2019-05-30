@@ -1,4 +1,11 @@
-
+export const userType = (state = 'user', action) => {  
+  switch (action.type) {
+    case 'setUserType':
+      return action.userType
+    default:
+      return state
+  }
+}
 
 export const userMail = (state = '', action) => {
   switch (action.type) {

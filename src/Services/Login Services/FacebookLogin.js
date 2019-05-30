@@ -1,8 +1,8 @@
 import { Facebook } from 'expo'
 import { FacebookAuth } from '../FirebaseServices/FacebookAuth'
 import { base64Token } from '../Guid'
-import { Register } from '../BackendServices/AccountServices'
-import { saveUser } from '../AuthServices'
+import { Register, Login } from '../BackendServices/AccountServices'
+import { saveUser, getUserType } from '../AuthServices'
 import { Alert } from 'react-native'
 import { goBack, navigate } from '../NavigationServices'
 
@@ -28,16 +28,25 @@ export const LoginWithFacebook = async () => {
         currentUser,
         userToken,
         uid,
-        refreshToken
+        refreshToken,
+        isNewUser
       } = await FacebookAuth(token)
 
-      // let backendToken = base64Token(uid, userToken)
+      let backendToken = base64Token(uid, userToken)
+
+      var pickedUser = {}
+
+      if(isNewUser){
+        let userType = getUserType()
+        pickedUser =  await Register(userType, backendToken)
+      }
+      else{
+        pickedUser =  await Login(backendToken)
+      }             
       
-      // let pickedUser =  await Register('user',backendToken) 
+      currentUser = Object.assign(currentUser, pickedUser)
 
-      // currentUser = Object.assign(currentUser, pickedUser)
-
-      //await saveUser(currentUser, refreshToken)
+      await saveUser(currentUser, refreshToken)
 
       Alert.alert('LogIn', 'You logged in successfully')
       goBack()
