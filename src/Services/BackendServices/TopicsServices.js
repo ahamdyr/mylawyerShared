@@ -13,21 +13,24 @@ export const getTopicsApi = async (pageToken) => {
     topics: x,
     newPageToken: null
   }
-  // try {
-  //   let res = await axios.post(
-  //     '/api/beta/account/register/',
-  //     JSON.stringify(type),
+  // return new Promise((resolve, reject) => {
+  //   axios.get(
+  //     `/api/beta/topics/?page=${pageToken}`,    
   //     {
-  //       headers:{
-  //         'Content-Type': 'application/json',
-  //         "Authorization": `Firebase ${token}`
+  //       headers: {
+  //         'Accept': 'application/json'
   //       }
   //     }
-  //   );    
-
-  //   //let result = await res.json()
-  //   console.log('result  ',res.data)
-  // } catch (error) {
-  //   console.log('error  ', error)
-  // }
+  //   ).then((res) => {
+  //     if(res.data.data) {
+  //       //console.log(res.data.data)
+  //       resolve(res.data.data) 
+  //     }
+  //     else{
+  //       reject(res.data.error.message)
+  //     }
+  //   }).catch(err => {
+  //     reject(err)
+  //   })
+  // })  
 }

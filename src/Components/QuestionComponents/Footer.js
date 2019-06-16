@@ -6,19 +6,25 @@ import { camera, attachment } from '../../../assets'
 import ImageIcon from '../Common/ImageIcon'
 import { navigate } from '../../Services/NavigationServices'
 import { uploadFile, uploadImage } from '../../Services/FilesServices'
+import _ from 'lodash'
+import {addToStorage} from '../../Services/FirebaseServices/FirebaseStorage'
+import {guidGenerator} from '../../Services/Guid'
 export default class Footer extends React.PureComponent {
   
   _uploadFile = async () => {
     let doc = await uploadFile()
+    //console.log(doc)
+    //await addToStorage(`test/${guidGenerator()}`, doc)
     doc ? this.props.setQuestionDoc(doc) : null
   }
   _uploadImage = async () => {
     let img = await uploadImage()
+    //await addToStorage(`test/${guidGenerator()}`, img)
     img ? this.props.setQuestionImg(img) : null
   }
   _submit = () => {
     if (this.props.isLoggedUser) {
-      if (this.props.questionTitle && this.props.questionBody && this.props.questionTopic){
+      if (this.props.questionTitle && this.props.questionBody && !_.isEmpty(this.props.questionTopic)){
         this.props.submitQuestion()
         alert('Your question has been submitted')
       }

@@ -9,7 +9,7 @@ import {
   SET_QUESTION_TOPIC
 } from './actions'
 
-export const questionTopic = (state = '', action) => {
+export const questionTopic = (state = {}, action) => {
   switch (action.type) {
     case SET_QUESTION_TOPIC:
       return action.topic

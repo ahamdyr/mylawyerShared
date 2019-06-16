@@ -1,5 +1,6 @@
 import { guidGenerator } from './Guid'
 import {DocumentPicker, ImagePicker, Permissions} from 'expo'
+import { Platform } from 'react-native'
 
 export const uploadFile = async () => {
   let doc = await DocumentPicker.getDocumentAsync()
@@ -14,13 +15,18 @@ export const uploadFile = async () => {
   }
 }
 
-export const uploadImage = async () => {
-  await Permissions.askAsync(Permissions.CAMERA);
-  await Permissions.askAsync(Permissions.CAMERA_ROLL);
+export const uploadImage = async () => {  
+  let photosPerm = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+  let camPerm = await Permissions.askAsync(Permissions.CAMERA);
+  
+  if(photosPerm.status == "denied" || camPerm.status == "denied"){
+    alert('Enable Permissions in your App Settings')
+    return 0
+  }
 
   let doc = await ImagePicker.launchCameraAsync({
     allowsEditing: true,
-    aspect: [4, 3],
+    //aspect: [4, 3],
     base64: false,
   })
   if (!doc.cancelled) {
