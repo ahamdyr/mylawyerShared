@@ -17,7 +17,7 @@ export default class Step1 extends React.Component {
         />
         <SelectMajorBtn
         // major={}
-        // onPress={}
+          onPress={()=>navigate('SelectMajor')}
         />
         <ProgressBar step={1} />
         <NextBtn

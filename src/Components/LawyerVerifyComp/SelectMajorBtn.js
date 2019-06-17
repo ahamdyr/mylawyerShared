@@ -18,7 +18,7 @@ export default class SelectMajorBtn extends React.PureComponent {
     return (
       <TouchableOpacity 
         style={styles.btnContainer}
-        //onPress={onPress}
+        onPress={onPress}
       >
         <View style={styles.majorContainer}>
           <Text style={styles.majorText}>

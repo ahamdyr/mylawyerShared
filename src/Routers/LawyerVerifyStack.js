@@ -35,7 +35,8 @@ const LawyerVerificationStack = createStackNavigator({
   }),
   defaultNavigationOptions:{
     headerTitle:<HeaderTitle title={`My Lawyer`} style={{color:'#ffffff'}} />,
-    headerLeft: null,    
+    //headerLeft: null,    
+    headerTintColor: 'white',
       headerStyle:{
         elevation:0,
         shadowOpacity:0,
