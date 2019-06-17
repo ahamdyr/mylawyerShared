@@ -31,14 +31,14 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
   },
   focused: {    
-    marginHorizontal: 10,
+    marginHorizontal: 5,
     width: 30,
     height: 8,
     borderRadius: 13,
     backgroundColor: "#ffffff",    
   },
   unFocused: {
-    marginHorizontal: 10,
+    marginHorizontal: 5,
     width: 8,
     height: 8,
     opacity: 0.4,

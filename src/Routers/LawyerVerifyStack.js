@@ -24,7 +24,7 @@ const LawyerVerificationStack = createStackNavigator({
     screen: SelectMajor,
   },  
 },{  
-  initialRouteName: "Step1",
+  initialRouteName: "Step2",
   mode: 'modal',
   headerLayoutPreset: 'center',
   //headerMode: 'none'  

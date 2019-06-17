@@ -6,6 +6,7 @@ import {AuthLoading} from '../Screens'
 import SocialScreen from '../Screens/Social Login'
 import Spinner from '../Screens/Spinner'
 import { Easing, Animated } from 'react-native'
+import LawyerVerificationStack from './LawyerVerifyStack'
 
 const AppRouter = createStackNavigator({
   App : MainRouter,
@@ -40,5 +41,7 @@ const ModalStack =  createStackNavigator({
 
   //transparentCard : true
 })
-export default createAppContainer(ModalStack);
+//export default createAppContainer(ModalStack);
+
+export default createAppContainer(LawyerVerificationStack);
 

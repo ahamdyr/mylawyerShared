@@ -31,7 +31,7 @@ export default class VerifyStepTitle extends React.PureComponent {
 
 const styles = StyleSheet.create({
   titleContainer: {
-    marginTop: 57,
+    //marginTop: 57,
     width: WIDTH,
     alignSelf: 'center',
     alignItems: 'center',
