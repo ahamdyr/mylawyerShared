@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     color: "#ffffff"
   },
   subTitle: {
+    width: 282,
     marginTop: 10,
     fontFamily: 'Lato-Regular',
     fontSize: 14,
