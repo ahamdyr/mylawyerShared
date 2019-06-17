@@ -15,7 +15,7 @@ export const getTopicsApi = async (pageToken) => {
   }
   // return new Promise((resolve, reject) => {
   //   axios.get(
-  //     `/api/beta/topics/?page=${pageToken}`,    
+  //     `topics/?page=${pageToken}`,    
   //     {
   //       headers: {
   //         'Accept': 'application/json'

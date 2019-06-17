@@ -5,7 +5,7 @@ export const Register = async (type, token) => {
   body.append('type', type)
   return new Promise((resolve, reject) => {
     axios.post(
-      '/api/beta/account/register/',
+      'account/register/',
       body,
       {
         headers: {
@@ -27,7 +27,7 @@ export const Register = async (type, token) => {
 export const Login = async (token) => {  
   return new Promise((resolve, reject) => {
     axios.get(
-      "/api/beta/account/login/",
+      "account/login/",
       {
         headers: {
           'Accept': 'application/json',
