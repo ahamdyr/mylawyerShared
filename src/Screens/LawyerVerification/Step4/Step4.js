@@ -7,6 +7,11 @@ import { clapping } from '../../../../assets'
 import ReturnBtn from '../../../Components/LawyerVerifyComp/ReturnBtn'
 
 export default class Step4 extends React.Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerLeft: null,
+    }
+  }
   render() {
     return (
       <View style={styles.container}>

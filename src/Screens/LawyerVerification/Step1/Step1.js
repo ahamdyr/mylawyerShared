@@ -7,6 +7,12 @@ import ProgressBar from '../../../Components/LawyerVerifyComp/ProgressBar'
 import NextBtn from '../../../Components/LawyerVerifyComp/NextBtn'
 
 export default class Step1 extends React.Component {
+
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerLeft: null,
+    }
+  }
   render() {
     return (
       <View style={styles.container}>

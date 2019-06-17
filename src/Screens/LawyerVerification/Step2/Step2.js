@@ -11,6 +11,11 @@ import CaptureBtn from '../../../Components/LawyerVerifyComp/CaptureBtn'
 import Attachs from '../../../Components/LawyerVerifyComp/Attachs'
 
 export default class Step2 extends React.Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerLeft: null,
+    }
+  }
   render() {
     const {
       //firmID
