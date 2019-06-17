@@ -14,7 +14,7 @@ export default class BackBtn extends React.PureComponent {
     return (
       <TouchableOpacity
         style={styles.btnContainer}
-      //onPress={onPress}
+        onPress={onPress}
       >
         <Text style={styles.backText}>
           {'Back'}

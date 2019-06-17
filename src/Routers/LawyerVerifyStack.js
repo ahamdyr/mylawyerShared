@@ -24,12 +24,18 @@ const LawyerVerificationStack = createStackNavigator({
     screen: SelectMajor,
   },  
 },{  
-  initialRouteName: "Step2",
+  initialRouteName: "Step1",
   mode: 'modal',
   headerLayoutPreset: 'center',
   //headerMode: 'none'  
+  transitionConfig : () => ({
+    transitionSpec: {
+      duration: 0,
+    },
+  }),
   defaultNavigationOptions:{
     headerTitle:<HeaderTitle title={`My Lawyer`} style={{color:'#ffffff'}} />,
+    headerLeft: null,    
       headerStyle:{
         elevation:0,
         shadowOpacity:0,

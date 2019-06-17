@@ -5,14 +5,11 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native';
-import { MAIN_COLOR, WIDTH } from '../Constants'
-import SeperatorLine from '../Common/SeperatorLine'
-import { nextIcon } from '../../../assets'
-import ImageIcon from '../Common/ImageIcon'
 
-export default class NextBtn extends React.PureComponent {
+export default class VerifyBtn extends React.PureComponent {
   render() {
     const {
+      btnTitle,
       onPress
     } = this.props
     return (
@@ -21,12 +18,8 @@ export default class NextBtn extends React.PureComponent {
         onPress={onPress}
       >
         <Text style={styles.nextText}>
-          {'Next'}
+          {btnTitle}
         </Text>
-        <ImageIcon
-          style={styles.nextIconStyle}
-          source={nextIcon}
-        />
       </TouchableOpacity>
     )
   }
@@ -61,10 +54,4 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#0b7f7c"
   },
-  nextIconStyle: {
-    width: 6,
-    height: 11,
-    marginLeft: 5,
-    alignSelf: 'center',
-  }
 })
