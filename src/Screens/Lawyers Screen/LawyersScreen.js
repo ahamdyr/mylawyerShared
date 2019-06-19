@@ -10,10 +10,9 @@ export default class LawyersScreen extends React.Component {
   }
 
   render() {
-    var lawyersList = this.props.getLawyersSuccess
     return (
       <View style={styles.container}>
-        <LawsList lawyers={lawyersList}/>
+        <LawsList lawyers={this.props.getLawyersSuccess}/>
       </View>
     );
   }

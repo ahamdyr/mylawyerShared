@@ -8,7 +8,7 @@ import {
 export const getLawyersSuccess = (state = [], action) => {
   switch (action.type) {
     case GET_LAWYERS_SUCCESS:
-      return [...state, action.Lawyers] 
+      return [...state, ...action.lawyers] 
     default:
       return state
   }

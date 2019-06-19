@@ -9,15 +9,10 @@ import {
 import {
   getLawyersApi
 } from '../../Services/BackendServices/LawyersServices'
-import {
-  navigate,
-  goBack
-} from '../../Services/NavigationServices'
 
 function* getLawyersListSaga(action) {
   try {
     //yield put(getLawyersLoading(true))
-    navigate('Spinner')
     let lastPageToken = yield select(state => state.lawyersPageToken)
     var {
       lawyers,
@@ -26,11 +21,9 @@ function* getLawyersListSaga(action) {
     yield put(getLawyersSuccess(lawyers))
     yield put(setLawyersPageToken(newPageToken))
     //yield put(getLawyersLoading(false))
-    goBack()
   } catch (error) {
     yield put(getLawyersError(error))
     //yield put(getLawyersLoading(false))
-    goBack()
     console.log(error)
   }
 }
