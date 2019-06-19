@@ -4,10 +4,16 @@ import { StyleSheet, Text, View } from 'react-native';
 import LawsList from '../../Components/Lawyers List/LawsList';
 
 export default class LawyersScreen extends React.Component {
+
+  componentDidMount(){
+    this.props.getLawyersRequest()
+  }
+
   render() {
+    var lawyersList = this.props.getLawyersSuccess
     return (
       <View style={styles.container}>
-        <LawsList/>
+        <LawsList lawyers={lawyersList}/>
       </View>
     );
   }

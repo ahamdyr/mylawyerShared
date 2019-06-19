@@ -5,17 +5,25 @@ import {withNavigation} from 'react-navigation'
 //import {openModal} from '../../Services/SocialModal'
 class LawsItem extends React.PureComponent {
   render() {    
-    const {MainPhotoURL, Name, office, rating, major} = this.props.item.item
+    const {
+      id,
+      name,
+      office,
+      major,
+      photo,
+      rate,
+      bio
+    } = this.props.item.item
     return (
       <View style={styles.lawsCard}>
         <TouchableWithoutFeedback
           style={{ flex: 1 }}
           //onPress={()=>openModal()}
-          onPress={()=>this.props.navigation.navigate('SocialScreen')}
+          //onPress={()=>this.props.navigation.navigate('SocialScreen')}
         >
           <View style={styles.lawyerPhoto}>
             <ImageBackground
-              source={{ uri: MainPhotoURL }}
+              source={{ uri: photo }}
               style={styles.lawyerImage}
               resizeMode={'cover'}
             />
@@ -30,7 +38,7 @@ class LawsItem extends React.PureComponent {
                 >
                   <View> */}
                     <Text style={{color:'white', fontWeight:'bold', fontSize:15.5}}>
-                      {Name}
+                      {name}
                     </Text>
                     <Text style={{color:'white',  fontSize:13.5}}>
                       {office}
@@ -38,7 +46,7 @@ class LawsItem extends React.PureComponent {
                     <Text style={{color:'white',  fontSize:13.5}}>
                       {major}
                     </Text>
-                    <RatingView rating={rating}/>
+                    <RatingView rating={rate}/>
                   {/* </View>                 
                 </View> */}
             </View>

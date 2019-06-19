@@ -1,17 +1,9 @@
 import axios from 'axios'
-
-export const getTopicsApi = async (pageToken) => {
-
-  let x = [
-    { id: 1, name: 'ALL TOPICS' },
-    { id: 2, name: 'Topic 1' },
-    { id: 3, name: 'Topic 2' },
-    { id: 4, name: 'Topic 3' },
-    { id: 5, name: 'Topic 4' }
-  ]
+import { mockTopics } from './MockData'
+export const getTopicsApi = async (pageToken) => {  
   return {
-    topics: x,
-    newPageToken: null
+    topics: mockTopics,
+    newPageToken: ''
   }
   // return new Promise((resolve, reject) => {
   //   axios.get(

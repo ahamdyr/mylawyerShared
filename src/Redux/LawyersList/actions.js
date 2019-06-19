@@ -9,3 +9,31 @@ export const getLawyersRequest = () => {
     type: GET_LAWYERS_REQUEST
   }
 }
+
+export const getLawyersSuccess = (lawyers) => {
+  return{
+    type: GET_LAWYERS_SUCCESS,
+    lawyers
+  }
+}
+
+export const getLawyersError = (error) => {
+  return{
+    type: GET_LAWYERS_ERROR,
+    error
+  }
+}
+
+export const getLawyersLoading = (isLoading) => {
+  return{
+    type: GET_LAWYERS_LOADING,
+    isLoading
+  }
+}
+
+export const setLawyersPageToken = (pageToken) => {
+  return{
+    type: SET_LAWYERS_PG_TOKEN,
+    pageToken
+  }
+}

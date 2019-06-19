@@ -1,25 +1,36 @@
 import { call, put, takeEvery, select } from 'redux-saga/effects'
 import {
-  GET_LAWYERS_REQUEST
+  GET_LAWYERS_REQUEST,
+  getLawyersError,
+  getLawyersLoading,
+  getLawyersSuccess,
+  setLawyersPageToken
 } from './actions'
 import {
   getLawyersApi
 } from '../../Services/BackendServices/LawyersServices'
+import {
+  navigate,
+  goBack
+} from '../../Services/NavigationServices'
 
 function* getLawyersListSaga(action) {
   try {
-    const topic = yield select(state => state.questionTopic)
-    const title = yield select(state => state.questionTitle)
-    const body = yield select(state => state.questionBody)
-    const imgs = yield select(state => state.questionImgs)
-    const docs = yield select(state => state.questionDocs)
-    const attachments = [...imgs, ...docs]
-    const question = ({
-      topic, title, body, attachments
-    })
-    yield put(addQuestion(question))
-    console.log('question ',question)
+    //yield put(getLawyersLoading(true))
+    navigate('Spinner')
+    let lastPageToken = yield select(state => state.lawyersPageToken)
+    var {
+      lawyers,
+      newPageToken
+    } = yield call(getLawyersApi, lastPageToken)
+    yield put(getLawyersSuccess(lawyers))
+    yield put(setLawyersPageToken(newPageToken))
+    //yield put(getLawyersLoading(false))
+    goBack()
   } catch (error) {
+    yield put(getLawyersError(error))
+    //yield put(getLawyersLoading(false))
+    goBack()
     console.log(error)
   }
 }

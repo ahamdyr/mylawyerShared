@@ -1,18 +1,11 @@
 import axios from 'axios'
+import {mockLawyersList} from './MockData'
 
-export const getLawyersApi = async (pageToken) => {
-
-  // let x = [
-  //   { id: 1, name: 'ALL TOPICS' },
-  //   { id: 2, name: 'Topic 1' },
-  //   { id: 3, name: 'Topic 2' },
-  //   { id: 4, name: 'Topic 3' },
-  //   { id: 5, name: 'Topic 4' }
-  // ]
-  // return {
-  //   topics: x,
-  //   newPageToken: null
-  // }
+export const getLawyersApi = async (pageToken) => {  
+  return {
+    lawyers: mockLawyersList,
+    newPageToken: ''
+  }
   // return new Promise((resolve, reject) => {
   //   axios.get(
   //     `lawyers/?page=${pageToken}`,    

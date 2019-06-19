@@ -23,7 +23,7 @@ export const getTopicsLoading = (state = false, action) => {
   }
 }
 
-export const topicsPageToken = (state = null, action) => {
+export const topicsPageToken = (state = '', action) => {
   switch (action.type) {
     case TOPICS_PAGE_TOKEN:
       return action.pageToken

@@ -41,7 +41,7 @@ const ModalStack =  createStackNavigator({
 
   //transparentCard : true
 })
-//export default createAppContainer(ModalStack);
+export default createAppContainer(ModalStack);
 
-export default createAppContainer(LawyerVerificationStack);
+//export default createAppContainer(LawyerVerificationStack);
 
