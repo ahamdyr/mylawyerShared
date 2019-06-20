@@ -11,7 +11,7 @@ export default class SearchComponent extends React.PureComponent {
   }
   render(){
     return(
-      <View style={styles.selectContainer}> 
+      <View style={[styles.selectContainer, this.props.style]}> 
         
           <View style={styles.searchBox}>
             <TextInput

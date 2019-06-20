@@ -1,16 +1,17 @@
 import React from 'react'
-import { StyleSheet, 
-  TouchableWithoutFeedback, 
+import {
+  StyleSheet,
+  TouchableWithoutFeedback,
   View,
-  TouchableOpacity, 
-  Keyboard, 
-  ScrollView, 
-  TextInput, 
+  TouchableOpacity,
+  Keyboard,
+  ScrollView,
+  TextInput,
   Platform,
-  KeyboardAvoidingView 
+  KeyboardAvoidingView
 } from 'react-native';
-import {STATUS_BAR_HEIGHT, WIDTH, HEIGHT, MAIN_COLOR} from '../Constants'
-import SeperatorLine  from '../Common/SeperatorLine'
+import { STATUS_BAR_HEIGHT, WIDTH, HEIGHT, MAIN_COLOR } from '../Constants'
+import SeperatorLine from '../Common/SeperatorLine'
 import KeyboardSpacer from 'react-native-keyboard-spacer'
 
 export default class QuestionComponent extends React.PureComponent {
@@ -21,11 +22,11 @@ export default class QuestionComponent extends React.PureComponent {
   _bodyChange = (val) => {
     this.props.setQuestionBody(val)
   }
-  _titleKeyBoardToggle = ()=> {
-    if(this._titleRef.isFocused()){
+  _titleKeyBoardToggle = () => {
+    if (this._titleRef.isFocused()) {
       Keyboard.dismiss()
     }
-    else{
+    else {
       this._titleRef.focus()
     }
   }
@@ -37,66 +38,66 @@ export default class QuestionComponent extends React.PureComponent {
       this._bodyRef.focus()
     }
   }
-  
 
-  render(){
-    var { 
+
+  render() {
+    var {
       partial
-    } =this.props
-    return(
+    } = this.props
+    return (
       <KeyboardAvoidingView
         keyboardVerticalOffset={20}
         style={[
-          styles.questionContainer, 
+          styles.questionContainer,
           partial ? styles.partial : styles.full
         ]}
-        behavior={'padding'}        
-      > 
+        behavior={'padding'}
+      >
         <TouchableOpacity
-            activeOpacity={1}
-            style={[
-              styles.title,
-            ]}            
-            onPress={()=>this._titleKeyBoardToggle()}>
-            <TextInput
-              ref={(ref) => this._titleRef = ref}
-              style={styles.titleText}
-              multiline={true}
-              numberOfLines={2}
-              underlineColorAndroid="transparent"
-              placeholder={'Title '}
-              onChangeText={this._titleChange}
-              autoFocus
-              shouldCancelWhenOutside ={true}
-            />
+          activeOpacity={1}
+          style={[
+            styles.title,
+          ]}
+          onPress={() => this._titleKeyBoardToggle()}>
+          <TextInput
+            ref={(ref) => this._titleRef = ref}
+            style={styles.titleText}
+            multiline={true}
+            numberOfLines={2}
+            underlineColorAndroid="transparent"
+            placeholder={'Title '}
+            onChangeText={this._titleChange}
+            autoFocus
+            shouldCancelWhenOutside={true}
+          />
         </TouchableOpacity>
 
-          <SeperatorLine style={styles.seperator}/>
+        <SeperatorLine style={styles.seperator} />
 
-        <TouchableOpacity  
-            activeOpacity={1}
-            style={[
-              styles.body,
-              partial ? {flex: 3} : {flex: 8}
-            ]}
-            onPress={()=>this._bodyKeyBoardToggle()}>
-          <ScrollView  
-            style={styles.body} 
+        <TouchableOpacity
+          activeOpacity={1}
+          style={[
+            styles.body,
+            partial ? { flex: 3 } : { flex: 8 }
+          ]}
+          onPress={() => this._bodyKeyBoardToggle()}>
+          <ScrollView
+            style={styles.body}
           >
             <TextInput
               style={styles.bodyText}
               autoGrow={false}
               scrollEnabled={true}
-              ref={(ref) => this._bodyRef = ref} 
+              ref={(ref) => this._bodyRef = ref}
               underlineColorAndroid="transparent"
               placeholder={'Write your problem here'}
               onChangeText={this._bodyChange}
               multiline={true}
-              shouldCancelWhenOutside ={true}
+              shouldCancelWhenOutside={true}
             />
-          </ScrollView >  
-        </TouchableOpacity> 
-          {/* { 
+          </ScrollView >
+        </TouchableOpacity>
+        {/* { 
             Platform.OS === 'android' ? 
             <KeyboardSpacer 
               style={styles.keyBad} 
@@ -110,13 +111,13 @@ export default class QuestionComponent extends React.PureComponent {
 }
 
 const styles = StyleSheet.create({
-  partial:{
+  partial: {
     marginBottom: 10
   },
   full: {
     marginBottom: 55
   },
-  questionContainer : {    
+  questionContainer: {
     flex: 1,
     marginTop: 16,
     marginRight: 16,
@@ -124,30 +125,36 @@ const styles = StyleSheet.create({
     //height: 450,
     backgroundColor: 'white',
     elevation: 16,
-    shadowOpacity: 0.5
-    
+    shadowColor: "#0000000c",
+    shadowOffset: {
+      width: 4,
+      height: 6.9
+    },
+    shadowRadius: 32,
+    shadowOpacity: 1,
+    borderRadius: 10
   },
-  title:{
-    flex: 1,    
+  title: {
+    flex: 1,
     marginLeft: 20,
-    marginRight: 20, 
+    marginRight: 20,
     width: WIDTH - 72,
     alignItems: 'center',
     justifyContent: 'center'
   },
-  titleText:{       
+  titleText: {
     fontFamily: 'Lato-Bold',
     letterSpacing: 0.4,
     fontSize: 16,
     color: MAIN_COLOR
   },
-  body:{
+  body: {
     marginTop: 10,
     marginBottom: 10,
     marginLeft: 20,
     marginRight: 20
   },
-  bodyText:{
+  bodyText: {
     // flex: 1,
     flexWrap: 'wrap',
     fontFamily: 'Lato-Regular',
@@ -166,7 +173,7 @@ const styles = StyleSheet.create({
     //opacity: 0.26,
     width: WIDTH - 80
   },
-  keyBad:{
+  keyBad: {
     //marginTop: -30
   }
 })

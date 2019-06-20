@@ -7,10 +7,10 @@ import ImageIcon from '../Common/ImageIcon'
 import { navigate } from '../../Services/NavigationServices'
 import { uploadFile, uploadImage } from '../../Services/FilesServices'
 import _ from 'lodash'
-import {addToStorage} from '../../Services/FirebaseServices/FirebaseStorage'
-import {guidGenerator} from '../../Services/Guid'
+import { addToStorage } from '../../Services/FirebaseServices/FirebaseStorage'
+import { guidGenerator } from '../../Services/Guid'
 export default class Footer extends React.PureComponent {
-  
+
   _uploadFile = async () => {
     let doc = await uploadFile()
     //console.log(doc)
@@ -24,11 +24,11 @@ export default class Footer extends React.PureComponent {
   }
   _submit = () => {
     if (this.props.isLoggedUser) {
-      if (this.props.questionTitle && this.props.questionBody && !_.isEmpty(this.props.questionTopic)){
+      if (this.props.questionTitle && this.props.questionBody && !_.isEmpty(this.props.questionTopic)) {
         this.props.submitQuestion()
         alert('Your question has been submitted')
       }
-      else{
+      else {
         alert('Your query must have at least topic, title and body')
       }
     }
@@ -79,11 +79,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     elevation: 12,
-    shadowOpacity: 0.8,
+    shadowColor: "#00000014",
     shadowOffset: {
-      height: -8,
-      width: 0
+      width: 0,
+      height: -16
     },
+    shadowRadius: 24,
+    shadowOpacity: 1
   },
   attachmentIcon: {
     width: 21,

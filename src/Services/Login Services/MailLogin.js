@@ -22,13 +22,13 @@ export const SignUp = async () => {
   // add userName
   currentUser.displayName = userName
   updateUserName(userName)
-  let backendToken = base64Token(uid, userToken)
+  // let backendToken = base64Token(uid, userToken)
 
-  let userType = getUserType()
+  // let userType = getUserType()
 
-  let pickedUser = await Register(userType, backendToken)
+  // let pickedUser = await Register(userType, backendToken)
 
-  currentUser = Object.assign(currentUser, pickedUser)
+  // currentUser = Object.assign(currentUser, pickedUser)
 
   await saveUser(currentUser, refreshToken)
 
@@ -48,11 +48,11 @@ export const SignIn = async () => {
     refreshToken
   } = await MailLogin(email, password)
 
-  let backendToken = base64Token(uid, userToken)
+  // let backendToken = base64Token(uid, userToken)
 
-  let pickedUser = await Login(backendToken)
+  // let pickedUser = await Login(backendToken)
 
-  currentUser = Object.assign(currentUser, pickedUser)
+  // currentUser = Object.assign(currentUser, pickedUser)
 
   await saveUser(currentUser, refreshToken)
 

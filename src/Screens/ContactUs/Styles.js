@@ -2,6 +2,31 @@ import { STATUS_BAR_HEIGHT, WIDTH, MAIN_COLOR, HEIGHT } from '../../Components/C
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  btnStyle:{
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 22,
+    width: 224,
+    height: 51.5,
+    borderRadius: 25.8,
+    backgroundColor: "#0b7f7c",
+    shadowColor: "#1d0e2833",
+    shadowOffset: {
+      width: 0,
+      height: 8
+    },
+    shadowRadius: 32,
+    shadowOpacity: 1
+  },
+  textStyle:{
+    fontFamily: "Lato-Regular",
+    fontSize: 13.8,
+    fontWeight: "normal",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "center",
+    color: "#ffffff"
+  },
   container: {
     flex: 1,
     //width: WIDTH,  
@@ -89,5 +114,70 @@ export const styles = StyleSheet.create({
     top: 20,
     right: 16,
     left: 90
+  },
+  partial: {
+    marginBottom: 10
+  },
+  full: {
+    marginBottom: 55
+  },
+  questionContainer: {
+    flex: 1,
+    marginTop: 16,
+    marginRight: 16,
+    marginLeft: 16,
+    //height: 450,
+    backgroundColor: 'white',
+    elevation: 16,
+    shadowColor: "#0000000c",
+    shadowOffset: {
+      width: 4,
+      height: 6.9
+    },
+    shadowRadius: 32,
+    shadowOpacity: 1,
+    borderRadius: 10
+  },
+  title: {
+    flex: 1,
+    marginLeft: 20,
+    marginRight: 20,
+    width: WIDTH - 72,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  titleText: {
+    fontFamily: 'Lato-Bold',
+    letterSpacing: 0.4,
+    fontSize: 16,
+    color: MAIN_COLOR
+  },
+  body: {
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 20,
+    marginRight: 20
+  },
+  bodyText: {
+    // flex: 1,
+    flexWrap: 'wrap',
+    fontFamily: 'Lato-Regular',
+    letterSpacing: 0.4,
+    fontSize: 16,
+    color: '#74747a',
+    alignSelf: 'center',
+    width: 200,
+    // marginTop: 10,
+    // marginBottom: 20
+  },
+  seperator: {
+    borderBottomColor: '#d5d5e0',
+    borderBottomWidth: 1,
+    alignSelf: 'center',
+    //opacity: 0.26,
+    width: WIDTH - 80
+  },
+  keyBad: {
+    //marginTop: -30
   }
 });

@@ -4,23 +4,21 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //width: WIDTH,  
-    backgroundColor: 'rgb(246, 246, 246)',
-    flexDirection: 'column',
-    //alignItems: 'center',
-    // justifyContent: 'flex-start',
-    marginTop: STATUS_BAR_HEIGHT
+    backgroundColor: "#f6f6f6",
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingTop: 44.5 + STATUS_BAR_HEIGHT,
+    paddingBottom: 24  
+  },
+  profileImage:{
+    width: 80,
+    height: 80,
+    borderRadius: 40
   },
   select: {
     backgroundColor: 'white',
     elevation: 10,
-    shadowColor: "#00000026",
-    shadowOffset: {
-      width: 8,
-      height: 13.9
-    },
-    shadowRadius: 40,
-    shadowOpacity: 1,
+    shadowOpacity: 0.5,
     marginTop: 16
   },
   question: {
@@ -30,13 +28,7 @@ export const styles = StyleSheet.create({
     //height: 450,
     backgroundColor: 'white',
     elevation: 16,
-    shadowColor: "#0000000c",
-    shadowOffset: {
-      width: 4,
-      height: 6.9
-    },
-    shadowRadius: 32,
-    shadowOpacity: 1
+    shadowOpacity: 0.5
   },
   footer: {
     position: 'absolute',

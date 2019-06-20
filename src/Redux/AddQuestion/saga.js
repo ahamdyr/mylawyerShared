@@ -11,9 +11,10 @@ function* submitQuestionSaga(action) {
     const body = yield select(state => state.questionBody)
     const imgs = yield select(state => state.questionImgs)
     const docs = yield select(state => state.questionDocs)
+    const author = yield select(state => state.currentUser.displayName)
     const attachments = [...imgs, ...docs]
     const question = ({
-      topic, title, body, attachments
+      author, topic, title, body, attachments
     })
     yield put(addQuestion(question))
     console.log('question ',question)

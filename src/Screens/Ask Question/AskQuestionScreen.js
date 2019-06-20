@@ -22,6 +22,7 @@ export default class AskQuestion extends React.Component {
       delQuestionDoc,
       setQuestionTopic,
       isLoggedUser,
+      currentUser,
       questionBody,
       questionTitle,
       questionTopic
@@ -62,6 +63,7 @@ export default class AskQuestion extends React.Component {
           setQuestionImg={(y) => setQuestionImg(y)}
           submitQuestion={() => submitQuestion()}
           isLoggedUser={isLoggedUser}
+          currentUser={currentUser}
           questionBody={questionBody}
           questionTitle={questionTitle}
           questionTopic={questionTopic}

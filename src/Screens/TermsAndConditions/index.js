@@ -7,14 +7,14 @@ import {
   navigate,
   goBack
 } from '../../Services/NavigationServices'
-export default class About extends React.Component {
+export default class TermsAndConditions extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <Text
           style={styles.title}
         >
-          My Lawyer
+          Terms and conditions
         </Text>
         <Text
           style={styles.content}

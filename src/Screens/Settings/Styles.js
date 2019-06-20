@@ -2,25 +2,44 @@ import { STATUS_BAR_HEIGHT, WIDTH, MAIN_COLOR, HEIGHT } from '../../Components/C
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  title: {
+    marginTop: 21 + STATUS_BAR_HEIGHT,
+    fontFamily: "LuxiSerif",
+    fontSize: 24.3,
+    fontWeight: "bold",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "center",
+    color: "#0b7f7c"
+  },
+  btn:{
+    marginTop: 22,
+    marginBottom: 25, 
+  },
+  textStyle:{
+    color: "#fa0b0b"
+  },
+  line:{
+    width: 230,
+    height: 1,
+    opacity: 0.26,
+    backgroundColor: "#a0a0a4"
+  },
   container: {
     flex: 1,
-    //width: WIDTH,  
-    backgroundColor: 'rgb(246, 246, 246)',
-    flexDirection: 'column',
-    //alignItems: 'center',
-    // justifyContent: 'flex-start',
-    marginTop: STATUS_BAR_HEIGHT
+    backgroundColor: "#f6f6f6",
+    alignItems: 'center',
+    //justifyContent: 'center',
+  },
+  profileImage:{
+    width: 80,
+    height: 80,
+    borderRadius: 40
   },
   select: {
     backgroundColor: 'white',
     elevation: 10,
-    shadowColor: "#00000026",
-    shadowOffset: {
-      width: 8,
-      height: 13.9
-    },
-    shadowRadius: 40,
-    shadowOpacity: 1,
+    shadowOpacity: 0.5,
     marginTop: 16
   },
   question: {
@@ -30,13 +49,7 @@ export const styles = StyleSheet.create({
     //height: 450,
     backgroundColor: 'white',
     elevation: 16,
-    shadowColor: "#0000000c",
-    shadowOffset: {
-      width: 4,
-      height: 6.9
-    },
-    shadowRadius: 32,
-    shadowOpacity: 1
+    shadowOpacity: 0.5
   },
   footer: {
     position: 'absolute',
@@ -82,12 +95,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: 16
   },
   closeIcon: {
-    width: 16.5,
-    height: 16.5,
-    borderRadius: 0.8,
     position: 'absolute',
-    top: 20,
-    right: 16,
-    left: 90
+    bottom: 24
   }
 });

@@ -1,4 +1,4 @@
-import Settings from './Settings'
+import SideMenu from './SideMenu'
 import {connect} from 'react-redux'
 // import {
   
@@ -15,4 +15,4 @@ const mapDispatchersToProps = dispatch => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchersToProps)(Settings)
+export default connect(mapStateToProps, mapDispatchersToProps)(SideMenu)

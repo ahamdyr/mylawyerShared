@@ -4,23 +4,70 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //width: WIDTH,  
-    backgroundColor: 'rgb(246, 246, 246)',
-    flexDirection: 'column',
-    //alignItems: 'center',
-    // justifyContent: 'flex-start',
-    marginTop: STATUS_BAR_HEIGHT
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    //justifyContent: 'center',
+  },
+  searchBar:{
+    height: 50,
+    width: WIDTH,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingLeft: 17,
+    paddingRight: 15
+  },
+  searchBox:{
+    height: 36,
+    width:WIDTH - 100,   
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: '#f0f0f2',
+    backgroundColor: '#f0f0f2',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  searchText:{    
+    fontFamily: 'Lato-Regular',
+    letterSpacing: 0.35,
+    fontSize: 14
+  },
+  cancelStyle:{
+    height: 30,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent'
+  },
+  cancelTextStyle: {
+    fontFamily: "Lato-Regular",
+    fontSize: 14,
+    fontWeight: "normal",
+    fontStyle: "normal",
+    letterSpacing: 0.35,
+    color: "#797980"
+  },
+  line:{
+    width: WIDTH,
+    marginTop: 7.5,
+    height: 1,
+    backgroundColor: "#d5d5e0"
+  },
+  seperator:{
+    width: WIDTH,
+    marginHorizontal: 16,
+    height: 1,
+    backgroundColor: "#d5d5e0"
+  },
+  profileImage:{
+    width: 80,
+    height: 80,
+    borderRadius: 40
   },
   select: {
     backgroundColor: 'white',
     elevation: 10,
-    shadowColor: "#00000026",
-    shadowOffset: {
-      width: 8,
-      height: 13.9
-    },
-    shadowRadius: 40,
-    shadowOpacity: 1,
+    shadowOpacity: 0.5,
     marginTop: 16
   },
   question: {
@@ -30,13 +77,7 @@ export const styles = StyleSheet.create({
     //height: 450,
     backgroundColor: 'white',
     elevation: 16,
-    shadowColor: "#0000000c",
-    shadowOffset: {
-      width: 4,
-      height: 6.9
-    },
-    shadowRadius: 32,
-    shadowOpacity: 1
+    shadowOpacity: 0.5
   },
   footer: {
     position: 'absolute',

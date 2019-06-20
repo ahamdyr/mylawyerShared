@@ -1,4 +1,4 @@
-import Settings from './Settings'
+import EditMyProfile from './EditMyProfile'
 import {connect} from 'react-redux'
 // import {
   
@@ -6,7 +6,8 @@ import {connect} from 'react-redux'
 
 const mapStateToProps =  state => ({
   isLoggedUser: state.isLoggedUser,
-  userPhoto: state.currentUser.photoURL
+  userPhoto: state.currentUser.photoURL,
+  currentUser: state.currentUser
 })
 
   
@@ -15,4 +16,4 @@ const mapDispatchersToProps = dispatch => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchersToProps)(Settings)
+export default connect(mapStateToProps, mapDispatchersToProps)(EditMyProfile)

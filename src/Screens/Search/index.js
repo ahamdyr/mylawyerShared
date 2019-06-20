@@ -1,21 +1,18 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Search from './Search'
+import {connect} from 'react-redux'
+// import {
+  
+// } from '../../Redux/Search/actions'
 
-export default class Search extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Search!</Text>
-      </View>
-    );
-  }
-}
+const mapStateToProps =  state => ({
+  // isLoggedUser: state.isLoggedUser,
+  // userPhoto: state.currentUser.photoURL
+})
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  
+const mapDispatchersToProps = dispatch => ({
+  
+})
+
+
+export default connect(mapStateToProps, mapDispatchersToProps)(Search)

@@ -23,13 +23,13 @@ export const SignUp = async (confCode, userName) => {
   currentUser.displayName = userName
   updateUserName(userName)
   // console.log('2')
-  let backendToken = base64Token(uid, userToken)
+  // let backendToken = base64Token(uid, userToken)
 
-  let userType = getUserType()
+  // let userType = getUserType()
 
-  let pickedUser = await Register(userType, backendToken)
-  // console.log('3')
-  currentUser = Object.assign({},currentUser, pickedUser)
+  // let pickedUser = await Register(userType, backendToken)
+  // // console.log('3')
+  // currentUser = Object.assign({},currentUser, pickedUser)
 
   await saveUser(currentUser, refreshToken)
   // console.log('4')
@@ -46,11 +46,11 @@ export const SignIn = async (confCode) => {
     refreshToken
   } = await PhoneAuth(confCode)
 
-  let backendToken = base64Token(uid, userToken)
+  // let backendToken = base64Token(uid, userToken)
 
-  let pickedUser = await Login(backendToken)
+  // let pickedUser = await Login(backendToken)
 
-  currentUser = Object.assign(currentUser, pickedUser)
+  // currentUser = Object.assign(currentUser, pickedUser)
 
   await saveUser(currentUser, refreshToken)
 
