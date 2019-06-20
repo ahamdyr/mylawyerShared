@@ -17,7 +17,7 @@ function* submitQuestionSaga(action) {
       author, topic, title, body, attachments
     })
     yield put(addQuestion(question))
-    console.log('question ',question)
+    //console.log('question ',question)
   } catch (error) {
     console.log(error)
   }

@@ -14,7 +14,7 @@ export default class MyQuestionsScreen extends React.Component {
           onSelected={()=>{}}
         />
         <SearchComponent></SearchComponent>
-        <QuestionsList></QuestionsList>
+        <QuestionsList questions={questions}></QuestionsList>
       </View>
     );
   }
