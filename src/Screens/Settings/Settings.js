@@ -10,8 +10,13 @@ import {
 } from '../../Services/NavigationServices'
 import { defaultPicture } from '../../../assets'
 import SeperatorLine from '../../Components/Common/SeperatorLine'
+import { logOut } from '../../Services/AuthServices'
 
 export default class Settings extends React.Component {
+  _logOut = async () => {
+    await logOut()
+    goBack()
+  }
   render() {
     var {
       isLoggedUser,
@@ -47,9 +52,7 @@ export default class Settings extends React.Component {
           <SideMenuBtn
             btnTitle={'Log out'}
             style={styles.btn}
-          // onPress={()=> {
-          //   navigate('TermsAndConditions')
-          // }}
+            onPress={()=>this._logOut()}
           />
           <SeperatorLine
             style={styles.line}

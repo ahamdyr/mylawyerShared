@@ -22,6 +22,23 @@ export const saveUser = async (currentUser, refreshToken) => {
   }
 }
 
+export const logOut = async () => {
+  try {
+    //console.log('currentUser ', currentUser)
+    Store.dispatch(setCurrentUser({}))
+    Store.dispatch(setLoggedUser(false))     
+    await AsyncStorage.removeItem('currentUser')
+    alert('You are logged out!')    
+    //await AsyncStorage.setItem('refreshToken', JSON.stringify(refreshToken))
+    // let accessToken = currentUser.accessToken
+    // Store.dispatch(setAccessToken(accessToken))
+    // await AsyncStorage.setItem('accessToken', JSON.stringify(accessToken))  
+      
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const getUser = async () => {
   let currentUserJson = await AsyncStorage.getItem('currentUser')
   if(currentUserJson !== null){    
