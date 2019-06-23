@@ -22,7 +22,6 @@ export default class PrivateQuestionScreen extends React.Component {
       answers,
       attachs
     } = this.props
-    console.log('attachs ',attachs)
     return (
       <View style={styles.container}>
 
