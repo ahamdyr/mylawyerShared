@@ -27,6 +27,7 @@ export default class Footer extends React.PureComponent {
       if (this.props.questionTitle && this.props.questionBody && !_.isEmpty(this.props.questionTopic)) {
         this.props.submitQuestion()
         alert('Your question has been submitted')
+        navigate('MyQuestions')
       }
       else {
         alert('Your query must have at least topic, title and body')

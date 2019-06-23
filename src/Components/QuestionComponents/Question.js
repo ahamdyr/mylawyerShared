@@ -13,9 +13,12 @@ import {
 import { STATUS_BAR_HEIGHT, WIDTH, HEIGHT, MAIN_COLOR } from '../Constants'
 import SeperatorLine from '../Common/SeperatorLine'
 import KeyboardSpacer from 'react-native-keyboard-spacer'
+import KeyboardListener from 'react-native-keyboard-listener'
 
 export default class QuestionComponent extends React.PureComponent {
-
+  state={
+    focused: true
+  }
   _titleChange = (val) => {
     this.props.setQuestionTitle(val)
   }
@@ -44,19 +47,28 @@ export default class QuestionComponent extends React.PureComponent {
     var {
       partial
     } = this.props
+    var {
+      focused
+    } = this.state
     return (
       <KeyboardAvoidingView
-        keyboardVerticalOffset={20}
+        keyboardVerticalOffset={STATUS_BAR_HEIGHT + 10}
         style={[
           styles.questionContainer,
-          partial ? styles.partial : styles.full
+          partial || focused ? styles.partial : styles.full
         ]}
         behavior={'padding'}
+        enabled
       >
+        <KeyboardListener          
+          onDidShow={() => this.setState({ focused: true }) }
+          onDidHide={() => this.setState({ focused: false })}
+        />
         <TouchableOpacity
           activeOpacity={1}
           style={[
             styles.title,
+            partial || focused ? { flex: 0.2 } : { flex: 0.125 }
           ]}
           onPress={() => this._titleKeyBoardToggle()}>
           <TextInput
@@ -68,7 +80,7 @@ export default class QuestionComponent extends React.PureComponent {
             placeholder={'Title '}
             onChangeText={this._titleChange}
             autoFocus
-            shouldCancelWhenOutside={true}
+            //shouldCancelWhenOutside={true}
           />
         </TouchableOpacity>
 
@@ -78,11 +90,13 @@ export default class QuestionComponent extends React.PureComponent {
           activeOpacity={1}
           style={[
             styles.body,
-            partial ? { flex: 3 } : { flex: 8 }
+            partial || focused ? { flex: 0.75 } : { flex: 0.875 }
           ]}
           onPress={() => this._bodyKeyBoardToggle()}>
           <ScrollView
             style={styles.body}
+            // keyboardDismissMode={'interactive'}
+            // keyboardShouldPersistTaps={'never'}
           >
             <TextInput
               style={styles.bodyText}
@@ -93,7 +107,8 @@ export default class QuestionComponent extends React.PureComponent {
               placeholder={'Write your problem here'}
               onChangeText={this._bodyChange}
               multiline={true}
-              shouldCancelWhenOutside={true}
+              //onEndEditing={()=>Keyboard.dismiss}
+              //shouldCancelWhenOutside={true}
             />
           </ScrollView >
         </TouchableOpacity>
