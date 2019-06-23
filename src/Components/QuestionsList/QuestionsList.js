@@ -68,7 +68,8 @@ export default class QuestionsList extends React.Component {
   renderQuestions = (questions) => {
     return(
       <FlatList
-          data={questions}
+          //data={questions}
+          data={this.props.questions}
           keyExtractor={this._keyExtractor}
           renderItem={this.renderItem}
           //numColumns={2}

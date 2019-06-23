@@ -7,6 +7,8 @@ export const DEL_QUESTION_IMG = 'DEL_QUESTION_IMG'
 export const SUBMIT_QUESTION = 'SUBMIT_QUESTION'
 export const ADD_QUESTION = 'ADD_QUESTION'
 export const SET_QUESTION_TOPIC = 'SET_QUESTION_TOPIC'
+export const ADD_ANSWER = 'ADD_ANSWER'
+export const ADD_ATTACHS = 'ADD_ATTACHS'
 
 export const setQuestionTopic = (topic) => {
   return{
@@ -67,5 +69,19 @@ export const addQuestion = (question) =>{
   return{
     type: ADD_QUESTION,
     question
+  }
+}
+
+export const addAnswer = (answer) => {
+  return{
+    type: ADD_ANSWER,
+    answer
+  }
+}
+
+export const addAttachs = (attachs) => {
+  return{
+    type: ADD_ATTACHS,
+    attachs
   }
 }

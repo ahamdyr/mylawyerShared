@@ -4,7 +4,7 @@ import { WIDTH } from '../Constants';
 import {topic} from '../../../assets'
 export default class Topic extends React.PureComponent{
   render(){
-    const {authorName, qIndex, content} = this.props
+    const {authorName, topicName, title} = this.props
     return(
       <View style={[styles.container, this.props.style]}>
 
@@ -20,7 +20,7 @@ export default class Topic extends React.PureComponent{
           />
 
           <Text style={styles.indexStyle}>
-            Topic {qIndex}
+            {topicName}
           </Text>
 
         </View>
@@ -28,7 +28,7 @@ export default class Topic extends React.PureComponent{
         <View style={styles.lower}>
 
           <Text style={styles.contentStyle}>
-            {content}
+            {title}
           </Text>
 
         </View>

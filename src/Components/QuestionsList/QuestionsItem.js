@@ -11,7 +11,16 @@ class QuestionsItem extends React.PureComponent {
   render() {
     let isLoggedUser = Store.getState().isLoggedUser
     const routeName =  this.props.navigation.state.routeName
-    const {MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate, isAnswered } = this.props.item.item
+    const {
+      //MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate, isAnswered       
+        id,
+        title,
+        body,
+        topic,
+        addedOn,
+        by,
+        lastActivity
+    } = this.props.item.item
     return (
       <View style={styles.questCard}>
         <TouchableOpacity
@@ -25,16 +34,16 @@ class QuestionsItem extends React.PureComponent {
           }}
         >
           <Topic
-            authorName={authorName}
-            qIndex={qIndex}
-            content={content}
+            authorName={by.name}
+            topicName={topic.name}
+            title={title}
           />
           {
-            isAnswered ?
+            lastActivity.type == 'answer' ?
             <AnswerBy
-              MainPhotoURL={MainPhotoURL}
-              answeredBy={answeredBy}
-              answerDate={answerDate}
+              MainPhotoURL={lastActivity.by.photo}
+              answeredBy={lastActivity.by.name}
+              answerDate={lastActivity.addedOn}
               style={{
                 marginLeft: 16,
                 marginTop: 15.5,

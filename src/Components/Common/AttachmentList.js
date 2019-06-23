@@ -19,7 +19,7 @@ export default class AttachmentList extends React.PureComponent {
   _renderItem = ({ item }) => {
     return (
       <TouchableWithoutFeedback
-        onPress={()=> Linking.openURL(item.uri)}
+        onPress={()=> Linking.openURL(item.link)}
         style={{
           
           // justifyContent: 'space-between',
@@ -31,11 +31,11 @@ export default class AttachmentList extends React.PureComponent {
           style={styles.btnStyle}
         >
           <Text style={styles.btnTxtStyle}>
-            {item.name}
+            {item.id}
           </Text>
         </View>
         <Image          
-          source={{ uri: item.uri }}
+          source={{ uri: item.link }}
           style={{
             width: 120,
             height: 160,
@@ -52,7 +52,8 @@ export default class AttachmentList extends React.PureComponent {
       <View style={styles.container}>
         <FlatList
           style={{marginRight: 5}}
-          data={this._list}
+          //data={this._list}
+          data={this.props.attachs}
           renderItem={this._renderItem}
           horizontal={true}
           ItemSeparatorComponent={() => <View style={{margin: 15}}/>}

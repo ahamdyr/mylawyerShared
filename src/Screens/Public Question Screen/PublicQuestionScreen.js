@@ -4,11 +4,10 @@ import Topic from '../../Components/Common/Topic'
 import AnswerBy from '../../Components/Common/AnswerBy'
 import BlackX from '../../Components/Common/BlackX'
 import { STATUS_BAR_HEIGHT, WIDTH } from '../../Components/Constants'
-import AttachmentBtn from '../../Components/Common/AttachmentBtn'
 import WaitingAnswer from '../../Components/Common/WaitingAnswer'
-export default class PrivateQuestionScreen extends React.Component {
+export default class PublicQuestionScreen extends React.Component {
   render() {
-    const { 
+    const {
       //MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate, isAnswered, answer 
       id,
       title,
@@ -19,10 +18,8 @@ export default class PrivateQuestionScreen extends React.Component {
       lastActivity
     } = this.props.navigation.getParam('question')
     var {
-      answers,
-      attachs
+      answers
     } = this.props
-    console.log('attachs ',attachs)
     return (
       <View style={styles.container}>
 
@@ -34,10 +31,6 @@ export default class PrivateQuestionScreen extends React.Component {
           authorName={by.name}
           topicName={topic.name}
           title={title}
-        />
-        <AttachmentBtn
-          attachs={attachs[id]}
-        //style={styles.Attachments}
         />
         {
           lastActivity.type == 'answer' ?
@@ -77,13 +70,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     borderBottomColor: '#d5d5e0'
   },
-  Attachments: {
-    marginTop: 22.5,
-    marginBottom: 31,
-  },
   answered: {
     marginLeft: 16,
-    marginTop: 31,
+    marginTop: 19,
     marginBottom: 17,
   },
   textConatin: {

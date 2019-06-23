@@ -32,7 +32,7 @@ export default class AskQuestion extends React.Component {
       <View style={styles.container}>
 
         <BlackX
-          onPress={() => this.props.navigation.goBack()}
+          onPress={() => this.props.navigation.navigate('MyQuestions')}
         />
 
         <AskTitle />

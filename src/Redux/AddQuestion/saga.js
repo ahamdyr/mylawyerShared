@@ -1,22 +1,60 @@
 import { call, put, takeEvery, select } from 'redux-saga/effects'
 import {
   SUBMIT_QUESTION,
-  addQuestion
+  addQuestion,
+  addAttachs
 } from './actions'
 
 function* submitQuestionSaga(action) {
   try {
-    const topic = yield select(state => state.questionTopic)
-    const title = yield select(state => state.questionTitle)
-    const body = yield select(state => state.questionBody)
-    const imgs = yield select(state => state.questionImgs)
-    const docs = yield select(state => state.questionDocs)
-    const author = yield select(state => state.currentUser.displayName)
-    const attachments = [...imgs, ...docs]
-    const question = ({
-      author, topic, title, body, attachments
-    })
+    var preId = yield select(state => state.questions[state.questions.length - 1].id)
+    var nextId = preId + 1
+    var topic = yield select(state => state.questionTopic)
+    var title = yield select(state => state.questionTitle)
+    var body = yield select(state => state.questionBody)
+    var imgs = yield select(state => state.questionImgs)
+    var docs = yield select(state => state.questionDocs)
+    var author = yield select(state => state.currentUser.displayName)
+    var authorPhoto = yield select(state => state.currentUser.photo)
+    var attachments = [...imgs, ...docs].map((e,index) => ({
+        id: index + 1,
+        type: "image|document",
+        isPublic: true,
+        link: e.uri
+    }))
+    var question = {
+      id: nextId,
+      title: title,
+      body: body,
+      topic: {
+        id: topic.id,
+        name: topic.name
+      },
+      addedOn: "01/01/19",
+      by: {
+        id: 4,
+        name: author,
+        photo: authorPhoto || ''
+      },
+      lastActivity: {
+        type: "comment",
+        addedOn: "01/01/19",
+        isAccepted: true,
+        isRejected: true,
+        isExpired: true,
+        by: {
+          id: 1,
+          name: 'Amir Fawzy',
+          type: "lawyer|user",
+          photo: ''
+        }
+      }
+    }
+    var attachs = {}
+    attachs[nextId] = attachments
+    //console.log('attachments  ',attachs)
     yield put(addQuestion(question))
+    yield put(addAttachs(attachs))
     //console.log('question ',question)
   } catch (error) {
     console.log(error)

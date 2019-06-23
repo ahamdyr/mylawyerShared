@@ -6,8 +6,15 @@ import {
   SET_QUESTION_IMG,
   SET_QUESTION_TITLE,
   ADD_QUESTION,
-  SET_QUESTION_TOPIC
+  SET_QUESTION_TOPIC,
+  ADD_ANSWER,
+  ADD_ATTACHS
 } from './actions'
+import { 
+  mockAllQuestions,
+  mockAnswers,
+  mockAttachs 
+} from '../../Services/BackendServices/MockData'
 
 export const questionTopic = (state = {}, action) => {
   switch (action.type) {
@@ -58,10 +65,28 @@ export const questionImgs = (state = [], action) => {
   }
 }
 
-export const questions = (state = [], action) => {
+export const questions = (state = mockAllQuestions, action) => {
   switch (action.type) {
     case ADD_QUESTION:
-      return [...state, action.question]
+      return [action.question, ...state ]
+    default:
+      return state
+  }
+}
+
+export const answers = (state = mockAnswers, action) => {
+  switch (action.type) {
+    case ADD_ANSWER:
+      return [...state, action.answer]
+    default:
+      return state
+  }
+}
+
+export const attachs = (state = mockAttachs, action) => {
+  switch (action.type) {
+    case ADD_ATTACHS:
+      return Object.assign(state, action.attachs)
     default:
       return state
   }
