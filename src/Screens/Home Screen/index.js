@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  StyleSheet
+} from 'react-native'
 import MenuIcon from '../../Components/HomeHeaderIcons/Menu Icon'
 import SearchIcon from '../../Components/HomeHeaderIcons/Search Icon'
 import HeaderTitle from '../../Components/HomeHeaderIcons/Header Title'
@@ -27,8 +30,14 @@ export default HomeStack = createStackNavigator({
 },{  
   headerLayoutPreset :"center",
   defaultNavigationOptions: ({ navigation }) => ({
-    headerRight: <SearchIcon onPress={() =>navigation.navigate('Search')}/>,
-    headerLeft: <MenuIcon onPress={() =>navigation.navigate('SideMenu')}/>  ,
+    headerRight: <SearchIcon 
+      onPress={() =>navigation.navigate('Search')}
+      style={styles.searchIconStyle}
+    />,
+    headerLeft: <MenuIcon 
+      onPress={() =>navigation.navigate('SideMenu')}
+      style={styles.menuIconStyle}
+    />  ,
     //headerBackTitle: 'null',
     headerTitle:<HeaderTitle title={`My Lawyer`}/>,
     headerStyle:{
@@ -38,3 +47,15 @@ export default HomeStack = createStackNavigator({
     }
   }),
 });
+
+
+const styles = StyleSheet.create({
+  menuIconStyle : {
+    width: 50,
+    height: 50,
+  },
+  searchIconStyle: {
+    width: 50,
+    height: 50
+  }
+})

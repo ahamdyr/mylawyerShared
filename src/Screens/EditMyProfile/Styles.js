@@ -10,6 +10,8 @@ export const styles = StyleSheet.create({
     fontWeight: "normal",
     fontStyle: "normal",
     letterSpacing: 0,
+    textAlign: 'center',
+    width: WIDTH,
     color: "#0b7f7c"
   },
   line: {
@@ -26,6 +28,8 @@ export const styles = StyleSheet.create({
     fontWeight: "normal",
     fontStyle: "normal",
     letterSpacing: 0,
+    textAlign: 'center',
+    width: WIDTH,
     color: "#0b7f7c"
   },
   camera:{

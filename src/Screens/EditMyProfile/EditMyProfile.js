@@ -1,5 +1,14 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, ImageBackground, TextInput } from 'react-native';
+import { 
+  Text, 
+  View, 
+  TouchableOpacity, 
+  ImageBackground, 
+  TextInput, 
+  Keyboard, 
+  TouchableWithoutFeedback,
+  KeyboardAvoidingView 
+} from 'react-native';
 import { styles } from './Styles'
 import {
   navigate,
@@ -9,84 +18,171 @@ import { defaultPicture } from '../../../assets'
 import ImageIcon from '../../Components/Common/ImageIcon'
 import SubmitBtn from '../../Components/Common/SubmitBtn'
 import SeperatorLine from '../../Components/Common/SeperatorLine'
-
+import {
+  STATUS_BAR_HEIGHT
+} from '../../Components/Constants'
 import { editProfileIcon } from '../../../assets'
+import { uploadFile, uploadImage } from '../../Services/FilesServices'
+import {isValidEmailAddress} from '../../Utils/InputValidation'
+import { updateUserProfile } from '../../Services/AuthServices'
 export default class EditMyProfile extends React.Component {
+  state={
+    displayName:'',
+    email:'',
+    phoneNumber:'',
+    photoURL:''
+  }
+  _edit_Photo = async () => {
+    let doc = await uploadFile()
+    doc ? this.setState({photoURL: doc.uri}) : null
+  }
+  _edit_Name = (val) => {
+    this.state.displayName = val
+  }
+  _edit_Email = (val) => {
+    this.state.email = val
+  }
+  _edit_Phone_Number = (val) => {
+    this.state.phoneNumber = val
+  }
+  _onSubmit = async() => {
+    if(this.state.email){
+      if (!isValidEmailAddress(this.state.email)) {
+        alert('Badly formatted email !')
+        return
+      }
+    }
+    else {
+      this.state.email = this.props.currentUser.email
+    }
+
+    if(this.state.phoneNumber){
+      if (this.state.phoneNumber.length < 10) {
+        alert('Provide valid phone number !')
+        return
+      }
+    }
+    else {
+      this.state.phoneNumber = this.props.currentUser.phoneNumber
+    }
+
+    if (this.state.displayName) {
+      if (this.state.displayName.length == 0){
+        alert('Invalid user name !')
+        return
+      }
+    }
+    else{
+      this.state.displayName = this.props.currentUser.displayName
+    } 
+
+    if (this.state.photoURL) {
+      await updateUserProfile(this.state)
+      goBack()      
+    }
+    else {
+      this.state.photoURL = this.props.userPhoto
+      await updateUserProfile(this.state)
+      goBack()
+    }
+  }
   render() {
     var {
       userPhoto,
       currentUser
     } = this.props
+    var {
+      displayName,
+      email,
+      phoneNumber,
+      photoURL
+    } = this.state
     return (
-      <View style={styles.container}>
-        <TouchableOpacity 
-          onPress={() => goBack()}
-          style={styles.headerStyle}
+      <TouchableWithoutFeedback
+        style={styles.container}
+        accessible={false}
+        onPress={() => Keyboard.dismiss}
+      >
+        <KeyboardAvoidingView
+          keyboardVerticalOffset={STATUS_BAR_HEIGHT}
+          style={styles.container}
+          behavior={'padding'}
+          enabled
         >
-          <Text style={styles.cancel}>
-            Cancel
-          </Text>
-        </TouchableOpacity>
-        <View style={styles.editContainer}>
-          <View
-            style={styles.profileImage}
+          <TouchableOpacity
+            onPress={() => goBack()}
+            style={styles.headerStyle}
           >
-            <ImageBackground
-              source={userPhoto ? { uri: userPhoto } : defaultPicture}
+            <Text style={styles.cancel}>
+              Cancel
+          </Text>
+          </TouchableOpacity>
+          <View style={styles.editContainer}>
+            <TouchableOpacity
               style={styles.profileImage}
+              onPress={()=>this._edit_Photo()}
             >
-              <ImageIcon 
-                style={styles.camera}
-                source={editProfileIcon}
-              />
-            </ImageBackground>
+              <ImageBackground
+                source={
+                  photoURL ? {uri: photoURL} : userPhoto ? { uri: userPhoto } : defaultPicture                  
+                }
+                style={styles.profileImage}
+              >
+                <ImageIcon
+                  style={styles.camera}
+                  source={editProfileIcon}
+                />
+              </ImageBackground>
+            </TouchableOpacity>
+
+            <TextInput
+              underlineColorAndroid={'transparent'}
+              placeholder={currentUser.displayName}
+              onChangeText={this._edit_Name}
+              style={styles.name}
+            />
+            {/* <SeperatorLine
+              style={styles.line}
+            />
+            <TextInput
+              underlineColorAndroid={'transparent'}
+              placeholder={'@osama123'}
+              //onChange={}
+              style={styles.inputStyle}
+            /> */}
+            <SeperatorLine
+              style={styles.line}
+            />
+            <TextInput
+              underlineColorAndroid={'transparent'}
+              placeholder={currentUser.email || 'email'}
+              onChangeText={this._edit_Email}
+              style={styles.inputStyle}
+            />
+            <SeperatorLine
+              style={styles.line}
+            />
+            <TextInput
+              underlineColorAndroid={'transparent'}
+              placeholder={currentUser.phoneNumber || '+2 01234567890'}
+              onChangeText={this._edit_Phone_Number}
+              style={styles.inputStyle}
+            />
+            <SeperatorLine
+              style={styles.line}
+            />
           </View>
-          
-          <TextInput
-            underlineColorAndroid={'transparent'}
-            value={currentUser.displayName}
-            //onChange={}
-            style={styles.name}
-          />
-          <SeperatorLine
-            style={styles.line}
-          />
-          <TextInput
-            underlineColorAndroid={'transparent'}
-            value={'@osama123'}
-            //onChange={}
-            style={styles.inputStyle}
-          />
-          <SeperatorLine
-            style={styles.line}
-          />
-          <TextInput
-            underlineColorAndroid={'transparent'}
-            value={currentUser.email}
-            //onChange={}
-            style={styles.inputStyle}
-          />
-          <SeperatorLine
-            style={styles.line}
-          />
-          <TextInput
-            underlineColorAndroid={'transparent'}
-            value={currentUser.phoneNumber || '+2 0123456789'}
-            //onChange={}
-            style={styles.inputStyle}
-          />
-          <SeperatorLine
-            style={styles.line}
-          />
-        </View>
-        
-        <SubmitBtn
+
+          <SubmitBtn
             style={styles.saveBtn}
             text={'Save'}
             textStyle={styles.saveText}
-            onPress={() => goBack()}
+            onPress={() => this._onSubmit()}
           />
-      </View>
+
+
+        </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
     );
   }
 }

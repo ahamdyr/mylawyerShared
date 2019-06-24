@@ -22,6 +22,15 @@ export const saveUser = async (currentUser, refreshToken) => {
   }
 }
 
+export const updateUserProfile = async (newData) => {
+  try {
+    Store.dispatch(setCurrentUser(newData))
+    await AsyncStorage.setItem('currentUser', JSON.stringify(newData))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const logOut = async () => {
   try {
     //console.log('currentUser ', currentUser)
