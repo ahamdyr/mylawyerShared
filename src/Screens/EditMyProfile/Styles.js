@@ -37,6 +37,7 @@ export const styles = StyleSheet.create({
     height: 28,
   },
   editContainer:{
+    flex: 1,
     marginTop: 10,
     width: WIDTH,
     alignItems: 'center',

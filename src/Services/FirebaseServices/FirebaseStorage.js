@@ -1,9 +1,7 @@
 import firebase from './FirebaseApp'
 import './FirebaseTimeout'
 
-export const addToStorage = async (path, file) => {
-
-  const uri = file.uri
+export const addToStorage = async (path, uri) => {
 
   const blob = await new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();

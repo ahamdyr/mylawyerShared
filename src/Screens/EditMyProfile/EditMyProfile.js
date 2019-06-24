@@ -25,6 +25,12 @@ import { editProfileIcon } from '../../../assets'
 import { uploadFile, uploadImage } from '../../Services/FilesServices'
 import {isValidEmailAddress} from '../../Utils/InputValidation'
 import { updateUserProfile } from '../../Services/AuthServices'
+import {
+  updateUserEmail,
+  updateUserName,
+  updateUserPhoneNumber,
+  updateUserPhoto
+} from '../../Services/FirebaseServices/UpdateUser'
 export default class EditMyProfile extends React.Component {
   state={
     displayName:'',
@@ -51,6 +57,7 @@ export default class EditMyProfile extends React.Component {
         alert('Badly formatted email !')
         return
       }
+      await updateUserEmail(this.state.email)
     }
     else {
       this.state.email = this.props.currentUser.email
@@ -61,6 +68,7 @@ export default class EditMyProfile extends React.Component {
         alert('Provide valid phone number !')
         return
       }
+      await updateUserPhoneNumber(this.state.phoneNumber)
     }
     else {
       this.state.phoneNumber = this.props.currentUser.phoneNumber
@@ -71,12 +79,15 @@ export default class EditMyProfile extends React.Component {
         alert('Invalid user name !')
         return
       }
+      await updateUserName(this.state.displayName)
     }
     else{
       this.state.displayName = this.props.currentUser.displayName
     } 
 
     if (this.state.photoURL) {
+      this.state.photoURL = await updateUserPhoto(this.state.photoURL)
+      console.log('this.state  ',this.state)
       await updateUserProfile(this.state)
       goBack()      
     }
@@ -98,11 +109,6 @@ export default class EditMyProfile extends React.Component {
       photoURL
     } = this.state
     return (
-      <TouchableWithoutFeedback
-        style={styles.container}
-        accessible={false}
-        onPress={() => Keyboard.dismiss}
-      >
         <KeyboardAvoidingView
           keyboardVerticalOffset={STATUS_BAR_HEIGHT}
           style={styles.container}
@@ -117,7 +123,12 @@ export default class EditMyProfile extends React.Component {
               Cancel
           </Text>
           </TouchableOpacity>
-          <View style={styles.editContainer}>
+
+          <TouchableOpacity
+            style={styles.editContainer}
+            onPress={()=>Keyboard.dismiss()}
+            activeOpacity={1}
+          >
             <TouchableOpacity
               style={styles.profileImage}
               onPress={()=>this._edit_Photo()}
@@ -141,15 +152,6 @@ export default class EditMyProfile extends React.Component {
               onChangeText={this._edit_Name}
               style={styles.name}
             />
-            {/* <SeperatorLine
-              style={styles.line}
-            />
-            <TextInput
-              underlineColorAndroid={'transparent'}
-              placeholder={'@osama123'}
-              //onChange={}
-              style={styles.inputStyle}
-            /> */}
             <SeperatorLine
               style={styles.line}
             />
@@ -171,7 +173,7 @@ export default class EditMyProfile extends React.Component {
             <SeperatorLine
               style={styles.line}
             />
-          </View>
+          </TouchableOpacity>
 
           <SubmitBtn
             style={styles.saveBtn}
@@ -182,7 +184,6 @@ export default class EditMyProfile extends React.Component {
 
 
         </KeyboardAvoidingView>
-      </TouchableWithoutFeedback>
     );
   }
 }
