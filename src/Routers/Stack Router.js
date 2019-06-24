@@ -11,6 +11,7 @@ import Settings from '../Screens/Settings'
 import ContactUs from '../Screens/ContactUs'
 import TermsAndConditions from '../Screens/TermsAndConditions'
 import About from '../Screens/About'
+import ResetPassword from '../Screens/ResetPassword'
 
 const RootStack = createStackNavigator({
   TabRouter:{
@@ -39,6 +40,9 @@ const RootStack = createStackNavigator({
   },
   About:{
     screen: About
+  },
+  ResetPassword:{
+    screen: ResetPassword
   }
 },{  
   initialRouteName: "TabRouter",

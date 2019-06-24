@@ -11,10 +11,17 @@ import {
 import { defaultPicture } from '../../../assets'
 import SeperatorLine from '../../Components/Common/SeperatorLine'
 import { logOut } from '../../Services/AuthServices'
+import { deleteAccount } from '../../Services/FirebaseServices/UserSettings'
 
 export default class Settings extends React.Component {
   _logOut = async () => {
     await logOut()
+    goBack()
+  }
+  _deleteAccount = async () => {
+    await logOut()
+    await deleteAccount()
+    alert('Your account has been deleted')
     goBack()
   }
   render() {
@@ -44,7 +51,7 @@ export default class Settings extends React.Component {
           <SideMenuBtn
             btnTitle={'Reset Password'}
             style={styles.btn}
-          //onPress={()=>navigate('ContactUs')}
+            onPress={()=>navigate('ResetPassword')}
           />
           <SeperatorLine
             style={styles.line}
@@ -61,9 +68,7 @@ export default class Settings extends React.Component {
             btnTitle={'Delete Account'}
             style={styles.btn}
             textStyle={styles.textStyle}
-          // onPress={()=> {
-          //   navigate('About')
-          // }}
+            onPress={()=>this._deleteAccount()}
           />
           <SeperatorLine
             style={styles.line}
