@@ -4,8 +4,8 @@ import { saveUser, getUserType } from '../AuthServices'
 import { Alert } from 'react-native'
 import { goBack, navigate } from '../NavigationServices'
 import { Linking, WebBrowser } from 'expo'
-import { PhoneAuth, confirmationResult } from '../FirebaseServices/PhoneAuth'
-import { updateUserName } from '../FirebaseServices/UpdateUser'
+import { PhoneAuth, confirmationResult, PhoneUpdate } from '../FirebaseServices/PhoneAuth'
+import { updateUserName, updateUserPhoneNumber } from '../FirebaseServices/UpdateUser'
 import Store from '../../Redux/Store'
 
 const captchaUrl = `https://my-lawyer-dea44.web.app/?appurl=${Linking.makeUrl('')}`
@@ -36,6 +36,17 @@ export const SignUp = async (confCode, userName) => {
     // console.log('4')
     Alert.alert('LogIn', 'You logged in successfully')
     navigate('App')
+  } catch (error) {
+    alert(`${error} \nTry again`)
+  }
+}
+
+export const Update = async (confCode) => {
+  try {
+    navigate('Spinner')
+    var authCredential = await PhoneUpdate(confCode)
+    await updateUserPhoneNumber(authCredential)
+    navigate('SideMenu')
   } catch (error) {
     alert(`${error} \nTry again`)
   }

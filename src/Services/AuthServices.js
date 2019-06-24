@@ -3,8 +3,13 @@ import { AsyncStorage } from 'react-native'
 import {
   setLoggedUser,
   setCurrentUser,
-  setAccessToken
+  setAccessToken,
+  setPhoneNumber
 } from '../Redux/Auth/actions'
+import {
+    navigate,
+    goBack
+} from './NavigationServices'
 
 export const saveUser = async (currentUser, refreshToken) => {
   try {
@@ -29,6 +34,13 @@ export const updateUserProfile = async (newData) => {
   } catch (error) {
     console.log(error)
   }
+}
+
+export const updateUserPhoneNumber = async (phoneNumber) => {
+  //navigate('Spinner')
+  Store.dispatch(setPhoneNumber(phoneNumber))
+  navigate('PhoneVerification',{action: 'update'})
+  //goBack()
 }
 
 export const logOut = async () => {

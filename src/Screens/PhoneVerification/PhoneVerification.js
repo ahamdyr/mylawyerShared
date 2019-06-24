@@ -16,7 +16,8 @@ import { MAIN_COLOR, WIDTH } from '../../Components/Constants'
 import { 
   requestCode,
   SignIn,
-  SignUp
+  SignUp,
+  Update
 } from '../../Services/Login Services/PhoneLogin'
 
 export default class PhoneVerification extends Component {
@@ -57,6 +58,7 @@ export default class PhoneVerification extends Component {
     let action = this.props.navigation.state.params.action
     if(action == 'login') SignIn(this.confCode)
     else if (action == 'signUp') SignUp(this.confCode, this.props.userName)
+    else if (action == 'update') Update(this.confCode) 
   }
 
 

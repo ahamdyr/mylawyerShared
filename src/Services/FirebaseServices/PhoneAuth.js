@@ -2,10 +2,12 @@ import firebase from './FirebaseApp'
 import 'firebase/auth'
 
 var confirmResult;
+var verificationId;
 
 export const confirmationResult = async (phoneNumber, captchaVerifier) => {
   try {
     confirmResult = await firebase.auth().signInWithPhoneNumber(phoneNumber, captchaVerifier)
+    verificationId = confirmResult.verificationId
   } catch (e) {
     alert(e)
   }
@@ -40,4 +42,8 @@ export const PhoneAuth = async (confCode) => {
     .catch(err => {
       alert(err)
     })
+}
+
+export const PhoneUpdate = async (confCode) => {
+  return firebase.auth.PhoneAuthProvider.credential(verificationId, confCode)
 }

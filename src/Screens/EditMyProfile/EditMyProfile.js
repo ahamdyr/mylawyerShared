@@ -28,9 +28,9 @@ import { updateUserProfile } from '../../Services/AuthServices'
 import {
   updateUserEmail,
   updateUserName,
-  updateUserPhoneNumber,
   updateUserPhoto
 } from '../../Services/FirebaseServices/UpdateUser'
+import { updateUserPhoneNumber } from '../../Services/AuthServices'
 export default class EditMyProfile extends React.Component {
   state={
     displayName:'',
@@ -52,6 +52,7 @@ export default class EditMyProfile extends React.Component {
     this.state.phoneNumber = val
   }
   _onSubmit = async() => {
+
     if(this.state.email){
       if (!isValidEmailAddress(this.state.email)) {
         alert('Badly formatted email !')
@@ -61,18 +62,7 @@ export default class EditMyProfile extends React.Component {
     }
     else {
       this.state.email = this.props.currentUser.email
-    }
-
-    if(this.state.phoneNumber){
-      if (this.state.phoneNumber.length < 10) {
-        alert('Provide valid phone number !')
-        return
-      }
-      await updateUserPhoneNumber(this.state.phoneNumber)
-    }
-    else {
-      this.state.phoneNumber = this.props.currentUser.phoneNumber
-    }
+    }    
 
     if (this.state.displayName) {
       if (this.state.displayName.length == 0){
@@ -87,14 +77,24 @@ export default class EditMyProfile extends React.Component {
 
     if (this.state.photoURL) {
       this.state.photoURL = await updateUserPhoto(this.state.photoURL)
-      console.log('this.state  ',this.state)
-      await updateUserProfile(this.state)
-      goBack()      
     }
     else {
       this.state.photoURL = this.props.userPhoto
+    }
+
+    if(this.state.phoneNumber){
+      if (this.state.phoneNumber.length < 10) {
+        alert('Provide valid phone number !')
+        return
+      }
+      await updateUserPhoneNumber(this.state.phoneNumber)
       await updateUserProfile(this.state)
-      goBack()
+      //navigate('SideMenu')
+    }
+    else {
+      this.state.phoneNumber = this.props.currentUser.phoneNumber
+      await updateUserProfile(this.state)
+      navigate('SideMenu')
     }
   }
   render() {
@@ -159,6 +159,7 @@ export default class EditMyProfile extends React.Component {
               underlineColorAndroid={'transparent'}
               placeholder={currentUser.email || 'email'}
               onChangeText={this._edit_Email}
+              keyboardType={'email-address'}
               style={styles.inputStyle}
             />
             <SeperatorLine
@@ -167,6 +168,7 @@ export default class EditMyProfile extends React.Component {
             <TextInput
               underlineColorAndroid={'transparent'}
               placeholder={currentUser.phoneNumber || '+2 01234567890'}
+              keyboardType={'number-pad'}
               onChangeText={this._edit_Phone_Number}
               style={styles.inputStyle}
             />
