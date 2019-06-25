@@ -1,10 +1,6 @@
 import axios from 'axios'
-import { mockTopics } from './MockData'
+
 export const getTopicsApi = async (pageToken) => {  
-  // return {
-  //   topics: mockTopics,
-  //   newPageToken: ''
-  // }
   return new Promise((resolve, reject) => {
     axios.get(
       `topics/?page=${pageToken}`,    
