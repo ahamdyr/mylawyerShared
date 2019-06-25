@@ -1,18 +1,18 @@
 import LawyerDetails from './LawyerDetails'
 import {connect} from 'react-redux'
-// import {
-  
-// } from '../../Redux/SideMenu/actions'
+import {
+  getLawyerDetailsRequest
+} from '../../Redux/LawyerDetails/actions'
 
 const mapStateToProps =  state => ({
-  isLoggedUser: state.isLoggedUser,
-  userPhoto: state.currentUser.photoURL,
+  getLawyerDetailsSuccess: state.getLawyerDetailsSuccess,
+  getLawyerDetailsLoading: state.getLawyerDetailsLoading,
   currentUser: state.currentUser
 })
 
   
 const mapDispatchersToProps = dispatch => ({
-  
+  getLawyerDetailsRequest: (lawyerID) => dispatch(getLawyerDetailsRequest(lawyerID))
 })
 
 

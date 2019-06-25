@@ -4,11 +4,11 @@ import {
   TOPICS_PAGE_TOKEN
   // SELECT_ASK_TOPIC
 } from './actions'
-
-export const getTopicsSuccess = (state = [], action) => {
+import { mockTopics } from '../../Services/BackendServices/MockData'
+export const getTopicsSuccess = (state = mockTopics, action) => {
   switch (action.type) {
     case GET_TOPICS_SUCCESS:
-      return action.topics
+      return [...action.topics, ...state]
     default:
       return state
   }

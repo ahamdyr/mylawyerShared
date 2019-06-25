@@ -14,14 +14,15 @@ function* getTopicsListSaga(action) {
     yield put(getTopicsLoading(true))
     let lastPageToken = yield select(state => state.topicsPageToken)
     var {
-      topics,
-      newPageToken
+      data,
+      nextPage
     } = yield call(getTopicsApi, lastPageToken)
-    yield put(getTopicsSuccess(topics))
-    yield put(topicsPageToken(newPageToken))
+    yield put(getTopicsSuccess(data))
+    yield put(topicsPageToken(nextPage|| lastPageToken))
     yield put(getTopicsLoading(false))
   } catch (error) {
     console.log(error)
+    yield put(getTopicsLoading(false))
   }
 }
 
