@@ -7,13 +7,14 @@ import Spinner from '../Spinner'
 
 export default class AllQuestionsScreen extends React.Component {
   componentWillMount(){
-    this.props.getUserAllQuestionsRequest()
+    this.props.getUserAllQuestionsRequest()    
   }
   render() {
     var {
       questions,
       getUserAllQuestionsSuccess,
-      getUserAllQuestionsLoading
+      getUserAllQuestionsLoading,
+      searchUserAllQuestionsRequest
     } = this.props
 
     if(getUserAllQuestionsLoading){
@@ -24,7 +25,7 @@ export default class AllQuestionsScreen extends React.Component {
         <SelectComponent 
           onSelected={()=>{}}
         />
-        <SearchComponent></SearchComponent>
+        <SearchComponent onSearch={(query)=>searchUserAllQuestionsRequest(query)}></SearchComponent>
         <QuestionsList questions={questions}></QuestionsList>
       </View>
     );

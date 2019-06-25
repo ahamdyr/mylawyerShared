@@ -6,6 +6,7 @@ import * as TopicReducer from './TopicSelect/reducers'
 import * as LawyersListReducer from './LawyersList/reducers'
 import * as LawyerDetailsReducer from './LawyerDetails/reducers'
 import * as UserAllQuestions from './UserAllQuests/reducers'
+import * as UserOwnQuestions from './UserOwnQuests/reducers'
 
 export default combineReducers({
   socialModalOpen,
@@ -14,5 +15,6 @@ export default combineReducers({
   ...TopicReducer,
   ... LawyersListReducer,
   ...LawyerDetailsReducer,
-  ...UserAllQuestions
+  ...UserAllQuestions,
+  ...UserOwnQuestions
 })
