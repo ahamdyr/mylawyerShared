@@ -49,11 +49,10 @@ export const logOut = async () => {
     Store.dispatch(setCurrentUser({}))
     Store.dispatch(setLoggedUser(false))     
     await AsyncStorage.removeItem('currentUser')
-    alert('You are logged out!')    
-    await AsyncStorage.setItem('refreshToken', JSON.stringify(refreshToken))
-    let accessToken = currentUser.accessToken
-    Store.dispatch(setAccessToken(accessToken))
-    await AsyncStorage.setItem('accessToken', JSON.stringify(accessToken))  
+    await AsyncStorage.removeItem('refreshToken')
+    Store.dispatch(setAccessToken(''))
+    await AsyncStorage.removeItem('accessToken') 
+    alert('You are logged out!')     
       
   } catch (error) {
     console.log(error)
