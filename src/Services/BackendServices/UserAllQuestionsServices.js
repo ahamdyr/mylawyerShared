@@ -26,7 +26,7 @@ export const getUserAllQuestionsApi = async (pageToken) => {
 export const searchUserAllQuestionsApi = async (pageToken, query) => {  
   return new Promise((resolve, reject) => {
     axios.get(
-      `questions/?page=${pageToken}&${query}`,    
+      `questions/?page=${pageToken}&query=${query}`,    
       {
         headers: {
           'Accept': 'application/json'

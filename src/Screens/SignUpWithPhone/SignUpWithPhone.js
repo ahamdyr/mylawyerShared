@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, Button } from 'react-native';
+import {Text, View, Button, TouchableOpacity, Keyboard } from 'react-native';
 import {styles} from './Styles'
 import SignUpWithPhoneForm from '../../Components/AuthComponents/SignUpWithPhoneForm'
 import {withNavigation} from 'react-navigation'
@@ -8,7 +8,11 @@ class SignUpWithPhone extends React.Component {
   render() {
     const {navigation} = this.props
     return (
-      <View style={styles.container}>
+      <TouchableOpacity
+        activeOpacity={1}
+        style={styles.container}
+        onPress={() => Keyboard.dismiss()}
+      >
 
         <View style={styles.loginTextContainer}>
           <Text style={styles.loginText}>
@@ -45,7 +49,7 @@ class SignUpWithPhone extends React.Component {
             </Text>
         </View>
         
-      </View>
+      </TouchableOpacity>
     );
   }
 }

@@ -8,8 +8,8 @@ export const MailLogin = async(email, password)=>{
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then(async userCredential => {
-      let user = userCredential.user
-      let currentUser = (({
+      var user = userCredential.user
+      var currentUser = (({
         displayName,
         email,
         phoneNumber,
@@ -20,9 +20,9 @@ export const MailLogin = async(email, password)=>{
         phoneNumber,
         photoURL
       }))(user)
-      let userToken = await user.getIdToken(true)
-      let uid = user.uid
-      let refreshToken = user.refreshToken
+      var userToken = await user.getIdToken(true)
+      var uid = user.uid
+      var refreshToken = user.refreshToken
       return {
         currentUser,
         userToken,
@@ -31,7 +31,7 @@ export const MailLogin = async(email, password)=>{
       }
     })
     .catch(err => {
-      alert(err)
+      alert(`User isn't registered \n try to register`)
     })
 }
 
@@ -41,21 +41,16 @@ export const MailSignUp = async (email, password) => {
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then(async userCredential => {
-      let user = userCredential.user
-      let currentUser = (({
-        displayName,
-        email,
-        phoneNumber,
-        photoURL
-      }) => ({
-        displayName,
-        email,
-        phoneNumber,
-        photoURL
-      }))(user)
-      let userToken = await user.getIdToken(true)
-      let uid = user.uid
-      let refreshToken = user.refreshToken
+      var user = userCredential.user
+      var currentUser = {
+        displayName: user.displayName,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        photoURL: user.photoURL
+      }
+      var userToken = await user.getIdToken(true)
+      var uid = user.uid
+      var refreshToken = user.refreshToken
       return {
         currentUser,
         userToken,
@@ -64,6 +59,6 @@ export const MailSignUp = async (email, password) => {
       }
     })
     .catch(err => {
-      alert(err)
+      alert(`User has already registered \n try to logIn`)
     })
 }

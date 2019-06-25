@@ -9,6 +9,7 @@ import {
   navigate,
   goBack
 } from '../../Services/NavigationServices'
+import { Linking, WebBrowser } from 'expo'
 import BlackX from '../../Components/Common/BlackX'
 import RatingView from '../../Components/Lawyers List/RatingView'
 import ImageIcon from '../../Components/Common/ImageIcon'
@@ -71,7 +72,12 @@ export default class LawyerDetails extends React.Component {
 
           <SeperatorLine style={styles.line} />
 
-          <TouchableOpacity style={styles.footer}>
+          <TouchableOpacity 
+            style={styles.footer}
+            onPress={async()=> {
+              await WebBrowser.openBrowserAsync(`https://reachnetwork.co/${getFirstName(lawyer.name)}`)
+            }}
+          >
             <Text style={styles.footerText}>
               {`Reach ${getFirstName(lawyer.name)}`}
             </Text>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
-import { MAIN_COLOR, WIDTH } from '../Constants'
+import { MAIN_COLOR, WIDTH, STATUS_BAR_HEIGHT } from '../Constants'
 import SeperatorLine from '../Common/SeperatorLine'
 import LoginButton from '../Common/LoginButton'
 import MailLogo from '../Common/MailIcon'
@@ -46,10 +46,12 @@ export default class SignUpWithMailForm extends React.PureComponent {
   render() {
     return (
       <KeyboardAvoidingView
+        keyboardVerticalOffset={STATUS_BAR_HEIGHT}
         style={styles.container}
         behavior={'padding'}
+        enabled
       >
-
+        
         <SeperatorLine />
 
         <View style={styles.inputContainer}>
@@ -78,7 +80,7 @@ export default class SignUpWithMailForm extends React.PureComponent {
             placeholder={'name@mail.com'}
             keyboardType={'email-address'}
             style={styles.inputStyle}
-            autoFocus
+            //autoFocus
             onChangeText={this._onMailChange}
           />
         </View>

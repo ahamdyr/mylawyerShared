@@ -41,7 +41,7 @@ export default class LoginWithPhoneForm extends React.PureComponent {
             placeholder={'+20 100 712 1821' }            
             keyboardType={'phone-pad'}
             style={styles.nmberStyle}
-            autoFocus
+            //autoFocus
             onChangeText={this._onPhoneChange}
           />
         </View>

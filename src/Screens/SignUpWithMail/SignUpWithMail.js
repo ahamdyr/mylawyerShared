@@ -1,14 +1,18 @@
 import React from 'react';
-import {Text, View, Button } from 'react-native';
-import {styles} from './Styles'
+import { Text, View, Button, TouchableOpacity, Keyboard } from 'react-native';
+import { styles } from './Styles'
 import SignUpWithMailForm from '../../Components/AuthComponents/SignUpWithMailForm'
-import {withNavigation} from 'react-navigation'
+import { withNavigation } from 'react-navigation'
 import { SignUp } from '../../Services/Login Services/MailLogin'
 class SignUpWithMail extends React.Component {
   render() {
-    const {navigation} = this.props
+    const { navigation } = this.props
     return (
-      <View style={styles.container}>
+      <TouchableOpacity
+        activeOpacity={1}
+        style={styles.container}
+        onPress={() => Keyboard.dismiss()}
+      >
 
         <View style={styles.loginTextContainer}>
           <Text style={styles.loginText}>
@@ -20,16 +24,16 @@ class SignUpWithMail extends React.Component {
         </View>
 
         <View style={styles.formContainer}>
-          <SignUpWithMailForm onPress={()=>SignUp()}/>
+          <SignUpWithMailForm onPress={() => SignUp()} />
         </View>
 
         <View style={styles.termsContainer}>
           <Text style={styles.termsText}>
             By clicking Sign up you agree to our
           </Text>
-          <Text 
-            style={[styles.termsText,{textDecorationLine:'underline'}]}
-            //onPress={() => navigation.navigate('Terms')}
+          <Text
+            style={[styles.termsText, { textDecorationLine: 'underline' }]}
+          //onPress={() => navigation.navigate('Terms')}
           >
             Terms of Service
           </Text>
@@ -43,8 +47,8 @@ class SignUpWithMail extends React.Component {
             Already have an Account?
             </Text>
         </View>
-        
-      </View>
+
+      </TouchableOpacity>
     );
   }
 }

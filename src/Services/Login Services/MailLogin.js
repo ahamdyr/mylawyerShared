@@ -13,7 +13,7 @@ export const SignUp = async () => {
     const password = Store.getState().userPassword
     const userName = Store.getState().userName
     navigate('Spinner')
-    const {
+    var {
       currentUser,
       userToken,
       uid,
@@ -23,20 +23,21 @@ export const SignUp = async () => {
     // add userName
     currentUser.displayName = userName
     updateUserName(userName)
-    // let backendToken = base64Token(uid, userToken)
 
-    // let userType = getUserType()
+    var backendToken = base64Token(uid, userToken)
 
-    // let pickedUser = await Register(userType, backendToken)
+    var userType = getUserType()
 
-    // currentUser = Object.assign(currentUser, pickedUser)
+    var pickedUser = await Register(userType, backendToken)
 
+    currentUser = Object.assign({},currentUser, pickedUser)
+    
     await saveUser(currentUser, refreshToken)
 
     Alert.alert('LogIn', 'You logged in successfully')
     navigate('App')
   } catch (error) {
-    alert(`${error} \nTry again`)
+    goBack()
   }
 }
 
@@ -46,24 +47,26 @@ export const SignIn = async () => {
     const password = Store.getState().userPassword
 
     navigate('Spinner')
-    const {
+    var {
       currentUser,
       userToken,
       uid,
       refreshToken
     } = await MailLogin(email, password)
 
-    // let backendToken = base64Token(uid, userToken)
+    var backendToken = base64Token(uid, userToken)
 
-    // let pickedUser = await Login(backendToken)
+    var userType = getUserType()
 
-    // currentUser = Object.assign(currentUser, pickedUser)
+    var pickedUser = await Register(userType, backendToken)
+
+    currentUser = Object.assign({},currentUser, pickedUser)
 
     await saveUser(currentUser, refreshToken)
 
     Alert.alert('LogIn', 'You logged in successfully')
     navigate('App')
   } catch (error) {
-    alert(`${error} \nTry again`)
+    goBack()
   }
 }

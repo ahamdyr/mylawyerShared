@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, TextInput, KeyboardAvoidingView  } from 'react-native';
-import {MAIN_COLOR, WIDTH} from '../Constants'
+import {MAIN_COLOR, WIDTH, STATUS_BAR_HEIGHT} from '../Constants'
 import SeperatorLine from '../Common/SeperatorLine'
 import LoginButton from '../Common/LoginButton'
 import MailLogo from '../Common/MailIcon'
@@ -33,9 +33,11 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
   }
   render(){
     return(
-      <KeyboardAvoidingView 
+      <KeyboardAvoidingView
+        keyboardVerticalOffset={STATUS_BAR_HEIGHT}
         style={styles.container}
         behavior={'padding'}
+        enabled
       >
 
         <SeperatorLine />
@@ -68,7 +70,7 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
             placeholder={'+20 100 712 1821' }            
             keyboardType={'phone-pad'}
             style={styles.nmberStyle}
-            autoFocus
+            //autoFocus
             onChangeText={this._onPhoneChange}
           />
         </View>

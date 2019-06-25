@@ -5,7 +5,7 @@ export const Register = async (type, token) => {
   body.append('type', type)
   return new Promise((resolve, reject) => {
     axios.post(
-      'account/register/',
+      `account/authenticate/`,
       body,
       {
         headers: {
@@ -14,28 +14,9 @@ export const Register = async (type, token) => {
         }
       }
     ).then((res) => {
-      if(res.data.data) resolve(res.data.data) 
-      else{
-        reject(res.data.error.message)
+      if(res.data.data) {
+        resolve(res.data.data) 
       }
-    }).catch(err => {
-      reject(err)
-    })
-  })  
-}
-
-export const Login = async (token) => {  
-  return new Promise((resolve, reject) => {
-    axios.get(
-      "account/login/",
-      {
-        headers: {
-          'Accept': 'application/json',
-          "Authorization": `Firebase ${token}`
-        }
-      }
-    ).then((res) => {
-      if(res.data.data) resolve(res.data.data) 
       else{
         reject(res.data.error.message)
       }

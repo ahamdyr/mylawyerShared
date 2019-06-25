@@ -13,30 +13,31 @@ const captchaUrl = `https://my-lawyer-dea44.web.app/?appurl=${Linking.makeUrl(''
 export const SignUp = async (confCode, userName) => {
   try {
     navigate('Spinner')
-    const {
+    var {
       currentUser,
       userToken,
       uid,
       refreshToken
     } = await PhoneAuth(confCode)
 
-    // console.log('1')
+    
     currentUser.displayName = userName
     updateUserName(userName)
-    // console.log('2')
-    // let backendToken = base64Token(uid, userToken)
+    
+    var backendToken = base64Token(uid, userToken)
 
-    // let userType = getUserType()
+    var userType = getUserType()
 
-    // let pickedUser = await Register(userType, backendToken)
-    // // console.log('3')
-    // currentUser = Object.assign({},currentUser, pickedUser)
+    var pickedUser = await Register(userType, backendToken)
+    
+    currentUser = Object.assign({},currentUser, pickedUser)
 
     await saveUser(currentUser, refreshToken)
-    // console.log('4')
+    
     Alert.alert('LogIn', 'You logged in successfully')
     navigate('App')
   } catch (error) {
+    goBack()
     alert(`${error} \nTry again`)
   }
 }
@@ -48,6 +49,7 @@ export const Update = async (confCode) => {
     await updateUserPhoneNumber(authCredential)
     navigate('SideMenu')
   } catch (error) {
+    goBack()
     alert(`${error} \nTry again`)
   }
 }
@@ -55,31 +57,34 @@ export const Update = async (confCode) => {
 export const SignIn = async (confCode) => {
   try {
     navigate('Spinner')
-    const {
+    var {
       currentUser,
       userToken,
       uid,
       refreshToken
     } = await PhoneAuth(confCode)
 
-    // let backendToken = base64Token(uid, userToken)
+    var backendToken = base64Token(uid, userToken)
 
-    // let pickedUser = await Login(backendToken)
+    var userType = getUserType()
 
-    // currentUser = Object.assign(currentUser, pickedUser)
+    var pickedUser = await Register(userType, backendToken)
+    
+    currentUser = Object.assign({},currentUser, pickedUser)
 
     await saveUser(currentUser, refreshToken)
 
     Alert.alert('LogIn', 'You logged in successfully')
     navigate('App')
   } catch (error) {
+    goBack()
     alert(`${error} \nTry again`)
   }
 }
 
 export const requestCode = async phoneNumber => {
   try {
-    let token = null
+    var token = null
     const listener = ({ url }) => {
       WebBrowser.dismissBrowser()
       const tokenEncoded = Linking.parse(url).queryParams['token']

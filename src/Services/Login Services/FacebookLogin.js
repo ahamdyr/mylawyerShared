@@ -31,20 +31,14 @@ export const LoginWithFacebook = async () => {
         refreshToken,
         isNewUser
       } = await FacebookAuth(token)
-
-      // let backendToken = base64Token(uid, userToken)
-
-      // var pickedUser = {}
-
-      // if(isNewUser){
-      //   let userType = getUserType()
-      //   pickedUser =  await Register(userType, backendToken)
-      // }
-      // else{
-      //   pickedUser =  await Login(backendToken)
-      // }             
       
-      // currentUser = Object.assign(currentUser, pickedUser)
+      var backendToken = base64Token(uid, userToken)
+
+      var userType = getUserType()      
+
+      var pickedUser =  await Register(userType, backendToken)
+      
+      currentUser = Object.assign({},currentUser, pickedUser)
 
       await saveUser(currentUser, refreshToken)
 

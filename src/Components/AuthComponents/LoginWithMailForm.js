@@ -50,7 +50,7 @@ export default class LoginWithMailForm extends React.PureComponent {
             placeholder={'name@mail.com' }            
             keyboardType={'email-address'}
             style={styles.inputStyle}
-            autoFocus
+            //autoFocus
             onChangeText={this._onMailChange}
           />
         </View>
@@ -68,12 +68,12 @@ export default class LoginWithMailForm extends React.PureComponent {
             onChangeText={this._onPassChange}
             enablesReturnKeyAutomatically={true}
           />
-          <Text
+          {/* <Text
             style={styles.forgot}
             //onPress={()=>console.log('ajbfh')}
           >
             Forgot?
-          </Text>
+          </Text> */}
         </View>
 
         <SeperatorLine/>
