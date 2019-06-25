@@ -12,18 +12,18 @@ import {
 
 function* getLawyersListSaga(action) {
   try {
-    //yield put(getLawyersLoading(true))
+    yield put(getLawyersLoading(true))
     let lastPageToken = yield select(state => state.lawyersPageToken)
     var {
-      lawyers,
-      newPageToken
+      data,
+      nextPage
     } = yield call(getLawyersApi, lastPageToken)
-    yield put(getLawyersSuccess(lawyers))
-    yield put(setLawyersPageToken(newPageToken))
-    //yield put(getLawyersLoading(false))
+    yield put(getLawyersSuccess(data))
+    yield put(setLawyersPageToken(nextPage|| lastPageToken))
+    yield put(getLawyersLoading(false))
   } catch (error) {
     yield put(getLawyersError(error))
-    //yield put(getLawyersLoading(false))
+    yield put(getLawyersLoading(false))
     console.log(error)
   }
 }

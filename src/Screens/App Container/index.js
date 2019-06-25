@@ -8,8 +8,8 @@ import { getUser } from '../../Services/AuthServices'
 import axios from 'axios'
 
 export default class AppContainer extends React.Component {
-  async componentDidMount(){
-    axios.defaults.baseURL = 'http://hlogicodesk.pythonanywhere.com/api/beta/'
+  async componentWillMount(){
+    axios.defaults.baseURL = `http://hlogicodesk.pythonanywhere.com/api/beta/`
     // delete backend database
     // axios.get('https://hlogicodesk.pythonanywhere.com/api/beta/users/deldel/')
     //   .then(()=>console.log('data deleted'))

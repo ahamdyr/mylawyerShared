@@ -5,7 +5,8 @@ import {
 } from '../../Redux/LawyersList/actions'
 
 const mapStateToProps =  state => ({
-  getLawyersSuccess: state.getLawyersSuccess
+  getLawyersSuccess: state.getLawyersSuccess,
+  getLawyersLoading: state.getLawyersLoading
 })
 
 const mapDispatchersToProps = dispatch => ({

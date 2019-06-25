@@ -4,11 +4,11 @@ import {
   GET_LAWYERS_SUCCESS,
   SET_LAWYERS_PG_TOKEN  
 } from './actions'
-
-export const getLawyersSuccess = (state = [], action) => {
+import { mockLawyersList } from '../../Services/BackendServices/MockData'
+export const getLawyersSuccess = (state = mockLawyersList, action) => {
   switch (action.type) {
     case GET_LAWYERS_SUCCESS:
-      return [...state, ...action.lawyers] 
+      return [...action.lawyers, ...state] 
     default:
       return state
   }
