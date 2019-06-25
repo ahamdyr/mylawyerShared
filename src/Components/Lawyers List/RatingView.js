@@ -23,6 +23,8 @@ class RatingView extends React.Component {
       : parseFloat(this.props.rating);
     return (
       <StarRating
+        containerStyle={this.props.style}
+        starStyle={this.props.starStyle}        
         disabled
         emptyStar={EmptyStar}
         fullStar={FullStar}

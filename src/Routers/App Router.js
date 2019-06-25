@@ -7,6 +7,7 @@ import SocialScreen from '../Screens/Social Login'
 import Spinner from '../Screens/Spinner'
 import { Easing, Animated } from 'react-native'
 import LawyerVerificationStack from './LawyerVerifyStack'
+import LawyerDetails from '../Screens/LawyerDetails'
 
 const AppRouter = createStackNavigator({
   App : MainRouter,
@@ -20,7 +21,8 @@ const AppRouter = createStackNavigator({
 const ModalStack =  createStackNavigator({
   AppRouter:AppRouter,
   SocialScreen: SocialScreen,
-  Spinner: Spinner
+  Spinner: Spinner,
+  LawyerDetails: LawyerDetails
 },{
   
   mode: 'modal',

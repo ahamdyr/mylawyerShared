@@ -19,7 +19,7 @@ class LawsItem extends React.PureComponent {
         <TouchableWithoutFeedback
           style={{ flex: 1 }}
           //onPress={()=>openModal()}
-          //onPress={()=>this.props.navigation.navigate('SocialScreen')}
+          onPress={()=>this.props.navigation.navigate('LawyerDetails',{lawyer: this.props.item.item})}
         >
           <View style={styles.lawyerPhoto}>
             <ImageBackground

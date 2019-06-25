@@ -17,7 +17,7 @@ export const mockLawyersList = [
     major: "financial",
     photo: 'https://i1.wp.com/theremba.com/wp-content/uploads/2018/05/taylor-grote-415993-unsplash-1-e1527710649885.jpg?ssl=1',
     rate: 3,
-    bio: "Lorem Ipsum"
+    bio: `I am an associate at KaiserDillon PLLC. My practice focuses on complex civil litigation, government investigations, professional responsibility and white collar criminal matters.`
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ export const mockLawyersList = [
     major: "financial",
     photo: 'https://i1.wp.com/theremba.com/wp-content/uploads/2018/05/taylor-grote-415993-unsplash-1-e1527710649885.jpg?ssl=1',
     rate: 1,
-    bio: "Lorem Ipsum"
+    bio: `I am an associate at KaiserDillon PLLC. My practice focuses on complex civil litigation, government investigations, professional responsibility and white collar criminal matters.`
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ export const mockLawyersList = [
     major: "financial",
     photo: 'https://i1.wp.com/theremba.com/wp-content/uploads/2018/05/taylor-grote-415993-unsplash-1-e1527710649885.jpg?ssl=1',
     rate: 0,
-    bio: "Lorem Ipsum"
+    bio: `I am an associate at KaiserDillon PLLC. My practice focuses on complex civil litigation, government investigations, professional responsibility and white collar criminal matters.`
   },
   {
     id: 4,
@@ -44,7 +44,7 @@ export const mockLawyersList = [
     major: "financial",
     photo: 'https://i1.wp.com/theremba.com/wp-content/uploads/2018/05/taylor-grote-415993-unsplash-1-e1527710649885.jpg?ssl=1',
     rate: 5,
-    bio: "Lorem Ipsum"
+    bio: `I am an associate at KaiserDillon PLLC. My practice focuses on complex civil litigation, government investigations, professional responsibility and white collar criminal matters.`
   },
 ]
 export const mockTopics = [
