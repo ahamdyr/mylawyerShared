@@ -8,6 +8,8 @@ import HeaderTitle from '../../Components/HomeHeaderIcons/Header Title'
 import { createStackNavigator} from "react-navigation";
 import LawyersScreen from '../Lawyers Screen'
 import Search from '../Search'
+import { logo_text_colord } from '../../../assets'
+import ImageIcon from '../../Components/Common/ImageIcon'
 
 export default HomeStack = createStackNavigator({
   Home:{
@@ -39,7 +41,10 @@ export default HomeStack = createStackNavigator({
       style={styles.menuIconStyle}
     />  ,
     //headerBackTitle: 'null',
-    headerTitle:<HeaderTitle title={`My Lawyer`}/>,
+    headerTitle: <ImageIcon source={logo_text_colord} style={{
+      width: 95,
+      height: 26.5
+    }} />,
     headerStyle:{
       elevation:0,
       shadowOpacity:0,
