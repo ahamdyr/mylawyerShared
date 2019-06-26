@@ -64,7 +64,7 @@ export default class AttachmentList extends React.PureComponent {
             fontSize: 16,
             color: '#0b7f7c'
           }}>
-            No Questions Found!
+            No Attachments Found!
         </Text>
         </View>
       )
