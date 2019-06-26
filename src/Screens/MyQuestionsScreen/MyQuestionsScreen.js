@@ -48,7 +48,8 @@ export default class MyQuestionsScreen extends React.Component {
       getUserOwnQuestionsSuccess,
       getUserOwnQuestionsLoading,
       searchUserOwnQuestionsRequest,
-      getUserOwnQuestionsRequest
+      getUserOwnQuestionsRequest,
+      filterUserOwnQuestionsRequest
     } = this.props
 
     // if(getUserOwnQuestionsLoading){
@@ -58,15 +59,15 @@ export default class MyQuestionsScreen extends React.Component {
     return (
       <View style={styles.container}>
         <SelectComponent 
-          onSelected={()=>{}}
+          onSelect={(topicID)=>filterUserOwnQuestionsRequest(accessToken, topicID)}
         />
         <SearchComponent 
           onSearch={(query)=>searchUserOwnQuestionsRequest(accessToken, query)}
           onCancel={()=>getUserOwnQuestionsRequest(accessToken)}
         />
         <QuestionsList 
-          questions={getUserOwnQuestionsSuccess}
-          //questions={questions}
+          //questions={getUserOwnQuestionsSuccess}
+          questions={questions}
         />
       </View>
     );

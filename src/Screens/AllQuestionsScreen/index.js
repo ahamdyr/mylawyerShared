@@ -2,7 +2,8 @@ import AllQuestionsScreen from './AllQuestionsScreen'
 import {connect} from 'react-redux'
 import {
   getUserAllQuestionsRequest,
-  searchUserAllQuestionsRequest
+  searchUserAllQuestionsRequest,
+  filterUserAllQuestionsRequest
 } from '../../Redux/UserAllQuests/actions'
 
 const mapStateToProps =  state => ({
@@ -14,6 +15,7 @@ const mapStateToProps =  state => ({
 
 const mapDispatchersToProps = dispatch => ({
   getUserAllQuestionsRequest: () => dispatch(getUserAllQuestionsRequest()),
-  searchUserAllQuestionsRequest: (query) => dispatch(searchUserAllQuestionsRequest(query))
+  searchUserAllQuestionsRequest: (query) => dispatch(searchUserAllQuestionsRequest(query)),
+  filterUserAllQuestionsRequest: (topicID) => dispatch(filterUserAllQuestionsRequest(topicID))
 })  
 export default connect(mapStateToProps, mapDispatchersToProps)(AllQuestionsScreen)

@@ -1,5 +1,6 @@
 export const GET_USER_OWN_QUESTIONS_REQUEST = 'GET_USER_OWN_QUESTIONS_REQUEST'
 export const SEARCH_USER_OWN_QUESTIONS_REQUEST = 'SEARCH_USER_OWN_QUESTIONS_REQUEST'
+export const FILTER_USER_OWN_QUESTIONS_REQUEST = 'FILTER_USER_OWN_QUESTIONS_REQUEST'
 export const GET_USER_OWN_QUESTIONS_SUCCESS = 'GET_USER_OWN_QUESTIONS_SUCCESS'
 export const GET_USER_OWN_QUESTIONS_LOADING = 'GET_USER_OWN_QUESTIONS_LOADING'
 export const GET_USER_OWN_QUESTIONS_ERROR = 'GET_USER_OWN_QUESTIONS_ERROR'
@@ -17,6 +18,13 @@ export const searchUserOwnQuestionsRequest = (accessToken, query) => {
     type: SEARCH_USER_OWN_QUESTIONS_REQUEST,
     accessToken,
     query
+  }
+}
+export const filterUserOwnQuestionsRequest = (accessToken, topicID) => {
+  return{
+    type: FILTER_USER_OWN_QUESTIONS_REQUEST,
+    accessToken,
+    topicID
   }
 }
 

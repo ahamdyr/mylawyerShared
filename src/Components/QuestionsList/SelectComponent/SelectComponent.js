@@ -12,7 +12,7 @@ export default class SelectComponent extends React.PureComponent {
     this.setState({
       choosenLabel: itemValue
     })
-    this.props.onSelected(itemValue)
+    this.props.onSelect(itemValue.id)
   }
   state = { choosenLabel: ''}
   render() {

@@ -3,8 +3,8 @@ import submitQuestion from './AddQuestion/saga'
 import getTopics from './TopicSelect/saga'
 import getLawyersList from './LawyersList/saga'
 import getLawyerDetails from './LawyerDetails/saga'
-import { getUserAllQuestions, searchUserAllQuestions } from './UserAllQuests/saga'
-import {  getUserOwnQuestions, searchUserOwnQuestions } from './UserOwnQuests/saga'
+import { getUserAllQuestions, searchUserAllQuestions, filterUserAllQuestions } from './UserAllQuests/saga'
+import {  getUserOwnQuestions, searchUserOwnQuestions, filterUserOwnQuestions } from './UserOwnQuests/saga'
 import getAnswersList from './Answers/saga'
 import getAttachsList from './Attachs/saga'
  
@@ -16,9 +16,12 @@ export default function * mySaga () {
     fork(getLawyerDetails),
     fork(getUserAllQuestions),
     fork(searchUserAllQuestions),
+    fork(filterUserAllQuestions),
     fork(getUserOwnQuestions),
     fork(searchUserOwnQuestions),
+    fork(filterUserOwnQuestions),
     fork(getAnswersList),
-    fork(getAttachsList)
+    fork(getAttachsList),
+
   ])  
 }

@@ -15,7 +15,8 @@ export default class AllQuestionsScreen extends React.Component {
       getUserAllQuestionsSuccess,
       getUserAllQuestionsLoading,
       searchUserAllQuestionsRequest,
-      getUserAllQuestionsRequest
+      getUserAllQuestionsRequest,
+      filterUserAllQuestionsRequest
     } = this.props
 
     // if(getUserAllQuestionsLoading){
@@ -24,15 +25,15 @@ export default class AllQuestionsScreen extends React.Component {
     return (
       <View style={styles.container}>
         <SelectComponent 
-          onSelected={()=>{}}
+          onSelect={(topicID)=>filterUserAllQuestionsRequest(topicID)}
         />
         <SearchComponent 
           onSearch={(query)=>searchUserAllQuestionsRequest(query)}
           onCancel={()=>getUserAllQuestionsRequest()}
         />
         <QuestionsList 
-          //questions={questions}
-          questions={getUserAllQuestionsSuccess}
+          questions={questions}
+          //questions={getUserAllQuestionsSuccess}
         />
       </View>
     );

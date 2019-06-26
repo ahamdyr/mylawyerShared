@@ -2,7 +2,8 @@ import MyQuestionsScreen from './MyQuestionsScreen'
 import {connect} from 'react-redux'
 import {
   getUserOwnQuestionsRequest,
-  searchUserOwnQuestionsRequest
+  searchUserOwnQuestionsRequest,
+  filterUserOwnQuestionsRequest
 } from '../../Redux/UserOwnQuests/actions'
 
 const mapStateToProps =  state => ({
@@ -16,6 +17,7 @@ const mapStateToProps =  state => ({
 
 const mapDispatchersToProps = dispatch => ({
   getUserOwnQuestionsRequest: (accessToken) => dispatch(getUserOwnQuestionsRequest(accessToken)),
-  searchUserOwnQuestionsRequest: (accessToken, query) => dispatch(searchUserOwnQuestionsRequest(accessToken, query))
+  searchUserOwnQuestionsRequest: (accessToken, query) => dispatch(searchUserOwnQuestionsRequest(accessToken, query)),
+  filterUserOwnQuestionsRequest: (accessToken, topicID)=>dispatch(filterUserOwnQuestionsRequest(accessToken, topicID)) 
 })  
 export default connect(mapStateToProps, mapDispatchersToProps)(MyQuestionsScreen)
