@@ -6,19 +6,21 @@ export const getUserOwnQuestionsApi = async (pageToken, accessToken) => {
       `me/questions/?page=${pageToken}`,    
       {
         headers: {
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${accessToken}`
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json'
         }
       }
     ).then((res) => {
       if(res.data.data) {
-        //console.log(res.data.data)
+        //console.log('res.data.data ',res.data.data)
         resolve(res.data) 
       }
       else{
+        //console.log('res.data.error.message ',res.data.error.message)
         reject(res.data.error.message)
       }
     }).catch(err => {
+      //console.log('err ',err)
       reject(err)
     })
   })  

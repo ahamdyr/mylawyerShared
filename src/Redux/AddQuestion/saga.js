@@ -22,9 +22,9 @@ function* submitQuestionSaga(action) {
     var accessToken = yield select(state => state.accessToken)
     var attachments = [...imgs, ...docs]
 
-    var questionID = yield call(askQuestionApi, topic, accessToken, title, body)
-    //console.log('questionID  ',questionID)
-    yield call(addQuestionAttachsService, attachments, questionID, accessToken)
+    var { id } = yield call(askQuestionApi, topic, accessToken, title, body)
+    //console.log('questionID  ',id)
+    yield call(addQuestionAttachsService, attachments, id, accessToken)
     
     alert('Your question has been submitted')
     goBack()

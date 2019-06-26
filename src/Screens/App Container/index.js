@@ -9,7 +9,7 @@ import axios from 'axios'
 
 export default class AppContainer extends React.Component {
   async componentWillMount(){
-    axios.defaults.baseURL = `http://hlogicodesk.pythonanywhere.com/api/beta/`
+    axios.defaults.baseURL = `https://hlogicodesk.pythonanywhere.com/api/beta/`
     // delete backend database
     // axios.get('https://hlogicodesk.pythonanywhere.com/api/beta/users/deldel/')
     //   .then(()=>console.log('data deleted'))

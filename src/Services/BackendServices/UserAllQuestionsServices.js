@@ -11,6 +11,7 @@ export const getUserAllQuestionsApi = async (pageToken) => {
       }
     ).then((res) => {
       if(res.data.data) {
+        //console.log('res.data.data  ',res.data.data)
         resolve(res.data) 
       }
       else{
