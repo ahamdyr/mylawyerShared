@@ -72,6 +72,8 @@ export default class QuestionComponent extends React.PureComponent {
           ]}
           onPress={() => this._titleKeyBoardToggle()}>
           <TextInput
+            blurOnSubmit={true}
+            returnKeyType={'done'}
             ref={(ref) => this._titleRef = ref}
             style={styles.titleText}
             multiline={true}
@@ -99,6 +101,8 @@ export default class QuestionComponent extends React.PureComponent {
             // keyboardShouldPersistTaps={'never'}
           >
             <TextInput
+              blurOnSubmit={true}
+              returnKeyType={'done'}
               style={styles.bodyText}
               autoGrow={false}
               scrollEnabled={true}
@@ -166,8 +170,8 @@ const styles = StyleSheet.create({
   body: {
     marginTop: 10,
     marginBottom: 10,
-    marginLeft: 20,
-    marginRight: 20
+    paddingLeft: 5,
+    paddingRight: 3
   },
   bodyText: {
     flex: 1,

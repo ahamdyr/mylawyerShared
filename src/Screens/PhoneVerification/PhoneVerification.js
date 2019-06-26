@@ -75,6 +75,8 @@ export default class PhoneVerification extends Component {
         <View style={{ flexDirection: 'row' }}>
           <TextInput
             ref={'textInput'}
+            blurOnSubmit={true}
+            returnKeyType={'done'}
             name={'code'}
             type={'TextInput'}
             underlineColorAndroid={'transparent'}

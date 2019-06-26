@@ -36,8 +36,10 @@ export default class LoginWithPhoneForm extends React.PureComponent {
             style={styles.phoneIconStyle}
             source={PhoneIcon}
           />
-          <TextInput            
-            //underlineColorAndroid={'transparent'}
+          <TextInput         
+            blurOnSubmit={true}
+            returnKeyType={'done'}   
+            underlineColorAndroid={'transparent'}
             placeholder={'+20 100 712 1821' }            
             keyboardType={'phone-pad'}
             style={styles.nmberStyle}

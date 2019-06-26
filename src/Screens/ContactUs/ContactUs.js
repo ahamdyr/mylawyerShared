@@ -53,6 +53,8 @@ export default class ContactUs extends React.Component {
           >
             <TextInput
               ref={(ref) => this._titleRef = ref}
+              blurOnSubmit={true}
+              returnKeyType={'done'}
               style={styles.titleText}
               // multiline={true}
               // numberOfLines={2}
@@ -79,6 +81,8 @@ export default class ContactUs extends React.Component {
             >
               <TextInput
                 style={styles.bodyText}
+                blurOnSubmit={true}
+                returnKeyType={'done'}
                 autoGrow={false}
                 scrollEnabled={true}
                 ref={(ref) => this._bodyRef = ref}

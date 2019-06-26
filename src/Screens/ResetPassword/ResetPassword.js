@@ -62,6 +62,8 @@ export default class ResetPassword extends React.Component {
             />
             <TextInput
               underlineColorAndroid={'transparent'}
+              blurOnSubmit={true}
+              returnKeyType={'done'}
               secureTextEntry={true}
               placeholder={'new password'}
               onChangeText={this._editPassword}

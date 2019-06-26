@@ -18,6 +18,8 @@ export default class SearchComponent extends React.PureComponent {
           <View style={styles.searchBox}>
             <TextInput
               style={styles.searchText}
+              blurOnSubmit={true}
+              returnKeyType={'done'}
               placeholder={'Search'}
               onChangeText={(text)=> {this.state.text = text}}
               onSubmitEditing={(event) => onSearch(event.nativeEvent.text)}

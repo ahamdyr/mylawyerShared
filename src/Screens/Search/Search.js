@@ -24,6 +24,8 @@ export default class Search extends React.Component {
           <View style={styles.searchBox}>
             <TextInput
               style={styles.searchText}
+              blurOnSubmit={true}
+              returnKeyType={'done'}
               placeholder={'Search'}
               onSubmitEditing={(event)=>searchLawyersRequest(event.nativeEvent.text)}
               shouldCancelWhenOutside ={true}

@@ -48,7 +48,9 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
             source={UserIcon}
           />
           <TextInput
-            //underlineColorAndroid={'transparent'}
+            underlineColorAndroid={'transparent'}
+            blurOnSubmit={true}
+            returnKeyType={'done'}
             //secureTextEntry
             autoCapitalize={'none'}
             placeholder={'username'}
@@ -66,7 +68,9 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
             source={PhoneIcon}
           />
           <TextInput            
-            //underlineColorAndroid={'transparent'}
+            underlineColorAndroid={'transparent'}
+            blurOnSubmit={true}
+            returnKeyType={'done'}
             placeholder={'+20 100 712 1821' }            
             keyboardType={'phone-pad'}
             style={styles.nmberStyle}

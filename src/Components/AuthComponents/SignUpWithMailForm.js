@@ -60,7 +60,9 @@ export default class SignUpWithMailForm extends React.PureComponent {
             source={UserIcon}
           />
           <TextInput
-            //underlineColorAndroid={'transparent'}
+            underlineColorAndroid={'transparent'}
+            blurOnSubmit={true}
+            returnKeyType={'done'}
             //secureTextEntry
             autoCapitalize={'none'}
             placeholder={'username'}
@@ -75,7 +77,9 @@ export default class SignUpWithMailForm extends React.PureComponent {
         <View style={styles.inputContainer}>
           <MailLogo />
           <TextInput
-            //underlineColorAndroid={'transparent'}
+            underlineColorAndroid={'transparent'}
+            blurOnSubmit={true}
+            returnKeyType={'done'}
             autoCapitalize={'none'}
             placeholder={'name@mail.com'}
             keyboardType={'email-address'}
@@ -90,7 +94,9 @@ export default class SignUpWithMailForm extends React.PureComponent {
         <View style={styles.inputContainer}>
           <LockImage />
           <TextInput
-            //underlineColorAndroid={'transparent'}
+            underlineColorAndroid={'transparent'}
+            blurOnSubmit={true}
+            returnKeyType={'done'}
             autoCapitalize={'none'}
             secureTextEntry
             placeholder={'***********'}
