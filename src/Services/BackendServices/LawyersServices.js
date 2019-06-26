@@ -33,6 +33,7 @@ export const searchLawyersApi = async (pageToken, query) => {
       }
     ).then((res) => {
       if(res.data.data) {
+        //console.log(res.data.data)
         resolve(res.data) 
       }
       else{

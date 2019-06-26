@@ -6,15 +6,13 @@ import SeperatorLine from '../../Components/Common/SeperatorLine'
 import SearchList from '../../Components/Common/SearchList'
 
 export default class Search extends React.Component {
-  componentWillUnmount(){
-    this.props.getLawyersSuccess([])
-  }
+ 
   render() {
     var {
-      getLawyersSuccess,
-      getLawyersLoading,
+      searchLawyersSuccess,
+      //getLawyersLoading,
       searchLawyersRequest,
-      getLawyersRequest
+      //getLawyersRequest
     } = this.props
     return (
       <View style={styles.container}>
@@ -33,7 +31,6 @@ export default class Search extends React.Component {
           </View> 
           <TouchableOpacity 
             onPress={()=>{
-              getLawyersRequest()
               goBack()
             }}
             style={styles.cancelStyle}
@@ -47,8 +44,8 @@ export default class Search extends React.Component {
           style={styles.line}
         />
         {
-          getLawyersSuccess.length ?
-          <SearchList list={getLawyersSuccess} loading={getLawyersLoading} />
+          searchLawyersSuccess.length ?
+          <SearchList list={searchLawyersSuccess} />
           :
             <View
               style={{

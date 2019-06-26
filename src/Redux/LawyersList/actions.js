@@ -17,6 +17,12 @@ export const searchLawyersRequest = (query) => {
   }
 }
 
+export const searchLawyersSuccess = (lawyers) => {
+  return{
+    type: 'searchLawyersSuccess',
+    lawyers
+  }
+}
 export const getLawyersSuccess = (lawyers) => {
   return{
     type: GET_LAWYERS_SUCCESS,
@@ -34,6 +40,12 @@ export const getLawyersError = (error) => {
 export const getLawyersLoading = (isLoading) => {
   return{
     type: GET_LAWYERS_LOADING,
+    isLoading
+  }
+}
+export const searchLawyersLoading = (isLoading) => {
+  return{
+    type: 'searchLawyersLoading',
     isLoading
   }
 }

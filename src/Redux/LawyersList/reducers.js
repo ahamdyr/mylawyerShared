@@ -8,7 +8,15 @@ import { mockLawyersList } from '../../Services/BackendServices/MockData'
 export const getLawyersSuccess = (state = [], action) => {
   switch (action.type) {
     case GET_LAWYERS_SUCCESS:
-      return action.lawyers
+      return [...action.lawyers, ...state]
+    default:
+      return state
+  }
+}
+export const searchLawyersSuccess = (state = [], action) => {
+  switch (action.type) {
+    case 'searchLawyersSuccess':
+      return [...action.lawyers, ...state]
     default:
       return state
   }
@@ -17,6 +25,14 @@ export const getLawyersSuccess = (state = [], action) => {
 export const getLawyersLoading = (state = false, action) => {
   switch (action.type) {
     case GET_LAWYERS_LOADING:
+      return action.isLoading
+    default:
+      return state
+  }
+}
+export const searchLawyersLoading = (state = false, action) => {
+  switch (action.type) {
+    case 'searchLawyersLoading':
       return action.isLoading
     default:
       return state

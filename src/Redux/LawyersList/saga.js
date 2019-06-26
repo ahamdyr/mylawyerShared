@@ -5,7 +5,8 @@ import {
   getLawyersError,
   getLawyersLoading,
   getLawyersSuccess,
-  setLawyersPageToken
+  setLawyersPageToken,
+  searchLawyersSuccess
 } from './actions'
 import {
   getLawyersApi,
@@ -37,18 +38,17 @@ function* searchLawyersListSaga(action) {
     //yield put(getLawyersLoading(true))
     navigate('Spinner')
     let lastPageToken = yield select(state => state.lawyersPageToken)
-    var oldList = yield select(state => state.getLawyersSuccess)
     var {
       data,
       nextPage
     } = yield call(searchLawyersApi, lastPageToken, action.query)
-    yield put(getLawyersSuccess(data))
+    yield put(searchLawyersSuccess(data))
     yield put(setLawyersPageToken(nextPage|| lastPageToken))
     goBack()
   } catch (error) {
-    yield put(getLawyersError(error))
+    //yield put(getLawyersError(error))
     goBack()
-    //console.log('lawyers list error ',error)
+    console.log('search lawyers list error ',error)
   }
 }
 
