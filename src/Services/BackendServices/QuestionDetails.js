@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-export const getQuestionAnswersApi = async (questionID, pageToken) => {  
+export const getQuestionDetailsApi = async (questionID, pageToken) => {  
 
   return new Promise((resolve, reject) => {
     axios.get(
-      `questions/${questionID}/answers/`,    
+      `questions/${questionID}/`,    
       {
         headers: {
           'Accept': 'application/json'

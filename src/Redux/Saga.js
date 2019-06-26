@@ -5,6 +5,8 @@ import getLawyersList from './LawyersList/saga'
 import getLawyerDetails from './LawyerDetails/saga'
 import { getUserAllQuestions, searchUserAllQuestions } from './UserAllQuests/saga'
 import {  getUserOwnQuestions, searchUserOwnQuestions } from './UserOwnQuests/saga'
+import getAnswersList from './Answers/saga'
+import getAttachsList from './Attachs/saga'
  
 export default function * mySaga () {
   yield all([
@@ -16,5 +18,7 @@ export default function * mySaga () {
     fork(searchUserAllQuestions),
     fork(getUserOwnQuestions),
     fork(searchUserOwnQuestions),
+    fork(getAnswersList),
+    fork(getAttachsList)
   ])  
 }

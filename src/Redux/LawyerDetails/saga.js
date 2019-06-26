@@ -18,7 +18,7 @@ function* getLawyerDetailsSaga(action) {
   } catch (error) {
     yield put(getLawyerDetailsError(error))
     yield put(getLawyerDetailsLoading(false))
-    console.log(error)
+    console.log('lawyer details error ',error)
   }
 }
 

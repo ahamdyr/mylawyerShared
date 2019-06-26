@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, FlatList, Text, Image, TouchableWithoutFeedback } from 'react-native';
 import {Linking} from 'expo'
+import Spinner from '../../Screens/Spinner'
+
 export default class AttachmentList extends React.PureComponent {
   _list = [
     {
@@ -48,12 +50,31 @@ export default class AttachmentList extends React.PureComponent {
   };
   _keyExtractor = (item, index)=> String(index)
   render() {
+    var { attachs, attachsLoading } = this.props
+    if(attachsLoading){
+      return (<Spinner/>)
+    }    
+    if(!attachs.length){
+      return (
+        <View style={[styles.container, {
+          alignItems: 'center',
+          justifyContent: 'center',
+        }]}>
+          <Text style={{
+            fontSize: 16,
+            color: '#0b7f7c'
+          }}>
+            No Questions Found!
+        </Text>
+        </View>
+      )
+    }
     return (
       <View style={styles.container}>
         <FlatList
           style={{marginRight: 5}}
           //data={this._list}
-          data={this.props.attachs}
+          data={attachs}
           renderItem={this._renderItem}
           horizontal={true}
           ItemSeparatorComponent={() => <View style={{margin: 15}}/>}

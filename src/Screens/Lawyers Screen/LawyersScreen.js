@@ -13,6 +13,18 @@ export default class LawyersScreen extends React.Component {
     if(this.props.getLawyersLoading){
       return (<Spinner/>)
     }
+    if(!this.props.getLawyersSuccess.length){
+      return (
+        <View style={styles.container}>
+          <Text style={{
+            fontSize: 16,
+            color: '#0b7f7c'
+          }}>
+            No Lawyers Found!
+          </Text>
+        </View>
+      );
+    }
     return (
       <View style={styles.container}>
         <LawsList lawyers={this.props.getLawyersSuccess}/>

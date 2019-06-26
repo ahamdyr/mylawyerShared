@@ -26,7 +26,7 @@ function* getUserOwnQuestionsSaga(action) {
   } catch (error) {
     yield put(getUserOwnQuestionsError(error))
     yield put(getUserOwnQuestionsLoading(false))
-    console.log(error)
+    console.log('own questions error ',error)
   }
 }
 function* searchUserOwnQuestionsSaga(action) {
@@ -43,7 +43,7 @@ function* searchUserOwnQuestionsSaga(action) {
   } catch (error) {
     yield put(getUserOwnQuestionsError(error))
     yield put(getUserOwnQuestionsLoading(false))
-    console.log(error)
+    console.log('search own questions error ',error)
   }
 }
 

@@ -7,7 +7,7 @@ import {
 
 import { mockAllQuestions } from '../../Services/BackendServices/MockData'
 
-export const getUserAllQuestionsSuccess = (state = mockAllQuestions, action) => {
+export const getUserAllQuestionsSuccess = (state = [], action) => {
   switch (action.type) {
     case GET_USER_ALL_QUESTIONS_SUCCESS:
       return [...action.questions, ...state] 

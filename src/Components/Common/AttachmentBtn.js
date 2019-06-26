@@ -16,7 +16,7 @@ export default class AttachmentBtn extends React.PureComponent {
   }
   render(){
     let {isOpened} = this.state
-    var { attachs } = this.props
+    var { attachs, attachsLoading } = this.props
     return(
       <View>
         <TouchableOpacity 
@@ -28,10 +28,6 @@ export default class AttachmentBtn extends React.PureComponent {
                 source={attachment}
                 style={styles.attachmentIcon}
               />
-              {/* <Entypo
-                name="attachment"
-                style={styles.attachmentIcon}
-              /> */}
               <Text style={styles.filterText}>
                 ATTACHMENTS
               </Text>
@@ -48,7 +44,7 @@ export default class AttachmentBtn extends React.PureComponent {
               }           
           </View>         
         </TouchableOpacity>
-        {isOpened && <AttachmentView attachs={attachs} />}
+        {isOpened && <AttachmentView attachs={attachs} attachsLoading={attachsLoading} />}
       </View>
     )
   }

@@ -26,7 +26,7 @@ function* getUserAllQuestionsSaga(action) {
   } catch (error) {
     yield put(getUserAllQuestionsError(error))
     yield put(getUserAllQuestionsLoading(false))
-    console.log(error)
+    console.log('all questions error ',error)
   }
 }
 function* searchUserAllQuestionsSaga(action) {
@@ -43,7 +43,7 @@ function* searchUserAllQuestionsSaga(action) {
   } catch (error) {
     yield put(getUserAllQuestionsError(error))
     yield put(getUserAllQuestionsLoading(false))
-    console.log(error)
+    console.log('search all questions error ',error)
   }
 }
 

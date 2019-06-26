@@ -15,6 +15,9 @@ export default class MyQuestionsScreen extends React.Component {
     }
   }
   render() {
+    if(!this.props.isLoggedUser){
+      return (null)
+    }
     var {
       questions,
       currentUser,

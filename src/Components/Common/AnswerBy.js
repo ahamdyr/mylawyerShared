@@ -15,7 +15,7 @@ export default class AnswerBy extends React.PureComponent{
         <View style={styles.textContainer}>
           <View style={{flexDirection:'row'}}>
             <Text style={styles.answerBy}>
-              Answered by 
+              {this.props.lock ? 'Locked By' : 'Answered By'}
             </Text> 
             <Text style={styles.answeredBy}>
               {answeredBy}

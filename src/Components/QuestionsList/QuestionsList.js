@@ -56,7 +56,7 @@ export default class QuestionsList extends React.Component {
           fontSize: 16,
           color: '#0b7f7c'
         }}>
-          No Results Found!
+          No Questions Found!
         </Text>
       </View>)
     }

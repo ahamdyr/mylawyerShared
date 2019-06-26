@@ -26,7 +26,7 @@ export default class AttachmentView extends React.PureComponent {
           </TouchableOpacity>
         </View> */}
         <View style={styles.filesContainer}>
-          <AttachmentList attachs={this.props.attachs}/>
+          <AttachmentList attachs={this.props.attachs} attachsLoading={this.props.attachsLoading} />
         </View>
       </View>
     )

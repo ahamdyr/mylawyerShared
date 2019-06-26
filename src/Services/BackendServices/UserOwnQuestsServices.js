@@ -6,8 +6,8 @@ export const getUserOwnQuestionsApi = async (pageToken, accessToken) => {
       `questions/?page=${pageToken}`,    
       {
         headers: {
-          'Authorization': `Bearer ${accessToken}`,
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
         }
       }
     ).then((res) => {

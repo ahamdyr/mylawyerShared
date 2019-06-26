@@ -6,7 +6,12 @@ import BlackX from '../../Components/Common/BlackX'
 import { STATUS_BAR_HEIGHT, WIDTH } from '../../Components/Constants'
 import AttachmentBtn from '../../Components/Common/AttachmentBtn'
 import WaitingAnswer from '../../Components/Common/WaitingAnswer'
+import Spinner from '../Spinner'
 export default class PrivateQuestionScreen extends React.Component {
+  componentWillMount(){
+    this.props.getAnswersRequest(this.props.navigation.getParam('question').id)
+    this.props.getAttachsRequest(this.props.navigation.getParam('question').id)
+  }
   render() {
     const { 
       //MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate, isAnswered, answer 
@@ -20,7 +25,9 @@ export default class PrivateQuestionScreen extends React.Component {
     } = this.props.navigation.getParam('question')
     var {
       answers,
-      attachs
+      attachs,
+      answersLoading,
+      attachsLoading
     } = this.props
     return (
       <View style={styles.container}>
@@ -35,25 +42,29 @@ export default class PrivateQuestionScreen extends React.Component {
           title={title}
         />
         <AttachmentBtn
-          attachs={attachs[id]}
+          //attachs={attachs[id]}
+          attachs={attachs}
+          attachsLoading={attachsLoading}
         //style={styles.Attachments}
         />
         {
-          lastActivity.type == 'answer' ?
-            <React.Fragment>
-              <AnswerBy
-                MainPhotoURL={lastActivity.by.photo}
-                answeredBy={lastActivity.by.name}
-                answerDate={lastActivity.addedOn}
-                style={styles.answered}
-              />
-              <ScrollView>
-                <Text style={styles.answer}>
-                  {answers[0].body}
-                </Text>
-              </ScrollView>
-            </React.Fragment>
-            : <WaitingAnswer />
+          lastActivity.type !== 'answer' ?
+            <WaitingAnswer />
+            : answersLoading ?
+              <Spinner />
+              : <React.Fragment>
+                <AnswerBy
+                  MainPhotoURL={lastActivity.by.photo}
+                  answeredBy={lastActivity.by.name}
+                  answerDate={lastActivity.addedOn}
+                  style={styles.answered}
+                />
+                <ScrollView>
+                  <Text style={styles.answer}>
+                    {answers[0].body}
+                  </Text>
+                </ScrollView>
+              </React.Fragment>
         }
       </View>
     );

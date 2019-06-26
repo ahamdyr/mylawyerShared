@@ -32,26 +32,33 @@ export default class SelectComponent extends React.PureComponent {
           </Text> */}
         {
           getTopicsSuccess.length ?
-              <Picker
-                style={styles.picker}
-                mode={'dropdown'}
-                itemStyle={styles.pickerItem}
-                selectedValue={this.state.choosenLabel}
-                onValueChange={(itemValue) => this._onChange(itemValue)}
-              >
-                {
-                  getTopicsSuccess.map(topic=>{
-                    return(
-                      <Picker.Item
-                        label={topic.name} 
-                        value={topic} 
-                        key={topic.id}                    
-                      />
-                    )
-                  })
-                }
-              </Picker>
-            : null
+            <Picker
+              style={styles.picker}
+              mode={'dropdown'}
+              itemStyle={styles.pickerItem}
+              selectedValue={this.state.choosenLabel}
+              onValueChange={(itemValue) => this._onChange(itemValue)}
+            >
+              {
+                getTopicsSuccess.map(topic => {
+                  return (
+                    <Picker.Item
+                      label={topic.name}
+                      value={topic}
+                      key={topic.id}
+                    />
+                  )
+                })
+              }
+            </Picker>
+            : <Text style={{
+              fontSize: 16,
+              color: '#0b7f7c',
+              alignSelf: 'center',
+              marginLeft: 20
+            }}>
+              No Topics Found!
+            </Text>
         }
         <View style={[styles.arrowContain, {backgroundColor: '#f6f6f6'}]}>
           <Image

@@ -24,7 +24,7 @@ function* getLawyersListSaga(action) {
   } catch (error) {
     yield put(getLawyersError(error))
     yield put(getLawyersLoading(false))
-    console.log(error)
+    //console.log('lawyers list error ',error)
   }
 }
 

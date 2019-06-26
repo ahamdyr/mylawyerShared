@@ -5,7 +5,7 @@ import {
   SET_LAWYERS_PG_TOKEN  
 } from './actions'
 import { mockLawyersList } from '../../Services/BackendServices/MockData'
-export const getLawyersSuccess = (state = mockLawyersList, action) => {
+export const getLawyersSuccess = (state = [], action) => {
   switch (action.type) {
     case GET_LAWYERS_SUCCESS:
       return [...action.lawyers, ...state] 

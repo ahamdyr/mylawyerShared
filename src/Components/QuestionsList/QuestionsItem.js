@@ -50,6 +50,18 @@ class QuestionsItem extends React.PureComponent {
                 marginBottom: 23              
               }}
             />
+            :lastActivity.type == 'lock' ?
+            <AnswerBy
+              MainPhotoURL={lastActivity.by.photo}
+              answeredBy={lastActivity.by.name}
+              answerDate={lastActivity.addedOn}
+              lock={true}
+              style={{
+                marginLeft: 16,
+                marginTop: 15.5,
+                marginBottom: 23              
+              }}
+            />
             :<WaitingAnswer/>
           }
           
