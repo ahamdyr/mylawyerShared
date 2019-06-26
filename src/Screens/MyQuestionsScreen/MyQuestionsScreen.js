@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import SelectComponent from '../../Components/QuestionsList/SelectComponent'
 import SearchComponent from '../../Components/QuestionsList/SearchComponent'
 import QuestionsList from '../../Components/QuestionsList/QuestionsList'
@@ -10,13 +10,35 @@ export default class MyQuestionsScreen extends React.Component {
     if(this.props.isLoggedUser){
       this.props.getUserOwnQuestionsRequest(this.props.accessToken)
     }
-    else{
-      navigate('SocialScreen')
-    }
   }
   render() {
-    if(!this.props.isLoggedUser){
-      return (null)
+    if (!this.props.isLoggedUser) {
+      return (
+        <View style={[styles.container, {
+          alignItems: 'center',
+          justifyContent: 'center',
+        }]}>
+          <TouchableOpacity
+            style={{
+              backgroundColor: '#0b7f7c',
+              height: 50,
+              width: 150,
+              borderRadius: 10,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onPress={()=>navigate('SocialScreen')}
+          >
+            <Text style={{
+              fontSize: 16,
+              color: 'white'
+            }}>
+              You have to log in!
+            </Text>
+          </TouchableOpacity>
+
+        </View>
+      )
     }
     var {
       questions,
@@ -38,7 +60,7 @@ export default class MyQuestionsScreen extends React.Component {
           onSelected={()=>{}}
         />
         <SearchComponent onSearch={(query)=>searchUserOwnQuestionsRequest(accessToken, query)}></SearchComponent>
-        <QuestionsList questions={questions}></QuestionsList>
+        <QuestionsList questions={getUserOwnQuestionsSuccess}></QuestionsList>
       </View>
     );
   }
