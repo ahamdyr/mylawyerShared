@@ -6,7 +6,7 @@ export const uploadFile = async () => {
   let doc = await DocumentPicker.getDocumentAsync()
   if (doc.type == 'success') {
     doc.uuid = guidGenerator()
-    doc.type = 'doc'
+    doc.type = 'document'
     //console.log('doc', doc)
     return doc
   }

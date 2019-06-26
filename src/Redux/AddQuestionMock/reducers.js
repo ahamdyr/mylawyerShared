@@ -8,8 +8,7 @@ import {
   ADD_QUESTION,
   SET_QUESTION_TOPIC,
   ADD_ANSWER,
-  ADD_ATTACHS,
-  ADD_QUESTION_LOADING
+  ADD_ATTACHS
 } from './actions'
 import { 
   mockAllQuestions,
@@ -21,15 +20,6 @@ export const questionTopic = (state = {}, action) => {
   switch (action.type) {
     case SET_QUESTION_TOPIC:
       return action.topic
-    default:
-      return state
-  }
-}
-
-export const addQuestionLoading = (state = false, action) => {
-  switch (action.type) {
-    case ADD_QUESTION_LOADING:
-      return action.isLoading
     default:
       return state
   }

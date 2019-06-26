@@ -7,10 +7,11 @@ import QuestionComponent from '../../Components/QuestionComponents/Question'
 import Footer from '../../Components/QuestionComponents/Footer'
 import Attachments from '../../Components/QuestionComponents/Attachments'
 import AskTitle from '../../Components/QuestionComponents/AskTitle'
+import Spinner from '../Spinner'
 
 export default class AskQuestion extends React.Component {
   render() {
-    const {
+    var {
       docs,
       imgs,
       setQuestionBody,
@@ -25,9 +26,24 @@ export default class AskQuestion extends React.Component {
       currentUser,
       questionBody,
       questionTitle,
-      questionTopic
+      questionTopic,
+      addQuestionLoading
     } = this.props
     var attachs = [...docs, ...imgs]
+    
+    if(addQuestionLoading){
+      return (
+        <View style={{
+          backgroundColor: 'transparent',
+          flex: 1
+        }}>
+          <Spinner style={{
+            backgroundColor: 'transparent',
+            flex: 1
+          }}/>
+        </View>
+      )
+    }
     return (
       <View style={styles.container}>
 
@@ -67,6 +83,7 @@ export default class AskQuestion extends React.Component {
           questionBody={questionBody}
           questionTitle={questionTitle}
           questionTopic={questionTopic}
+          addQuestionLoading={addQuestionLoading}
         />
 
       </View>

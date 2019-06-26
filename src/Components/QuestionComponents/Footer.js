@@ -4,7 +4,7 @@ import { WIDTH } from '../Constants'
 import Ask from '../BottomTabIcons/Ask Icon'
 import { camera, attachment } from '../../../assets'
 import ImageIcon from '../Common/ImageIcon'
-import { navigate } from '../../Services/NavigationServices'
+import { navigate, goBack } from '../../Services/NavigationServices'
 import { uploadFile, uploadImage } from '../../Services/FilesServices'
 import _ from 'lodash'
 import { addToStorage } from '../../Services/FirebaseServices/FirebaseStorage'
@@ -19,15 +19,14 @@ export default class Footer extends React.PureComponent {
   }
   _uploadImage = async () => {
     let img = await uploadImage()
+    //console.log(img)
     //await addToStorage(`test/${guidGenerator()}`, img)
     img ? this.props.setQuestionImg(img) : null
   }
-  _submit = () => {
+  _submit = () => {    
     if (this.props.isLoggedUser) {
       if (this.props.questionTitle && this.props.questionBody && !_.isEmpty(this.props.questionTopic)) {
-        this.props.submitQuestion()
-        alert('Your question has been submitted')
-        navigate('MyQuestions')
+        this.props.submitQuestion()    
       }
       else {
         alert('Your query must have at least topic, title and body')

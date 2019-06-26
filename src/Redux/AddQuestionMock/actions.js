@@ -9,19 +9,11 @@ export const ADD_QUESTION = 'ADD_QUESTION'
 export const SET_QUESTION_TOPIC = 'SET_QUESTION_TOPIC'
 export const ADD_ANSWER = 'ADD_ANSWER'
 export const ADD_ATTACHS = 'ADD_ATTACHS'
-export const ADD_QUESTION_LOADING = 'ADD_QUESTION_LOADING'
 
 export const setQuestionTopic = (topic) => {
   return{
     type: SET_QUESTION_TOPIC,
     topic
-  }
-}
-
-export const addQuestionLoading = (isLoading) => {
-  return{
-    type: ADD_QUESTION_LOADING,
-    isLoading
   }
 }
 

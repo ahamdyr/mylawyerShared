@@ -1,63 +1,40 @@
 import { call, put, takeEvery, select } from 'redux-saga/effects'
 import {
   SUBMIT_QUESTION,
-  addQuestion,
-  addAttachs
+  addQuestionLoading
 } from './actions'
+import { askQuestionApi } from '../../Services/BackendServices/AskNewQuestion'
+import { addQuestionAttachsService } from '../../Services/BackendServices/QuestionAttachs'
+import { goBack, navigate} from '../../Services/NavigationServices'
 
 function* submitQuestionSaga(action) {
-  try {
-    var preId = yield select(state => state.questions[state.questions.length - 1].id)
-    var nextId = preId + 1
+  try {    
+    //yield put(addQuestionLoading(true))
+    navigate('Spinner')
     var topic = yield select(state => state.questionTopic)
     var title = yield select(state => state.questionTitle)
     var body = yield select(state => state.questionBody)
     var imgs = yield select(state => state.questionImgs)
     var docs = yield select(state => state.questionDocs)
-    var author = yield select(state => state.currentUser.displayName)
-    var authorPhoto = yield select(state => state.currentUser.photo)
-    var attachments = [...imgs, ...docs].map((e,index) => ({
-        id: index + 1,
-        type: "image|document",
-        isPublic: true,
-        link: e.uri
-    }))
-    var question = {
-      id: nextId,
-      title: title,
-      body: body,
-      topic: {
-        id: topic.id,
-        name: topic.name
-      },
-      addedOn: "01/01/19",
-      by: {
-        id: 4,
-        name: author,
-        photo: authorPhoto || ''
-      },
-      lastActivity: {
-        type: "comment",
-        addedOn: "01/01/19",
-        isAccepted: true,
-        isRejected: true,
-        isExpired: true,
-        by: {
-          id: 1,
-          name: 'Amir Fawzy',
-          type: "lawyer|user",
-          photo: ''
-        }
-      }
-    }
-    var attachs = {}
-    attachs[nextId] = attachments
-    //console.log('attachments  ',attachs)
-    yield put(addQuestion(question))
-    yield put(addAttachs(attachs))
-    //console.log('question ',question)
+    // var author = yield select(state => state.currentUser.displayName)
+    // var authorID = yield select(state => state.currentUser.id)
+    // var authorPhoto = yield select(state => state.currentUser.photo)
+    var accessToken = yield select(state => state.accessToken)
+    var attachments = [...imgs, ...docs]
+
+    var questionID = yield call(askQuestionApi, topic.id, accessToken, title, body)
+    //console.log('questionID  ',questionID)
+    yield call(addQuestionAttachsService, attachments, questionID, accessToken)
+    
+    alert('Your question has been submitted')
+    goBack()
+    goBack()
+    //yield put(addQuestionLoading(false))
   } catch (error) {
-    console.log(error)
+    console.log('ask question error ',error)
+    alert('Something went error!\n Try again!')
+    goBack()
+    //yield put(addQuestionLoading(false))
   }
 }
 

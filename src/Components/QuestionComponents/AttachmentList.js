@@ -27,7 +27,7 @@ export default class AttachmentList extends React.PureComponent {
   ]
 
   _deleteItem = (item) => {
-    if (item.type == 'doc') {
+    if (item.type == 'document') {
       this.props.delQuestionDoc(item)
     }
     else {

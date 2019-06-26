@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { addToStorage } from '../FirebaseServices/FirebaseStorage'
 
 export const getQuestionAttachsApi = async (questionID) => {  
 
@@ -53,3 +54,25 @@ export const addAttachmentApi = async (questionID, accessToken, link, type) => {
     })
   })  
 } 
+
+const addSingleAttachService = async (attachment, questionID, accessToken) => {
+  return new Promise((resolve, reject) => {
+    var path = `Questions/${questionID}/${attachment.uuid}`
+    addToStorage(path, attachment.uri)
+      .then(link => {
+        addAttachmentApi(questionID, accessToken, link, attachment.type)
+          .then(data => resolve(data))
+          .catch(err => reject(err))
+      })
+      .catch(err => reject(err))
+  })
+}
+
+export const addQuestionAttachsService = async (attachments, questionID, accessToken) => {
+
+  let promisesList = []
+  for (let attachment of attachments){
+    promisesList.push(addSingleAttachService(attachment, questionID, accessToken))
+  }
+  return Promise.all(promisesList)
+}

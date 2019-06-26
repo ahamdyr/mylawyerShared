@@ -18,7 +18,8 @@ const mapStateToProps =  state => ({
   currentUser: state.currentUser,
   questionTitle: state.questionTitle,
   questionBody: state.questionBody,
-  questionTopic: state.questionTopic
+  questionTopic: state.questionTopic,
+  addQuestionLoading: state.addQuestionLoading
 })
 
   
