@@ -6,7 +6,16 @@ import SeperatorLine from '../../Components/Common/SeperatorLine'
 import SearchList from '../../Components/Common/SearchList'
 
 export default class Search extends React.Component {
+  componentWillUnmount(){
+    this.props.getLawyersSuccess([])
+  }
   render() {
+    var {
+      getLawyersSuccess,
+      getLawyersLoading,
+      searchLawyersRequest,
+      getLawyersRequest
+    } = this.props
     return (
       <View style={styles.container}>
         <View
@@ -16,12 +25,15 @@ export default class Search extends React.Component {
             <TextInput
               style={styles.searchText}
               placeholder={'Search'}
-              //onSubmitEditing={(event)=>console.log(event.nativeEvent.text)}
+              onSubmitEditing={(event)=>searchLawyersRequest(event.nativeEvent.text)}
               shouldCancelWhenOutside ={true}
             />
           </View> 
           <TouchableOpacity 
-            onPress={()=>goBack()}
+            onPress={()=>{
+              getLawyersRequest()
+              goBack()
+            }}
             style={styles.cancelStyle}
           >
             <Text style={styles.cancelTextStyle}>
@@ -32,7 +44,26 @@ export default class Search extends React.Component {
         <SeperatorLine
           style={styles.line}
         />
-        <SearchList/>
+        {
+          getLawyersSuccess.length ?
+          <SearchList list={getLawyersSuccess} loading={getLawyersLoading} />
+          :
+            <View
+              style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Text style={{
+                fontSize: 16,
+                color: '#0b7f7c'
+              }}>
+                No Lawyers Found!
+              </Text>
+            </View>
+        }
+        
       </View>
     );
   }

@@ -170,14 +170,14 @@ const styles = StyleSheet.create({
     marginRight: 20
   },
   bodyText: {
-    // flex: 1,
+    flex: 1,
     flexWrap: 'wrap',
     fontFamily: 'Lato-Regular',
     letterSpacing: 0.4,
     fontSize: 16,
     color: '#74747a',
     alignSelf: 'center',
-    width: 200,
+    //width: 300,
     // marginTop: 10,
     // marginBottom: 20
   },

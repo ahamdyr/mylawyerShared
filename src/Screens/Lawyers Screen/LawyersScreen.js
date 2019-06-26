@@ -8,6 +8,9 @@ export default class LawyersScreen extends React.Component {
   componentDidMount(){
     this.props.getLawyersRequest()
   }
+  componentWillUnmount(){
+    //this.props.getLawyersSuccess([])
+  }
 
   render() {
     if(this.props.getLawyersLoading){

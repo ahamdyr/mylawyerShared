@@ -66,8 +66,8 @@ export default class MyQuestionsScreen extends React.Component {
           onCancel={()=>getUserOwnQuestionsRequest(accessToken)}
         />
         <QuestionsList 
-          //questions={getUserOwnQuestionsSuccess}
-          questions={questions}
+          questions={getUserOwnQuestionsSuccess}
+          //questions={questions}
         />
       </View>
     );

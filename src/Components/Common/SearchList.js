@@ -11,7 +11,7 @@ import {
 import { WIDTH } from '../Constants'
 import SeperatorLine from './SeperatorLine'
 import ImageIcon from './ImageIcon'
-
+import { navigate, goBack } from '../../Services/NavigationServices'
 export default class SearchList extends React.PureComponent {
 
   _list = [
@@ -58,7 +58,7 @@ export default class SearchList extends React.PureComponent {
     return (
       <TouchableOpacity 
         style={styles.itemContainer}
-        //onPress={}
+        onPress={() => navigate('LawyerDetails', { lawyer: item })}
       > 
         <ImageIcon
           style={styles.image}
@@ -76,14 +76,14 @@ export default class SearchList extends React.PureComponent {
   _keyExtractor = (item, index) => String(index)
 
   render() {
-    var { attachs } = this.props
+    var { list, loading } = this.props
     return (
         <View style={styles.majorsContainer}>
           <FlatList
             style={{ 
               //flex: 1 
             }}
-            data={this._list}
+            data={list}
             scrollEnabled={true}
             renderItem={this._renderItem}
             ItemSeparatorComponent={() => <SeperatorLine style={styles.lineStyle}/>}

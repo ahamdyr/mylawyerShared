@@ -1,7 +1,8 @@
 import LawyersScreen from './LawyersScreen'
 import {connect} from 'react-redux'
 import {
-  getLawyersRequest
+  getLawyersRequest,
+  //getLawyersSuccess
 } from '../../Redux/LawyersList/actions'
 
 const mapStateToProps =  state => ({
@@ -11,5 +12,6 @@ const mapStateToProps =  state => ({
 
 const mapDispatchersToProps = dispatch => ({
   getLawyersRequest: () => dispatch(getLawyersRequest()),
+  //getLawyersSuccess: ()=> dispatch(getLawyersSuccess())
 })  
 export default connect(mapStateToProps, mapDispatchersToProps)(LawyersScreen)

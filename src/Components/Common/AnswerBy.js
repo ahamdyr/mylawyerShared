@@ -22,7 +22,7 @@ export default class AnswerBy extends React.PureComponent{
             </Text>            
           </View>
           <Text style={styles.date}>
-            4 days ago
+            {timeDifference(answerDate)}
           </Text>
         </View>
         

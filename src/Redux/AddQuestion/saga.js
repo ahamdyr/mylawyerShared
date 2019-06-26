@@ -22,7 +22,7 @@ function* submitQuestionSaga(action) {
     var accessToken = yield select(state => state.accessToken)
     var attachments = [...imgs, ...docs]
 
-    var questionID = yield call(askQuestionApi, topic.id, accessToken, title, body)
+    var questionID = yield call(askQuestionApi, topic, accessToken, title, body)
     //console.log('questionID  ',questionID)
     yield call(addQuestionAttachsService, attachments, questionID, accessToken)
     

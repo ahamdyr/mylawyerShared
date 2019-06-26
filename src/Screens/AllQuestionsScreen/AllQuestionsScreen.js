@@ -32,8 +32,8 @@ export default class AllQuestionsScreen extends React.Component {
           onCancel={()=>getUserAllQuestionsRequest()}
         />
         <QuestionsList 
-          questions={questions}
-          //questions={getUserAllQuestionsSuccess}
+          //questions={questions}
+          questions={getUserAllQuestionsSuccess}
         />
       </View>
     );

@@ -35,7 +35,7 @@ class QuestionsItem extends React.PureComponent {
         >
           <Topic
             authorName={by.name}
-            topicName={topic.name}
+            topicName={`${topic.name.split(' ')[0]}...`}
             title={title}
           />
           {
