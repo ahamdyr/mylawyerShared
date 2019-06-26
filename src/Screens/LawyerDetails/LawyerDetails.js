@@ -17,6 +17,7 @@ import SubmitBtn from '../../Components/Common/SubmitBtn'
 import SeperatorLine from '../../Components/Common/SeperatorLine'
 import AskIcon from '../../Components/BottomTabIcons/Ask Icon'
 import { getNumSuffix, getFirstName } from '../../Utils/textModifier'
+import { defaultPicture } from '../../../assets'
 
 export default class LawyerDetails extends React.Component {
   render() {
@@ -33,7 +34,7 @@ export default class LawyerDetails extends React.Component {
           <View style={styles.imageContainer}>
             <ImageIcon
               style={styles.lawyerPhoto}
-              source={{ uri: lawyer.photo }}
+              source={ lawyer.photo ? { uri: lawyer.photo } : defaultPicture}
             />
             <AskIcon
               text={getNumSuffix(lawyer.id)}
@@ -49,11 +50,11 @@ export default class LawyerDetails extends React.Component {
                 {lawyer.name}
               </Text>
               <Text style={styles.officeText} >
-                {lawyer.office}
+                {lawyer.office || 'Office 1'}
               </Text>
             </View>
             <RatingView 
-              rating={lawyer.rate}
+              rating={lawyer.rate || 3}
               style={styles.ratingStyle}
               starStyle={styles.starStyle}
             />
@@ -67,7 +68,7 @@ export default class LawyerDetails extends React.Component {
           />
 
           <Text style={styles.bio}>
-            {lawyer.bio}
+            {lawyer.bio || ''}
           </Text>
 
           <SeperatorLine style={styles.line} />
