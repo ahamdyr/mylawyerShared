@@ -11,10 +11,11 @@ import {
   getUserAllQuestionsApi,
   searchUserAllQuestionsApi
 } from '../../Services/BackendServices/UserAllQuestionsServices'
+import {goBack, navigate} from '../../Services/NavigationServices'
 
 function* getUserAllQuestionsSaga(action) {
   try {
-    yield put(getUserAllQuestionsLoading(true))
+    navigate('Spinner')
     let lastPageToken = yield select(state => state.UserAllQuestionsPageToken)
     var {
       data,
@@ -22,16 +23,16 @@ function* getUserAllQuestionsSaga(action) {
     } = yield call(getUserAllQuestionsApi, lastPageToken)
     yield put(getUserAllQuestionsSuccess(data))
     yield put(setUserAllQuestionsPageToken(nextPage|| lastPageToken))
-    yield put(getUserAllQuestionsLoading(false))
+    goBack()
   } catch (error) {
     yield put(getUserAllQuestionsError(error))
-    yield put(getUserAllQuestionsLoading(false))
+    goBack()
     console.log('all questions error ',error)
   }
 }
 function* searchUserAllQuestionsSaga(action) {
   try {
-    yield put(getUserAllQuestionsLoading(true))
+    navigate('Spinner')
     let lastPageToken = yield select(state => state.UserAllQuestionsPageToken)
     var {
       data,
@@ -39,10 +40,10 @@ function* searchUserAllQuestionsSaga(action) {
     } = yield call(searchUserAllQuestionsApi, lastPageToken, action.query)
     yield put(getUserAllQuestionsSuccess(data))
     yield put(setUserAllQuestionsPageToken(nextPage|| lastPageToken))
-    yield put(getUserAllQuestionsLoading(false))
+    goBack()
   } catch (error) {
     yield put(getUserAllQuestionsError(error))
-    yield put(getUserAllQuestionsLoading(false))
+    goBack()
     console.log('search all questions error ',error)
   }
 }

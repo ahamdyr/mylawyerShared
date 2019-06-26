@@ -18,9 +18,9 @@ export default class AllQuestionsScreen extends React.Component {
       getUserAllQuestionsRequest
     } = this.props
 
-    if(getUserAllQuestionsLoading){
-      return(<Spinner/>)
-    }
+    // if(getUserAllQuestionsLoading){
+    //   return(<Spinner/>)
+    // }
     return (
       <View style={styles.container}>
         <SelectComponent 

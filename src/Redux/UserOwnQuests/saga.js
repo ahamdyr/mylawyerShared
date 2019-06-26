@@ -11,10 +11,11 @@ import {
   getUserOwnQuestionsApi,
   searchUserOwnQuestionsApi
 } from '../../Services/BackendServices/UserOwnQuestsServices'
+import { navigate, goBack} from '../../Services/NavigationServices'
 
 function* getUserOwnQuestionsSaga(action) {
   try {
-    yield put(getUserOwnQuestionsLoading(true))
+    navigate('Spinner')
     let lastPageToken = yield select(state => state.UserOwnQuestionsPageToken)
     var {
       data,
@@ -22,16 +23,16 @@ function* getUserOwnQuestionsSaga(action) {
     } = yield call(getUserOwnQuestionsApi, lastPageToken, action.accessToken)
     yield put(getUserOwnQuestionsSuccess(data))
     yield put(setUserOwnQuestionsPageToken(nextPage|| lastPageToken))
-    yield put(getUserOwnQuestionsLoading(false))
+    goBack()
   } catch (error) {
     yield put(getUserOwnQuestionsError(error))
-    yield put(getUserOwnQuestionsLoading(false))
+    goBack()
     console.log('own questions error ',error)
   }
 }
 function* searchUserOwnQuestionsSaga(action) {
   try {
-    yield put(getUserOwnQuestionsLoading(true))
+    navigate('Spinner')
     let lastPageToken = yield select(state => state.UserOwnQuestionsPageToken)
     var {
       data,
@@ -39,10 +40,10 @@ function* searchUserOwnQuestionsSaga(action) {
     } = yield call(searchUserOwnQuestionsApi, lastPageToken, action.accessToken, action.query)
     yield put(getUserOwnQuestionsSuccess(data))
     yield put(setUserOwnQuestionsPageToken(nextPage|| lastPageToken))
-    yield put(getUserOwnQuestionsLoading(false))
+    goBack()
   } catch (error) {
     yield put(getUserOwnQuestionsError(error))
-    yield put(getUserOwnQuestionsLoading(false))
+    goBack()
     console.log('search own questions error ',error)
   }
 }

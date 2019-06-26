@@ -51,9 +51,9 @@ export default class MyQuestionsScreen extends React.Component {
       getUserOwnQuestionsRequest
     } = this.props
 
-    if(getUserOwnQuestionsLoading){
-      return (<Spinner/>)
-    }
+    // if(getUserOwnQuestionsLoading){
+    //   return (<Spinner/>)
+    // }
 
     return (
       <View style={styles.container}>
