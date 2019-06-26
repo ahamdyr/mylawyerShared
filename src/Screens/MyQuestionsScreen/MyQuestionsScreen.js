@@ -59,8 +59,13 @@ export default class MyQuestionsScreen extends React.Component {
         <SelectComponent 
           onSelected={()=>{}}
         />
-        <SearchComponent onSearch={(query)=>searchUserOwnQuestionsRequest(accessToken, query)}></SearchComponent>
-        <QuestionsList questions={getUserOwnQuestionsSuccess}></QuestionsList>
+        <SearchComponent 
+          onSearch={(query)=>searchUserOwnQuestionsRequest(accessToken, query)}
+        />
+        <QuestionsList 
+          questions={getUserOwnQuestionsSuccess}
+          //questions={questions}
+        />
       </View>
     );
   }

@@ -25,8 +25,13 @@ export default class AllQuestionsScreen extends React.Component {
         <SelectComponent 
           onSelected={()=>{}}
         />
-        <SearchComponent onSearch={(query)=>searchUserAllQuestionsRequest(query)}></SearchComponent>
-        <QuestionsList questions={questions}></QuestionsList>
+        <SearchComponent 
+          onSearch={(query)=>searchUserAllQuestionsRequest(query)}
+        />
+        <QuestionsList 
+          //questions={questions}
+          questions={getUserAllQuestionsSuccess}
+        />
       </View>
     );
   }
