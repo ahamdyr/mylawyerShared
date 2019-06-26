@@ -47,7 +47,8 @@ export default class MyQuestionsScreen extends React.Component {
       isLoggedUser,
       getUserOwnQuestionsSuccess,
       getUserOwnQuestionsLoading,
-      searchUserOwnQuestionsRequest
+      searchUserOwnQuestionsRequest,
+      getUserOwnQuestionsRequest
     } = this.props
 
     if(getUserOwnQuestionsLoading){
@@ -61,6 +62,7 @@ export default class MyQuestionsScreen extends React.Component {
         />
         <SearchComponent 
           onSearch={(query)=>searchUserOwnQuestionsRequest(accessToken, query)}
+          onCancel={()=>getUserOwnQuestionsRequest(accessToken)}
         />
         <QuestionsList 
           questions={getUserOwnQuestionsSuccess}
