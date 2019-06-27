@@ -53,10 +53,18 @@ function* filterUserOwnQuestionsSaga(action) {
   try {
     navigate('Spinner')
     let lastPageToken = yield select(state => state.UserOwnQuestionsPageToken)
-    var {
-      data,
-      nextPage
-    } = yield call(filterUserOwnQuestionsApi, lastPageToken, action.accessToken, action.topicID)
+    if(action.topicID == '0'){
+      var {
+        data,
+        nextPage
+      } = yield call(getUserOwnQuestionsApi, lastPageToken, action.accessToken)
+    }
+    else{
+      var {
+        data,
+        nextPage
+      } = yield call(filterUserOwnQuestionsApi, lastPageToken, action.accessToken, action.topicID)
+    }        
     yield put(getUserOwnQuestionsSuccess(data))
     yield put(setUserOwnQuestionsPageToken(nextPage|| lastPageToken))
     goBack()

@@ -17,7 +17,7 @@ import {
   mockAttachs 
 } from '../../Services/BackendServices/MockData'
 
-export const questionTopic = (state = '', action) => {
+export const questionTopic = (state = '0', action) => {
   switch (action.type) {
     case SET_QUESTION_TOPIC:
       return action.topic

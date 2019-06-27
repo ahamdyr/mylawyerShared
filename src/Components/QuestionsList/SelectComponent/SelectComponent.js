@@ -5,6 +5,10 @@ import { arrow, topic } from '../../../../assets'
 import { styles } from './Styles'
 
 export default class SelectComponent extends React.PureComponent {
+  _initialTopic = {
+    id: '0',
+    name: 'All TOPICS'
+  }
   componentDidMount() {
     this.props.getTopicsRequest()
   }
@@ -39,6 +43,11 @@ export default class SelectComponent extends React.PureComponent {
               selectedValue={this.state.choosenLabel}
               onValueChange={(itemValue) => this._onChange(itemValue)}
             >
+              <Picker.Item
+                label={this._initialTopic.name}
+                value={this._initialTopic}
+                key={this._initialTopic.id}
+              />
               {
                 getTopicsSuccess.map(topic => {
                   return (

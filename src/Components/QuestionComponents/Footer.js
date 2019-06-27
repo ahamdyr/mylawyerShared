@@ -24,8 +24,8 @@ export default class Footer extends React.PureComponent {
     img ? this.props.setQuestionImg(img) : null
   }
   _submit = () => {    
-    if (this.props.isLoggedUser) {
-      if (this.props.questionTitle && this.props.questionBody && this.props.questionTopic) {
+    if (this.props.isLoggedUser) {      
+      if (this.props.questionTitle && this.props.questionBody && this.props.questionTopic !== '0') {
         this.props.submitQuestion()    
       }
       else {

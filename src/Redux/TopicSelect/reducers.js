@@ -8,7 +8,7 @@ import { mockTopics } from '../../Services/BackendServices/MockData'
 export const getTopicsSuccess = (state = [], action) => {
   switch (action.type) {
     case GET_TOPICS_SUCCESS:
-      return [...action.topics, ...state]
+      return action.topics
     default:
       return state
   }

@@ -53,10 +53,18 @@ function* filterUserAllQuestionsSaga(action) {
   try {
     navigate('Spinner')
     let lastPageToken = yield select(state => state.UserAllQuestionsPageToken)
-    var {
-      data,
-      nextPage
-    } = yield call(filterUserAllQuestionsApi, lastPageToken, action.topicID)
+    if(action.topicID == '0'){
+      var {
+        data,
+        nextPage
+      } = yield call(getUserAllQuestionsApi, lastPageToken)
+    }
+    else{
+      var {
+        data,
+        nextPage
+      } = yield call(filterUserAllQuestionsApi, lastPageToken, action.topicID)
+    }    
     yield put(getUserAllQuestionsSuccess(data))
     yield put(setUserAllQuestionsPageToken(nextPage|| lastPageToken))
     goBack()
