@@ -8,25 +8,30 @@ export default class SearchComponent extends React.PureComponent {
   state = {
     text: ''
   }
+  _onSearch = (query) => {
+    query.length ? this.props.onSearch(query) : null
+  }
+  _onCancel = () => {
+    this._searchRef.clear()
+    this.props.onCancel()
+  }
   render() {
-    var {
-      onSearch,
-      onCancel
-    } = this.props
     return (
       <View style={[styles.selectContainer, this.props.style]}>
           <View style={styles.searchBox}>
             <TextInput
+              ref={(ref) => this._searchRef = ref}
               style={styles.searchText}
               blurOnSubmit={true}
               returnKeyType={'done'}
               placeholder={'Search'}
+              //value={this.state.text}
               onChangeText={(text)=> {this.state.text = text}}
-              onSubmitEditing={(event) => onSearch(event.nativeEvent.text)}
+              onSubmitEditing={(event) => this._onSearch(event.nativeEvent.text)}
               shouldCancelWhenOutside={true}
             />
             {/* <TouchableOpacity
-              onPress={() => onCancel()}
+              onPress={() => this._onCancel()}
               style={styles.cancelStyle}
             >
               <Text style={styles.cancelTextStyle}>
@@ -62,6 +67,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   searchText: {
+    flex: 1,
+    textAlign: 'center',
     fontFamily: 'Lato-Regular',
     letterSpacing: 0.35,
     fontSize: 14
