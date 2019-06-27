@@ -18,6 +18,7 @@ import { navigate, goBack} from '../../Services/NavigationServices'
 function* getUserOwnQuestionsSaga(action) {
   try {
     navigate('Spinner')
+    yield put(getUserOwnQuestionsLoading(true))
     let lastPageToken = yield select(state => state.UserOwnQuestionsPageToken)
     var {
       data,
@@ -25,9 +26,11 @@ function* getUserOwnQuestionsSaga(action) {
     } = yield call(getUserOwnQuestionsApi, lastPageToken, action.accessToken)
     yield put(getUserOwnQuestionsSuccess(data))
     yield put(setUserOwnQuestionsPageToken(nextPage|| lastPageToken))
+    yield put(getUserOwnQuestionsLoading(false))
     goBack()
   } catch (error) {
     yield put(getUserOwnQuestionsError(error))
+    yield put(getUserOwnQuestionsLoading(false))
     goBack()
     console.log('own questions error ',error)
   }
@@ -35,6 +38,7 @@ function* getUserOwnQuestionsSaga(action) {
 function* searchUserOwnQuestionsSaga(action) {
   try {
     navigate('Spinner')
+    yield put(getUserOwnQuestionsLoading(true))
     let lastPageToken = yield select(state => state.UserOwnQuestionsPageToken)
     var {
       data,
@@ -42,9 +46,11 @@ function* searchUserOwnQuestionsSaga(action) {
     } = yield call(searchUserOwnQuestionsApi, lastPageToken, action.accessToken, action.query)
     yield put(getUserOwnQuestionsSuccess(data))
     yield put(setUserOwnQuestionsPageToken(nextPage|| lastPageToken))
+    yield put(getUserOwnQuestionsLoading(false))
     goBack()
   } catch (error) {
     yield put(getUserOwnQuestionsError(error))
+    yield put(getUserOwnQuestionsLoading(false))
     goBack()
     console.log('search own questions error ',error)
   }
@@ -52,6 +58,7 @@ function* searchUserOwnQuestionsSaga(action) {
 function* filterUserOwnQuestionsSaga(action) {
   try {
     navigate('Spinner')
+    yield put(getUserOwnQuestionsLoading(true))
     let lastPageToken = yield select(state => state.UserOwnQuestionsPageToken)
     if(action.topicID == '0'){
       var {
@@ -67,9 +74,11 @@ function* filterUserOwnQuestionsSaga(action) {
     }        
     yield put(getUserOwnQuestionsSuccess(data))
     yield put(setUserOwnQuestionsPageToken(nextPage|| lastPageToken))
+    yield put(getUserOwnQuestionsLoading(false))
     goBack()
   } catch (error) {
     yield put(getUserOwnQuestionsError(error))
+    yield put(getUserOwnQuestionsLoading(false))
     goBack()
     console.log('search own questions error ',error)
   }

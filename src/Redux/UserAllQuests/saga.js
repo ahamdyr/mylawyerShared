@@ -18,6 +18,7 @@ import {goBack, navigate} from '../../Services/NavigationServices'
 function* getUserAllQuestionsSaga(action) {
   try {
     navigate('Spinner')
+    yield put(getUserAllQuestionsLoading(true))
     let lastPageToken = yield select(state => state.UserAllQuestionsPageToken)
     var {
       data,
@@ -25,9 +26,11 @@ function* getUserAllQuestionsSaga(action) {
     } = yield call(getUserAllQuestionsApi, lastPageToken)
     yield put(getUserAllQuestionsSuccess(data))
     yield put(setUserAllQuestionsPageToken(nextPage|| lastPageToken))
+    yield put(getUserAllQuestionsLoading(false))
     goBack()
   } catch (error) {
     yield put(getUserAllQuestionsError(error))
+    yield put(getUserAllQuestionsLoading(false))
     goBack()
     console.log('all questions error ',error)
   }
@@ -35,6 +38,7 @@ function* getUserAllQuestionsSaga(action) {
 function* searchUserAllQuestionsSaga(action) {
   try {
     navigate('Spinner')
+    yield put(getUserAllQuestionsLoading(true))
     let lastPageToken = yield select(state => state.UserAllQuestionsPageToken)
     var {
       data,
@@ -42,9 +46,11 @@ function* searchUserAllQuestionsSaga(action) {
     } = yield call(searchUserAllQuestionsApi, lastPageToken, action.query)
     yield put(getUserAllQuestionsSuccess(data))
     yield put(setUserAllQuestionsPageToken(nextPage|| lastPageToken))
+    yield put(getUserAllQuestionsLoading(false))
     goBack()
   } catch (error) {
     yield put(getUserAllQuestionsError(error))
+    yield put(getUserAllQuestionsLoading(false))
     goBack()
     console.log('search all questions error ',error)
   }
@@ -52,6 +58,7 @@ function* searchUserAllQuestionsSaga(action) {
 function* filterUserAllQuestionsSaga(action) {
   try {
     navigate('Spinner')
+    yield put(getUserAllQuestionsLoading(true))
     let lastPageToken = yield select(state => state.UserAllQuestionsPageToken)
     if(action.topicID == '0'){
       var {
@@ -67,9 +74,11 @@ function* filterUserAllQuestionsSaga(action) {
     }    
     yield put(getUserAllQuestionsSuccess(data))
     yield put(setUserAllQuestionsPageToken(nextPage|| lastPageToken))
+    yield put(getUserAllQuestionsLoading(false))
     goBack()
   } catch (error) {
     yield put(getUserAllQuestionsError(error))
+    yield put(getUserAllQuestionsLoading(false))
     goBack()
     console.log('filter all questions error ',error)
   }

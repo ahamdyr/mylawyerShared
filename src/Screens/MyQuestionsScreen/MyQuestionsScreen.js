@@ -68,6 +68,7 @@ export default class MyQuestionsScreen extends React.Component {
         <QuestionsList 
           questions={getUserOwnQuestionsSuccess}
           //questions={questions}
+          questionsLoading={getUserOwnQuestionsLoading}
         />
       </View>
     );

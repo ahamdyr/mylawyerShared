@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, RefreshControl } from 'react-native';
 import QuestionsItem from './QuestionsItem'
-
+import StatusText from '../Common/StatusText'
 export default class QuestionsList extends React.Component {
   
   renderItem = (item) => {
@@ -14,7 +14,7 @@ export default class QuestionsList extends React.Component {
     return (
       <FlatList
         data={questions}
-        //data={this.props.questions}
+        //data={questions}
         keyExtractor={this._keyExtractor}
         renderItem={this.renderItem}
         //numColumns={2}
@@ -43,23 +43,10 @@ export default class QuestionsList extends React.Component {
   }
 
   render() {
-    if (!this.props.questions.length) {
-      return (<View style={{
-        flex: 1,
-        alignSelf: 'stretch',
-        backgroundColor: '#f6f6f6',
-        alignItems: 'center',
-        justifyContent: 'center',
-
-      }}>
-        <Text style={{
-          fontSize: 16,
-          color: '#0b7f7c'
-        }}>
-          No Questions Found!
-        </Text>
-      </View>)
-    }
+    var {
+      questions, questionsLoading
+    } = this.props
+    
     return (
       <View style={{
         flex: 1,
@@ -69,7 +56,13 @@ export default class QuestionsList extends React.Component {
         justifyContent: 'center',
 
       }}>
-        {this.renderQuestions(this.props.questions)}
+        {
+          questionsLoading ?
+            <StatusText text={'Loading...'} />
+            : questions.length ?
+                this.renderQuestions(questions)
+                : <StatusText text={'No Questions Found!'} />          
+        }
       </View>
     );
   }
