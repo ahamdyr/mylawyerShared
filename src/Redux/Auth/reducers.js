@@ -7,6 +7,15 @@ export const userType = (state = 'user', action) => {
   }
 }
 
+export const phoneCredentials = (state = {}, action) => {  
+  switch (action.type) {
+    case 'setPhoneAuthCredentials':
+      return action.phoneCredentials
+    default:
+      return state
+  }
+}
+
 export const userMail = (state = '', action) => {
   switch (action.type) {
     case 'setMail':

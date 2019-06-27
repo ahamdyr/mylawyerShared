@@ -4,7 +4,7 @@ import AppRouter from '../../Routers/App Router'
 import { Provider } from 'react-redux'
 import Store from '../../Redux/Store' 
 import {setTopLevelNavigator} from '../../Services/NavigationServices'
-import { getUser } from '../../Services/AuthServices'
+import { getUser, setPhoneCredentials } from '../../Services/AuthServices'
 import axios from 'axios'
 
 export default class AppContainer extends React.Component {
@@ -15,6 +15,7 @@ export default class AppContainer extends React.Component {
     //   .then(()=>console.log('data deleted'))
     // gte user from storage
     await getUser()
+    await setPhoneCredentials()
   }
   render() {
     return (

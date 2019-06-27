@@ -4,7 +4,8 @@ import {
   setLoggedUser,
   setCurrentUser,
   setAccessToken,
-  setPhoneNumber
+  setPhoneNumber,
+  setPhoneAuthCredentials
 } from '../Redux/Auth/actions'
 import {
     navigate,
@@ -71,3 +72,18 @@ export const getUser = async () => {
 }
 
 export const getUserType = () => Store.getState().userType
+
+export const savePhoneCredentials = async (phoneCredentials) => {
+  Store.dispatch(setPhoneAuthCredentials(phoneCredentials))
+  await AsyncStorage.setItem('phoneCredentials', JSON.stringify(phoneCredentials))
+}
+
+export const setPhoneCredentials = async () => {
+  let phoneCredentialsJson = await AsyncStorage.getItem('phoneCredentials')
+  if(phoneCredentialsJson !== null){    
+    let phoneCredentials = JSON.parse(phoneCredentialsJson)  
+    Store.dispatch(setPhoneAuthCredentials(phoneCredentials))
+  }
+} 
+
+export const getPhoneCredentials = () => Store.getState().phoneCredentials

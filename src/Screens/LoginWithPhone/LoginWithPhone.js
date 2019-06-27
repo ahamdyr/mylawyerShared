@@ -3,7 +3,7 @@ import {Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native
 import {styles} from './Styles'
 import LoginWithPhoneForm from '../../Components/AuthComponents/LoginWithPhoneForm'
 import {withNavigation} from 'react-navigation'
-
+import { SignIn } from '../../Services/Login Services/PhoneLogin'
 class LoginWithPhone extends React.Component {
   render() {
     const {navigation} = this.props
@@ -19,7 +19,8 @@ class LoginWithPhone extends React.Component {
             {/* login form */}
           <View style={styles.formContainer}>
             <LoginWithPhoneForm 
-              onPress={()=>this.props.navigation.navigate('PhoneVerification',{action: 'login'})}/>
+              onPress={()=>{ SignIn() }}
+            />
           </View>
 
             {/* footer */}

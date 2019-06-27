@@ -1,3 +1,10 @@
+export const setPhoneAuthCredentials = (phoneCredentials) => {
+  return{
+    type: 'setPhoneAuthCredentials',
+    phoneCredentials
+  }
+}
+
 export const setUserType = (userType) => {
   return{
     type: 'setUserType',
