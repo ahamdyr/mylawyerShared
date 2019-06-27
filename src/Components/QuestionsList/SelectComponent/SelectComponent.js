@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View, TouchableOpacity, Image, Picker } from 'react-native';
-import DropdownMenu from 'react-native-dropdown-menu';
+import StatusText from '../../Common/StatusText';
 import { arrow, topic } from '../../../../assets'
 import { styles } from './Styles'
 
@@ -21,9 +21,10 @@ export default class SelectComponent extends React.PureComponent {
   state = { choosenLabel: ''}
   render() {
     var { 
-      getTopicsSuccess 
+      getTopicsSuccess,
+      getTopicsLoading 
     } = this.props
-    //console.log('el data  ', this.state)
+    
     return (
       <View style={[styles.selectContainer, this.props.style]}>
 
@@ -31,43 +32,35 @@ export default class SelectComponent extends React.PureComponent {
           source={topic}
           style={styles.topicIcon}
         />
-        {/* <Text style={styles.filterText}>
-            ALL TOPICS
-          </Text> */}
         {
-          getTopicsSuccess.length ?
-            <Picker
-              style={styles.picker}
-              mode={'dropdown'}
-              itemStyle={styles.pickerItem}
-              selectedValue={this.state.choosenLabel}
-              onValueChange={(itemValue) => this._onChange(itemValue)}
-            >
-              <Picker.Item
-                label={this._initialTopic.name}
-                value={this._initialTopic}
-                key={this._initialTopic.id}
-              />
-              {
-                getTopicsSuccess.map(topic => {
-                  return (
-                    <Picker.Item
-                      label={topic.name}
-                      value={topic}
-                      key={topic.id}
-                    />
-                  )
-                })
-              }
-            </Picker>
-            : <Text style={{
-              fontSize: 16,
-              color: '#0b7f7c',
-              alignSelf: 'center',
-              marginLeft: 20
-            }}>
-              No Topics Found!
-            </Text>
+          getTopicsLoading ?
+            <StatusText text={'Loading...'} style={{ alignSelf: 'center', marginLeft: 20 }} />
+            : getTopicsSuccess.length ?
+              <Picker
+                style={styles.picker}
+                mode={'dropdown'}
+                itemStyle={styles.pickerItem}
+                selectedValue={this.state.choosenLabel}
+                onValueChange={(itemValue) => this._onChange(itemValue)}
+              >
+                <Picker.Item
+                  label={this._initialTopic.name}
+                  value={this._initialTopic}
+                  key={this._initialTopic.id}
+                />
+                {
+                  getTopicsSuccess.map(topic => {
+                    return (
+                      <Picker.Item
+                        label={topic.name}
+                        value={topic}
+                        key={topic.id}
+                      />
+                    )
+                  })
+                }
+              </Picker>
+              : <StatusText text={'No Topics Found!'} style={{ alignSelf: 'center', marginLeft: 20 }} />
         }
         <View style={[styles.arrowContain, {backgroundColor: '#f6f6f6'}]}>
           <Image
