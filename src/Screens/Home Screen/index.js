@@ -58,9 +58,11 @@ const styles = StyleSheet.create({
   menuIconStyle : {
     width: 50,
     height: 50,
+    backgroundColor: 'red'
   },
   searchIconStyle: {
     width: 50,
-    height: 50
+    height: 50,
+    backgroundColor: 'red'
   }
 })

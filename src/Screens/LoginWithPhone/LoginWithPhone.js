@@ -19,7 +19,7 @@ class LoginWithPhone extends React.Component {
             {/* login form */}
           <View style={styles.formContainer}>
             <LoginWithPhoneForm 
-              onPress={()=>{ SignIn() }}
+              onPress={(phoneNumber)=>{ SignIn(phoneNumber) }}
             />
           </View>
 

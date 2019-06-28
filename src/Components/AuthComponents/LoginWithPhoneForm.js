@@ -19,7 +19,7 @@ export default class LoginWithPhoneForm extends React.PureComponent {
       alert('Provide valid phone number !')
     }
     else {
-      this.props.onPress()
+      this.props.onPress(this.phone)
     }
   }
   render(){

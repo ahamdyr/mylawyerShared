@@ -4,7 +4,7 @@ import { saveUser, getUserType, getPhoneCredentials, savePhoneCredentials } from
 import { Alert } from 'react-native'
 import { goBack, navigate } from '../NavigationServices'
 import { Linking, WebBrowser } from 'expo'
-import { PhoneAuth, confirmationResult, PhoneUpdate } from '../FirebaseServices/PhoneAuth'
+import { PhoneAuth, confirmationResult, PhoneUpdate, isRegisteredUser } from '../FirebaseServices/PhoneAuth'
 import { updateUserName, updateUserPhoneNumber } from '../FirebaseServices/UpdateUser'
 import Store from '../../Redux/Store'
 import firebase from '../FirebaseServices/FirebaseApp'
@@ -64,10 +64,10 @@ export const Update = async (confCode) => {
   }
 }
 
-export const SignIn = async () => {
+export const SignIn = async (phoneNumber) => {
   try {
     navigate('Spinner')
-    var phoneCredentials = getPhoneCredentials()
+    var phoneCredentials = await isRegisteredUser(phoneNumber)
     
     if(_.isEmpty(phoneCredentials))
     {
