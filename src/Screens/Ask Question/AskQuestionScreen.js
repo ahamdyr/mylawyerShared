@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ScrollView, TouchableOpacity } from "react-native";
+import { Text, View, ScrollView, TouchableOpacity, SafeAreaView } from "react-native";
 import { styles } from './Styles'
 import SelectComponent from '../../Components/QuestionsList/SelectComponent'
 import BlackX from '../../Components/Common/BlackX'
@@ -33,7 +33,7 @@ export default class AskQuestion extends React.Component {
     
     if(addQuestionLoading){
       return (
-        <View style={{
+        <SafeAreaView style={{
           backgroundColor: 'transparent',
           flex: 1
         }}>
@@ -41,11 +41,11 @@ export default class AskQuestion extends React.Component {
             backgroundColor: 'transparent',
             flex: 1
           }}/>
-        </View>
+        </SafeAreaView>
       )
     }
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
 
         <BlackX
           onPress={() => this.props.navigation.goBack()}
@@ -86,7 +86,7 @@ export default class AskQuestion extends React.Component {
           addQuestionLoading={addQuestionLoading}
         />
 
-      </View>
+      </SafeAreaView>
     );
   }
 }

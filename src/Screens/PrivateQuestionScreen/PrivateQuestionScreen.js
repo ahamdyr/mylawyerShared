@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { StyleSheet, Text, View, ScrollView, SafeAreaView } from "react-native";
 import Topic from '../../Components/Common/Topic'
 import AnswerBy from '../../Components/Common/AnswerBy'
 import BlackX from '../../Components/Common/BlackX'
@@ -30,7 +30,7 @@ export default class PrivateQuestionScreen extends React.Component {
       attachsLoading
     } = this.props
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
 
         <BlackX
           onPress={() => this.props.navigation.goBack()}
@@ -66,7 +66,7 @@ export default class PrivateQuestionScreen extends React.Component {
                 </ScrollView>
               </React.Fragment>
         }
-      </View>
+      </SafeAreaView>
     );
   }
 }

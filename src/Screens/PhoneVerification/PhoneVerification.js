@@ -5,7 +5,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  TouchableWithoutFeedback,
+  SafeAreaView,
   View,
   Platform,
   Alert
@@ -69,7 +69,7 @@ export default class PhoneVerification extends Component {
     let hintText = 'Enter 6-digit code'
 
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
 
         <Text style={styles.header}>{headerText}</Text>
         <View style={{ flexDirection: 'row' }}>
@@ -111,7 +111,7 @@ export default class PhoneVerification extends Component {
         </TouchableOpacity>
         {this._renderFooter()}
 
-      </View>
+      </SafeAreaView>
     );
   }
 }

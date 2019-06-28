@@ -20,14 +20,14 @@ export default class AppContainer extends React.Component {
   render() {
     return (
     <Provider store={Store}>
-      <SafeAreaView style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
         <StatusBar translucent barStyle={'dark-content'} />
         <AppRouter 
           ref={navigatorRef =>{
             setTopLevelNavigator(navigatorRef)
           }}
         />
-      </SafeAreaView>
+      </View>
     </Provider>       
     );
   }

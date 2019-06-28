@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, TouchableOpacity, TextInput, SafeAreaView } from 'react-native';
 import { styles } from './Styles'
 import { goBack } from '../../Services/NavigationServices'
 import SeperatorLine from '../../Components/Common/SeperatorLine'
@@ -15,7 +15,7 @@ export default class Search extends React.Component {
       //getLawyersRequest
     } = this.props
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View
           style={styles.searchBar}
         >
@@ -63,7 +63,7 @@ export default class Search extends React.Component {
             </View>
         }
         
-      </View>
+      </SafeAreaView>
     );
   }
 }

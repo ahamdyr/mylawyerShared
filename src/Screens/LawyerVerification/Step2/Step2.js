@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import {navigate, goBack} from '../../../Services/NavigationServices'
 import VerifyTitle from '../../../Components/LawyerVerifyComp/VerifyStepTitle'
 import SelectMajorBtn from '../../../Components/LawyerVerifyComp/SelectMajorBtn'
@@ -21,7 +21,7 @@ export default class Step2 extends React.Component {
       //firmID
     } = this.props
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <VerifyTitle
           title={'Verify Your Account'}
           subTitle={'Please provide us with your informations & papers to verify your account'}
@@ -52,7 +52,7 @@ export default class Step2 extends React.Component {
           <NextBtn
             onPress={() => navigate('Step3')}
           />
-      </View>
+      </SafeAreaView>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { navigate, goBack } from '../../../Services/NavigationServices'
 import VerifyTitle from '../../../Components/LawyerVerifyComp/VerifyStepTitle'
 import ImageIcon from '../../../Components/Common/ImageIcon'
@@ -14,7 +14,7 @@ export default class Step4 extends React.Component {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <VerifyTitle
           title={'All is set up'}
           subTitle={'We will review your submited papers to verify your account'}
@@ -33,7 +33,7 @@ export default class Step4 extends React.Component {
           btnTitle={'Return to home'}
           //onPress={()=>navigate('Home')}
         />
-      </View>
+      </SafeAreaView>
     );
   }
 }

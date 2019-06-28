@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
 import SelectComponent from '../../Components/QuestionsList/SelectComponent'
 import SearchComponent from '../../Components/QuestionsList/SearchComponent'
 import QuestionsList from '../../Components/QuestionsList/QuestionsList'
@@ -14,7 +14,7 @@ export default class MyQuestionsScreen extends React.Component {
   render() {
     if (!this.props.isLoggedUser) {
       return (
-        <View style={[styles.container, {
+        <SafeAreaView style={[styles.container, {
           alignItems: 'center',
           justifyContent: 'center',
         }]}>
@@ -37,7 +37,7 @@ export default class MyQuestionsScreen extends React.Component {
             </Text>
           </TouchableOpacity>
 
-        </View>
+        </SafeAreaView>
       )
     }
     var {
@@ -57,7 +57,7 @@ export default class MyQuestionsScreen extends React.Component {
     // }
 
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <SelectComponent 
           onSelect={(topicID)=>filterUserOwnQuestionsRequest(accessToken, topicID)}
         />
@@ -70,7 +70,7 @@ export default class MyQuestionsScreen extends React.Component {
           //questions={questions}
           questionsLoading={getUserOwnQuestionsLoading}
         />
-      </View>
+      </SafeAreaView>
     );
   }
 }

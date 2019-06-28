@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, SafeAreaView } from 'react-native';
 import SideMenuBtn from '../../Components/SideMenu/SideMenuBtn'
 import ImageIcon from '../../Components/Common/ImageIcon'
 import { WhiteX } from '../../Components/Social Components/SocialBtns'
@@ -16,7 +16,7 @@ export default class SideMenu extends React.Component {
       userPhoto
     } = this.props
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         
         {isLoggedUser ?
           <React.Fragment>
@@ -65,7 +65,7 @@ export default class SideMenu extends React.Component {
             goBack()
           }}
         />
-      </View>
+      </SafeAreaView>
     );
   }
 }

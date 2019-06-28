@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View } from 'react-native';
+import {Text, View, SafeAreaView } from 'react-native';
 import {styles} from './Styles'
 import LoginWithMailForm from '../../Components/AuthComponents/LoginWithMailForm'
 import {withNavigation} from 'react-navigation'
@@ -8,7 +8,7 @@ class LoginWithMail extends React.Component {
   render() {
     const {navigation} = this.props
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
             {/* login word */}
           <View style={styles.loginTextContainer}>
             <Text style={styles.loginText}>
@@ -31,7 +31,7 @@ class LoginWithMail extends React.Component {
             </Text>
           </View>
         
-      </View>
+      </SafeAreaView>
     );
   }
 }

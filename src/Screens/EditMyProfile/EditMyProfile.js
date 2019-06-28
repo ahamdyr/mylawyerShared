@@ -1,13 +1,13 @@
 import React from 'react';
-import { 
-  Text, 
-  View, 
-  TouchableOpacity, 
-  ImageBackground, 
-  TextInput, 
-  Keyboard, 
-  TouchableWithoutFeedback,
-  KeyboardAvoidingView 
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  ImageBackground,
+  TextInput,
+  Keyboard,
+  SafeAreaView,
+  KeyboardAvoidingView
 } from 'react-native';
 import { styles } from './Styles'
 import {
@@ -23,7 +23,7 @@ import {
 } from '../../Components/Constants'
 import { editProfileIcon } from '../../../assets'
 import { uploadFile, uploadImage } from '../../Services/FilesServices'
-import {isValidEmailAddress} from '../../Utils/InputValidation'
+import { isValidEmailAddress } from '../../Utils/InputValidation'
 import { updateUserProfile } from '../../Services/AuthServices'
 import {
   updateUserEmail,
@@ -32,15 +32,15 @@ import {
 } from '../../Services/FirebaseServices/UpdateUser'
 import { updateUserPhoneNumber } from '../../Services/AuthServices'
 export default class EditMyProfile extends React.Component {
-  state={
-    displayName:'',
-    email:'',
-    phoneNumber:'',
-    photoURL:''
+  state = {
+    displayName: '',
+    email: '',
+    phoneNumber: '',
+    photoURL: ''
   }
   _edit_Photo = async () => {
     let doc = await uploadFile()
-    doc ? this.setState({photoURL: doc.uri}) : null
+    doc ? this.setState({ photoURL: doc.uri }) : null
   }
   _edit_Name = (val) => {
     this.state.displayName = val
@@ -51,9 +51,9 @@ export default class EditMyProfile extends React.Component {
   _edit_Phone_Number = (val) => {
     this.state.phoneNumber = val
   }
-  _onSubmit = async() => {
+  _onSubmit = async () => {
 
-    if(this.state.email){
+    if (this.state.email) {
       if (!isValidEmailAddress(this.state.email)) {
         alert('Badly formatted email !')
         return
@@ -62,18 +62,18 @@ export default class EditMyProfile extends React.Component {
     }
     else {
       this.state.email = this.props.currentUser.email
-    }    
+    }
 
     if (this.state.displayName) {
-      if (this.state.displayName.length == 0){
+      if (this.state.displayName.length == 0) {
         alert('Invalid user name !')
         return
       }
       await updateUserName(this.state.displayName)
     }
-    else{
+    else {
       this.state.displayName = this.props.currentUser.displayName
-    } 
+    }
 
     if (this.state.photoURL) {
       this.state.photoURL = await updateUserPhoto(this.state.photoURL)
@@ -82,7 +82,7 @@ export default class EditMyProfile extends React.Component {
       this.state.photoURL = this.props.userPhoto
     }
 
-    if(this.state.phoneNumber){
+    if (this.state.phoneNumber) {
       if (this.state.phoneNumber.length < 10) {
         alert('Provide valid phone number !')
         return
@@ -109,6 +109,7 @@ export default class EditMyProfile extends React.Component {
       photoURL
     } = this.state
     return (
+      <SafeAreaView style={styles.container} >
         <KeyboardAvoidingView
           keyboardVerticalOffset={STATUS_BAR_HEIGHT}
           style={styles.container}
@@ -126,16 +127,16 @@ export default class EditMyProfile extends React.Component {
 
           <TouchableOpacity
             style={styles.editContainer}
-            onPress={()=>Keyboard.dismiss()}
+            onPress={() => Keyboard.dismiss()}
             activeOpacity={1}
           >
             <TouchableOpacity
               style={styles.profileImage}
-              onPress={()=>this._edit_Photo()}
+              onPress={() => this._edit_Photo()}
             >
               <ImageBackground
                 source={
-                  photoURL ? {uri: photoURL} : userPhoto ? { uri: userPhoto } : defaultPicture                  
+                  photoURL ? { uri: photoURL } : userPhoto ? { uri: userPhoto } : defaultPicture
                 }
                 style={styles.profileImage}
               >
@@ -189,9 +190,8 @@ export default class EditMyProfile extends React.Component {
             textStyle={styles.saveText}
             onPress={() => this._onSubmit()}
           />
-
-
         </KeyboardAvoidingView>
+      </SafeAreaView>
     );
   }
 }

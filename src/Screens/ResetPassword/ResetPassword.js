@@ -6,7 +6,7 @@ import {
   ImageBackground,
   TextInput,
   Keyboard,
-  TouchableWithoutFeedback,
+  SafeAreaView,
   KeyboardAvoidingView
 } from 'react-native';
 import { styles } from './Styles'
@@ -38,25 +38,28 @@ export default class ResetPassword extends React.Component {
   render() {
 
     return (
-      <KeyboardAvoidingView
-        keyboardVerticalOffset={STATUS_BAR_HEIGHT}
+      <SafeAreaView
         style={styles.container}
-        behavior={'padding'}
-        enabled
       >
-        <TouchableOpacity
-          onPress={() => goBack()}
-          style={styles.headerStyle}
+        <KeyboardAvoidingView
+          keyboardVerticalOffset={STATUS_BAR_HEIGHT}
+          style={styles.container}
+          behavior={'padding'}
+          enabled
         >
-          <Text style={styles.cancel}>
-            Cancel
+          <TouchableOpacity
+            onPress={() => goBack()}
+            style={styles.headerStyle}
+          >
+            <Text style={styles.cancel}>
+              Cancel
           </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={1}
-          style={styles.editContainer}
-          onPress={() => Keyboard.dismiss()}
-        >
+          </TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={1}
+            style={styles.editContainer}
+            onPress={() => Keyboard.dismiss()}
+          >
             <SeperatorLine
               style={styles.line}
             />
@@ -72,17 +75,16 @@ export default class ResetPassword extends React.Component {
             <SeperatorLine
               style={styles.line}
             />
-        </TouchableOpacity>
+          </TouchableOpacity>
 
-        <SubmitBtn
-          style={styles.saveBtn}
-          text={'Submit'}
-          textStyle={styles.saveText}
-          onPress={() => this._onSubmit()}
-        />
-
-
-      </KeyboardAvoidingView>
+          <SubmitBtn
+            style={styles.saveBtn}
+            text={'Submit'}
+            textStyle={styles.saveText}
+            onPress={() => this._onSubmit()}
+          />
+        </KeyboardAvoidingView>
+      </SafeAreaView>
     );
   }
 }

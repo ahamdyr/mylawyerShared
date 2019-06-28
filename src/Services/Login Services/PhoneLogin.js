@@ -71,7 +71,7 @@ export const SignIn = async () => {
     
     if(_.isEmpty(phoneCredentials))
     {
-      alert(`You are not registered\n try to register.`)
+      alert(`You are not registered with phone number\n try to register.`)
       goBack()
     }
     else {
@@ -81,7 +81,7 @@ export const SignIn = async () => {
         uid,
         refreshToken
       } = phoneCredentials
-      
+
       var backendToken = base64Token(uid, userToken)
 
       var userType = getUserType()

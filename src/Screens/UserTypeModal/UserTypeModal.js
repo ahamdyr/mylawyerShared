@@ -1,5 +1,5 @@
 import React from './node_modules/react';
-import {ActivityIndicator, View} from 'react-native';
+import {ActivityIndicator, View, SafeAreaView} from 'react-native';
 import {MAIN_COLOR} from '../../Components/Constants'
 
 export default class UserTypeModal extends React.PureComponent {
@@ -7,7 +7,7 @@ export default class UserTypeModal extends React.PureComponent {
   render() {
     
     return (
-      <View style={{
+      <SafeAreaView style={{
         flex: 1,
         backgroundColor: 'transparent',
         alignItems: 'center',
@@ -20,7 +20,7 @@ export default class UserTypeModal extends React.PureComponent {
       />
       
       
-      </View>
+      </SafeAreaView>
 
         
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet, TouchableOpacity, StatusBar} from 'react-native';
+import {Modal, Text, SafeAreaView, View, Alert, StyleSheet, TouchableOpacity, StatusBar} from 'react-native';
 import {HEIGHT, MAIN_COLOR, WIDTH, STATUS_BAR_HEIGHT} from '../../Components/Constants'
 import SocialBtns from '../../Components/Social Components/SocialBtns'
 import {WhiteX} from '../../Components/Social Components/SocialBtns'
@@ -10,7 +10,7 @@ class SocialScreen extends React.Component {
   render() {
     const {navigation} = this.props
     return (
-      <View style={{
+      <SafeAreaView style={{
         flex: 1,
         backgroundColor: 'transparent'
       }}>
@@ -42,7 +42,7 @@ class SocialScreen extends React.Component {
           />
 
         </View>        
-      </View>
+      </SafeAreaView>
       
 
     );

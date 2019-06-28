@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { STATUS_BAR_HEIGHT } from '../../Components/Constants'
 import { mockContent } from '../../Services/BackendServices/MockData'
 import { WhiteX } from '../../Components/Social Components/SocialBtns'
@@ -10,7 +10,7 @@ import {
 export default class TermsAndConditions extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Text
           style={styles.title}
         >
@@ -27,7 +27,7 @@ export default class TermsAndConditions extends React.Component {
             goBack()
           }}
         />
-      </View>
+      </SafeAreaView>
     );
   }
 }

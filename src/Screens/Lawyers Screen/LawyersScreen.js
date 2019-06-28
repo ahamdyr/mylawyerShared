@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import Spinner from '../Spinner'
 import LawsList from '../../Components/Lawyers List/LawsList';
 
@@ -18,20 +18,20 @@ export default class LawyersScreen extends React.Component {
     }
     if(!this.props.getLawyersSuccess.length){
       return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
           <Text style={{
             fontSize: 16,
             color: '#0b7f7c'
           }}>
             No Lawyers Found!
           </Text>
-        </View>
+        </SafeAreaView>
       );
     }
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <LawsList lawyers={this.props.getLawyersSuccess}/>
-      </View>
+      </SafeAreaView>
     );
   }
 }

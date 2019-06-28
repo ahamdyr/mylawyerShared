@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import SelectComponent from '../../Components/QuestionsList/SelectComponent'
 import SearchComponent from '../../Components/QuestionsList/SearchComponent'
 import QuestionsList from '../../Components/QuestionsList/QuestionsList'
@@ -23,7 +23,7 @@ export default class AllQuestionsScreen extends React.Component {
     //   return(<Spinner/>)
     // }
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <SelectComponent 
           onSelect={(topicID)=>filterUserAllQuestionsRequest(topicID)}
         />
@@ -36,7 +36,7 @@ export default class AllQuestionsScreen extends React.Component {
           questions={getUserAllQuestionsSuccess}
           questionsLoading={getUserAllQuestionsLoading}
         />
-      </View>
+      </SafeAreaView>
     );
   }
 }

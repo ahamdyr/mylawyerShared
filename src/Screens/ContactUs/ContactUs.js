@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   StyleSheet,
-  TouchableWithoutFeedback,
+  SafeAreaView,
   View,
   TouchableOpacity,
   Text,
@@ -25,7 +25,7 @@ export default class ContactUs extends React.Component {
       userPhoto
     } = this.props
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <BlackX
           onPress={() => goBack()}
         />
@@ -110,7 +110,7 @@ export default class ContactUs extends React.Component {
           textStyle={styles.textStyle}
           onPress={()=>goBack()}
         />
-      </View>
+      </SafeAreaView>
     );
   }
 }

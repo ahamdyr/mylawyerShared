@@ -1,5 +1,6 @@
 import React from 'react'
-import { Text, View, TouchableOpacity, Image, Picker } from 'react-native';
+import { Text, View, TouchableOpacity, Image, Picker, Platform, PickerIOS } from 'react-native';
+import IOSPicker from 'react-native-ios-picker';
 import StatusText from '../../Common/StatusText';
 import { arrow, topic } from '../../../../assets'
 import { styles } from './Styles'
@@ -24,7 +25,7 @@ export default class SelectComponent extends React.PureComponent {
       getTopicsSuccess,
       getTopicsLoading 
     } = this.props
-    
+
     return (
       <View style={[styles.selectContainer, this.props.style]}>
 
@@ -36,30 +37,58 @@ export default class SelectComponent extends React.PureComponent {
           getTopicsLoading ?
             <StatusText text={'Loading...'} style={{ alignSelf: 'center', marginLeft: 20 }} />
             : getTopicsSuccess.length ?
-              <Picker
-                style={styles.picker}
-                mode={'dropdown'}
-                itemStyle={styles.pickerItem}
-                selectedValue={this.state.choosenLabel}
-                onValueChange={(itemValue) => this._onChange(itemValue)}
-              >
-                <Picker.Item
-                  label={this._initialTopic.name}
-                  value={this._initialTopic}
-                  key={this._initialTopic.id}
-                />
-                {
-                  getTopicsSuccess.map(topic => {
-                    return (
-                      <Picker.Item
-                        label={topic.name}
-                        value={topic}
-                        key={topic.id}
-                      />
-                    )
-                  })
-                }
-              </Picker>
+              Platform.OS == 'ios' ?
+                <IOSPicker
+                  data={getTopicsSuccess}
+                  mode={'modal'}
+                  collapseViewStyle={{backgroundColor: '#f6f6f6'}}
+                  selectedValue={this.state.choosenLabel}
+                  onValueChange={(itemValue) => this._onChange(itemValue)}
+                  style={styles.picker}
+                  textStyle={styles.pickerItem}
+                  pickerItemStyle={styles.pickerItem}
+                >
+                  <Picker.Item
+                    label={this._initialTopic.name}
+                    value={this._initialTopic}
+                    key={this._initialTopic.id}
+                  />
+                  {                    
+                    getTopicsSuccess.map(topic => {
+                      return (
+                        <Picker.Item
+                          label={topic.name}
+                          value={topic}
+                          key={topic.id}
+                        />
+                      )
+                    })
+                  }
+                </IOSPicker>
+                : <Picker
+                  style={styles.picker}                  
+                  mode={'dropdown'}
+                  itemStyle={styles.pickerItem}
+                  selectedValue={this.state.choosenLabel}
+                  onValueChange={(itemValue) => this._onChange(itemValue)}
+                >
+                  <Picker.Item
+                    label={this._initialTopic.name}
+                    value={this._initialTopic}
+                    key={this._initialTopic.id}
+                  />
+                  {
+                    getTopicsSuccess.map(topic => {
+                      return (
+                        <Picker.Item
+                          label={topic.name}
+                          value={topic}
+                          key={topic.id}
+                        />
+                      )
+                    })
+                  }
+                </Picker>
               : <StatusText text={'No Topics Found!'} style={{ alignSelf: 'center', marginLeft: 20 }} />
         }
         <View style={[styles.arrowContain, {backgroundColor: '#f6f6f6'}]}>

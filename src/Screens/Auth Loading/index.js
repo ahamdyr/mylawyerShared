@@ -3,7 +3,7 @@ import {
   ActivityIndicator,
   AsyncStorage,
   StatusBar,
-  StyleSheet,
+  SafeAreaView,
   View,
 } from 'react-native';
 import {MAIN_COLOR} from '../../Components/Constants'
@@ -25,13 +25,13 @@ class AuthLoadingScreen extends React.Component {
   // Render any loading content that you like here
   render() {
     return (
-      <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+      <SafeAreaView style={{flex:1, justifyContent:'center', alignItems:'center'}}>
         <StatusBar translucent barStyle='dark-content' />
         <ActivityIndicator 
           size="large"
           color={MAIN_COLOR}
         />
-      </View>
+      </SafeAreaView>
     );
   }
 }

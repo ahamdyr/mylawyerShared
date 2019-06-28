@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { navigate, goBack } from '../../../Services/NavigationServices'
 import MajorsList from '../../../Components/LawyerVerifyComp/MajorsList'
 export default class SelectMajor extends React.Component {
@@ -14,12 +14,12 @@ export default class SelectMajor extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Text style={styles.title}>
           Select your major…
           </Text>
         <MajorsList />
-      </View>
+      </SafeAreaView>
     );
   }
 }

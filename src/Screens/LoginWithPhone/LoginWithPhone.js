@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import {Text, View, TouchableOpacity, TextInput, SafeAreaView } from 'react-native';
 import {styles} from './Styles'
 import LoginWithPhoneForm from '../../Components/AuthComponents/LoginWithPhoneForm'
 import {withNavigation} from 'react-navigation'
@@ -8,7 +8,7 @@ class LoginWithPhone extends React.Component {
   render() {
     const {navigation} = this.props
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
             {/* login word */}
           <View style={styles.loginTextContainer}>
             <Text style={styles.loginText}>
@@ -33,7 +33,7 @@ class LoginWithPhone extends React.Component {
             </Text>
           </View>
         
-      </View>
+      </SafeAreaView>
     );
   }
 }

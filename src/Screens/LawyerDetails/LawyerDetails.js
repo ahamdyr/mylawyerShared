@@ -2,7 +2,8 @@ import React from 'react';
 import { 
   Text, 
   View, 
-  TouchableOpacity
+  TouchableOpacity,
+  SafeAreaView
 } from 'react-native';
 import { styles } from './Styles'
 import {
@@ -23,7 +24,7 @@ export default class LawyerDetails extends React.Component {
   render() {
     var lawyer = this.props.navigation.state.params.lawyer
     return (
-      <View
+      <SafeAreaView
         style={styles.transparentContainer}
       >
         <View style={styles.container}>
@@ -85,7 +86,7 @@ export default class LawyerDetails extends React.Component {
           </TouchableOpacity>
         </View>
 
-      </View>
+      </SafeAreaView>
     );
   }
 }
