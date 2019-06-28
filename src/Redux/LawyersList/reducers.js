@@ -16,7 +16,7 @@ export const getLawyersSuccess = (state = [], action) => {
 export const searchLawyersSuccess = (state = [], action) => {
   switch (action.type) {
     case 'searchLawyersSuccess':
-      return [...action.lawyers, ...state]
+      return action.lawyers
     default:
       return state
   }
