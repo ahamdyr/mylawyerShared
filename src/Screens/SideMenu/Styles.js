@@ -2,13 +2,16 @@ import { STATUS_BAR_HEIGHT, WIDTH, MAIN_COLOR, HEIGHT } from '../../Components/C
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  container: {
+  safeArea:{
     flex: 1,
     backgroundColor: "#f6f6f6",
+  },
+  container: {    
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: 44.5 + STATUS_BAR_HEIGHT,
-    paddingBottom: 24  
+    marginTop: 46.5 + STATUS_BAR_HEIGHT,
+    marginBottom: 24  
   },
   profileImage:{
     width: 80,

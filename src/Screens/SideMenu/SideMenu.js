@@ -16,55 +16,57 @@ export default class SideMenu extends React.Component {
       userPhoto
     } = this.props
     return (
-      <SafeAreaView style={styles.container}>
-        
-        {isLoggedUser ?
-          <React.Fragment>
-            <ImageIcon
-              style={styles.profileImage}
-              source= {userPhoto ? { uri: userPhoto } : defaultPicture}
-            />
-            <SideMenuBtn
-              btnTitle={'My Profile'}
-              onPress={() => {
-                navigate('EditMyProfile')
-              }}
-            />
-            <SideMenuBtn
-              btnTitle={'Settings'}
-              onPress={() => {
-                navigate('Settings')
-              }}
-            />
-          </React.Fragment>
-          : <SideMenuBtn
-            btnTitle={'Login'}
-            onPress={() => {
-              navigate('SocialScreen')
-            }}
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.container}>
+          <ImageIcon
+            style={styles.profileImage}
+            source={userPhoto ? { uri: userPhoto } : defaultPicture}
           />
-        }    
-        {/* <SideMenuBtn
+          {isLoggedUser ?
+            <React.Fragment>
+              
+              <SideMenuBtn
+                btnTitle={'My Profile'}
+                onPress={() => {
+                  navigate('EditMyProfile')
+                }}
+              />
+              <SideMenuBtn
+                btnTitle={'Settings'}
+                onPress={() => {
+                  navigate('Settings')
+                }}
+              />
+            </React.Fragment>
+            : <SideMenuBtn
+              btnTitle={'Login'}
+              onPress={() => {
+                navigate('SocialScreen')
+              }}
+            />
+          }
+          {/* <SideMenuBtn
           btnTitle={'Contact us'}
           onPress={()=>navigate('ContactUs')}
         /> */}
-        <SideMenuBtn
-          btnTitle={'Terms and Conditions'}
-          onPress={()=> {
-            navigate('TermsAndConditions')
-          }}
-        />
-        <SideMenuBtn
-          btnTitle={'About My lawyer'}
-          onPress={()=> {
-            navigate('About')
-          }}
-        />
-        <WhiteX          
-          onPress={()=> {
-            goBack()
-          }}
-        />
+          <SideMenuBtn
+            btnTitle={'Terms and Conditions'}
+            onPress={() => {
+              navigate('TermsAndConditions')
+            }}
+          />
+          <SideMenuBtn
+            btnTitle={'About My lawyer'}
+            onPress={() => {
+              navigate('About')
+            }}
+          />
+          <WhiteX
+            onPress={() => {
+              goBack()
+            }}
+          />
+        </View>
       </SafeAreaView>
     );
   }
