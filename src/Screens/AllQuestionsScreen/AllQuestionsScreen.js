@@ -33,6 +33,7 @@ export default class AllQuestionsScreen extends React.Component {
         />
         <QuestionsList 
           //questions={questions}
+          refresh={()=>getUserAllQuestionsRequest()}
           questions={getUserAllQuestionsSuccess}
           questionsLoading={getUserAllQuestionsLoading}
         />

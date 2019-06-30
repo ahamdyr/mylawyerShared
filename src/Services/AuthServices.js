@@ -7,6 +7,7 @@ import {
   setPhoneNumber,
   setPhoneAuthCredentials
 } from '../Redux/Auth/actions'
+import { getUserOwnQuestionsSuccess } from '../Redux/UserOwnQuests/actions'
 import {
     navigate,
     goBack
@@ -53,6 +54,7 @@ export const logOut = async () => {
     await AsyncStorage.removeItem('refreshToken')
     Store.dispatch(setAccessToken(''))
     await AsyncStorage.removeItem('accessToken') 
+    //Store.dispatch(getUserOwnQuestionsSuccess([]))
     alert('You are logged out!')     
       
   } catch (error) {

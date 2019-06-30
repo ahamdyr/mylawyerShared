@@ -40,7 +40,7 @@ export default class LoginWithPhoneForm extends React.PureComponent {
             blurOnSubmit={true}
             returnKeyType={'done'}   
             underlineColorAndroid={'transparent'}
-            placeholder={'+20 100 712 1821' }            
+            placeholder={'+20 123 456 7890' }            
             keyboardType={'phone-pad'}
             style={styles.nmberStyle}
             placeholderTextColor={'#ffffff'}

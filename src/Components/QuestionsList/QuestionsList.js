@@ -10,7 +10,7 @@ export default class QuestionsList extends React.Component {
 
   _keyExtractor = (item, index) => String(index)
 
-  renderQuestions = (questions) => {
+  renderQuestions = (questions, refresh) => {
     return (
       <FlatList
         data={questions}
@@ -24,13 +24,12 @@ export default class QuestionsList extends React.Component {
         onEndReachedThreshold={0.2}
         //ListFooterComponent={this._renderFooter}
         //ListHeaderComponent={this._renderHeader}
-        // refreshControl={
-        //   <RefreshControl
-        //     colors={['#0b7f7c']}
-        //     refreshing={this.state.refreshingProducts}
-        //     onRefresh={this._handleRefresh}
-        //   />
-        // }
+        refreshControl={
+          <RefreshControl
+            colors={['#0b7f7c']}
+            onRefresh={()=>refresh(true)}
+          />
+        }
         style={{
           flex: 1,
           alignSelf: 'stretch',
@@ -44,7 +43,7 @@ export default class QuestionsList extends React.Component {
 
   render() {
     var {
-      questions, questionsLoading
+      questions, questionsLoading, refresh
     } = this.props
     
     return (
@@ -60,7 +59,7 @@ export default class QuestionsList extends React.Component {
           questionsLoading ?
             <StatusText text={'Loading...'} />
             : questions.length ?
-                this.renderQuestions(questions)
+                this.renderQuestions(questions, refresh)
                 : <StatusText text={'No Questions Found!'} />          
         }
       </View>

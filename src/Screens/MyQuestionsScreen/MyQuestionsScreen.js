@@ -67,6 +67,7 @@ export default class MyQuestionsScreen extends React.Component {
         />
         <QuestionsList 
           questions={getUserOwnQuestionsSuccess}
+          refresh={()=>searchUserOwnQuestionsRequest(accessToken)}
           //questions={questions}
           questionsLoading={getUserOwnQuestionsLoading}
         />
