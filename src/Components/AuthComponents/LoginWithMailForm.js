@@ -52,7 +52,7 @@ export default class LoginWithMailForm extends React.PureComponent {
             placeholder={'name@mail.com' }            
             keyboardType={'email-address'}
             style={styles.inputStyle}
-            //autoFocus
+            placeholderTextColor={'#ffffff'}
             onChangeText={this._onMailChange}
           />
         </View>
@@ -67,7 +67,7 @@ export default class LoginWithMailForm extends React.PureComponent {
             underlineColorAndroid={'transparent'}
             secureTextEntry
             placeholder={'***********' }            
-            //keyboardType={''}
+            placeholderTextColor={'#ffffff'}
             style={styles.inputStyle}
             onChangeText={this._onPassChange}
             enablesReturnKeyAutomatically={true}

@@ -35,7 +35,7 @@ class SignUpWithPhone extends React.Component {
           </Text>
             <Text
               style={[styles.termsText, { textDecorationLine: 'underline' }]}
-            //onPress={() => navigation.navigate('Terms')}
+              onPress={() => navigation.navigate('TermsAndConditions')}
             >
               Terms of Service
           </Text>

@@ -51,11 +51,11 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
             underlineColorAndroid={'transparent'}
             blurOnSubmit={true}
             returnKeyType={'done'}
-            //secureTextEntry
+            placeholderTextColor={'#ffffff'}
             autoCapitalize={'none'}
             placeholder={'username'}
             keyboardType={'default'}
-            style={styles.userNameText}
+            style={styles.userNameText}            
             onChangeText={this._onNameChange}
           />
         </View>
@@ -74,7 +74,7 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
             placeholder={'+20 100 712 1821' }            
             keyboardType={'phone-pad'}
             style={styles.nmberStyle}
-            //autoFocus
+            placeholderTextColor={'#ffffff'}
             onChangeText={this._onPhoneChange}
           />
         </View>
