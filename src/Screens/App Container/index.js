@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import Store from '../../Redux/Store' 
 import {setTopLevelNavigator} from '../../Services/NavigationServices'
 import { getUser, setPhoneCredentials } from '../../Services/AuthServices'
+import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 import axios from 'axios'
 
 export default class AppContainer extends React.Component {
@@ -27,6 +28,14 @@ export default class AppContainer extends React.Component {
             setTopLevelNavigator(navigatorRef)
           }}
         />
+        {/* <KeyboardAccessoryNavigation
+        avoidKeyboard={true}
+        nextDisabled={true}
+        previousDisabled={true}
+        nextHidden={true}
+        previousHidden={true}
+      /> */}
+        
       </View>
     </Provider>       
     );
