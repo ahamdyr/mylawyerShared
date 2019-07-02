@@ -22,11 +22,11 @@ export default class QuestionComponent extends React.PureComponent {
     body: ''
   }
   _titleChange = (val) => {
-    this.state.title = val
+    this.setState({title : val}) 
     this.props.setQuestionTitle(val)
   }
   _bodyChange = (val) => {
-    this.state.body = val
+    this.setState({body : val}) 
     this.props.setQuestionBody(val)
   }
   _titleKeyBoardToggle = () => {
@@ -56,6 +56,7 @@ export default class QuestionComponent extends React.PureComponent {
       focused
     } = this.state
     if(clear){
+      //console.log('clear  ',clear)
       this.state.title = ''
       this.state.body = ''
     }
@@ -64,7 +65,8 @@ export default class QuestionComponent extends React.PureComponent {
         keyboardVerticalOffset={STATUS_BAR_HEIGHT + 10}
         style={[
           styles.questionContainer,
-          partial || focused ? styles.partial : styles.full
+          partial || focused ? styles.partial : styles.full,
+          this.props.style
         ]}
         behavior={'padding'}
         enabled
@@ -89,7 +91,7 @@ export default class QuestionComponent extends React.PureComponent {
             multiline={true}
             numberOfLines={2}
             underlineColorAndroid="transparent"
-            placeholder={'Title '}
+            placeholder={this.props.titlePlaceHolder || 'Title '}
             onChangeText={this._titleChange}
             autoFocus
             //shouldCancelWhenOutside={true}
@@ -119,7 +121,7 @@ export default class QuestionComponent extends React.PureComponent {
               scrollEnabled={true}
               ref={(ref) => this._bodyRef = ref}
               underlineColorAndroid="transparent"
-              placeholder={'Write your problem here'}
+              placeholder={this.props.bodyPlaceHolder || 'Write your problem here'}
               onChangeText={this._bodyChange}
               multiline={true}
               //onEndEditing={()=>Keyboard.dismiss}
@@ -170,11 +172,17 @@ const styles = StyleSheet.create({
     marginRight: 20,
     width: WIDTH - 72,
     alignItems: 'center',
+    //backgroundColor: 'blue',
     justifyContent: 'center'
   },
   titleText: {
+    //flex: 1,
+    width: 300,
+    //flexWrap: 'wrap',
     fontFamily: 'Lato-Bold',
+    //alignSelf: 'center',
     letterSpacing: 0.4,
+    textAlign: 'center',
     fontSize: 16,
     color: MAIN_COLOR
   },
@@ -182,16 +190,18 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     paddingLeft: 5,
+    //backgroundColor: 'red',
     paddingRight: 3
   },
   bodyText: {
-    flex: 1,
+    //flex: 1,
     flexWrap: 'wrap',
     fontFamily: 'Lato-Regular',
     letterSpacing: 0.4,
     fontSize: 16,
     color: '#74747a',
-    alignSelf: 'center',
+    textAlign: 'center',
+    //alignSelf: 'center',
     //width: 300,
     // marginTop: 10,
     // marginBottom: 20

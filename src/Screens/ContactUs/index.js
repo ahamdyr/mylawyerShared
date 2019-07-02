@@ -1,18 +1,16 @@
 import ContactUs from './ContactUs'
 import {connect} from 'react-redux'
-// import {
-  
-// } from '../../Redux/SideMenu/actions'
+import {
+  submitMessage
+} from '../../Redux/ContactUs/actions'
 
 const mapStateToProps =  state => ({
-  isLoggedUser: state.isLoggedUser,
-  userPhoto: state.currentUser.photoURL,
-  currentUser: state.currentUser
+  clear: state.clearContactUsData
 })
 
   
 const mapDispatchersToProps = dispatch => ({
-  
+  submitMessage : (email, body) => dispatch(submitMessage(email, body))
 })
 
 

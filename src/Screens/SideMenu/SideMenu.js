@@ -45,10 +45,10 @@ export default class SideMenu extends React.Component {
               }}
             />
           }
-          {/* <SideMenuBtn
-          btnTitle={'Contact us'}
-          onPress={()=>navigate('ContactUs')}
-        /> */}
+          <SideMenuBtn
+            btnTitle={'Contact us'}
+            onPress={() => navigate('ContactUs')}
+          />
           <SideMenuBtn
             btnTitle={'Terms and Conditions'}
             onPress={() => {

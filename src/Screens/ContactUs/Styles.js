@@ -13,9 +13,9 @@ export const styles = StyleSheet.create({
     shadowColor: "#1d0e2833",
     shadowOffset: {
       width: 0,
-      height: 8
+      height: 4
     },
-    shadowRadius: 32,
+    shadowRadius: 16,
     shadowOpacity: 1
   },
   textStyle:{
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     //width: WIDTH,  
-    backgroundColor: 'rgb(246, 246, 246)',
+    backgroundColor: "#f6f6f6",
     flexDirection: 'column',
     //alignItems: 'center',
     // justifyContent: 'flex-start',
@@ -119,38 +119,44 @@ export const styles = StyleSheet.create({
     marginBottom: 10
   },
   full: {
-    marginBottom: 55
+    marginBottom: 105
   },
   questionContainer: {
     flex: 1,
-    marginTop: 16,
+    marginTop: 57,
     marginRight: 16,
     marginLeft: 16,
+    marginBottom: 105,
     //height: 450,
     backgroundColor: 'white',
     elevation: 16,
     shadowColor: "#0000000c",
     shadowOffset: {
-      width: 4,
-      height: 6.9
+      width: 2,
+      height: 3.5
     },
-    shadowRadius: 32,
+    shadowRadius: 16,
     shadowOpacity: 1,
     borderRadius: 10
   },
   title: {
-    flex: 1,
+    //flex: 1,
     marginLeft: 20,
     marginRight: 20,
-    width: WIDTH - 72,
-    alignItems: 'center',
-    justifyContent: 'center'
+    //width: WIDTH - 72,
+    alignSelf: 'center',
+    //justifyContent: 'center'
   },
   titleText: {
+    //backgroundColor: 'blue',
+    marginTop: 20,
     fontFamily: 'Lato-Bold',
-    letterSpacing: 0.4,
-    fontSize: 16,
-    color: MAIN_COLOR
+    fontSize: 18,
+    fontWeight: "bold",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    alignSelf: "center",
+    color: "#0b7f7c"
   },
   body: {
     marginTop: 10,

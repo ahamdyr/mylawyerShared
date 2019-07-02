@@ -15,100 +15,55 @@ import { styles } from './Styles'
 import BlackX from '../../Components/Common/BlackX'
 import SubmitBtn from '../../Components/Common/SubmitBtn'
 import {
-  goBack
+  goBack, navigate
 } from '../../Services/NavigationServices'
-import SeperatorLine from '../../Components/Common/SeperatorLine'
+import QuestionComponent from '../../Components/QuestionComponents/Question'
+import { isValidEmailAddress } from '../../Utils/InputValidation'
 export default class ContactUs extends React.Component {
+  state = {
+    body: '',
+    email: ''
+  }
+  setMessageBody = (body) => {
+    this.setState({body}) 
+  }
+  setMessageEmail = (email) => {
+    this.setState({email})  
+  }
+  sendMessage = () => {
+    if (this.state.body && isValidEmailAddress(this.state.email)) {
+      this.props.submitMessage(this.state.email, this.state.body)    
+    }
+    else {
+      alert('Your query must have at least valid email and message')
+    }
+  }
   render() {
     var {
-      isLoggedUser,
-      userPhoto
+      clear
     } = this.props
     return (
       <SafeAreaView style={styles.container}>
-        <BlackX
-          onPress={() => goBack()}
-        />
+        <BlackX onPress={() => goBack()}/>
 
-        <Text
-          style={styles.title}
-        >
+        <Text style={styles.titleText}>
           Contact us
         </Text>
 
-        <KeyboardAvoidingView
-          keyboardVerticalOffset={20}
-          style={[
-            styles.questionContainer,
-            //partial ? styles.partial : styles.full
-          ]}
-          behavior={'padding'}
-        >
-          <TouchableOpacity
-            activeOpacity={1}
-            style={[
-              styles.title,
-            ]}
-            //onPress={() => this._titleKeyBoardToggle()}
-          >
-            <TextInput
-              ref={(ref) => this._titleRef = ref}
-              blurOnSubmit={true}
-              returnKeyType={'done'}
-              style={styles.titleText}
-              // multiline={true}
-              // numberOfLines={2}
-              underlineColorAndroid="transparent"
-              placeholder={'Email '}
-              //onChangeText={this._titleChange}
-              autoFocus
-              shouldCancelWhenOutside={true}
-            />
-          </TouchableOpacity>
-
-          <SeperatorLine style={styles.seperator} />
-
-          <TouchableOpacity
-            activeOpacity={1}
-            style={[
-              styles.body,
-              //partial ? { flex: 3 } : { flex: 8 }
-            ]}
-            //onPress={() => this._bodyKeyBoardToggle()}
-          >
-            <ScrollView
-              style={styles.body}
-            >
-              <TextInput
-                style={styles.bodyText}
-                blurOnSubmit={true}
-                returnKeyType={'done'}
-                autoGrow={false}
-                scrollEnabled={true}
-                ref={(ref) => this._bodyRef = ref}
-                underlineColorAndroid="transparent"
-                placeholder={'write your message here'}
-                //onChangeText={this._bodyChange}
-                //multiline={true}
-                shouldCancelWhenOutside={true}
-              />
-            </ScrollView >
-          </TouchableOpacity>
-          {/* { 
-            Platform.OS === 'android' ? 
-            <KeyboardSpacer 
-              style={styles.keyBad} 
-              //topSpacing={-110}              
-            /> 
-            : null 
-          } */}
-        </KeyboardAvoidingView>
+        <QuestionComponent
+          style={styles.questionContainer}
+          clear={clear}
+          titlePlaceHolder={'Email'}
+          bodyPlaceHolder={'write your message here'}
+          setQuestionBody={(body) => this.setMessageBody(body)}
+          setQuestionTitle={(email) => this.setMessageEmail(email)}
+        />
 
         <SubmitBtn
           style={styles.btnStyle}
           text={'SEND'}
           textStyle={styles.textStyle}
-          onPress={()=>goBack()}
+          onPress={()=> this.sendMessage()}
         />
       </SafeAreaView>
     );
