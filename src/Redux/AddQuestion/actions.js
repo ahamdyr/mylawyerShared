@@ -60,6 +60,11 @@ export const setQuestionImg = (img) => {
   }
 }
 
+export const deleteAttachments = () => {
+  return{
+    type: 'deleteAttachments'
+  }
+}
 export const delQuestionImg = (img) => {
   return{
     type: DEL_QUESTION_IMG,
@@ -93,3 +98,11 @@ export const addAttachs = (attachs) => {
     attachs
   }
 }
+export const clearQuestion = (bool) => {
+  return{
+    type: 'clearQuestion',
+    bool
+  }
+}
+
+

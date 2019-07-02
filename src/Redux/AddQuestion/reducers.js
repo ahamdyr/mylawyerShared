@@ -17,6 +17,14 @@ import {
   mockAttachs 
 } from '../../Services/BackendServices/MockData'
 
+export const clearQuestion = (state = false, action) => {
+  switch (action.type) {
+    case 'clearQuestion':
+      return action.bool
+    default:
+      return state
+  }
+}
 export const questionTopic = (state = '0', action) => {
   switch (action.type) {
     case SET_QUESTION_TOPIC:
@@ -59,6 +67,8 @@ export const questionDocs = (state = [], action) => {
       return [...state, action.doc]
     case DEL_QUESTION_DOC:
       return state.filter(e=> e.uuid !== action.doc.uuid )  
+    case 'deleteAttachments':
+      return []    
     default:
       return state
   }
@@ -70,6 +80,8 @@ export const questionImgs = (state = [], action) => {
       return [...state, action.img]
     case DEL_QUESTION_IMG:
       return state.filter(e => e.uuid !== action.img.uuid)
+    case 'deleteAttachments':
+      return []
     default:
       return state
   }

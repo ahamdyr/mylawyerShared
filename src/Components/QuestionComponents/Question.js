@@ -17,12 +17,16 @@ import KeyboardListener from 'react-native-keyboard-listener'
 
 export default class QuestionComponent extends React.PureComponent {
   state={
-    focused: true
+    focused: true,
+    title: '',
+    body: ''
   }
   _titleChange = (val) => {
+    this.state.title = val
     this.props.setQuestionTitle(val)
   }
   _bodyChange = (val) => {
+    this.state.body = val
     this.props.setQuestionBody(val)
   }
   _titleKeyBoardToggle = () => {
@@ -45,11 +49,16 @@ export default class QuestionComponent extends React.PureComponent {
 
   render() {
     var {
-      partial
+      partial,
+      clear
     } = this.props
     var {
       focused
     } = this.state
+    if(clear){
+      this.state.title = ''
+      this.state.body = ''
+    }
     return (
       <KeyboardAvoidingView
         keyboardVerticalOffset={STATUS_BAR_HEIGHT + 10}
@@ -75,6 +84,7 @@ export default class QuestionComponent extends React.PureComponent {
             blurOnSubmit={true}
             returnKeyType={'done'}
             ref={(ref) => this._titleRef = ref}
+            value={this.state.title}
             style={styles.titleText}
             multiline={true}
             numberOfLines={2}
@@ -104,6 +114,7 @@ export default class QuestionComponent extends React.PureComponent {
               blurOnSubmit={true}
               returnKeyType={'done'}
               style={styles.bodyText}
+              value={this.state.body}
               autoGrow={false}
               scrollEnabled={true}
               ref={(ref) => this._bodyRef = ref}

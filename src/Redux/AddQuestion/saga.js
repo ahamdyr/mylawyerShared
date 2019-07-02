@@ -1,7 +1,9 @@
 import { call, put, takeEvery, select } from 'redux-saga/effects'
 import {
   SUBMIT_QUESTION,
-  addQuestionLoading
+  addQuestionLoading,
+  deleteAttachments,
+  clearQuestion
 } from './actions'
 import { askQuestionApi } from '../../Services/BackendServices/AskNewQuestion'
 import { addQuestionAttachsService } from '../../Services/BackendServices/QuestionAttachs'
@@ -10,6 +12,7 @@ import { goBack, navigate} from '../../Services/NavigationServices'
 function* submitQuestionSaga(action) {
   try {    
     //yield put(addQuestionLoading(true))
+    yield put(clearQuestion(true))
     navigate('Spinner')
     var topic = yield select(state => state.questionTopic)
     var title = yield select(state => state.questionTitle)
@@ -25,10 +28,11 @@ function* submitQuestionSaga(action) {
     var { id } = yield call(askQuestionApi, topic, accessToken, title, body)
     //console.log('questionID  ',id)
     yield call(addQuestionAttachsService, attachments, id, accessToken)
-    
+    yield put(deleteAttachments())
     alert('Your question has been submitted')
     goBack()
     goBack()
+    yield put(clearQuestion(false))
     //yield put(addQuestionLoading(false))
   } catch (error) {
     console.log('ask question error ',error)

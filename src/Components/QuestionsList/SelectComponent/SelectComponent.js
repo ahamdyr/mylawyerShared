@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, TouchableOpacity, Image, Picker, Platform, PickerIOS } from 'react-native';
+import { Text, View, TouchableOpacity, Image, Picker, Platform, PickerIOS, ScrollView } from 'react-native';
 import { CustomPicker } from 'react-native-custom-picker'
 import StatusText from '../../Common/StatusText';
 import { arrow, topic } from '../../../../assets'
@@ -14,18 +14,22 @@ export default class SelectComponent extends React.PureComponent {
     this.props.getTopicsRequest()
   }
   _onChange = (itemValue) => {
-    // this.setState({
-    //   choosenLabel: itemValue.name
-    // })
+    //console.log('itemValue ',itemValue)
+    this.setState({
+      choosenLabel: itemValue
+    })
     this.props.onSelect(itemValue.id)
   }
   state = { choosenLabel: this._initialTopic }
   render() {
     var {
       getTopicsSuccess,
-      getTopicsLoading
+      getTopicsLoading,
+      clear
     } = this.props
-
+    if(clear){
+      this.state.choosenLabel = this._initialTopic
+    }
     return (
       <View style={[styles.selectContainer, this.props.style]}>
 
@@ -37,10 +41,11 @@ export default class SelectComponent extends React.PureComponent {
           getTopicsLoading ?
             <StatusText text={'Loading...'} style={{ alignSelf: 'center', marginLeft: 20 }} />
             : getTopicsSuccess.length ?
+            <ScrollView style={{flex: 1}}>
               <CustomPicker
                 placeholder={'All Topics'}
-                //value={this.state.choosenLabel}
-                //defaultValue={this._initialTopic}
+                value={this.state.choosenLabel}
+                defaultValue={this._initialTopic}
                 options={[this._initialTopic,...getTopicsSuccess]}
                 getLabel={item => item.name}
                 onValueChange={value => {
@@ -50,7 +55,7 @@ export default class SelectComponent extends React.PureComponent {
                 optionTemplate={this.renderOption}
                 modalStyle={styles.modalStyle}
               />
-
+              </ScrollView>
               //   : <Picker
               //     style={styles.picker}                  
               //     mode={'dropdown'}
