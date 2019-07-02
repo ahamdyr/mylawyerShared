@@ -28,7 +28,7 @@ export default class SelectComponent extends React.PureComponent {
       getTopicsLoading,
       clear
     } = this.props
-    if(clear){
+    if (clear) {
       this.state.choosenLabel = this._initialTopic
     }
     return (
@@ -42,12 +42,15 @@ export default class SelectComponent extends React.PureComponent {
           getTopicsLoading ?
             <StatusText text={'Loading...'} style={{ alignSelf: 'center', marginLeft: 20 }} />
             : getTopicsSuccess.length ?
-            <ScrollView style={{flex: 1}}>
               <CustomPicker
                 placeholder={'All Topics'}
                 value={this.state.choosenLabel}
+                scrollViewProps={{
+                  scrollEnabled: true,
+                  indicatorStyle: 'black'
+                }}
                 defaultValue={this._initialTopic}
-                options={[this._initialTopic,...getTopicsSuccess]}
+                options={[this._initialTopic, ...getTopicsSuccess]}
                 getLabel={item => item.name}
                 onValueChange={value => {
                   this._onChange(value)
@@ -56,7 +59,6 @@ export default class SelectComponent extends React.PureComponent {
                 optionTemplate={this.renderOption}
                 modalStyle={styles.modalStyle}
               />
-              </ScrollView>
               //   : <Picker
               //     style={styles.picker}                  
               //     mode={'dropdown'}
@@ -81,7 +83,7 @@ export default class SelectComponent extends React.PureComponent {
               //       })
               //     }
               //   </Picker>
-              
+
               : <StatusText text={'No Topics Found!'} style={{ alignSelf: 'center', marginLeft: 20 }} />
         }
 
@@ -96,7 +98,7 @@ export default class SelectComponent extends React.PureComponent {
       </View>
     )
   }
-  
+
   renderField(settings) {
     const { selectedItem, defaultText, getLabel, clear } = settings
     return (
@@ -122,8 +124,8 @@ export default class SelectComponent extends React.PureComponent {
     const { item, getLabel } = settings
     return (
       <View style={styles.optionContainer}>
-          <Text style={styles.optionText}>{getLabel(item)}</Text>
-        <SeperatorLine style={styles.line}/>
+        <Text style={styles.optionText}>{getLabel(item)}</Text>
+        <SeperatorLine style={styles.line} />
       </View>
     )
   }
