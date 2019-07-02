@@ -3,21 +3,26 @@ import {connect} from 'react-redux'
 import {
   getUserOwnQuestionsRequest,
   searchUserOwnQuestionsRequest,
-  filterUserOwnQuestionsRequest
+  filterUserOwnQuestionsRequest,
+  getUserOwnQuestionsLoadMore
 } from '../../Redux/UserOwnQuests/actions'
 
 const mapStateToProps =  state => ({
+  //questions: state.questions,
+  questions: state.getUserOwnQuestionsSuccess,
+  questionsLoading: state.getUserOwnQuestionsLoading,
+  loadingMore: state.getUserOwnQuestionsLoadingMore,
+  noMore: state.getUserOwnQuestionsNoMore,
+  
   currentUser: state.currentUser,
   accessToken: state.accessToken,
   isLoggedUser: state.isLoggedUser,
-  questions: state.questions,
-  getUserOwnQuestionsSuccess: state.getUserOwnQuestionsSuccess,
-  getUserOwnQuestionsLoading: state.getUserOwnQuestionsLoading
 })
 
 const mapDispatchersToProps = dispatch => ({
-  getUserOwnQuestionsRequest: (accessToken) => dispatch(getUserOwnQuestionsRequest(accessToken)),
-  searchUserOwnQuestionsRequest: (accessToken, query) => dispatch(searchUserOwnQuestionsRequest(accessToken, query)),
-  filterUserOwnQuestionsRequest: (accessToken, topicID)=>dispatch(filterUserOwnQuestionsRequest(accessToken, topicID)) 
+  getUserOwnQuestionsRequest: () => dispatch(getUserOwnQuestionsRequest()),
+  searchUserOwnQuestionsRequest: (query) => dispatch(searchUserOwnQuestionsRequest(query)),
+  filterUserOwnQuestionsRequest: (topicID)=>dispatch(filterUserOwnQuestionsRequest(topicID)),
+  getUserOwnQuestionsLoadMore: () => dispatch(getUserOwnQuestionsLoadMore())
 })  
 export default connect(mapStateToProps, mapDispatchersToProps)(MyQuestionsScreen)

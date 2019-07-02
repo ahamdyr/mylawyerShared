@@ -8,7 +8,7 @@ import Spinner from '../Spinner'
 export default class MyQuestionsScreen extends React.Component {
   componentWillMount(){
     if(this.props.isLoggedUser){
-      this.props.getUserOwnQuestionsRequest(this.props.accessToken)
+      this.props.getUserOwnQuestionsRequest()
     }
   }
   render() {
@@ -41,15 +41,20 @@ export default class MyQuestionsScreen extends React.Component {
       )
     }
     var {
-      questions,
       currentUser,
-      accessToken,
       isLoggedUser,
-      getUserOwnQuestionsSuccess,
-      getUserOwnQuestionsLoading,
-      searchUserOwnQuestionsRequest,
+      accessToken,
+
+      questions,
+      questionsLoading,
+      loadingMore,
+      noMore,
+
       getUserOwnQuestionsRequest,
-      filterUserOwnQuestionsRequest
+      searchUserOwnQuestionsRequest,
+      filterUserOwnQuestionsRequest,
+      getUserOwnQuestionsLoadMore
+
     } = this.props
 
     // if(getUserOwnQuestionsLoading){
@@ -59,17 +64,19 @@ export default class MyQuestionsScreen extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <SelectComponent 
-          onSelect={(topicID)=>filterUserOwnQuestionsRequest(accessToken, topicID)}
+          onSelect={(topicID)=>filterUserOwnQuestionsRequest(topicID)}
         />
         <SearchComponent 
-          onSearch={(query)=>searchUserOwnQuestionsRequest(accessToken, query)}
-          onCancel={()=>getUserOwnQuestionsRequest(accessToken)}
+          onSearch={(query)=>searchUserOwnQuestionsRequest(query)}
+          onCancel={()=>getUserOwnQuestionsRequest()}
         />
         <QuestionsList 
-          questions={getUserOwnQuestionsSuccess}
-          refresh={()=>searchUserOwnQuestionsRequest(accessToken)}
-          //questions={questions}
-          questionsLoading={getUserOwnQuestionsLoading}
+          refresh={() => getUserOwnQuestionsRequest()}
+          loadMore={() => getUserOwnQuestionsLoadMore()}
+          questions={questions}
+          questionsLoading={questionsLoading}
+          questionsLoadingMore={loadingMore}
+          questionsNoMore={noMore}
         />
       </SafeAreaView>
     );

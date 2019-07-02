@@ -26,10 +26,10 @@ export const getUserOwnQuestionsApi = async (pageToken, accessToken) => {
   })  
 }
 
-export const searchUserOwnQuestionsApi = async (pageToken, accessToken, query) => {  
+export const searchUserOwnQuestionsApi = async (pageToken, accessToken, topicID, query) => {  
   return new Promise((resolve, reject) => {
     axios.get(
-      `me/questions/?page=${pageToken}&query=${query}`,    
+      `me/questions/?page=${pageToken}&topicId=${topicID}&query=${query}`,    
       {
         headers: {
           'Authorization': `Bearer ${accessToken}`,

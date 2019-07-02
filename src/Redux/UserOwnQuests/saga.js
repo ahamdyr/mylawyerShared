@@ -6,90 +6,87 @@ import {
   getUserOwnQuestionsError,
   getUserOwnQuestionsLoading,
   getUserOwnQuestionsSuccess,
-  setUserOwnQuestionsPageToken  
+  setUserOwnQuestionsPageToken,
+  getUserOwnQuestionsLoadingMore,
+  getUserOwnQuestionsNoMore  
 } from './actions'
 import {
-  getUserOwnQuestionsApi,
-  searchUserOwnQuestionsApi,
-  filterUserOwnQuestionsApi
+  searchUserOwnQuestionsApi
 } from '../../Services/BackendServices/UserOwnQuestsServices'
-import { navigate, goBack} from '../../Services/NavigationServices'
+import _ from 'lodash'
 
 function* getUserOwnQuestionsSaga(action) {
   try {
-    navigate('Spinner')
+    var lastPageToken = yield select(state => state.UserOwnQuestionsPageToken)
+    var topicID = yield select(state => state.myQuestionsFilterTopic)
+    var query = yield select(state => state.myQuestionsSearchQuery)
+    var accessToken = yield select(state => state.accessToken)
+    
     yield put(getUserOwnQuestionsLoading(true))
-    let lastPageToken = yield select(state => state.UserOwnQuestionsPageToken)
     var {
       data,
-      nextPage
-    } = yield call(getUserOwnQuestionsApi, lastPageToken, action.accessToken)
+      nextPageToken
+    } = yield call(searchUserOwnQuestionsApi, lastPageToken, accessToken, topicID, query)
+
     yield put(getUserOwnQuestionsSuccess(data))
-    yield put(setUserOwnQuestionsPageToken(nextPage|| lastPageToken))
     yield put(getUserOwnQuestionsLoading(false))
-    goBack()
+    if (!_.isUndefined(nextPageToken)) {
+      yield put(setUserOwnQuestionsPageToken(nextPageToken))
+    }
+    else {
+      yield put(getUserOwnQuestionsNoMore(true))
+    }
+    
   } catch (error) {
     yield put(getUserOwnQuestionsError(error))
     yield put(getUserOwnQuestionsLoading(false))
-    goBack()
+    
     console.log('own questions error ',error)
   }
 }
-function* searchUserOwnQuestionsSaga(action) {
+function* loadMoreUserOwnQuestionsSaga(action) {
   try {
-    navigate('Spinner')
-    yield put(getUserOwnQuestionsLoading(true))
-    let lastPageToken = yield select(state => state.UserOwnQuestionsPageToken)
-    var {
-      data,
-      nextPage
-    } = yield call(searchUserOwnQuestionsApi, lastPageToken, action.accessToken, action.query)
-    yield put(getUserOwnQuestionsSuccess(data))
-    yield put(setUserOwnQuestionsPageToken(nextPage|| lastPageToken))
-    yield put(getUserOwnQuestionsLoading(false))
-    goBack()
-  } catch (error) {
-    yield put(getUserOwnQuestionsError(error))
-    yield put(getUserOwnQuestionsLoading(false))
-    goBack()
-    console.log('search own questions error ',error)
-  }
-}
-function* filterUserOwnQuestionsSaga(action) {
-  try {
-    navigate('Spinner')
-    yield put(getUserOwnQuestionsLoading(true))
-    let lastPageToken = yield select(state => state.UserOwnQuestionsPageToken)
-    if(action.topicID == '0'){
+    var lastPageToken = yield select(state => state.UserOwnQuestionsPageToken)
+    var topicID = yield select(state => state.myQuestionsFilterTopic)
+    var query = yield select(state => state.myQuestionsSearchQuery)
+    var accessToken = yield select(state => state.accessToken)
+    var noMore = yield select(state => state.getUserOwnQuestionsNoMore)
+    var lastData = yield select(state => state.getUserOwnQuestionsSuccess)
+
+    if (!noMore) {
+      yield put(getUserOwnQuestionsLoadingMore(true))
       var {
         data,
-        nextPage
-      } = yield call(getUserOwnQuestionsApi, lastPageToken, action.accessToken)
-    }
-    else{
-      var {
-        data,
-        nextPage
-      } = yield call(filterUserOwnQuestionsApi, lastPageToken, action.accessToken, action.topicID)
-    }        
-    yield put(getUserOwnQuestionsSuccess(data))
-    yield put(setUserOwnQuestionsPageToken(nextPage|| lastPageToken))
-    yield put(getUserOwnQuestionsLoading(false))
-    goBack()
+        nextPageToken
+      } = yield call(searchUserOwnQuestionsApi, lastPageToken, accessToken, topicID, query)
+      var newData = [...lastData, ...data]
+      yield put(getUserOwnQuestionsSuccess(newData))
+      yield put(getUserOwnQuestionsLoadingMore(false))
+      if (!_.isUndefined(nextPageToken)) {
+        yield put(setUserOwnQuestionsPageToken(nextPageToken))
+      }
+      else {
+        yield put(getUserOwnQuestionsNoMore(true))
+      }
+    }    
+    
   } catch (error) {
     yield put(getUserOwnQuestionsError(error))
-    yield put(getUserOwnQuestionsLoading(false))
-    goBack()
+    yield put(getUserOwnQuestionsLoadingMore(false))
+    
     console.log('search own questions error ',error)
   }
 }
 
 export function* getUserOwnQuestions() {
-  yield takeEvery(GET_USER_OWN_QUESTIONS_REQUEST, getUserOwnQuestionsSaga)
+  yield takeEvery([
+    GET_USER_OWN_QUESTIONS_REQUEST,
+    SEARCH_USER_OWN_QUESTIONS_REQUEST,
+    FILTER_USER_OWN_QUESTIONS_REQUEST
+  ], getUserOwnQuestionsSaga)
 }
-export function* searchUserOwnQuestions() {
-  yield takeEvery(SEARCH_USER_OWN_QUESTIONS_REQUEST, searchUserOwnQuestionsSaga)
-}
-export function* filterUserOwnQuestions() {
-  yield takeEvery(FILTER_USER_OWN_QUESTIONS_REQUEST, filterUserOwnQuestionsSaga)
+export function* loadMoreUserOwnQuestions() {
+  yield takeEvery([
+    'getUserOwnQuestionsLoadMore'
+  ], loadMoreUserOwnQuestionsSaga)
 }

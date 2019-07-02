@@ -6,24 +6,21 @@ export const GET_USER_OWN_QUESTIONS_LOADING = 'GET_USER_OWN_QUESTIONS_LOADING'
 export const GET_USER_OWN_QUESTIONS_ERROR = 'GET_USER_OWN_QUESTIONS_ERROR'
 export const SET_USER_OWN_QUESTIONS_PG_TOKEN = 'SET_USER_OWN_QUESTIONS_PG_TOKEN'
 
-export const getUserOwnQuestionsRequest = (accessToken) => {
+export const getUserOwnQuestionsRequest = () => {
   return{
-    type: GET_USER_OWN_QUESTIONS_REQUEST,
-    accessToken
+    type: GET_USER_OWN_QUESTIONS_REQUEST
   }
 }
 
-export const searchUserOwnQuestionsRequest = (accessToken, query) => {
+export const searchUserOwnQuestionsRequest = (query) => {
   return{
     type: SEARCH_USER_OWN_QUESTIONS_REQUEST,
-    accessToken,
     query
   }
 }
-export const filterUserOwnQuestionsRequest = (accessToken, topicID) => {
+export const filterUserOwnQuestionsRequest = (topicID) => {
   return{
     type: FILTER_USER_OWN_QUESTIONS_REQUEST,
-    accessToken,
     topicID
   }
 }
@@ -53,5 +50,24 @@ export const setUserOwnQuestionsPageToken = (pageToken) => {
   return{
     type: SET_USER_OWN_QUESTIONS_PG_TOKEN,
     pageToken
+  }
+}
+
+export const getUserOwnQuestionsLoadMore = () => {
+  return{
+    type: 'getUserOwnQuestionsLoadMore'
+  }
+}
+
+export const getUserOwnQuestionsLoadingMore = (isLoading) => {
+  return{
+    type: 'getUserOwnQuestionsLoadingMore',
+    isLoading
+  }
+}
+export const getUserOwnQuestionsNoMore = (isNoMore) => {
+  return{
+    type: 'getUserOwnQuestionsNoMore',
+    isNoMore
   }
 }

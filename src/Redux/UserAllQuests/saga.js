@@ -56,12 +56,13 @@ function* getUserAllQuestionsSaga(action) {
 
 
 function* loadMoreUserAllQuestionsSaga(action) {
-  var lastPageToken = yield select(state => state.UserAllQuestionsPageToken)
-  var topicID = yield select(state => state.allQuestionsFilterTopic)
-  var query = yield select(state => state.allQuestionsSearchQuery)
-  var noMore = yield select(state => state.getUserAllQuestionsNoMore)
-  var lastData = yield select(state => state.getUserAllQuestionsSuccess)
   try {
+    var lastPageToken = yield select(state => state.UserAllQuestionsPageToken)
+    var topicID = yield select(state => state.allQuestionsFilterTopic)
+    var query = yield select(state => state.allQuestionsSearchQuery)
+    var noMore = yield select(state => state.getUserAllQuestionsNoMore)
+    var lastData = yield select(state => state.getUserAllQuestionsSuccess)
+    
     if(!noMore){      
       yield put(getUserAllQuestionsLoadingMore(true))
       if(topicID){
