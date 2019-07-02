@@ -41,6 +41,7 @@ function* getUserAllQuestionsSaga(action) {
     yield put(getUserAllQuestionsLoading(false))
     if (!_.isUndefined(nextPageToken)) {
       yield put(setUserAllQuestionsPageToken(nextPageToken))
+      yield put(getUserAllQuestionsNoMore(false))
     }
     else {
       yield put(getUserAllQuestionsNoMore(true))

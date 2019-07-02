@@ -32,6 +32,7 @@ function* getUserOwnQuestionsSaga(action) {
     yield put(getUserOwnQuestionsLoading(false))
     if (!_.isUndefined(nextPageToken)) {
       yield put(setUserOwnQuestionsPageToken(nextPageToken))
+      yield put(getUserOwnQuestionsNoMore(false))
     }
     else {
       yield put(getUserOwnQuestionsNoMore(true))

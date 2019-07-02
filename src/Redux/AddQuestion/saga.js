@@ -37,7 +37,8 @@ function* submitQuestionSaga(action) {
   } catch (error) {
     console.log('ask question error ',error)
     alert('Something went error!\n Try again!')
-    goBack()
+    yield put(clearQuestion(false))
+    //goBack()
     //yield put(addQuestionLoading(false))
   }
 }

@@ -8,7 +8,7 @@ import Footer from '../../Components/QuestionComponents/Footer'
 import Attachments from '../../Components/QuestionComponents/Attachments'
 import AskTitle from '../../Components/QuestionComponents/AskTitle'
 import Spinner from '../Spinner'
-
+import { goBack } from '../../Services/NavigationServices'
 export default class AskQuestion extends React.Component {
   render() {
     var {
@@ -49,7 +49,7 @@ export default class AskQuestion extends React.Component {
       <SafeAreaView style={styles.container}>
 
         <BlackX
-          onPress={() => this.props.navigation.goBack()}
+          onPress={() => goBack()}
         />
 
         <AskTitle />
