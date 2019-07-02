@@ -24,13 +24,12 @@ export const styles = StyleSheet.create({
     shadowOpacity: 1
   },
   imageContainer:{
-    width: WIDTH,
     alignItems: 'center',
   },
   orderStyle:{
     position: 'absolute',
     top: 21,
-    left: WIDTH/2 - 95
+    left: -22
   },
   orderTextStyle: {
     fontFamily: "Lato-Bold",
