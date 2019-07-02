@@ -18,9 +18,10 @@ export const styles = StyleSheet.create({
     backgroundColor: "#a0a0a4"
   },
   modalStyle:{
-    position: 'absolute',
-    top:  110,
+    // position: 'absolute',
+    // top:  110,
     width: WIDTH,
+    flex:1,
     backgroundColor: '#f6f6f6'
   },
   container: {

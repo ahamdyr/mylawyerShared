@@ -25,13 +25,6 @@ export const filterUserAllQuestionsRequest = (topicID) => {
   }
 }
 
-export const getUserAllQuestionsSuccess = (questions) => {
-  return{
-    type: GET_USER_ALL_QUESTIONS_SUCCESS,
-    questions
-  }
-}
-
 export const getUserAllQuestionsError = (error) => {
   return{
     type: GET_USER_ALL_QUESTIONS_ERROR,
@@ -46,9 +39,39 @@ export const getUserAllQuestionsLoading = (isLoading) => {
   }
 }
 
+export const getUserAllQuestionsSuccess = (questions) => {
+  return{
+    type: GET_USER_ALL_QUESTIONS_SUCCESS,
+    questions
+  }
+}
+
+
 export const setUserAllQuestionsPageToken = (pageToken) => {
   return{
     type: SET_USER_ALL_QUESTIONS_PG_TOKEN,
     pageToken
   }
 }
+
+export const getUserAllQuestionsLoadMore = () => {
+  return{
+    type: 'getUserAllQuestionsLoadMore'
+  }
+}
+
+export const getUserAllQuestionsLoadingMore = (isLoading) => {
+  return{
+    type: 'getUserAllQuestionsLoadingMore',
+    isLoading
+  }
+}
+export const getUserAllQuestionsNoMore = (isNoMore) => {
+  return{
+    type: 'getUserAllQuestionsNoMore',
+    isNoMore
+  }
+}
+
+
+

@@ -27,10 +27,11 @@ export default class AskQuestion extends React.Component {
       questionBody,
       questionTitle,
       questionTopic,
-      addQuestionLoading
+      addQuestionLoading,
+      clearQuestion
     } = this.props
     var attachs = [...docs, ...imgs]
-    
+
     if(addQuestionLoading){
       return (
         <SafeAreaView style={{
@@ -55,6 +56,7 @@ export default class AskQuestion extends React.Component {
 
         <SelectComponent
           onSelect={(topic) => setQuestionTopic(topic)}
+          clear={clearQuestion}
           style={styles.select}
         />
 
@@ -62,6 +64,7 @@ export default class AskQuestion extends React.Component {
           partial={attachs.length}
           setQuestionBody={(body)=>setQuestionBody(body)}
           setQuestionTitle={(title)=>setQuestionTitle(title)}
+          clear={clearQuestion}
         />
     
         <Attachments

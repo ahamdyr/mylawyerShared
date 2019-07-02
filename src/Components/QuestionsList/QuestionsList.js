@@ -1,16 +1,36 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, RefreshControl } from 'react-native';
+import {WIDTH} from '../Constants'
 import QuestionsItem from './QuestionsItem'
 import StatusText from '../Common/StatusText'
-export default class QuestionsList extends React.Component {
+import Spinner from '../../Screens/Spinner'
+export default class QuestionsList extends React.PureComponent {
   
   renderItem = (item) => {
     return <QuestionsItem item={item} />
   }
 
   _keyExtractor = (item, index) => String(index)
-
-  renderQuestions = (questions, refresh) => {
+  
+  _renderFooter = () => {
+    return (
+      <View style={{
+        height: 50,
+        width: WIDTH,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        {
+          this.props.questionsNoMore ?
+            <StatusText text={'No more..'} />
+            : this.props.questionsLoadingMore ?
+              <Spinner />
+              : null
+        }
+      </View>
+    )
+  }
+  renderQuestions = (questions, refresh, loadMore) => {
     return (
       <FlatList
         data={questions}
@@ -20,14 +40,15 @@ export default class QuestionsList extends React.Component {
         //numColumns={2}
         //ItemSeparatorComponent={}
         scrollEnabled={true}
-        //onEndReached={this._handleMore}
+        onEndReached={()=>loadMore()}
         onEndReachedThreshold={0.2}
-        //ListFooterComponent={this._renderFooter}
+        ListFooterComponent={this._renderFooter}
         //ListHeaderComponent={this._renderHeader}
         refreshControl={
           <RefreshControl
             colors={['#0b7f7c']}
-            onRefresh={()=>refresh(true)}
+            refreshing={this.props.questionsLoading}
+            onRefresh={()=>refresh()}
           />
         }
         style={{
@@ -43,7 +64,7 @@ export default class QuestionsList extends React.Component {
 
   render() {
     var {
-      questions, questionsLoading, refresh
+      questions, questionsLoading, refresh, loadMore
     } = this.props
     
     return (
@@ -56,13 +77,14 @@ export default class QuestionsList extends React.Component {
 
       }}>
         {
-          questionsLoading ?
-            <StatusText text={'Loading...'} />
-            : questions.length ?
-                this.renderQuestions(questions, refresh)
-                : <StatusText text={'No Questions Found!'} />          
+          questions.length ?
+            this.renderQuestions(questions, refresh, loadMore)
+            : questionsLoading ?
+              <Spinner/>
+              : <StatusText text={'No Questions Found!'} />
         }
       </View>
     );
   }
 }
+

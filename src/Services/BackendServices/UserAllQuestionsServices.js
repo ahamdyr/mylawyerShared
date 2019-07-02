@@ -11,7 +11,8 @@ export const getUserAllQuestionsApi = async (pageToken) => {
       }
     ).then((res) => {
       if(res.data.data) {
-        //console.log('res.data.data  ',res.data.data)
+        // console.log('res.data.data  ',res.data.nextPageToken)
+        // console.log('res.data.data  ',res.data.data.length)
         resolve(res.data) 
       }
       else{
@@ -23,10 +24,10 @@ export const getUserAllQuestionsApi = async (pageToken) => {
   })  
 }
 
-export const filterUserAllQuestionsApi = async (pageToken, topicID) => {  
+export const filterUserAllQuestionsApi = async (pageToken, topicID, query) => {  
   return new Promise((resolve, reject) => {
     axios.get(
-      `topics/${topicID}/questions/?page=${pageToken}`,    
+      `topics/${topicID}/questions/?page=${pageToken}&query=${query}`,    
       {
         headers: {
           'Accept': 'application/json'
@@ -46,7 +47,7 @@ export const filterUserAllQuestionsApi = async (pageToken, topicID) => {
   })  
 }
 
-export const searchUserAllQuestionsApi = async (pageToken, query) => {  
+export const searchUserAllQuestionsApi = async (pageToken, topicID, query) => {  
   return new Promise((resolve, reject) => {
     axios.get(
       `questions/?page=${pageToken}&query=${query}`,    
@@ -57,7 +58,6 @@ export const searchUserAllQuestionsApi = async (pageToken, query) => {
       }
     ).then((res) => {
       if(res.data.data) {
-        //console.log(res.data.data)
         resolve(res.data) 
       }
       else{

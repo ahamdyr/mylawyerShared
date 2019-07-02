@@ -9,7 +9,7 @@ export default class SearchComponent extends React.PureComponent {
     text: ''
   }
   _onSearch = (query) => {
-    query.length ? this.props.onSearch(query) : null
+    query.length ? this.props.onSearch(query) : ''
   }
   _onCancel = () => {
     this._searchRef.clear()

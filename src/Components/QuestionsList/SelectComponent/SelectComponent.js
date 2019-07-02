@@ -18,7 +18,8 @@ export default class SelectComponent extends React.PureComponent {
     this.setState({
       choosenLabel: itemValue
     })
-    this.props.onSelect(itemValue.id)
+    //console.log('itemValue ', itemValue.id == '0' ? '' : itemValue.id)
+    this.props.onSelect(itemValue.id == '0' ? '' : itemValue.id)
   }
   state = { choosenLabel: this._initialTopic }
   render() {

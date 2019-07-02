@@ -19,7 +19,8 @@ const mapStateToProps =  state => ({
   questionTitle: state.questionTitle,
   questionBody: state.questionBody,
   questionTopic: state.questionTopic,
-  addQuestionLoading: state.addQuestionLoading
+  addQuestionLoading: state.addQuestionLoading,
+  clearQuestion: state.clearQuestion
 })
 
   

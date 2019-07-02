@@ -6,90 +6,102 @@ import {
   getUserAllQuestionsError,
   getUserAllQuestionsLoading,
   getUserAllQuestionsSuccess,
-  setUserAllQuestionsPageToken
+  getUserAllQuestionsLoadingMore,
+  getUserAllQuestionsNoMore,
+  setUserAllQuestionsPageToken,  
 } from './actions'
 import {
   getUserAllQuestionsApi,
   searchUserAllQuestionsApi,
   filterUserAllQuestionsApi
 } from '../../Services/BackendServices/UserAllQuestionsServices'
-import {goBack, navigate} from '../../Services/NavigationServices'
+import { goBack, navigate } from '../../Services/NavigationServices'
+import _ from 'lodash'
 
 function* getUserAllQuestionsSaga(action) {
+  var lastPageToken = yield select(state => state.UserAllQuestionsPageToken)
+  var topicID = yield select(state => state.allQuestionsFilterTopic)
+  var query = yield select(state => state.allQuestionsSearchQuery)
+
   try {
-    navigate('Spinner')
+    //navigate('Spinner')
     yield put(getUserAllQuestionsLoading(true))
-    let lastPageToken = yield select(state => state.UserAllQuestionsPageToken)
-    var {
-      data,
-      nextPage
-    } = yield call(getUserAllQuestionsApi, lastPageToken)
-    yield put(getUserAllQuestionsSuccess(data))
-    yield put(setUserAllQuestionsPageToken(nextPage|| lastPageToken))
-    yield put(getUserAllQuestionsLoading(false))
-    goBack()
-  } catch (error) {
-    yield put(getUserAllQuestionsError(error))
-    yield put(getUserAllQuestionsLoading(false))
-    goBack()
-    console.log('all questions error ',error)
-  }
-}
-function* searchUserAllQuestionsSaga(action) {
-  try {
-    navigate('Spinner')
-    yield put(getUserAllQuestionsLoading(true))
-    let lastPageToken = yield select(state => state.UserAllQuestionsPageToken)
-    var {
-      data,
-      nextPage
-    } = yield call(searchUserAllQuestionsApi, lastPageToken, action.query)
-    yield put(getUserAllQuestionsSuccess(data))
-    yield put(setUserAllQuestionsPageToken(nextPage|| lastPageToken))
-    yield put(getUserAllQuestionsLoading(false))
-    goBack()
-  } catch (error) {
-    yield put(getUserAllQuestionsError(error))
-    yield put(getUserAllQuestionsLoading(false))
-    goBack()
-    console.log('search all questions error ',error)
-  }
-}
-function* filterUserAllQuestionsSaga(action) {
-  try {
-    navigate('Spinner')
-    yield put(getUserAllQuestionsLoading(true))
-    let lastPageToken = yield select(state => state.UserAllQuestionsPageToken)
-    if(action.topicID == '0'){
+    if(topicID){
       var {
         data,
-        nextPage
-      } = yield call(getUserAllQuestionsApi, lastPageToken)
+        nextPageToken
+      } = yield call(filterUserAllQuestionsApi, lastPageToken, topicID, query)
+    }else{
+      var {
+        data,
+        nextPageToken
+      } = yield call(searchUserAllQuestionsApi, lastPageToken, topicID, query)
     }
-    else{
-      var {
-        data,
-        nextPage
-      } = yield call(filterUserAllQuestionsApi, lastPageToken, action.topicID)
-    }    
     yield put(getUserAllQuestionsSuccess(data))
-    yield put(setUserAllQuestionsPageToken(nextPage|| lastPageToken))
     yield put(getUserAllQuestionsLoading(false))
-    goBack()
+    if (!_.isUndefined(nextPageToken)) {
+      yield put(setUserAllQuestionsPageToken(nextPageToken))
+    }
+    else {
+      yield put(getUserAllQuestionsNoMore(true))
+    }
+    //goBack()
   } catch (error) {
     yield put(getUserAllQuestionsError(error))
     yield put(getUserAllQuestionsLoading(false))
-    goBack()
-    console.log('filter all questions error ',error)
+    //goBack()
+    console.log('all questions error ', error)
   }
+}
+
+
+function* loadMoreUserAllQuestionsSaga(action) {
+  var lastPageToken = yield select(state => state.UserAllQuestionsPageToken)
+  var topicID = yield select(state => state.allQuestionsFilterTopic)
+  var query = yield select(state => state.allQuestionsSearchQuery)
+  var noMore = yield select(state => state.getUserAllQuestionsNoMore)
+  var lastData = yield select(state => state.getUserAllQuestionsSuccess)
+  try {
+    if(!noMore){      
+      yield put(getUserAllQuestionsLoadingMore(true))
+      if(topicID){
+        var {
+          data,
+          nextPageToken
+        } = yield call(filterUserAllQuestionsApi, lastPageToken, topicID, query)
+      }else{
+        var {
+          data,
+          nextPageToken
+        } = yield call(searchUserAllQuestionsApi, lastPageToken, topicID, query)        
+      }
+      var newData = [...lastData, ...data]
+      yield put(getUserAllQuestionsSuccess(newData))
+      yield put(getUserAllQuestionsLoadingMore(false))
+      if (!_.isUndefined(nextPageToken)) {
+        yield put(setUserAllQuestionsPageToken(nextPageToken))
+      }
+      else {
+        yield put(getUserAllQuestionsNoMore(true))
+      }
+    }
+  } catch (error) {
+    yield put(getUserAllQuestionsError(error))
+    yield put(getUserAllQuestionsLoadingMore(false))
+    console.log('search questions error ', error)
+  }   
 }
 
 export function* getUserAllQuestions() {
-  yield takeEvery(GET_USER_ALL_QUESTIONS_REQUEST, getUserAllQuestionsSaga)
+  yield takeEvery([
+    GET_USER_ALL_QUESTIONS_REQUEST,
+    SEARCH_USER_ALL_QUESTIONS_REQUEST,
+    FILTER_USER_ALL_QUESTIONS_REQUEST
+  ], getUserAllQuestionsSaga)
 }
-export function* searchUserAllQuestions() {
-  yield takeEvery(SEARCH_USER_ALL_QUESTIONS_REQUEST, searchUserAllQuestionsSaga)
-}
-export function* filterUserAllQuestions() {
-  yield takeEvery(FILTER_USER_ALL_QUESTIONS_REQUEST, filterUserAllQuestionsSaga)
+
+export function* loadMoreUserAllQuestions() {
+  yield takeEvery([
+    'getUserAllQuestionsLoadMore'
+  ], loadMoreUserAllQuestionsSaga)
 }

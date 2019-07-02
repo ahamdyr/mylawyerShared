@@ -12,16 +12,17 @@ export default class AllQuestionsScreen extends React.Component {
   render() {
     var {
       questions,
-      getUserAllQuestionsSuccess,
       getUserAllQuestionsLoading,
-      searchUserAllQuestionsRequest,
+      getUserAllQuestionsSuccess,
+      getUserAllQuestionsLoadingMore,
+      getUserAllQuestionsNoMore,
+
       getUserAllQuestionsRequest,
-      filterUserAllQuestionsRequest
+      searchUserAllQuestionsRequest,
+      filterUserAllQuestionsRequest,
+      getUserAllQuestionsLoadMore,
     } = this.props
 
-    // if(getUserAllQuestionsLoading){
-    //   return(<Spinner/>)
-    // }
     return (
       <SafeAreaView style={styles.container}>
         <SelectComponent 
@@ -31,12 +32,15 @@ export default class AllQuestionsScreen extends React.Component {
           onSearch={(query)=>searchUserAllQuestionsRequest(query)}
           onCancel={()=>getUserAllQuestionsRequest()}
         />
-        <QuestionsList 
-          //questions={questions}
-          refresh={()=>getUserAllQuestionsRequest()}
+        <QuestionsList
+          refresh={() => getUserAllQuestionsRequest()}
+          loadMore={() => getUserAllQuestionsLoadMore()}
           questions={getUserAllQuestionsSuccess}
           questionsLoading={getUserAllQuestionsLoading}
+          questionsLoadingMore={getUserAllQuestionsLoadingMore}
+          questionsNoMore={getUserAllQuestionsNoMore}
         />
+        
       </SafeAreaView>
     );
   }
