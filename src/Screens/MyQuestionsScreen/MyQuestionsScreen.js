@@ -7,9 +7,14 @@ import { navigate } from '../../Services/NavigationServices'
 import Spinner from '../Spinner'
 export default class MyQuestionsScreen extends React.Component {
   componentWillMount(){
-    if(this.props.isLoggedUser){
-      this.props.getUserOwnQuestionsRequest()
-    }
+    this.willFocusSubscription = this.props.navigation.addListener('willFocus', () => {
+      if(this.props.isLoggedUser){
+        this.props.getUserOwnQuestionsRequest()
+      }
+    });
+  }
+  componentWillUnmount(){
+    this.willFocusSubscription.remove();
   }
   render() {
     if (!this.props.isLoggedUser) {
