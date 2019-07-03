@@ -35,7 +35,7 @@ export const filterUserAllQuestionsApi = async (pageToken, topicID, query) => {
       }
     ).then((res) => {
       if(res.data.data) {
-        //console.log(res.data.data)
+        //console.log('res.data.data ', res.data.data )
         resolve(res.data) 
       }
       else{
@@ -58,6 +58,7 @@ export const searchUserAllQuestionsApi = async (pageToken, topicID, query) => {
       }
     ).then((res) => {
       if(res.data.data) {
+        //console.log('res.data.data ', res.data.data[0] )
         resolve(res.data) 
       }
       else{
