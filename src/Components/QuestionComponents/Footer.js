@@ -15,7 +15,7 @@ export default class Footer extends React.PureComponent {
     let doc = await uploadFile()
     //console.log(doc)
     //await addToStorage(`test/${guidGenerator()}`, doc)
-    doc ? this.props.setQuestionDoc(doc) : null
+    doc ? this.props.setQuestionImg(doc) : null
   }
   _uploadImage = async () => {
     let img = await uploadImage()
