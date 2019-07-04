@@ -4,7 +4,7 @@ import { styles } from './Styles'
 import SignUpWithMailForm from '../../Components/AuthComponents/SignUpWithMailForm'
 import { withNavigation } from 'react-navigation'
 import { SignUp } from '../../Services/Login Services/MailLogin'
-import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
+
 class SignUpWithMail extends React.Component {
   render() {
     const { navigation } = this.props
@@ -49,13 +49,6 @@ class SignUpWithMail extends React.Component {
               Already have an Account?
             </Text>
           </View>
-          {/* <KeyboardAccessoryNavigation
-            avoidKeyboard={true}
-            nextDisabled={true}
-            previousDisabled={true}
-            nextHidden={true}
-            previousHidden={true}
-          /> */}
 
         </TouchableOpacity>
       </SafeAreaView>

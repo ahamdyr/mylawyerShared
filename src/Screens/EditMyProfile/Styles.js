@@ -21,8 +21,8 @@ export const styles = StyleSheet.create({
     backgroundColor: "#a0a0a4"
   },
   name: {
-    marginTop: 27,    
-    marginBottom: 50,
+    marginTop: 50,    
+    marginBottom: 27,
     fontFamily: "Lato-Regular",
     fontSize: 30,
     fontWeight: "normal",
@@ -90,6 +90,12 @@ export const styles = StyleSheet.create({
     //justifyContent: 'space-between',
     paddingTop: 22 + STATUS_BAR_HEIGHT,
     paddingBottom: 22
+  },
+  inputsContainer:{
+    flex: 1,
+    marginBottom: 75,
+    //backgroundColor: "red",
+    alignItems: 'center',
   },
   profileImage: {
     marginTop: 10,

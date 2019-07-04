@@ -110,47 +110,49 @@ export default class EditMyProfile extends React.Component {
     } = this.state
     return (
       <SafeAreaView style={styles.container} >
-        <KeyboardAvoidingView
-          keyboardVerticalOffset={STATUS_BAR_HEIGHT}
-          style={styles.container}
-          behavior={'padding'}
-          enabled
+        <TouchableOpacity
+          onPress={() => goBack()}
+          style={styles.headerStyle}
+        >
+          <Text style={styles.cancel}>
+            Cancel
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.editContainer}
+          onPress={() => Keyboard.dismiss()}
+          activeOpacity={1}
         >
           <TouchableOpacity
-            onPress={() => goBack()}
-            style={styles.headerStyle}
+            style={styles.profileImage}
+            onPress={() => this._edit_Photo()}
           >
-            <Text style={styles.cancel}>
-              Cancel
-          </Text>
+            <ImageBackground
+              source={
+                photoURL ? { uri: photoURL } : userPhoto ? { uri: userPhoto } : defaultPicture
+              }
+              blurRadius={2}
+              borderRadius={40}
+              style={styles.profileImage}
+            >
+              <ImageIcon
+                style={styles.camera}
+                source={editProfileIcon}
+              />
+            </ImageBackground>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.editContainer}
-            onPress={() => Keyboard.dismiss()}
-            activeOpacity={1}
+          <KeyboardAvoidingView
+            keyboardVerticalOffset={ STATUS_BAR_HEIGHT + 132}
+            style={styles.inputsContainer}
+            behavior={'padding'}
+            enabled
           >
-            <TouchableOpacity
-              style={styles.profileImage}
-              onPress={() => this._edit_Photo()}
-            >
-              <ImageBackground
-                source={
-                  photoURL ? { uri: photoURL } : userPhoto ? { uri: userPhoto } : defaultPicture
-                }
-                style={styles.profileImage}
-              >
-                <ImageIcon
-                  style={styles.camera}
-                  source={editProfileIcon}
-                />
-              </ImageBackground>
-            </TouchableOpacity>
-
             <TextInput
               underlineColorAndroid={'transparent'}
               blurOnSubmit={true}
-              returnKeyType={'done'}
+              //returnKeyType={'next'}
               placeholder={currentUser.displayName}
               onChangeText={this._edit_Name}
               style={styles.name}
@@ -161,7 +163,7 @@ export default class EditMyProfile extends React.Component {
             <TextInput
               underlineColorAndroid={'transparent'}
               blurOnSubmit={true}
-              returnKeyType={'done'}
+              //returnKeyType={'next'}
               placeholder={currentUser.email || 'email'}
               onChangeText={this._edit_Email}
               keyboardType={'email-address'}
@@ -173,7 +175,7 @@ export default class EditMyProfile extends React.Component {
             <TextInput
               underlineColorAndroid={'transparent'}
               blurOnSubmit={true}
-              returnKeyType={'done'}
+              //returnKeyType={'next'}
               placeholder={currentUser.phoneNumber || '+2 01234567890'}
               keyboardType={'number-pad'}
               onChangeText={this._edit_Phone_Number}
@@ -182,15 +184,15 @@ export default class EditMyProfile extends React.Component {
             <SeperatorLine
               style={styles.line}
             />
-          </TouchableOpacity>
+          </KeyboardAvoidingView>
+        </TouchableOpacity>
 
-          <SubmitBtn
-            style={styles.saveBtn}
-            text={'Save'}
-            textStyle={styles.saveText}
-            onPress={() => this._onSubmit()}
-          />
-        </KeyboardAvoidingView>
+        <SubmitBtn
+          style={styles.saveBtn}
+          text={'Save'}
+          textStyle={styles.saveText}
+          onPress={() => this._onSubmit()}
+        />
       </SafeAreaView>
     );
   }
