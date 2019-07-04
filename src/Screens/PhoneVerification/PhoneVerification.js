@@ -76,7 +76,6 @@ export default class PhoneVerification extends Component {
           <TextInput
             ref={'textInput'}
             blurOnSubmit={true}
-            returnKeyType={'done'}
             name={'code'}
             type={'TextInput'}
             underlineColorAndroid={'transparent'}
@@ -85,7 +84,6 @@ export default class PhoneVerification extends Component {
             placeholder={'_ _ _ _ _ _'}
             keyboardType={'phone-pad'}
             style={[styles.textInput]}
-            returnKeyType='go'
             autoFocus
             placeholderTextColor={'black'}
             selectionColor={'black'}

@@ -46,7 +46,6 @@ export default class LoginWithMailForm extends React.PureComponent {
           <MailLogo/>
           <TextInput            
             blurOnSubmit={true}
-            returnKeyType={'done'}
             underlineColorAndroid={'transparent'}
             autoCapitalize={'none'}
             placeholder={'name@mail.com' }            
@@ -63,7 +62,6 @@ export default class LoginWithMailForm extends React.PureComponent {
           <LockImage/>
           <TextInput
             blurOnSubmit={true}
-            returnKeyType={'done'}
             underlineColorAndroid={'transparent'}
             secureTextEntry
             placeholder={'***********' }            

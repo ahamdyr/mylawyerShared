@@ -99,7 +99,6 @@ export default class QuestionComponent extends React.PureComponent {
           onPress={() => this._titleKeyBoardToggle()}>
           <TextInput
             blurOnSubmit={true}
-            returnKeyType={'done'}
             ref={(ref) => this._titleRef = ref}
             //value={this.state.title}
             style={styles.titleText}
@@ -129,7 +128,6 @@ export default class QuestionComponent extends React.PureComponent {
           >
             <TextInput
               blurOnSubmit={true}
-              returnKeyType={'done'}
               style={styles.bodyText}
               //value={this.state.body}
               autoGrow={false}

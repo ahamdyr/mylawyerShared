@@ -152,7 +152,6 @@ export default class EditMyProfile extends React.Component {
             <TextInput
               underlineColorAndroid={'transparent'}
               blurOnSubmit={true}
-              //returnKeyType={'next'}
               placeholder={currentUser.displayName}
               onChangeText={this._edit_Name}
               style={styles.name}
@@ -163,7 +162,6 @@ export default class EditMyProfile extends React.Component {
             <TextInput
               underlineColorAndroid={'transparent'}
               blurOnSubmit={true}
-              //returnKeyType={'next'}
               placeholder={currentUser.email || 'email'}
               onChangeText={this._edit_Email}
               keyboardType={'email-address'}
@@ -175,7 +173,6 @@ export default class EditMyProfile extends React.Component {
             <TextInput
               underlineColorAndroid={'transparent'}
               blurOnSubmit={true}
-              //returnKeyType={'next'}
               placeholder={currentUser.phoneNumber || '+2 01234567890'}
               keyboardType={'number-pad'}
               onChangeText={this._edit_Phone_Number}
