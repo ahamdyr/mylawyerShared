@@ -17,16 +17,17 @@ import KeyboardListener from 'react-native-keyboard-listener'
 
 export default class QuestionComponent extends React.PureComponent {
   state={
-    focused: true,
+    focused: false,
+    key: '',
     title: '',
     body: ''
   }
   _titleChange = (val) => {
-    this.setState({title : val}) 
+    //this.setState({title : val}) 
     this.props.setQuestionTitle(val)
   }
   _bodyChange = (val) => {
-    this.setState({body : val}) 
+    //this.setState({body : val}) 
     this.props.setQuestionBody(val)
   }
   _titleKeyBoardToggle = () => {
@@ -50,50 +51,64 @@ export default class QuestionComponent extends React.PureComponent {
   render() {
     var {
       partial,
-      clear
+      clear,
+      offset
     } = this.props
     var {
-      focused
+      focused,
+      key
     } = this.state
     if(clear){
       //console.log('clear  ',clear)
-      this.state.title = ''
-      this.state.body = ''
+      this._bodyRef.clear()
+      this._titleRef.clear()
+      // this.state.title = ''
+      // this.state.body = ''
     }
+    //console.log('focused  ',focused)
     return (
       <KeyboardAvoidingView
-        keyboardVerticalOffset={STATUS_BAR_HEIGHT + 10}
-        style={[
-          styles.questionContainer,
-          partial || focused ? styles.partial : styles.full,
-          this.props.style
-        ]}
+      //collapsable  
+      //contentContainerStyle      
+      //key={key}
+      style={[
+        styles.questionContainer,
+        partial || focused ? styles.partial : styles.full,
+        this.props.style
+      ]}
+        keyboardVerticalOffset={STATUS_BAR_HEIGHT + offset }
         behavior={'padding'}
         enabled
       >
         <KeyboardListener          
-          onDidShow={() => this.setState({ focused: true }) }
-          onDidHide={() => this.setState({ focused: false })}
+          onDidShow={() => {
+            this.setState({ focused: true })
+            //this.setState({ key: new Date().getTime() })
+          }}
+          onDidHide={() => {
+            //this.setState({ key: new Date().getTime() })
+            this.setState({ focused: false })
+          }}
         />
         <TouchableOpacity
           activeOpacity={1}
           style={[
             styles.title,
-            partial || focused ? { flex: 0.2 } : { flex: 0.125 }
+            partial || focused ? { flex: 0.25 } : { flex: 0.125 }
           ]}
           onPress={() => this._titleKeyBoardToggle()}>
           <TextInput
             blurOnSubmit={true}
             returnKeyType={'done'}
             ref={(ref) => this._titleRef = ref}
-            value={this.state.title}
+            //value={this.state.title}
             style={styles.titleText}
             multiline={true}
             numberOfLines={2}
             underlineColorAndroid="transparent"
             placeholder={this.props.titlePlaceHolder || 'Title '}
             onChangeText={this._titleChange}
-            autoFocus
+            //autoFocus
             //shouldCancelWhenOutside={true}
           />
         </TouchableOpacity>
@@ -116,7 +131,7 @@ export default class QuestionComponent extends React.PureComponent {
               blurOnSubmit={true}
               returnKeyType={'done'}
               style={styles.bodyText}
-              value={this.state.body}
+              //value={this.state.body}
               autoGrow={false}
               scrollEnabled={true}
               ref={(ref) => this._bodyRef = ref}
@@ -144,9 +159,11 @@ export default class QuestionComponent extends React.PureComponent {
 
 const styles = StyleSheet.create({
   partial: {
+    //height: 200,
     marginBottom: 10
   },
   full: {
+    //height: 450,
     marginBottom: 55
   },
   questionContainer: {

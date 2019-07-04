@@ -61,6 +61,7 @@ export default class AskQuestion extends React.Component {
         />
 
         <QuestionComponent 
+          offset={50}
           partial={attachs.length}
           setQuestionBody={(body)=>setQuestionBody(body)}
           setQuestionTitle={(title)=>setQuestionTitle(title)}

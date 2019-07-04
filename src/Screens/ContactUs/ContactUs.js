@@ -52,6 +52,7 @@ export default class ContactUs extends React.Component {
 
         <QuestionComponent
           style={styles.questionContainer}
+          offset={10}
           clear={clear}
           titlePlaceHolder={'Email'}
           bodyPlaceHolder={'write your message here'}

@@ -28,13 +28,14 @@ export default class AppContainer extends React.Component {
             setTopLevelNavigator(navigatorRef)
           }}
         />
-        {/* <KeyboardAccessoryNavigation
-        avoidKeyboard={true}
-        nextDisabled={true}
-        previousDisabled={true}
-        nextHidden={true}
-        previousHidden={true}
-      /> */}
+          <KeyboardAccessoryNavigation
+            //avoidKeyboard={true}
+            nextDisabled={true}
+            tintColor={'#0b7f7c'}
+            previousDisabled={true}
+            nextHidden={true}
+            previousHidden={true}
+          />
         
       </View>
     </Provider>       
