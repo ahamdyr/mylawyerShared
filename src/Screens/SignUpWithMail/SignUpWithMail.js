@@ -4,6 +4,19 @@ import { styles } from './Styles'
 import SignUpWithMailForm from '../../Components/AuthComponents/SignUpWithMailForm'
 import { withNavigation } from 'react-navigation'
 import { SignUp } from '../../Services/Login Services/MailLogin'
+import SocialBtn from '../../Components/Common/SocialBtn'
+import {
+  facebookIcon,
+  Mail,
+  PhoneIcon,
+  twitter,
+  linkedIn,
+  whiteX,
+  google
+} from '../../../assets'
+
+import { LoginWithFacebook } from '../../Services/Login Services/FacebookLogin'
+import { LoginWithGoogle } from '../../Services/Login Services/GoogleLogin'
 
 class SignUpWithMail extends React.Component {
   render() {
@@ -26,7 +39,21 @@ class SignUpWithMail extends React.Component {
         </View>
 
         <SignUpWithMailForm onPress={() => SignUp()} />
-
+          <View style={styles.Btns}>
+            <SocialBtn
+              style={styles.faceBookStyle}
+              icon={facebookIcon}
+              iconStyle={styles.faceBookIconStyle}
+              onPress={() => LoginWithFacebook()}
+            />
+            <View style={{width: 30}} />
+            <SocialBtn
+              style={styles.googleStyle}
+              icon={google}
+              iconStyle={styles.googleIconStyle}
+              onPress={() => LoginWithGoogle()}
+            />
+          </View>
         </TouchableOpacity>
 
         <View style={styles.termsContainer}>
@@ -35,7 +62,7 @@ class SignUpWithMail extends React.Component {
           </Text>
           <Text
             style={[styles.termsText, { textDecorationLine: 'underline' }]}
-          //onPress={() => navigation.navigate('Terms')}
+            onPress={() => navigation.navigate('TermsAndConditions')}
           >
             Terms of Service
           </Text>

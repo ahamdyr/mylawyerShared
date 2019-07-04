@@ -3,6 +3,19 @@ import { Text, View, SafeAreaView, TouchableOpacity, Keyboard } from 'react-nati
 import { styles } from './Styles'
 import SignUpWithPhoneForm from '../../Components/AuthComponents/SignUpWithPhoneForm'
 import { withNavigation } from 'react-navigation'
+import SocialBtn from '../../Components/Common/SocialBtn'
+import {
+  facebookIcon,
+  Mail,
+  PhoneIcon,
+  twitter,
+  linkedIn,
+  whiteX,
+  google
+} from '../../../assets'
+
+import { LoginWithFacebook } from '../../Services/Login Services/FacebookLogin'
+import { LoginWithGoogle } from '../../Services/Login Services/GoogleLogin'
 
 class SignUpWithPhone extends React.Component {
   render() {
@@ -28,7 +41,21 @@ class SignUpWithPhone extends React.Component {
             <SignUpWithPhoneForm
               onPress={() => this.props.navigation.navigate('PhoneVerification', { action: 'signUp' })} />
           </View>
-
+          <View style={styles.Btns}>
+            <SocialBtn
+              style={styles.faceBookStyle}
+              icon={facebookIcon}
+              iconStyle={styles.faceBookIconStyle}
+              onPress={() => LoginWithFacebook()}
+            />
+            <View style={{width: 30}} />
+            <SocialBtn
+              style={styles.googleStyle}
+              icon={google}
+              iconStyle={styles.googleIconStyle}
+              onPress={() => LoginWithGoogle()}
+            />
+          </View>
           <View style={styles.termsContainer}>
             <Text style={styles.termsText}>
               By clicking Sign up you agree to our
