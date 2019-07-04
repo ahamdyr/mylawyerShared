@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, ScrollView, View, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
 import { MAIN_COLOR, WIDTH, STATUS_BAR_HEIGHT } from '../Constants'
 import SeperatorLine from '../Common/SeperatorLine'
 import LoginButton from '../Common/LoginButton'
@@ -46,73 +46,74 @@ export default class SignUpWithMailForm extends React.PureComponent {
   render() {
     return (
       <KeyboardAvoidingView
-        keyboardVerticalOffset={STATUS_BAR_HEIGHT}
+        keyboardVerticalOffset={STATUS_BAR_HEIGHT + 300}
+        //contentContainerStyle={styles.container}
         style={styles.container}
         behavior={'padding'}
         enabled
       >
-        
-        <SeperatorLine />
+        <View style={{ marginTop: 20 }} />
+          <SeperatorLine />
 
-        <View style={styles.inputContainer}>
-          <ImageIcon
-            style={styles.userIcon}
-            source={UserIcon}
-          />
-          <TextInput
-            underlineColorAndroid={'transparent'}
-            blurOnSubmit={true}
-            returnKeyType={'done'}
-            placeholderTextColor={'#ffffff'}
-            autoCapitalize={'none'}
-            placeholder={'username'}
-            keyboardType={'default'}
-            style={styles.userNameText}
-            onChangeText={this._onNameChange}
-          />
-        </View>
+          <View style={styles.inputContainer}>
+            <ImageIcon
+              style={styles.userIcon}
+              source={UserIcon}
+            />
+            <TextInput
+              underlineColorAndroid={'transparent'}
+              blurOnSubmit={true}
+              returnKeyType={'done'}
+              placeholderTextColor={'#ffffff'}
+              autoCapitalize={'none'}
+              placeholder={'username'}
+              keyboardType={'default'}
+              style={styles.userNameText}
+              onChangeText={this._onNameChange}
+            />
+          </View>
 
-        <SeperatorLine />
+          <SeperatorLine />
 
-        <View style={styles.inputContainer}>
-          <MailLogo />
-          <TextInput
-            underlineColorAndroid={'transparent'}
-            blurOnSubmit={true}
-            returnKeyType={'done'}
-            autoCapitalize={'none'}
-            placeholder={'name@mail.com'}
-            keyboardType={'email-address'}
-            style={styles.inputStyle}
-            placeholderTextColor={'#ffffff'}
-            onChangeText={this._onMailChange}
-          />
-        </View>
+          <View style={styles.inputContainer}>
+            <MailLogo />
+            <TextInput
+              underlineColorAndroid={'transparent'}
+              blurOnSubmit={true}
+              returnKeyType={'done'}
+              autoCapitalize={'none'}
+              placeholder={'name@mail.com'}
+              keyboardType={'email-address'}
+              style={styles.inputStyle}
+              placeholderTextColor={'#ffffff'}
+              onChangeText={this._onMailChange}
+            />
+          </View>
 
-        <SeperatorLine />
+          <SeperatorLine />
 
-        <View style={styles.inputContainer}>
-          <LockImage />
-          <TextInput
-            underlineColorAndroid={'transparent'}
-            blurOnSubmit={true}
-            returnKeyType={'done'}
-            autoCapitalize={'none'}
-            secureTextEntry
-            placeholder={'***********'}
-            placeholderTextColor={'#ffffff'}
-            style={styles.inputStyle}
-            onChangeText={this._onPassChange}
-          />
-          {/* <Text
+          <View style={styles.inputContainer}>
+            <LockImage />
+            <TextInput
+              underlineColorAndroid={'transparent'}
+              blurOnSubmit={true}
+              returnKeyType={'done'}
+              autoCapitalize={'none'}
+              secureTextEntry
+              placeholder={'***********'}
+              placeholderTextColor={'#ffffff'}
+              style={styles.inputStyle}
+              onChangeText={this._onPassChange}
+            />
+            {/* <Text
             style={styles.forgot}
             //onPress={()=>console.log('ajbfh')}
           >
             Forgot?
           </Text> */}
-        </View>
+          </View>
 
-        <SeperatorLine />
+          <SeperatorLine />
 
         <LoginButton
           text={'Sign up'}
@@ -130,7 +131,11 @@ export default class SignUpWithMailForm extends React.PureComponent {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
+    //marginBottom: 157.5,
+    //marginTop: 40,
+    //backgroundColor: 'red',
   },
   inputContainer: {
     width: 230,

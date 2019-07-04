@@ -6,6 +6,13 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: MAIN_COLOR,
   },
+  editContainer:{
+    flex: 1,
+    //marginTop: 10,
+    width: WIDTH,
+    alignItems: 'center',
+    //backgroundColor: 'blue',
+  },
   formContainer:{
     position:'absolute',
     top: 190,
@@ -17,11 +24,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   loginTextContainer:{
-    position: 'absolute',
-    top: 40,
-    left: 0,
+    marginTop: 40,
     width: WIDTH,
-    //height: 20,
+    //height: 80,
     //backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
