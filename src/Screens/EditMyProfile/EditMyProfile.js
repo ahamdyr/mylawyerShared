@@ -23,7 +23,7 @@ import {
 } from '../../Components/Constants'
 import { editProfileIcon } from '../../../assets'
 import { uploadFile, uploadImage } from '../../Services/FilesServices'
-import { isValidEmailAddress } from '../../Utils/InputValidation'
+import { isValidEmailAddress, isValidPhoneNumber } from '../../Utils/InputValidation'
 import { updateUserProfile } from '../../Services/AuthServices'
 import {
   updateUserEmail,
@@ -83,13 +83,13 @@ export default class EditMyProfile extends React.Component {
     }
 
     if (this.state.phoneNumber) {
-      if (this.state.phoneNumber.length < 10) {
+      if (!isValidPhoneNumber(this.state.phoneNumber)) {
         alert('Provide valid phone number !')
         return
       }
       await updateUserPhoneNumber(this.state.phoneNumber)
       await updateUserProfile(this.state)
-      //navigate('SideMenu')
+      navigate('SideMenu')
     }
     else {
       this.state.phoneNumber = this.props.currentUser.phoneNumber

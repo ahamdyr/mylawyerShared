@@ -6,6 +6,7 @@ import LoginButton from '../Common/LoginButton'
 import MailLogo from '../Common/MailIcon'
 import ImageIcon from '../Common/ImageIcon'
 import {PhoneIcon, UserIcon } from '../../../assets'
+import { isValidPhoneNumber } from '../../Utils/InputValidation'
 import Store from '../../Redux/Store'
 import {
   setUserName,
@@ -23,7 +24,7 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
     Store.dispatch(setUserName(val))
   }
   _onSubmit = () => {
-    if (this.phone.length < 10) {
+    if (!isValidPhoneNumber(this.phone)) {
       alert('Provide valid phone number !')
     }
     else if (this.userName.length == 0) alert('Invalid user name !')
