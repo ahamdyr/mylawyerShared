@@ -42,6 +42,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 200,
     //justifyContent: 'center',
+    //backgroundColor: 'red'
   },
   cancel: {
     marginRight: 28,
@@ -91,6 +92,10 @@ export const styles = StyleSheet.create({
     //justifyContent: 'space-between',
     paddingTop: 22 + STATUS_BAR_HEIGHT,
     paddingBottom: 22
+  },
+  viewContainer:{
+    flex: 1,
+    backgroundColor: "#f6f6f6",
   },
   profileImage: {
     marginTop: 10,

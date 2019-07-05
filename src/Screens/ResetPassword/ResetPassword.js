@@ -22,17 +22,21 @@ import {
 import { resetPassword } from '../../Services/FirebaseServices/UserSettings'
 export default class ResetPassword extends React.Component {
   state = {
-    password: ''
+    password: '',
+    oldPassword: ''
   }
   _editPassword = (val) => {
     this.state.password = val
+  }
+  _editOldPassword = (val) => {
+    this.state.oldPassword = val
   }
   _onSubmit = async () => {
     if (this.state.password.length < 8) {
       alert('password must be 8 digits or more !')
       return
     }
-    await resetPassword(this.state.password)
+    await resetPassword(this.state.password, this.state.oldPassword)
     goBack()
   }
   render() {
@@ -42,8 +46,8 @@ export default class ResetPassword extends React.Component {
         style={styles.container}
       >
         <KeyboardAvoidingView
-          keyboardVerticalOffset={STATUS_BAR_HEIGHT}
-          style={styles.container}
+          //keyboardVerticalOffset={STATUS_BAR_HEIGHT + 100}
+          style={styles.viewContainer}
           behavior={'padding'}
           enabled
         >
@@ -67,7 +71,18 @@ export default class ResetPassword extends React.Component {
               underlineColorAndroid={'transparent'}
               blurOnSubmit={true}
               secureTextEntry={true}
-              placeholder={'new password'}
+              placeholder={'Old password'}
+              onChangeText={this._editOldPassword}
+              style={styles.inputStyle}
+            />
+            <SeperatorLine
+              style={styles.line}
+            />
+            <TextInput
+              underlineColorAndroid={'transparent'}
+              blurOnSubmit={true}
+              secureTextEntry={true}
+              placeholder={'New password'}
               onChangeText={this._editPassword}
               style={styles.inputStyle}
             />

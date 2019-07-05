@@ -12,6 +12,8 @@ import { defaultPicture } from '../../../assets'
 import SeperatorLine from '../../Components/Common/SeperatorLine'
 import { logOut } from '../../Services/AuthServices'
 import { deleteAccount } from '../../Services/FirebaseServices/UserSettings'
+import firebase from '../../Services/FirebaseServices/FirebaseApp'
+import 'firebase/auth'
 
 export default class Settings extends React.Component {
   _logOut = async () => {
@@ -45,14 +47,20 @@ export default class Settings extends React.Component {
             justifyContent: 'center',
           }}
         >
-          <SeperatorLine
-            style={styles.line}
-          />
-          <SideMenuBtn
-            btnTitle={'Reset Password'}
-            style={styles.btn}
-            onPress={()=>navigate('ResetPassword')}
-          />
+          {
+            firebase.auth().currentUser.providerData[0].providerId == 'password' ?
+              <React.Fragment>
+                <SeperatorLine
+                  style={styles.line}
+                />
+                <SideMenuBtn
+                  btnTitle={'Reset Password'}
+                  style={styles.btn}
+                  onPress={() => navigate('ResetPassword')}
+                />
+              </React.Fragment>
+              : null
+          }
           <SeperatorLine
             style={styles.line}
           />
