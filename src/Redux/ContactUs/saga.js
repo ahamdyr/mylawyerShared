@@ -3,22 +3,27 @@ import {
   clearContactUsData
 } from './actions'
 import {
-  getTopicsApi
-} from '../../Services/BackendServices/TopicsServices'
+  contactUsApi
+} from '../../Services/BackendServices/ContactUs'
 import { goBack, navigate } from '../../Services/NavigationServices'
 
 function* submitContactMessageSaga(action) {
   try {
     navigate('Spinner')
-    yield put(clearContactUsData(true))
+    //yield put(clearContactUsData(true))
     var {
       email, body
     } = action
-    // call api 
+    
+    var res = yield call(contactUsApi, email, body)
+    
+    alert('Your message has been sent successfully')
+    goBack()
     goBack()
     yield put(clearContactUsData(false))
   } catch (error) {
-    console.log(error)    
+    
+    alert(error)
     goBack()
     yield put(clearContactUsData(false))
   }
