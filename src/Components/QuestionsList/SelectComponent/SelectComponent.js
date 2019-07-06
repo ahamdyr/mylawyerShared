@@ -32,7 +32,11 @@ export default class SelectComponent extends React.PureComponent {
       this.state.choosenLabel = this._initialTopic
     }
     return (
-      <View style={[styles.selectContainer, this.props.style]}>
+      <TouchableOpacity 
+        style={[styles.selectContainer, this.props.style]}
+        onPress={()=>this._pickerRef.showOptions()}
+        activeOpacity={0.5}
+      >
 
         <Image
           source={topic}
@@ -43,6 +47,7 @@ export default class SelectComponent extends React.PureComponent {
             <StatusText text={'Loading...'} style={{ alignSelf: 'center', marginLeft: 20 }} />
             : getTopicsSuccess.length ?
               <CustomPicker
+                ref={ ref => this._pickerRef = ref}
                 placeholder={'All Topics'}
                 value={this.state.choosenLabel}
                 scrollViewProps={{
@@ -88,14 +93,14 @@ export default class SelectComponent extends React.PureComponent {
         }
 
 
-        <View style={[styles.arrowContain, { backgroundColor: '#f6f6f6' }]}>
+        <View style={[styles.arrowContain, { backgroundColor: this.props.arrowBGColor || '#f6f6f6' }]}>
           <Image
             source={arrow}
             style={styles.downArrow}
           />
         </View>
 
-      </View>
+      </TouchableOpacity>
     )
   }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { AppLoading, Asset, Font, Icon, Updates } from 'expo';
 import Sentry from 'sentry-expo';
 import AppContainer from './src/Screens/App Container'
+import Updating from "./src/Screens/Updating"
 export default class App extends React.Component {
   
   async componentDidMount() {
@@ -15,8 +16,12 @@ export default class App extends React.Component {
   }
   state = {
     isLoadingComplete: false,
+    updating: false,
   };
   render() {
+    if (this.state.updating) {    
+      return (<Updating />)       
+    }
     if (this.state.isLoadingComplete) {    
       return (<AppContainer />)       
     } else {
@@ -32,7 +37,11 @@ export default class App extends React.Component {
   _checkForUpdates = async () => {
     let { isAvailable } = await Updates.checkForUpdateAsync()
     if(isAvailable){
-      Updates.reload()
+      this.setState({ updating: true });
+      await Updates.fetchUpdateAsync()
+      Updates.reloadFromCache()
+      //Updates.reload()
+      this.setState({ updating: false });
     }
   }
   _loadResourcesAsync = async () => {

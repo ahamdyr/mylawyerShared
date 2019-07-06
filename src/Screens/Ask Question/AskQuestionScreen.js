@@ -58,6 +58,7 @@ export default class AskQuestion extends React.Component {
           onSelect={(topic) => setQuestionTopic(topic)}
           clear={clearQuestion}
           style={styles.select}
+          arrowBGColor={'white'}
         />
 
         <QuestionComponent 
