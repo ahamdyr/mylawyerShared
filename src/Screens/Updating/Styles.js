@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
   loginText:{
     fontFamily: 'Lora-Regular',
     color: 'white',
-    fontSize: 40,
+    fontSize: 20,
     //marginLeft: 130
   },
 });

@@ -5,7 +5,7 @@ import AppContainer from './src/Screens/App Container'
 import Updating from "./src/Screens/Updating"
 export default class App extends React.Component {
   
-  async componentDidMount() {
+  async componentWillMount() {
     if (!__DEV__) {
       this._checkForUpdates()
     }
@@ -20,7 +20,7 @@ export default class App extends React.Component {
   };
   render() {
     if (this.state.updating) {    
-      return (<Updating />)       
+      return (<Updating visible={this.state.updating}/>)       
     }
     if (this.state.isLoadingComplete) {    
       return (<AppContainer />)       
