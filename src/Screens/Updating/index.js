@@ -1,4 +1,4 @@
-import React from './node_modules/react';
+import React from 'react';
 import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
 import { styles } from './Styles'
 
