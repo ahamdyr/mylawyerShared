@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { Constants } from "expo";
 import { STATUS_BAR_HEIGHT } from '../../Components/Constants'
 import { mockContent } from '../../Services/BackendServices/MockData'
 import { WhiteX } from '../../Components/Social Components/SocialBtns'
@@ -20,6 +21,11 @@ export default class About extends React.Component {
           style={styles.content}
         >
           {mockContent}
+        </Text>
+        <Text
+          style={styles.version}
+        >
+          Version {Constants.manifest.version}
         </Text>
         <WhiteX      
           style={styles.close}    
@@ -44,6 +50,17 @@ const styles = StyleSheet.create({
     fontFamily: "LuxiSerif",
     fontSize: 24.3,
     fontWeight: "bold",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "center",
+    color: "#0b7f7c"
+  },
+  version: {
+    marginTop: 20,
+    width: 311,
+    fontFamily: "Lato-Regular",
+    fontSize: 18,
+    fontWeight: "normal",
     fontStyle: "normal",
     letterSpacing: 0,
     textAlign: "center",

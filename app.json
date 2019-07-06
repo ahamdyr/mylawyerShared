@@ -33,6 +33,11 @@
         "NSCameraUsageDescription": "Allow My Lawyer experiences to use your camera"
       },
       "usesIcloudStorage": true,
+      "splash": {
+        "image": "./assets/images/Splash.png",
+        "resizeMode": "cover",
+        "backgroundColor": "#0b7f7c"
+      },
       "config": {
         "usesNonExemptEncryption": false,
         "googleSignIn": {
