@@ -1,24 +1,43 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Alert, Platform } from 'react-native';
 import { WIDTH } from '../Constants'
 import Ask from '../BottomTabIcons/Ask Icon'
 import { camera, attachment } from '../../../assets'
 import ImageIcon from '../Common/ImageIcon'
 import { navigate, goBack } from '../../Services/NavigationServices'
-import { uploadFile, uploadImage } from '../../Services/FilesServices'
+import { uploadFile, uploadCameraImage, uploadGalleryImage } from '../../Services/FilesServices'
 import _ from 'lodash'
 import { addToStorage } from '../../Services/FirebaseServices/FirebaseStorage'
 import { guidGenerator } from '../../Services/Guid'
 export default class Footer extends React.PureComponent {
 
+  _onAttachPress = () => {
+    Platform.OS == 'ios' ? 
+      Alert.alert('Select type', '', [
+        { text: 'Image', onPress: () => this._uploadGalleryImage(), style: 'default' },
+        { text: 'File', onPress: () => this._uploadFile(), style: 'default' },
+        {
+          text: 'Cancel',
+          //onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+      ], { cancelable: true })
+      : this._uploadFile()
+  }
   _uploadFile = async () => {
     let doc = await uploadFile()
     //console.log(doc)
     //await addToStorage(`test/${guidGenerator()}`, doc)
-    doc ? this.props.setQuestionImg(doc) : null
+    doc ? this.props.setQuestionDoc(doc) : null
   }
-  _uploadImage = async () => {
-    let img = await uploadImage()
+  _uploadCameraImage = async () => {
+    let img = await uploadCameraImage()
+    //console.log(img)
+    //await addToStorage(`test/${guidGenerator()}`, img)
+    img ? this.props.setQuestionImg(img) : null
+  }
+  _uploadGalleryImage = async () => {
+    let img = await uploadGalleryImage()
     //console.log(img)
     //await addToStorage(`test/${guidGenerator()}`, img)
     img ? this.props.setQuestionImg(img) : null
@@ -41,7 +60,7 @@ export default class Footer extends React.PureComponent {
     return (
       <View style={styles.footer}>
         <TouchableOpacity
-          onPress={this._uploadImage}
+          onPress={this._uploadCameraImage}
           style={styles.cameratIconContainer}>
           <ImageIcon
             style={styles.cameratIcon}
@@ -53,8 +72,8 @@ export default class Footer extends React.PureComponent {
           onPress={this._submit}
         />
         <TouchableOpacity
-          onPress={this._uploadFile}
-          style={styles.attachmentIcon}>
+          onPress={this._onAttachPress}
+          style={styles.cameratIconContainer}>
           <ImageIcon
             style={styles.attachmentIcon}
             source={attachment}
@@ -94,8 +113,11 @@ const styles = StyleSheet.create({
     //marginTop: 10
   },
   cameratIconContainer: {
-    width: 22,
-    height: 20,
+    alignItems: 'center',
+    justifyContent: 'center',    
+    width: 50,
+    height: 50,
+    //backgroundColor: 'red'
   },
   cameratIcon: {
     width: 22,
