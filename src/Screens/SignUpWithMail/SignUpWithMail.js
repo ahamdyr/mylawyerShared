@@ -68,14 +68,16 @@ class SignUpWithMail extends React.Component {
           </Text>
         </View>
 
-        <View style={styles.footer}>
+        <TouchableOpacity 
+          style={styles.footer}
+          onPress={() => navigation.navigate('LoginWithMail')}
+        >
           <Text
             style={styles.footerText}
-            onPress={() => navigation.navigate('LoginWithMail')}
           >
             Already have an Account?
             </Text>
-        </View>
+        </TouchableOpacity>
 
       </SafeAreaView>
     );

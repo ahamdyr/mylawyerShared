@@ -24,14 +24,16 @@ class LoginWithPhone extends React.Component {
           </View>
 
             {/* footer */}
-          <View style={styles.footer}>
+          <TouchableOpacity 
+            style={styles.footer}
+            onPress={()=>{navigation.navigate('SignUpWithPhone')}}
+          >
             <Text 
               style={styles.footerText}
-              onPress={()=>{navigation.navigate('SignUpWithPhone')}}
             >
                 Don't have an account ?
             </Text>
-          </View>
+          </TouchableOpacity>
         
       </SafeAreaView>
     );

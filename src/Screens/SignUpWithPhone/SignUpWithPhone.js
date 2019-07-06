@@ -22,11 +22,11 @@ class SignUpWithPhone extends React.Component {
     const { navigation } = this.props
     return (
       <SafeAreaView style={styles.container}>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           activeOpacity={1}
           style={styles.container}
           onPress={() => Keyboard.dismiss()}
-        >
+        > */}
 
           <View style={styles.loginTextContainer}>
             <Text style={styles.loginText}>
@@ -68,16 +68,18 @@ class SignUpWithPhone extends React.Component {
           </Text>
           </View>
 
-          <View style={styles.footer}>
+          <TouchableOpacity 
+            style={styles.footer}
+            onPress={() => navigation.navigate('LoginWithPhone')}
+          >
             <Text
               style={styles.footerText}
-              onPress={() => navigation.navigate('LoginWithPhone')}
             >
               Already have an Account?
             </Text>
-          </View>
+          </TouchableOpacity>
 
-        </TouchableOpacity>
+        {/* </TouchableOpacity> */}
       </SafeAreaView>
     );
   }

@@ -82,7 +82,7 @@ export const styles = StyleSheet.create({
     width: WIDTH,
     //backgroundColor: 'black',
     position: 'absolute',
-    bottom: 0,
+    bottom: 20,
     left: 0,
     justifyContent: 'center',
     alignItems: 'center',

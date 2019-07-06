@@ -12,7 +12,7 @@ class AskIcon extends React.Component {
           height: 44,
           borderRadius: 44 / 2,
           backgroundColor: '#0b7f7c',
-          paddingVertical: 10,
+          //paddingVertical: 10,
           justifyContent: 'center',
           alignItems: 'center'
         }, this.props.style]}
