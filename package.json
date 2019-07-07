@@ -5,6 +5,7 @@
     "local": "expo start --localhost",
     "android": "expo start --android",
     "ios": "expo start --ios",
+    "postinstall": "node ./scripts/stfu.js",
     "eject": "expo eject"
   },
   "dependencies": {
