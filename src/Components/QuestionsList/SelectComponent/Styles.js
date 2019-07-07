@@ -21,7 +21,9 @@ export const styles = StyleSheet.create({
      position: 'absolute',
      top:  110,
      height: 300,
-    width: WIDTH,
+    width: WIDTH - 50,
+    alignSelf: 'center',
+    borderRadius: 10,
     //flex:1,
     backgroundColor: '#f6f6f6'
   },

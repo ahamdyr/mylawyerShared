@@ -12,7 +12,7 @@ import { guidGenerator } from '../../Services/Guid'
 export default class Footer extends React.PureComponent {
 
   _onAttachPress = () => {
-    Platform.OS == 'ios' ? 
+    // Platform.OS == 'ios' ? 
       Alert.alert('Select type', '', [
         { text: 'Image', onPress: () => this._uploadGalleryImage(), style: 'default' },
         { text: 'File', onPress: () => this._uploadFile(), style: 'default' },
@@ -22,7 +22,7 @@ export default class Footer extends React.PureComponent {
           style: 'cancel',
         },
       ], { cancelable: true })
-      : this._uploadFile()
+      // : this._uploadFile()
   }
   _uploadFile = async () => {
     let doc = await uploadFile()
