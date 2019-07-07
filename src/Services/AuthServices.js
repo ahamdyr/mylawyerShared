@@ -7,7 +7,7 @@ import {
   setPhoneNumber,
   setPhoneAuthCredentials
 } from '../Redux/Auth/actions'
-import { getUserOwnQuestionsSuccess } from '../Redux/UserOwnQuests/actions'
+import { ReAuthenticate } from './FirebaseServices/ReAuthenticate'
 import {
     navigate,
     goBack
@@ -64,12 +64,13 @@ export const logOut = async () => {
 
 export const getUser = async () => {
   let currentUserJson = await AsyncStorage.getItem('currentUser')
-  if(currentUserJson !== null){    
-    let currentUser = JSON.parse(currentUserJson)  
-    Store.dispatch(setCurrentUser(currentUser))
-    Store.dispatch(setLoggedUser(true))
-    let accessToken = currentUser.accessToken
-    Store.dispatch(setAccessToken(accessToken))
+  if(currentUserJson !== null){   
+    let currentUser = JSON.parse(currentUserJson)     
+    await ReAuthenticate()
+    // Store.dispatch(setCurrentUser(currentUser))
+    // Store.dispatch(setLoggedUser(true))
+    // let accessToken = currentUser.accessToken
+    // Store.dispatch(setAccessToken(accessToken))
   }
 }
 
