@@ -24,6 +24,7 @@ class QuestionsItem extends React.PureComponent {
     return (
       <View style={styles.questCard}>
         <TouchableOpacity
+          activeOpacity={1}
           style={{ flex: 1, flexDirection: 'column' }}
           onPress={() => {
             // isLoggedUser?
@@ -79,9 +80,14 @@ const styles = StyleSheet.create({
   questCard: {
     flex: 1,
     marginBottom: 10,
-    //height: 157.5,
-    // borderBottomWidth: 3,
-    // borderBottomColor: '#0b7f7c',
+    elevation: 10,
+    shadowColor: "rgba(0, 0, 0, 0.15)",
+    shadowOffset: {
+      width: 0,
+      height: 8
+    },
+    shadowRadius: 10,
+    shadowOpacity: 1,
     width: WIDTH,
     backgroundColor: 'white'
   },
