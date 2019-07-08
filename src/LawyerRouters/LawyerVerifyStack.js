@@ -1,10 +1,10 @@
 import React from 'react'
 import { createStackNavigator} from "react-navigation";
-import Step1 from '../Screens/LawyerVerification/Step1'
-import Step2 from '../Screens/LawyerVerification/Step2'
-import Step3 from '../Screens/LawyerVerification/Step3'
-import Step4 from '../Screens/LawyerVerification/Step4'
-import SelectMajor from '../Screens/LawyerVerification/SelectMajor'
+import Step1 from '../LawyerScreens/LawyerVerification/Step1'
+import Step2 from '../LawyerScreens/LawyerVerification/Step2'
+import Step3 from '../LawyerScreens/LawyerVerification/Step3'
+import Step4 from '../LawyerScreens/LawyerVerification/Step4'
+import SelectMajor from '../LawyerScreens/LawyerVerification/SelectMajor'
 import HeaderTitle from '../Components/HomeHeaderIcons/Header Title'
 
 const LawyerVerificationStack = createStackNavigator({

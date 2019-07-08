@@ -22,7 +22,7 @@ export default class AppContainer extends React.Component {
     return (
     <Provider store={Store}>
       <View style={{ flex: 1 }}>
-        <StatusBar translucent barStyle={'dark-content'} />
+        {/* <StatusBar translucent barStyle={'dark-content'} /> */}
         <AppRouter 
           ref={navigatorRef =>{
             setTopLevelNavigator(navigatorRef)

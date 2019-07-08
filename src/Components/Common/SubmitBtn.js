@@ -14,7 +14,7 @@ export default class SubmitBtn extends React.PureComponent {
           height: 52,
           borderRadius: 22.5,
           backgroundColor: '#f5faf0',
-          elevation: 20,
+          //elevation: 20,
           shadowColor: "#00000026",
           shadowOffset: {
             width: 8,
