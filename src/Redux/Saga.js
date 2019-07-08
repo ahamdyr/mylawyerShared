@@ -8,6 +8,7 @@ import {  getUserOwnQuestions, loadMoreUserOwnQuestions } from './UserOwnQuests/
 import getAnswersList from './Answers/saga'
 import getAttachsList from './Attachs/saga'
 import submitContactMessage from './ContactUs/saga'
+import getMajorsList from './LawyerMajors/saga'
  
 export default function * mySaga () {
   yield all([
@@ -23,5 +24,6 @@ export default function * mySaga () {
     fork(getAnswersList),
     fork(getAttachsList),
     fork(submitContactMessage),
+    fork(getMajorsList),
   ])  
 }

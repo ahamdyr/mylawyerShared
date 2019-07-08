@@ -52,18 +52,20 @@ export default class MajorsList extends React.PureComponent {
   _keyExtractor = (item, index) => String(index)
 
   render() {
-    var { attachs } = this.props
+    var { majors, majorsLoading } = this.props
     return (
         <View style={styles.majorsContainer}>
           <FlatList
             style={{ 
               //flex: 1 
             }}
-            data={this._list}
+            //data={this._list}
+            data={majors}
             scrollEnabled={true}
             renderItem={this._renderItem}
             ItemSeparatorComponent={() => <View style={{ marginBottom: 10 }} />}
-            keyExtractor={this._keyExtractor}
+            refreshing={majorsLoading}
+            keyExtractor={this._keyExtractor}            
           />
         </View>
     );

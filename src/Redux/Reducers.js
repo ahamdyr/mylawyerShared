@@ -10,6 +10,7 @@ import * as UserOwnQuestions from './UserOwnQuests/reducers'
 import * as questionAnswers from './Answers/reducers'
 import * as questionAttachs from './Attachs/reducers'
 import * as ContactUs from './ContactUs/reducers'
+import * as Majors from './LawyerMajors/reducers'
 
 export default combineReducers({
   socialModalOpen,
@@ -22,5 +23,6 @@ export default combineReducers({
   ...UserOwnQuestions,
   ...questionAnswers,
   ...questionAttachs,
-  ...ContactUs
+  ...ContactUs,
+  ...Majors
 })
