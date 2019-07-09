@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#a0a0a4"
   },
   name: {
-    marginTop: 50,    
+    //marginTop: 50,    
     marginBottom: 27,
     fontFamily: "Lato-Regular",
     fontSize: 30,
@@ -68,9 +68,9 @@ export const styles = StyleSheet.create({
     color: "#ffffff"
   },
   saveBtn: {
-    position: 'absolute',
+    //position: 'absolute',
+    //bottom: 22,
     alignSelf: 'center',
-    bottom: 22,
     width: 224,
     height: 51.5,
     borderRadius: 25.8,
@@ -93,9 +93,10 @@ export const styles = StyleSheet.create({
   },
   inputsContainer:{
     flex: 1,
-    marginBottom: 75,
-    //backgroundColor: "red",
+    //marginBottom: 75,
+    //backgroundColor: "blue",
     alignItems: 'center',
+    justifyContent: 'center',
   },
   profileImage: {
     marginTop: 10,

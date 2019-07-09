@@ -143,53 +143,66 @@ export default class EditMyProfile extends React.Component {
             </ImageBackground>
           </TouchableOpacity>
 
-          <KeyboardAvoidingView
-            keyboardVerticalOffset={ STATUS_BAR_HEIGHT + 132}
-            style={styles.inputsContainer}
-            behavior={'padding'}
-            enabled
-          >
-            <TextInput
-              underlineColorAndroid={'transparent'}
-              blurOnSubmit={true}
-              placeholder={currentUser.displayName}
-              onChangeText={this._edit_Name}
-              style={styles.name}
-            />
-            <SeperatorLine
-              style={styles.line}
-            />
-            <TextInput
-              underlineColorAndroid={'transparent'}
-              blurOnSubmit={true}
-              placeholder={currentUser.email || 'email'}
-              onChangeText={this._edit_Email}
-              keyboardType={'email-address'}
-              style={styles.inputStyle}
-            />
-            <SeperatorLine
-              style={styles.line}
-            />
-            <TextInput
-              underlineColorAndroid={'transparent'}
-              blurOnSubmit={true}
-              placeholder={currentUser.phoneNumber || '+2 01234567890'}
-              keyboardType={'number-pad'}
-              onChangeText={this._edit_Phone_Number}
-              style={styles.inputStyle}
-            />
-            <SeperatorLine
-              style={styles.line}
-            />
-          </KeyboardAvoidingView>
+          <View style={styles.inputsContainer} >
+            <KeyboardAvoidingView
+              keyboardVerticalOffset={STATUS_BAR_HEIGHT + 160}
+              style={{ 
+                alignItems: 'center',
+                justifyContent: 'center',
+                //backgroundColor: 'red'
+              }}
+              behavior={'padding'}
+              enabled
+            >
+              <TextInput
+                underlineColorAndroid={'transparent'}
+                blurOnSubmit={true}
+                placeholder={'user name'}
+                onChangeText={this._edit_Name}
+                style={styles.name}
+              />
+              <SeperatorLine
+                style={styles.line}
+              />
+              <TextInput
+                underlineColorAndroid={'transparent'}
+                blurOnSubmit={true}
+                placeholder={'email'}
+                onChangeText={this._edit_Email}
+                keyboardType={'email-address'}
+                style={styles.inputStyle}
+              />
+              <SeperatorLine
+                style={styles.line}
+              />
+              <TextInput
+                underlineColorAndroid={'transparent'}
+                blurOnSubmit={true}
+                placeholder={'phone number'}
+                keyboardType={'number-pad'}
+                onChangeText={this._edit_Phone_Number}
+                style={styles.inputStyle}
+              />
+              <SeperatorLine
+                style={styles.line}
+              />
+            </KeyboardAvoidingView>
+          </View>
+
+          <SubmitBtn
+            style={styles.saveBtn}
+            text={'Save'}
+            textStyle={styles.saveText}
+            onPress={() => this._onSubmit()}
+          />
         </TouchableOpacity>
 
-        <SubmitBtn
+        {/* <SubmitBtn
           style={styles.saveBtn}
           text={'Save'}
           textStyle={styles.saveText}
           onPress={() => this._onSubmit()}
-        />
+        /> */}
       </SafeAreaView>
     );
   }
