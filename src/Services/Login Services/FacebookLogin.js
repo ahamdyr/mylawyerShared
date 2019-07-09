@@ -40,20 +40,17 @@ export const LoginWithFacebook = async () => {
       
       currentUser = Object.assign({},currentUser, pickedUser)
 
-      await saveUser(currentUser, refreshToken)
+      await saveUser(currentUser, userType)
 
       Alert.alert('LogIn', 'You logged in successfully')
-      goBack()
-      goBack()
+      navigate('UserApp')
     }
     else {
       alert('Login Failed \nTry again')
-      goBack()
-      goBack()
+      navigate('UserApp')
     }
   } catch (error) {
     alert(`${error} \nTry again`)
-    goBack()
-    goBack()
+    navigate('UserApp')
   }
 }

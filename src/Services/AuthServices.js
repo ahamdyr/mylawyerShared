@@ -13,13 +13,13 @@ import {
     goBack
 } from './NavigationServices'
 
-export const saveUser = async (currentUser, refreshToken) => {
+export const saveUser = async (currentUser, userType) => {
   try {
     //console.log('currentUser ', currentUser)
     Store.dispatch(setCurrentUser(currentUser))
     Store.dispatch(setLoggedUser(true))     
     await AsyncStorage.setItem('currentUser', JSON.stringify(currentUser))
-    await AsyncStorage.setItem('refreshToken', JSON.stringify(refreshToken))
+    await AsyncStorage.setItem('userType', JSON.stringify(userType))
     let accessToken = currentUser.accessToken
     Store.dispatch(setAccessToken(accessToken))
     await AsyncStorage.setItem('accessToken', JSON.stringify(accessToken))  
@@ -51,7 +51,7 @@ export const logOut = async () => {
     Store.dispatch(setCurrentUser({}))
     Store.dispatch(setLoggedUser(false))     
     await AsyncStorage.removeItem('currentUser')
-    await AsyncStorage.removeItem('refreshToken')
+    await AsyncStorage.removeItem('userType')
     Store.dispatch(setAccessToken(''))
     await AsyncStorage.removeItem('accessToken') 
     //Store.dispatch(getUserOwnQuestionsSuccess([]))
@@ -63,10 +63,16 @@ export const logOut = async () => {
 }
 
 export const getUser = async () => {
-  let currentUserJson = await AsyncStorage.getItem('currentUser')
-  if(currentUserJson !== null){   
-    let currentUser = JSON.parse(currentUserJson)     
+  //let currentUserJson = await AsyncStorage.getItem('currentUser')
+  let userTypeJson = await AsyncStorage.getItem('userType')
+  if(userTypeJson !== null){   
+    var userType =JSON.parse(userTypeJson)
+    console.log('userType  ',userType)
+    if(userType == 'lawyer'){
+      navigate('LawyerApp')
+    }
     await ReAuthenticate()
+    //let currentUser = JSON.parse(currentUserJson)     
     // Store.dispatch(setCurrentUser(currentUser))
     // Store.dispatch(setLoggedUser(true))
     // let accessToken = currentUser.accessToken

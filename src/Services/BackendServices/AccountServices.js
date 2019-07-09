@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const Register = async (type, token) => {
+export const Register = async (type, token, lawyerMajor, lawyerIDsLinks, firmPapersLinks) => {
   let body = new FormData()
   body.append('type', type)
   return new Promise((resolve, reject) => {

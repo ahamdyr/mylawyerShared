@@ -42,10 +42,10 @@ export const SignUp = async (confCode, userName) => {
     
     currentUser = Object.assign({},currentUser, pickedUser)
 
-    await saveUser(currentUser, refreshToken)
+    await saveUser(currentUser, userType)
     
     Alert.alert('LogIn', 'You logged in successfully')
-    navigate('App')
+    navigate('UserApp')
   } catch (error) {
     goBack()
     alert(`${error} \nTry again`)
@@ -90,10 +90,10 @@ export const SignIn = async (phoneNumber) => {
 
       currentUser = Object.assign({}, currentUser, pickedUser)
 
-      await saveUser(currentUser, refreshToken)
+      await saveUser(currentUser, userType)
 
       Alert.alert('LogIn', 'You logged in successfully')
-      navigate('App')
+      navigate('UserApp')
     }    
   } catch (error) {
     goBack()

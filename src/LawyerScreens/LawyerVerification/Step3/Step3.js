@@ -11,6 +11,7 @@ import Attachs from '../../../Components/LawyerVerifyComp/Attachs'
 import {
   uploadCameraImage, uploadFile, uploadGalleryImage
 } from '../../../Services/FilesServices'
+import { lawyerSignUp } from '../../../Services/Login Services/MailLogin'
 
 export default class Step3 extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -23,7 +24,7 @@ export default class Step3 extends React.Component {
       alert('You must add Firm Papers')
     }
     else {
-      navigate('Step4')
+      lawyerSignUp()
     }
   }
   _onAttachPress = () => {

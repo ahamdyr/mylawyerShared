@@ -8,14 +8,17 @@ import Spinner from '../Screens/Spinner'
 import { Easing, Animated } from 'react-native'
 import LawyerDetails from '../Screens/LawyerDetails'
 import LawyerVerificationStack from '../LawyerRouters/LawyerVerifyStack'
+import UserTypeScreen from '../Screens/UserType'
 import LawyerStack from '../LawyerRouters/LawyerStack'
 
 const AppRouter = createStackNavigator({
-  App : MainRouter,
-  Auth : AuthRouter,
+  UserApp : MainRouter,
+  UserAuth : AuthRouter,
+  LawyerAuth : LawyerVerificationStack,
+  LawyerApp : LawyerStack,
   AuthLoading : AuthLoading
 },{
-  initialRouteName:'App',
+  initialRouteName:'UserApp',
   headerMode: "none"
 })
 
@@ -23,7 +26,8 @@ const ModalStack =  createStackNavigator({
   AppRouter:AppRouter,
   SocialScreen: SocialScreen,
   Spinner: Spinner,
-  LawyerDetails: LawyerDetails
+  LawyerDetails: LawyerDetails,
+  UserTypeScreen: UserTypeScreen,
 },{
   
   mode: 'modal',
@@ -44,7 +48,7 @@ const ModalStack =  createStackNavigator({
 
   //transparentCard : true
 })
-//export default createAppContainer(ModalStack);
+export default createAppContainer(ModalStack);
 //export default createAppContainer(LawyerStack);
-export default createAppContainer(LawyerVerificationStack);
+//export default createAppContainer(LawyerVerificationStack);
 

@@ -52,7 +52,7 @@ export default class Footer extends React.PureComponent {
       }
     }
     else {
-      navigate('SocialScreen')
+      navigate('UserTypeScreen')
     }
   }
 

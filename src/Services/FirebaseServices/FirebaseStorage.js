@@ -31,3 +31,23 @@ export const addToStorage = async (path, uri) => {
   // return the result, eg. remote URI to the image
   return remoteUri;
 }
+
+const addFileToFirebase = async (file, mainPath) => {
+  return new Promise((resolve, reject) => {
+    var path = `${mainPath}/${file.name}`
+    addToStorage(path, file.uri)
+      .then(link => {
+        resolve(link)
+      })
+      .catch(err => reject(err))
+  })
+}
+
+export const addFilesToFirebase = async (files, mainPath) => {
+
+  let promisesList = []
+  for (let file of files){
+    promisesList.push(addFileToFirebase(file, mainPath))
+  }
+  return Promise.all(promisesList)
+}

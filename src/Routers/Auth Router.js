@@ -28,7 +28,7 @@ const AuthRouter = createStackNavigator({
 },{
   defaultNavigationOptions: ({navigation}) => ({
     
-    headerLeft: <AuthBackArrow onPress={() =>navigation.navigate('App')}/>  ,
+    headerLeft: <AuthBackArrow onPress={() =>navigation.navigate('UserApp')}/>  ,
     headerTitle: <HeaderTitle 
                     title={`My Lawyer`}
                     style = {{color: '#feffff'}}

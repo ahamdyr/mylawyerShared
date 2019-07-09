@@ -33,7 +33,7 @@ export const ReAuthenticate = async () => {
         var pickedUser = await Register(userType, backendToken)
 
         currentUser = Object.assign({}, currentUser, pickedUser)
-        await saveUser(currentUser, refreshToken)
+        await saveUser(currentUser, userType)
       }
     })
 
