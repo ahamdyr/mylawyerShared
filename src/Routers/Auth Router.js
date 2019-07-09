@@ -7,7 +7,8 @@ import {
   SignUpWithPhone
 } from '../Screens'
 import PhoneVerification from '../Screens/PhoneVerification'
-import HeaderTitle from '../Components/HomeHeaderIcons/Header Title'
+import { logo_text } from '../../assets'
+import ImageIcon from '../Components/Common/ImageIcon'
 import AuthBackArrow from '../Components/AuthComponents/AuthBackArrow'
 import {MAIN_COLOR} from '../Components/Constants'
 
@@ -29,9 +30,9 @@ const AuthRouter = createStackNavigator({
   defaultNavigationOptions: ({navigation}) => ({
     
     headerLeft: <AuthBackArrow onPress={() =>navigation.navigate('UserApp')}/>  ,
-    headerTitle: <HeaderTitle 
-                    title={`My Lawyer`}
-                    style = {{color: '#feffff'}}
+    headerTitle: <ImageIcon 
+                    source={logo_text} 
+                    style={{ width: 95, height: 26.5 }} 
                   />,
     headerStyle:{
       elevation:0,

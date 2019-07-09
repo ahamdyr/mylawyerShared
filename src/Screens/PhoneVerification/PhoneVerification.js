@@ -21,7 +21,7 @@ import {
 } from '../../Services/Login Services/PhoneLogin'
 
 export default class PhoneVerification extends Component {
-
+  
   confCode = "";
   constructor(props) {
     super(props);

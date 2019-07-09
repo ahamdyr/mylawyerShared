@@ -4,7 +4,6 @@ import {
 } from 'react-native'
 import MenuIcon from '../../Components/HomeHeaderIcons/Menu Icon'
 import SearchIcon from '../../Components/HomeHeaderIcons/Search Icon'
-import HeaderTitle from '../../Components/HomeHeaderIcons/Header Title'
 import { createStackNavigator} from "react-navigation";
 import LawyersScreen from '../Lawyers Screen'
 import Search from '../Search'

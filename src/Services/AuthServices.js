@@ -67,7 +67,7 @@ export const getUser = async () => {
   let userTypeJson = await AsyncStorage.getItem('userType')
   if(userTypeJson !== null){   
     var userType =JSON.parse(userTypeJson)
-    console.log('userType  ',userType)
+    //console.log('userType  ',userType)
     if(userType == 'lawyer'){
       navigate('LawyerApp')
     }
