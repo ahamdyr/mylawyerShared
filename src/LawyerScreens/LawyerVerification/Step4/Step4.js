@@ -26,12 +26,12 @@ export default class Step4 extends React.Component {
         />
 
         <Text style={styles.footerText}>
-          {'Once we complete the reviewing procces we will send you an email to strat your journey'}
+          {'Once we complete the reviewing procces we will send you an email to start your journey'}
         </Text>
 
         <ReturnBtn 
           btnTitle={'Return to home'}
-          //onPress={()=>navigate('Home')}
+          onPress={()=>navigate('Home')}
         />
       </SafeAreaView>
     );

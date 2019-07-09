@@ -19,7 +19,7 @@ export default class UploadBtn extends React.PureComponent {
     return (
       <TouchableOpacity
         style={styles.btnContainer}
-      //onPress={onPress}
+        onPress={onPress}
       >
         <View style={styles.iconContainer}>
           <ImageIcon
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     // bottom: 217,
     //marginTop: 203,
     flexDirection: 'row',
-    width: WIDTH-30,
+    width: WIDTH - 30,
     height: 56,
     borderRadius: 28,
     backgroundColor: "#ffffff",
@@ -60,12 +60,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 15,
     width: 30,
-    height: 30,    
+    height: 30,
     justifyContent: 'center',
   },
-  uploadStyle:{
+  uploadStyle: {
     width: 24,
-    height: 24,  
+    height: 24,
   },
   btnText: {
     fontFamily: "Lato-Bold",

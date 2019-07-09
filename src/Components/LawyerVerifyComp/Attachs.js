@@ -12,40 +12,11 @@ import { WIDTH } from '../Constants'
 import ImageIcon from '../Common/ImageIcon'
 import {close3x} from '../../../assets'
 
-export default class Attachs extends React.PureComponent {
+export default class Attachs extends React.PureComponent {  
 
-  _list = [
-    {
-      name: 'doc.1',
-      uri: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80'
-    },
-    {
-      name: 'doc.1',
-      uri: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80'
-    },
-    {
-      name: 'doc.1',
-      uri: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80'
-    },
-    {
-      name: 'doc.1',
-      uri: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80'
-    },
-    {
-      name: 'doc.1',
-      uri: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80'
-    }
-  ]
-
-  // _deleteItem = (item) => {
-  //   if (item.type == 'doc') {
-  //     this.props.delQuestionDoc(item)
-  //   }
-  //   else {
-  //     this.props.delQuestionImg(item)
-  //   }
-  // }
-
+  _deleteItem = (item) => {
+    this.props.delete(item)
+  }
 
   _renderItem = ({ item }) => {
     return (
@@ -64,7 +35,7 @@ export default class Attachs extends React.PureComponent {
         </Text>
         <TouchableOpacity
           style={styles.btnStyle}
-          //onPress={() => this._deleteItem(item)}
+          onPress={() => this._deleteItem(item)}
         >
           <ImageIcon 
             style={styles.btnIconStyle}
@@ -78,14 +49,14 @@ export default class Attachs extends React.PureComponent {
   _keyExtractor = (item, index) => String(index)
 
   render() {
-    var { attachs } = this.props
+    var { data } = this.props
     return (
         <View style={styles.filesContainer}>
           <FlatList
             style={{ 
-              height: 150, 
+              marginRight: 10 
             }}
-            data={this._list}
+            data={data}
             scrollEnabled={true}
             renderItem={this._renderItem}
             ItemSeparatorComponent={() => <View style={{ marginBottom: 10 }} />}
@@ -99,8 +70,8 @@ export default class Attachs extends React.PureComponent {
 const styles = StyleSheet.create({
   filesContainer: {
     width: WIDTH,
-    justifyContent: 'flex-end',
-    marginTop: 30,
+    height: 150,
+    marginTop: 10,
     marginBottom: 10
   },
   nameStyle: {
@@ -116,7 +87,7 @@ const styles = StyleSheet.create({
     width: 25,
     height: 25,
     position: 'absolute',
-    right: 0,    
+    right: 15,    
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -127,7 +98,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: 'row',
     marginLeft: 15,
-    marginRight: 25,
+    //marginRight: 25,
     alignItems: 'center'
   }
 });

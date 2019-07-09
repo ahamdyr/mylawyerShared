@@ -4,92 +4,119 @@ export const setLawyerMajor = (major) => {
     major
   }
 }
-
-export const addQuestionLoading = (isLoading) => {
+////////////////////////////////////////////////////////////////////////
+export const addLawyerID = (lawyerID) => {
   return{
-    type: ADD_QUESTION_LOADING,
-    isLoading
+    type: 'addLawyerID',
+    lawyerID
   }
 }
 
-export const setQuestionTitle = (title) => {
+export const deleteLawyerID = (lawyerID) => {
   return{
-    type: SET_QUESTION_TITLE,
-    title
+    type: 'deleteLawyerID',
+    lawyerID
   }
 }
 
-export const setQuestionBody = (body) => {
+export const clearLawyerID = () => {
   return{
-    type: SET_QUESTION_BODY,
-    body
+    type: 'clearLawyerID'
+  }
+}
+///////////////////////////////////////////////////////////////////////////////
+export const addFirmPaper = (firmPaper) => {
+  return{
+    type: 'addFirmPaper',
+    firmPaper
   }
 }
 
-export const setQuestionDoc = (doc) => {
+export const deleteFirmPaper = (firmPaper) => {
   return{
-    type: SET_QUESTION_DOC,
-    doc
+    type: 'deleteFirmPaper',
+    firmPaper
   }
 }
 
-export const delQuestionDoc = (doc) => {
+export const clearFirmPaper = () => {
   return{
-    type: DEL_QUESTION_DOC,
-    doc
+    type: 'clearFirmPaper'
   }
 }
 
-export const setQuestionImg = (img) => {
-  return{
-    type: SET_QUESTION_IMG,
-    img
-  }
-}
+//////////////////////////////////////////////////////////////////////////////////////////
+// export const addQuestionLoading = (isLoading) => {
+//   return{
+//     type: ADD_QUESTION_LOADING,
+//     isLoading
+//   }
+// }
 
-export const deleteAttachments = () => {
-  return{
-    type: 'deleteAttachments'
-  }
-}
-export const delQuestionImg = (img) => {
-  return{
-    type: DEL_QUESTION_IMG,
-    img
-  }
-}
+// export const setQuestionTitle = (title) => {
+//   return{
+//     type: SET_QUESTION_TITLE,
+//     title
+//   }
+// }
 
-export const submitQuestion = () =>{
-  return{
-    type: SUBMIT_QUESTION
-  }
-}
+// export const setQuestionBody = (body) => {
+//   return{
+//     type: SET_QUESTION_BODY,
+//     body
+//   }
+// }
 
-export const addQuestion = (question) =>{
-  return{
-    type: ADD_QUESTION,
-    question
-  }
-}
+// export const setQuestionImg = (img) => {
+//   return{
+//     type: SET_QUESTION_IMG,
+//     img
+//   }
+// }
+// export const delQuestionImg = (img) => {
+//   return{
+//     type: DEL_QUESTION_IMG,
+//     img
+//   }
+// }
+// export const deleteAttachments = () => {
+//   return{
+//     type: 'deleteAttachments'
+//   }
+// }
 
-export const addAnswer = (answer) => {
-  return{
-    type: ADD_ANSWER,
-    answer
-  }
-}
 
-export const addAttachs = (attachs) => {
-  return{
-    type: ADD_ATTACHS,
-    attachs
-  }
-}
-export const clearQuestion = (bool) => {
-  return{
-    type: 'clearQuestion',
-    bool
-  }
-}
+// export const submitQuestion = () =>{
+//   return{
+//     type: SUBMIT_QUESTION
+//   }
+// }
+
+// export const addQuestion = (question) =>{
+//   return{
+//     type: ADD_QUESTION,
+//     question
+//   }
+// }
+
+// export const addAnswer = (answer) => {
+//   return{
+//     type: ADD_ANSWER,
+//     answer
+//   }
+// }
+
+// export const addAttachs = (attachs) => {
+//   return{
+//     type: ADD_ATTACHS,
+//     attachs
+//   }
+// }
+// export const clearQuestion = (bool) => {
+//   return{
+//     type: 'clearQuestion',
+//     bool
+//   }
+// }
 
 

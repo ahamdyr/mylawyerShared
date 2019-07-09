@@ -13,6 +13,32 @@ export const lawyerMajor = (state = {}, action) => {
   }
 }
 
+export const lawyerIDs = (state = [], action) => {
+  switch (action.type) {
+    case 'addLawyerID':
+      return [...state, action.lawyerID]
+    case 'deleteLawyerID':
+      return state.filter(e=> e.uuid !== action.lawyerID.uuid )  
+    case 'clearLawyerID':
+      return []    
+    default:
+      return state
+  }
+}
+
+export const firmPapers = (state = [], action) => {
+  switch (action.type) {
+    case 'addFirmPaper':
+      return [...state, action.firmPaper]
+    case 'deleteFirmPaper':
+      return state.filter(e=> e.uuid !== action.firmPaper.uuid )  
+    case 'clearFirmPaper':
+      return []    
+    default:
+      return state
+  }
+}
+
 // export const clearQuestion = (state = false, action) => {
 //   switch (action.type) {
 //     case 'clearQuestion':
@@ -49,18 +75,7 @@ export const lawyerMajor = (state = {}, action) => {
 //   }
 // }
 
-// export const questionDocs = (state = [], action) => {
-//   switch (action.type) {
-//     case SET_QUESTION_DOC:
-//       return [...state, action.doc]
-//     case DEL_QUESTION_DOC:
-//       return state.filter(e=> e.uuid !== action.doc.uuid )  
-//     case 'deleteAttachments':
-//       return []    
-//     default:
-//       return state
-//   }
-// }
+
 
 // export const questionImgs = (state = [], action) => {
 //   switch (action.type) {

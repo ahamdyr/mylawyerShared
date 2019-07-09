@@ -19,7 +19,7 @@ export default class CaptureBtn extends React.PureComponent {
     return (
       <TouchableOpacity
         style={styles.btnContainer}
-      //onPress={onPress}
+        onPress={onPress}
       >
         <View style={styles.iconContainer}>
           <ImageIcon
@@ -65,9 +65,9 @@ const styles = StyleSheet.create({
     height: 30,
     justifyContent: 'center',
   },
-  photoCameraStyle:{
+  photoCameraStyle: {
     width: 24,
-    height: 24,  
+    height: 24,
   },
   btnText: {
     fontFamily: "Lato-Bold",
