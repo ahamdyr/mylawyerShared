@@ -18,6 +18,9 @@ const AppRouter = createStackNavigator({
   LawyerApp : LawyerStack,
   AuthLoading : AuthLoading
 },{
+  defaultNavigationOptions: {
+    gesturesEnabled: false,
+  },
   initialRouteName:'UserApp',
   headerMode: "none"
 })
@@ -29,7 +32,9 @@ const ModalStack =  createStackNavigator({
   LawyerDetails: LawyerDetails,
   UserTypeScreen: UserTypeScreen,
 },{
-  
+  defaultNavigationOptions: {
+    gesturesEnabled: false,
+  },
   mode: 'modal',
   headerMode: 'none',
 
