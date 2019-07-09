@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ActivityIndicator } from 'react-native';
 import { navigate, goBack } from '../../../Services/NavigationServices'
 import MajorsList from '../../../Components/LawyerVerifyComp/MajorsList'
 import ImageIcon from '../../../Components/Common/ImageIcon'
@@ -21,17 +21,26 @@ export default class SelectMajor extends React.Component {
   render() {
     var {
       getMajorsSuccess,
-      getMajorsLoading
+      getMajorsLoading,
+      setLawyerMajor
     } = this.props
+
     return (
       <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>
-          Select your major…
-          </Text>
-        <MajorsList 
-          majors={getMajorsSuccess}
-          majorsLoading={getMajorsLoading}
-        />
+        {
+          getMajorsLoading ?
+            <ActivityIndicator style={{backgroundColor: 'White'}} size={'large'} />
+            : <React.Fragment>
+              <Text style={styles.title}>
+                Select your major…
+              </Text>
+              <MajorsList
+                majors={getMajorsSuccess}
+                majorsLoading={getMajorsLoading}
+                setLawyerMajor={(major) => setLawyerMajor(major)}
+              />
+            </React.Fragment>
+        }
       </SafeAreaView>
     );
   }

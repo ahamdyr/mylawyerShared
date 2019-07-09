@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import { WIDTH } from '../Constants'
 import SeperatorLine from '../Common/SeperatorLine'
+import { goBack } from '../../Services/NavigationServices'
+
 export default class MajorsList extends React.PureComponent {
 
   _list = [
@@ -34,16 +36,19 @@ export default class MajorsList extends React.PureComponent {
 
   _renderItem = ({ item }) => {
     return (
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.itemContainer}
-        //onPress={}
+        onPress={() => {
+          this.props.setLawyerMajor(item)
+          goBack()
+        }}
       >
-        <Text 
+        <Text
           style={styles.nameStyle}
         >
           {item.name}
         </Text>
-        <SeperatorLine 
+        <SeperatorLine
           style={styles.lineStyle}
         />
       </TouchableOpacity>
@@ -54,27 +59,27 @@ export default class MajorsList extends React.PureComponent {
   render() {
     var { majors, majorsLoading } = this.props
     return (
-        <View style={styles.majorsContainer}>
-          <FlatList
-            style={{ 
-              //flex: 1 
-            }}
-            //data={this._list}
-            data={majors}
-            scrollEnabled={true}
-            renderItem={this._renderItem}
-            ItemSeparatorComponent={() => <View style={{ marginBottom: 10 }} />}
-            refreshing={majorsLoading}
-            keyExtractor={this._keyExtractor}            
-          />
-        </View>
+      <View style={styles.majorsContainer}>
+        <FlatList
+          style={{
+            //flex: 1 
+          }}
+          //data={this._list}
+          data={majors}
+          scrollEnabled={true}
+          renderItem={this._renderItem}
+          ItemSeparatorComponent={() => <View style={{ marginBottom: 10 }} />}
+          refreshing={majorsLoading}
+          keyExtractor={this._keyExtractor}
+        />
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   majorsContainer: {
-    flex: 1 ,
+    flex: 1,
     //width: WIDTH,
     marginTop: 30,
     //marginBottom: 10,
@@ -94,10 +99,10 @@ const styles = StyleSheet.create({
     height: 1,
     opacity: 0.2,
     backgroundColor: "#ffffff",
-    width: WIDTH-30,
+    width: WIDTH - 30,
   },
   itemContainer: {
-    width: WIDTH-30,
+    width: WIDTH - 30,
     // marginLeft: 15,
     // marginRight: 15,
     //alignItems: 'center'

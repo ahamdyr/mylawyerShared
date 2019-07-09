@@ -11,6 +11,7 @@ import * as questionAnswers from './Answers/reducers'
 import * as questionAttachs from './Attachs/reducers'
 import * as ContactUs from './ContactUs/reducers'
 import * as Majors from './LawyerMajors/reducers'
+import * as LawyerVerification from './LawyerVerification/reducers'
 
 export default combineReducers({
   socialModalOpen,
@@ -24,5 +25,6 @@ export default combineReducers({
   ...questionAnswers,
   ...questionAttachs,
   ...ContactUs,
-  ...Majors
+  ...Majors,
+  ...LawyerVerification
 })

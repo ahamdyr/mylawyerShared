@@ -11,7 +11,7 @@ import { rightArrowIcon } from '../../../assets'
 import ImageIcon from '../Common/ImageIcon'
 export default class SelectMajorBtn extends React.PureComponent {
   render() {
-    const {
+    var {
       major,
       onPress
     } = this.props
@@ -22,7 +22,7 @@ export default class SelectMajorBtn extends React.PureComponent {
       >
         <View style={styles.majorContainer}>
           <Text style={styles.majorText}>
-            {major || 'Select your major…'}
+            {major.name}
           </Text>
           <ImageIcon 
             style={styles.rightStyle}
