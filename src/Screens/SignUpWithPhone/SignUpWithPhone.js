@@ -6,11 +6,6 @@ import { withNavigation } from 'react-navigation'
 import SocialBtn from '../../Components/Common/SocialBtn'
 import {
   facebookIcon,
-  Mail,
-  PhoneIcon,
-  twitter,
-  linkedIn,
-  whiteX,
   google
 } from '../../../assets'
 
@@ -27,58 +22,60 @@ class SignUpWithPhone extends React.Component {
           style={styles.container}
           onPress={() => Keyboard.dismiss()}
         > */}
-
-          <View style={styles.loginTextContainer}>
-            <Text style={styles.loginText}>
-              Create Your
+        {/* ==================================================== */}
+        <View style={styles.loginTextContainer}>
+          <Text style={styles.loginText}>
+            Create Your
             </Text>
-            <Text style={styles.loginText}>
-              Account
+          <Text style={styles.loginText}>
+            Account
             </Text>
-          </View>
-
-          <View style={styles.formContainer}>
-            <SignUpWithPhoneForm
-              onPress={() => this.props.navigation.navigate('PhoneVerification', { action: 'signUp' })} />
-          </View>
-          <View style={styles.Btns}>
-            <SocialBtn
-              style={styles.faceBookStyle}
-              icon={facebookIcon}
-              iconStyle={styles.faceBookIconStyle}
-              onPress={() => LoginWithFacebook()}
-            />
-            <View style={{width: 30}} />
-            <SocialBtn
-              style={styles.googleStyle}
-              icon={google}
-              iconStyle={styles.googleIconStyle}
-              onPress={() => LoginWithGoogle()}
-            />
-          </View>
-          <View style={styles.termsContainer}>
-            <Text style={styles.termsText}>
-              By clicking Sign up you agree to our
-          </Text>
-            <Text
-              style={[styles.termsText, { textDecorationLine: 'underline' }]}
-              onPress={() => navigation.navigate('TermsAndConditions')}
-            >
-              Terms of Service
-          </Text>
-          </View>
-
-          <TouchableOpacity 
-            style={styles.footer}
-            onPress={() => navigation.navigate('LoginWithPhone')}
+        </View>
+        {/* ==================================================== */}
+        <View style={styles.formContainer}>
+          <SignUpWithPhoneForm
+            onPress={() => this.props.navigation.navigate('PhoneVerification', { action: 'signUp' })} />
+        </View>
+        {/* ==================================================== */}
+        <View style={styles.Btns}>
+          <SocialBtn
+            style={styles.faceBookStyle}
+            icon={facebookIcon}
+            iconStyle={styles.faceBookIconStyle}
+            onPress={() => LoginWithFacebook()}
+          />
+          <View style={{ width: 30 }} />
+          <SocialBtn
+            style={styles.googleStyle}
+            icon={google}
+            iconStyle={styles.googleIconStyle}
+            onPress={() => LoginWithGoogle()}
+          />
+        </View>
+        {/* ==================================================== */}
+        <View style={styles.termsContainer}>
+          <Text style={styles.termsText}>
+            By clicking Sign up you agree to our
+            </Text>
+          <Text
+            style={[styles.termsText, { textDecorationLine: 'underline' }]}
+            onPress={() => navigation.navigate('TermsAndConditions')}
           >
-            <Text
-              style={styles.footerText}
-            >
-              Already have an Account?
+            Terms of Service
             </Text>
-          </TouchableOpacity>
-
+        </View>
+        {/* ==================================================== */}
+        <TouchableOpacity
+          style={styles.footer}
+          onPress={() => navigation.navigate('LoginWithPhone')}
+        >
+          <Text
+            style={styles.footerText}
+          >
+            Already have an Account?
+            </Text>
+        </TouchableOpacity>
+        {/* ==================================================== */}
         {/* </TouchableOpacity> */}
       </SafeAreaView>
     );

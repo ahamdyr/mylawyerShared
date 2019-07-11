@@ -40,6 +40,10 @@ const AuthRouter = createStackNavigator({
       headerStyle: {
         elevation: 0,
         shadowOpacity: 0,
+        shadowOffset: {
+          height: 0,
+          },
+        shadowRadius: 0,
         backgroundColor: MAIN_COLOR,
       },
       gesturesEnabled: false

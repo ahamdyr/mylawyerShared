@@ -5,9 +5,12 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: MAIN_COLOR,
+    //backgroundColor: 'red',
+    //paddingVertical: 20,
+    justifyContent: 'space-around',
   },
   editContainer:{
-    flex: 1,
+    //flex: 1,
     //marginTop: 10,
     width: WIDTH,
     alignItems: 'center',
@@ -24,7 +27,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   loginTextContainer:{
-    marginTop: 40,
+    //marginTop: 20,
     width: WIDTH,
     //height: 80,
     //backgroundColor: 'black',
@@ -43,9 +46,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'absolute',
-    bottom: 120,
-    //marginTop: 20
+    //position: 'absolute',
+    //bottom: 120,
+    marginTop: 20
   },
   faceBookStyle: {
     backgroundColor: 'rgb(61, 90, 150)'
@@ -62,12 +65,13 @@ export const styles = StyleSheet.create({
     height: 25
   },
   termsContainer:{
-    position: 'absolute',
+    //position: 'absolute',
     //top: 545,
-    left: 0,
-    bottom: 76.5,
-    width: WIDTH,
+    //left: 0,
+    //bottom: 76.5,
     //height: 20,
+    //marginTop: 20,
+    width: WIDTH,
     //backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
@@ -86,9 +90,10 @@ export const styles = StyleSheet.create({
   footer:{    
     width: WIDTH,
     //backgroundColor: 'black',
-    position: 'absolute',
-    bottom: 20,
-    left: 0,
+    //marginTop: 10,
+    //position: 'absolute',
+    //bottom: 20,
+    //left: 0,
     justifyContent: 'center',
     alignItems: 'center',
     height: 49,

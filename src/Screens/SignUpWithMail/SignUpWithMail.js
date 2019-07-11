@@ -6,13 +6,7 @@ import { withNavigation } from 'react-navigation'
 import { SignUp } from '../../Services/Login Services/MailLogin'
 import SocialBtn from '../../Components/Common/SocialBtn'
 import {
-  facebookIcon,
-  Mail,
-  PhoneIcon,
-  twitter,
-  linkedIn,
-  whiteX,
-  google
+  facebookIcon, google
 } from '../../../assets'
 
 import { LoginWithFacebook } from '../../Services/Login Services/FacebookLogin'
@@ -23,22 +17,24 @@ class SignUpWithMail extends React.Component {
     const { navigation } = this.props
     return (
       <SafeAreaView style={styles.container}>
-        <TouchableOpacity
-          activeOpacity={1}
+        {/* ==================================================== */}
+        <View
+          //activeOpacity={1}
           style={styles.editContainer}
-          onPress={() => Keyboard.dismiss()}
+          //onPress={() => Keyboard.dismiss()}
         >
-
-        <View style={styles.loginTextContainer}>
-          <Text style={styles.loginText}>
-            Create Your
+          {/* ==================================================== */}
+          <View style={styles.loginTextContainer}>
+            <Text style={styles.loginText}>
+              Create Your
             </Text>
-          <Text style={styles.loginText}>
-            Account
+            <Text style={styles.loginText}>
+              Account
             </Text>
-        </View>
-
-        <SignUpWithMailForm onPress={() => SignUp()} />
+          </View>
+          {/* ==================================================== */}
+          <SignUpWithMailForm onPress={() => SignUp()} />
+          {/* ==================================================== */}
           <View style={styles.Btns}>
             <SocialBtn
               style={styles.faceBookStyle}
@@ -46,7 +42,7 @@ class SignUpWithMail extends React.Component {
               iconStyle={styles.faceBookIconStyle}
               onPress={() => LoginWithFacebook()}
             />
-            <View style={{width: 30}} />
+            <View style={{ width: 30 }} />
             <SocialBtn
               style={styles.googleStyle}
               icon={google}
@@ -54,8 +50,9 @@ class SignUpWithMail extends React.Component {
               onPress={() => LoginWithGoogle()}
             />
           </View>
-        </TouchableOpacity>
-
+          {/* ==================================================== */}
+        </View>
+        {/* ==================================================== */}
         <View style={styles.termsContainer}>
           <Text style={styles.termsText}>
             By clicking Sign up you agree to our
@@ -67,8 +64,8 @@ class SignUpWithMail extends React.Component {
             Terms of Service
           </Text>
         </View>
-
-        <TouchableOpacity 
+        {/* ==================================================== */}
+        <TouchableOpacity
           style={styles.footer}
           onPress={() => navigation.navigate('LoginWithMail')}
         >
@@ -78,7 +75,7 @@ class SignUpWithMail extends React.Component {
             Already have an Account?
             </Text>
         </TouchableOpacity>
-
+        {/* ==================================================== */}
       </SafeAreaView>
     );
   }

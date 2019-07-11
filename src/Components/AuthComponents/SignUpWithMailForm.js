@@ -46,11 +46,10 @@ export default class SignUpWithMailForm extends React.PureComponent {
   render() {
     return (
       <KeyboardAvoidingView
-        keyboardVerticalOffset={STATUS_BAR_HEIGHT + 300}
+        keyboardVerticalOffset={STATUS_BAR_HEIGHT}
         //contentContainerStyle={styles.container}
         style={styles.container}
         behavior={'padding'}
-        enabled
       >
         <View style={{ marginTop: 20 }} />
           <SeperatorLine />
@@ -115,7 +114,7 @@ export default class SignUpWithMailForm extends React.PureComponent {
         <LoginButton
           text={'Sign up'}
           style={{
-            marginTop: 36
+            marginTop: 25
           }}
           onPress={() => this._submit()}
         />
@@ -128,7 +127,7 @@ export default class SignUpWithMailForm extends React.PureComponent {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    //flex: 1,
     alignItems: 'center',
     //marginBottom: 157.5,
     //marginTop: 40,

@@ -7,7 +7,12 @@ import Spinner from '../Spinner'
 
 export default class AllQuestionsScreen extends React.Component {
   componentWillMount(){
-    this.props.getUserAllQuestionsRequest()    
+    this.willFocusSubscription = this.props.navigation.addListener('willFocus', () => {
+      this.props.getUserAllQuestionsRequest()   
+    });
+  }
+  componentWillUnmount(){
+    this.willFocusSubscription.remove();
   }
   render() {
     var {
