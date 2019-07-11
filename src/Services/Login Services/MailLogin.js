@@ -1,5 +1,5 @@
 import { base64Token } from '../Guid'
-import { Register, Login } from '../BackendServices/AccountServices'
+import { Register, LawyerRegister } from '../BackendServices/AccountServices'
 import { saveUser, getUserType } from '../AuthServices'
 import { Alert } from 'react-native'
 import { goBack, navigate } from '../NavigationServices'
@@ -40,7 +40,7 @@ export const SignIn = async () => {
     currentUser = Object.assign({}, currentUser, pickedUser)
 
     if (userType == 'lawyer') {
-      if (currentUser.isVerified) {
+      if (currentUser.isActivated) {
         await saveUser(currentUser, userType)
         Alert.alert('LogIn', 'You logged in successfully')
         navigate('LawyerApp')
@@ -126,11 +126,11 @@ export const lawyerSignUp = async () => {
     // console.log('firmPapersLinks ', firmPapersLinks)
     // console.log('lawyerMajor ', lawyerMajor)
 
-    //var pickedUser = await Register(userType, backendToken, lawyerMajor, lawyerIDsLinks, firmPapersLinks)
+    var pickedUser = await LawyerRegister(userType, backendToken, lawyerMajor, lawyerIDsLinks, firmPapersLinks)
+    //console.log('pickedUser ', pickedUser)
+    currentUser = Object.assign({},currentUser, pickedUser)
 
-    // currentUser = Object.assign({},currentUser, pickedUser)
-
-    // await saveUser(currentUser, refreshToken)
+    await saveUser(currentUser, userType)
 
     navigate('Step4')
   } catch (error) {

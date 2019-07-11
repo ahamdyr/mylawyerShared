@@ -6,6 +6,7 @@ import LoginButton from '../Common/LoginButton'
 import ImageIcon from '../Common/ImageIcon'
 import LockImage from '../Common/LockImage'
 import {PhoneIcon, UserIcon } from '../../../assets'
+import { isValidPhoneNumber } from '../../Utils/InputValidation'
 import Store from '../../Redux/Store'
 import { setPhoneNumber } from '../../Redux/Auth/actions'
 export default class LoginWithPhoneForm extends React.PureComponent {
@@ -15,7 +16,7 @@ export default class LoginWithPhoneForm extends React.PureComponent {
     Store.dispatch(setPhoneNumber(val))
   }
   _loginSubmit = () =>{
-    if (this.phone.length < 10) {
+    if (!isValidPhoneNumber(this.phone)) {
       alert('Provide valid phone number !')
     }
     else {

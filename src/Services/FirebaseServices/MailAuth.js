@@ -59,6 +59,6 @@ export const MailSignUp = async (email, password) => {
       }
     })
     .catch(err => {
-      alert(`User has already registered \n try to logIn`)
+      return (`User has already registered \n try to logIn`)
     })
 }
