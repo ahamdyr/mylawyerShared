@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity , Image, Dimensions } from 'react-native';
 import { timeDifference } from '../../Utils/DateTime';
+import { defaultPicture } from '../../../assets'
 
 export default class AnswerBy extends React.PureComponent{
   render(){
@@ -8,7 +9,7 @@ export default class AnswerBy extends React.PureComponent{
     return(
       <View style={[styles.container, style]}>
         <Image
-          source={{uri:MainPhotoURL}}
+          source={ MainPhotoURL ? {uri:MainPhotoURL} : defaultPicture}
           style={styles.imageStyle}
           resizeMode={'cover'}
         />
