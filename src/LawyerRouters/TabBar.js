@@ -2,8 +2,10 @@ import React from 'react';
 import { createBottomTabNavigator} from "react-navigation";
 import AllQuestionsTabs from './AllQuestionsTabs'
 import MyQuestionsTabs from './MyQuestionsTabs'
+import SideMenu from '../Screens/SideMenu'
 import HomeIcon from '../Components/BottomTabIcons/Home Icon'
 import QuestionsIcon from '../Components/BottomTabIcons/Questions Icon'
+import SettingsIcon from '../Components/BottomTabIcons/SettingsIcon'
 
 const  TabBar = createBottomTabNavigator(
   {
@@ -34,6 +36,24 @@ const  TabBar = createBottomTabNavigator(
       navigationOptions: ({ navigation }) => ({
           title: "",
           tabBarIcon: ({focused}) => (<QuestionsIcon 
+            focused={focused} 
+            //onPress={() =>navigation.navigate('MyQuestions')}
+          />),
+          // tabBarLabel:({focused}) => (
+          //   <Text 
+          //     style={{alignSelf:'center'}}          
+          //   >
+          //     {focused?'____':''}
+          //   </Text>
+          // )
+      })
+    },
+    LawyerSettings: {
+      screen: SideMenu,
+      params: { userType: 'Lawyer' },
+      navigationOptions: ({ navigation }) => ({
+          title: "",
+          tabBarIcon: ({focused}) => (<SettingsIcon 
             focused={focused} 
             //onPress={() =>navigation.navigate('MyQuestions')}
           />),

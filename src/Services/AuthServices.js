@@ -73,10 +73,10 @@ export const getUser = async () => {
   if(userTypeJson !== null){   
     var userType =JSON.parse(userTypeJson)
     //console.log('userType  ',userType)
-    await ReAuthenticate()
     if(userType == 'lawyer'){
       navigate('LawyerApp')
     }
+    await ReAuthenticate()
     //let currentUser = JSON.parse(currentUserJson)     
     // Store.dispatch(setCurrentUser(currentUser))
     // Store.dispatch(setLoggedUser(true))

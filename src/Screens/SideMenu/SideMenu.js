@@ -10,7 +10,10 @@ import {
 } from '../../Services/NavigationServices'
 import { defaultPicture } from '../../../assets'
 export default class SideMenu extends React.Component {
-  render() {
+
+  _type = this.props.navigation.state.params.userType
+
+  render() {    
     var {
       isLoggedUser,
       userPhoto
@@ -61,11 +64,15 @@ export default class SideMenu extends React.Component {
               navigate('About')
             }}
           />
-          <WhiteX
-            onPress={() => {
-              goBack()
-            }}
-          />
+          {
+            this._type == 'User' ?
+              <WhiteX
+                onPress={() => {
+                  goBack()
+                }}
+              />
+              : null
+          }          
         </View>
       </SafeAreaView>
     );
