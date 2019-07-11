@@ -11,9 +11,7 @@ import {
   setUserAllQuestionsPageToken,  
 } from './actions'
 import {
-  getUserAllQuestionsApi,
-  searchUserAllQuestionsApi,
-  filterUserAllQuestionsApi
+  UserAllQuestionsApi
 } from '../../Services/BackendServices/UserAllQuestionsServices'
 import { goBack, navigate } from '../../Services/NavigationServices'
 import _ from 'lodash'
@@ -30,7 +28,7 @@ function* getUserAllQuestionsSaga(action) {
       var {
         data,
         nextPageToken
-      } = yield call(filterUserAllQuestionsApi, lastPageToken, topicID, query)
+      } = yield call(UserAllQuestionsApi, lastPageToken, topicID, query)
     }else{
       var {
         data,
@@ -70,7 +68,7 @@ function* loadMoreUserAllQuestionsSaga(action) {
         var {
           data,
           nextPageToken
-        } = yield call(filterUserAllQuestionsApi, lastPageToken, topicID, query)
+        } = yield call(UserAllQuestionsApi, lastPageToken, topicID, query)
       }else{
         var {
           data,

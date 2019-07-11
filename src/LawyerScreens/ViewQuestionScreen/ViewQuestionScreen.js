@@ -1,22 +1,40 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, SafeAreaView } from "react-native";
+import { StyleSheet, Text, SafeAreaView, Alert } from "react-native";
 import Topic from '../../Components/Common/Topic'
-import AnswerBy from '../../Components/Common/AnswerBy'
 import BlackX from '../../Components/Common/BlackX'
 import { STATUS_BAR_HEIGHT, WIDTH } from '../../Components/Constants'
-import WaitingAnswer from '../../Components/Common/WaitingAnswer'
-import Spinner from '../../Screens/Spinner'
 import SubmitBtn from '../../Components/Common/SubmitBtn'
-import { goBack, navigate} from '../../Services/NavigationServices'
+import { navigate, goBack } from '../../Services/NavigationServices'
+import { lockApi } from '../../Services/BackendServices/LockService'
 
 export default class ViewQuestionScreen extends React.Component {
-  componentWillMount(){
-    // this.props.getAnswersRequest(this.props.navigation.getParam('question').id)
-    // this.props.getAttachsRequest(this.props.navigation.getParam('question').id)
+  
+  _question = this.props.navigation.getParam('question')
+  _accessToken = this.props.accessToken
+
+  _onSubmit = () => {
+    Alert.alert('Lock', 'Are you sure you want to lock this question to answer it within 24 hours ?', [
+      {
+        text: 'OK', onPress: ()=>this._lockQuestion() , style: 'default' 
+      },
+      {
+        text: 'Cancel', style: 'cancel'
+      }
+    ])
+  }
+  _lockQuestion = async () => {
+    try {
+      navigate('Spinner')
+      var res = await lockApi(this._question.id, this._accessToken)
+      Alert.alert('Success', `You have 24 hours to answer.\nGood Luck`)
+      navigate('AnswerQuestionScreen', {question:this._question})
+    } catch (error) {
+      Alert.alert('Error', `${error}\nTry again!`)
+      goBack()
+    }
   }
   render() {
     const {
-      //MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate, isAnswered, answer 
       id,
       title,
       body,
@@ -24,13 +42,8 @@ export default class ViewQuestionScreen extends React.Component {
       addedOn,
       by,
       lastActivity
-    } = this.props.navigation.getParam('question')
-    var {
-      answers,
-      attachs,
-      answersLoading,
-      attachsLoading
-    } = this.props
+    } = this._question
+
     return (
       <SafeAreaView style={styles.container}>
 
@@ -40,14 +53,15 @@ export default class ViewQuestionScreen extends React.Component {
         <Topic
           style={styles.topic}
           authorName={by.name}
-          topicName={`${topic.name.split(' ')[0]}...`}
+          //topicName={`${topic.name.split(' ')[0]}...`}
+          topicName={topic.name}
           title={title}
         />
         <SubmitBtn 
           style={styles.answerBtnStyle}
           text={'Add to my questions'}
           textStyle={styles.answerTextStyle}
-          onPress={()=>navigate('AnswerQuestionScreen', {question: this.props.navigation.getParam('question')})}
+          onPress={()=>this._onSubmit()}
         />
         <Text style={styles.hintStyle}>
           {`Please note that the question will be locked to you until you answer it`}
@@ -112,30 +126,4 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#454546"
   },
-  // answered: {
-  //   marginLeft: 16,
-  //   marginTop: 19,
-  //   marginBottom: 17,
-  // },
-  // textConatin: {
-  //   flexDirection: 'row',
-  //   alignItems: 'flex-start',
-  //   justifyContent: 'flex-start'
-  // },
-  // answer: {
-  //   fontFamily: 'Cairo-Regular',
-  //   fontSize: 14,
-  //   lineHeight: 20,
-  //   letterSpacing: 0.11,
-  //   color: '#131314',
-  //   marginHorizontal: 16
-  // },
-  // closeIcon: {
-  //   width: 16.5,
-  //   height: 16.5,
-  //   borderRadius: 0.8,
-  //   position: 'absolute',
-  //   top: 20,
-  //   right: 16
-  // }
 });

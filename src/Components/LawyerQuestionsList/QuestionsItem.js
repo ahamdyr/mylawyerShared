@@ -36,11 +36,12 @@ class QuestionsItem extends React.PureComponent {
         >
           <Topic
             authorName={by.name}
-            topicName={`${topic.name.split(' ')[0]}...`}
+            //topicName={`${topic.name.split(' ')[0]}...`}
+            topicName={topic.name}
             title={title}
           />
           {
-            screen == 'solved' ?
+            screen == 'Solved' ?
               <AnswerBy
                 MainPhotoURL={lastActivity.by.photo}
                 answeredBy={lastActivity.by.name}
@@ -51,7 +52,7 @@ class QuestionsItem extends React.PureComponent {
                   marginBottom: 18
                 }}
               />
-              : screen == 'locked' ?
+              : screen == 'Locked' || (screen == 'New' && lastActivity.type == 'lock')  ?
                 <React.Fragment>
                   <SubmitBtn 
                     style={styles.answerBtnStyle}
@@ -59,7 +60,10 @@ class QuestionsItem extends React.PureComponent {
                     textStyle={styles.answerTextStyle}
                     onPress={()=>navigate('AnswerQuestionScreen', {question: this.props.item.item})}
                   />
-                  <LockTimer style={{ marginBottom: 13, marginLeft: 16 }}/>
+                  <LockTimer 
+                    lockDate={lastActivity.addedOn}
+                    style={{ marginBottom: 13, marginLeft: 16 }}
+                  />
                 </React.Fragment>
                 : <SubmitBtn 
                     style={styles.viewBtnStyle}

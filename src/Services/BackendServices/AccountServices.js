@@ -31,7 +31,7 @@ export const LawyerRegister = async (type, token, lawyerMajor, lawyerIDsLinks, f
   let requestBody = `type=${type}&majors=${lawyerMajor.id}`
 
   lawyerIDsLinks.forEach(e=>{
-    requestBody = requestBody + `&verificationPapers=${e}`
+    requestBody = requestBody + `&idPapers=${e}`
   })
   firmPapersLinks.forEach(x=>{
     requestBody = requestBody + `&firmPapers=${x}`

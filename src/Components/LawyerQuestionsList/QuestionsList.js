@@ -36,8 +36,8 @@ export default class QuestionsList extends React.PureComponent {
   renderQuestions = (questions, refresh, loadMore) => {
     return (
       <FlatList
-        //data={questions}
-        data={mockAllQuestions}
+        data={questions}
+        //data={mockAllQuestions}
         keyExtractor={this._keyExtractor}
         renderItem={this.renderItem}
         //numColumns={2}
@@ -80,6 +80,7 @@ export default class QuestionsList extends React.PureComponent {
 
       }}>
         {
+          //mockAllQuestions.length ?
           questions.length ?
             this.renderQuestions(questions, refresh, loadMore)
             : questionsLoading ?

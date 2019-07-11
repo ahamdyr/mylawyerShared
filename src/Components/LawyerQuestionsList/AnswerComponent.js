@@ -26,11 +26,11 @@ export default class AnswerComponent extends React.PureComponent {
   }
   _titleChange = (val) => {
     //this.setState({title : val}) 
-    this.props.setQuestionTitle(val)
+    //this.props.setQuestionTitle(val)
   }
   _bodyChange = (val) => {
-    //this.setState({body : val}) 
-    this.props.setQuestionBody(val)
+    this.setState({body : val}) 
+    //this.props.setQuestionBody(val)
   }
   _titleKeyBoardToggle = () => {
     if (this._titleRef.isFocused()) {
@@ -48,7 +48,15 @@ export default class AnswerComponent extends React.PureComponent {
       this._bodyRef.focus()
     }
   }
-
+  _onAnswerSubmit = () => {   
+    //console.log('this._bodyRef   ',this.state.body) 
+    if(this.state.body.length){
+      this.props.onSubmit(this.state.body)
+    }
+    else{
+      alert('You must have an answer to submit')
+    }
+  }
 
   render() {
     var {
@@ -114,7 +122,7 @@ export default class AnswerComponent extends React.PureComponent {
                   ref={(ref) => this._bodyRef = ref}
                   underlineColorAndroid="transparent"
                   placeholder={this.props.bodyPlaceHolder || 'Write Your Answer...'}
-                  //onChangeText={this._bodyChange}
+                  onChangeText={this._bodyChange}
                   multiline={true}
                 //onEndEditing={()=>Keyboard.dismiss}
                 //shouldCancelWhenOutside={true}
@@ -122,7 +130,7 @@ export default class AnswerComponent extends React.PureComponent {
               </ScrollView >
             </TouchableOpacity>
           </KeyboardAvoidingView>
-          <View style={styles.attachBtnsContainer}>
+          {/* <View style={styles.attachBtnsContainer}>
             <TouchableOpacity
               //onPress={this._uploadCameraImage}
               style={styles.cameratIconContainer}>
@@ -140,13 +148,13 @@ export default class AnswerComponent extends React.PureComponent {
                 source={attachment}
               />
             </TouchableOpacity>
-          </View>
+          </View> */}
         </View>
         <SubmitBtn
           style={styles.answerBtnStyle}
           text={'Answer'}
           textStyle={styles.answerTextStyle}
-        //onPress={() => navigate('AnswerQuestionScreen', { question: this.props.item.item })}
+          onPress={()=>this._onAnswerSubmit()}
         />
       </View>
     )

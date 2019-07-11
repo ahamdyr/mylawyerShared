@@ -7,41 +7,56 @@ import Spinner from '../../Screens/Spinner'
 
 export default class NewQuestionsScreen extends React.Component {
   componentWillMount(){
-    this.props.getUserAllQuestionsRequest()    
+    this.willFocusSubscription = this.props.navigation.addListener('willFocus', () => {
+      if(this.props.isLoggedUser){
+        this.props.getLawyerNewQuestionsRequest()
+      }
+    });
+  }
+  componentWillUnmount(){
+    this.willFocusSubscription.remove();
   }
   render() {
+    
     var {
-      questions,
-      getUserAllQuestionsLoading,
-      getUserAllQuestionsSuccess,
-      getUserAllQuestionsLoadingMore,
-      getUserAllQuestionsNoMore,
+      currentUser,
+      isLoggedUser,
+      accessToken,
 
-      getUserAllQuestionsRequest,
-      searchUserAllQuestionsRequest,
-      filterUserAllQuestionsRequest,
-      getUserAllQuestionsLoadMore,
+      questions,
+      questionsLoading,
+      loadingMore,
+      noMore,
+
+      getLawyerNewQuestionsRequest,
+      searchLawyerNewQuestionsRequest,
+      filterLawyerNewQuestionsRequest,
+      getLawyerNewQuestionsLoadMore
+
     } = this.props
+
+    // if(getLawyerNewQuestionsLoading){
+    //   return (<Spinner/>)
+    // }
 
     return (
       <SafeAreaView style={styles.container}>
         <SelectComponent 
-          onSelect={(topicID)=>filterUserAllQuestionsRequest(topicID)}
+          onSelect={(topicID)=>filterLawyerNewQuestionsRequest(topicID)}
         />
         <SearchComponent 
-          onSearch={(query)=>searchUserAllQuestionsRequest(query)}
-          onCancel={()=>getUserAllQuestionsRequest()}
+          onSearch={(query)=>searchLawyerNewQuestionsRequest(query)}
+          onCancel={()=>getLawyerNewQuestionsRequest()}
         />
-        <QuestionsList
-          refresh={() => getUserAllQuestionsRequest()}
-          loadMore={() => getUserAllQuestionsLoadMore()}
-          questions={getUserAllQuestionsSuccess}
-          questionsLoading={getUserAllQuestionsLoading}
-          questionsLoadingMore={getUserAllQuestionsLoadingMore}
-          questionsNoMore={getUserAllQuestionsNoMore}
-          screen={'new'}
+        <QuestionsList 
+          refresh={() => getLawyerNewQuestionsRequest()}
+          loadMore={() => getLawyerNewQuestionsLoadMore()}
+          questions={questions}
+          questionsLoading={questionsLoading}
+          questionsLoadingMore={loadingMore}
+          questionsNoMore={noMore}
+          screen={'New'}
         />
-        
       </SafeAreaView>
     );
   }

@@ -1,18 +1,18 @@
 import SolvedQuestionsScreen from './SolvedQuestionsScreen'
 import {connect} from 'react-redux'
 import {
-  getUserOwnQuestionsRequest,
-  searchUserOwnQuestionsRequest,
-  filterUserOwnQuestionsRequest,
-  getUserOwnQuestionsLoadMore
-} from '../../Redux/UserOwnQuests/actions'
+  getLawyerSolvedQuestionsRequest,
+  filterLawyerSolvedQuestionsRequest,
+  searchLawyerSolvedQuestionsRequest,
+  getLawyerSolvedQuestionsLoadMore
+} from '../../Redux/LawyerSolvedQuests/actions'
 
 const mapStateToProps =  state => ({
   //questions: state.questions,
-  questions: state.getUserOwnQuestionsSuccess,
-  questionsLoading: state.getUserOwnQuestionsLoading,
-  loadingMore: state.getUserOwnQuestionsLoadingMore,
-  noMore: state.getUserOwnQuestionsNoMore,
+  questions: state.getLawyerSolvedQuestionsSuccess,
+  questionsLoading: state.getLawyerSolvedQuestionsLoading,
+  loadingMore: state.getLawyerSolvedQuestionsLoadingMore,
+  noMore: state.getLawyerSolvedQuestionsNoMore,
   
   currentUser: state.currentUser,
   accessToken: state.accessToken,
@@ -20,9 +20,9 @@ const mapStateToProps =  state => ({
 })
 
 const mapDispatchersToProps = dispatch => ({
-  getUserOwnQuestionsRequest: () => dispatch(getUserOwnQuestionsRequest()),
-  searchUserOwnQuestionsRequest: (query) => dispatch(searchUserOwnQuestionsRequest(query)),
-  filterUserOwnQuestionsRequest: (topicID)=>dispatch(filterUserOwnQuestionsRequest(topicID)),
-  getUserOwnQuestionsLoadMore: () => dispatch(getUserOwnQuestionsLoadMore())
-})  
+  getLawyerSolvedQuestionsRequest: () => dispatch(getLawyerSolvedQuestionsRequest()),
+  searchLawyerSolvedQuestionsRequest: (query) => dispatch(searchLawyerSolvedQuestionsRequest(query)),
+  filterLawyerSolvedQuestionsRequest: (topicID)=>dispatch(filterLawyerSolvedQuestionsRequest(topicID)),
+  getLawyerSolvedQuestionsLoadMore: () => dispatch(getLawyerSolvedQuestionsLoadMore())
+})
 export default connect(mapStateToProps, mapDispatchersToProps)(SolvedQuestionsScreen)

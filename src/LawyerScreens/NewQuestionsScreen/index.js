@@ -1,25 +1,28 @@
 import NewQuestionsScreen from './NewQuestionsScreen'
 import {connect} from 'react-redux'
 import {
-  getUserAllQuestionsRequest,
-  searchUserAllQuestionsRequest,
-  filterUserAllQuestionsRequest,
-  getUserAllQuestionsLoadMore
-} from '../../Redux/UserAllQuests/actions'
+  getLawyerNewQuestionsRequest,
+  filterLawyerNewQuestionsRequest,
+  searchLawyerNewQuestionsRequest,
+  getLawyerNewQuestionsLoadMore
+} from '../../Redux/LawyerNewQuests/actions'
 
 const mapStateToProps =  state => ({
-  questions: state.questions,
-  getUserAllQuestionsSuccess: state.getUserAllQuestionsSuccess,
-  getUserAllQuestionsLoading: state.getUserAllQuestionsLoading,
-  getUserAllQuestionsLoadingMore: state.getUserAllQuestionsLoadingMore,
-  getUserAllQuestionsNoMore: state.getUserAllQuestionsNoMore,
-  topicID: state.allQuestionsFilterTopic
+  //questions: state.questions,
+  questions: state.getLawyerNewQuestionsSuccess,
+  questionsLoading: state.getLawyerNewQuestionsLoading,
+  loadingMore: state.getLawyerNewQuestionsLoadingMore,
+  noMore: state.getLawyerNewQuestionsNoMore,
+  
+  currentUser: state.currentUser,
+  accessToken: state.accessToken,
+  isLoggedUser: state.isLoggedUser,
 })
 
 const mapDispatchersToProps = dispatch => ({
-  getUserAllQuestionsRequest: () => dispatch(getUserAllQuestionsRequest()),
-  searchUserAllQuestionsRequest: (query) => dispatch(searchUserAllQuestionsRequest(query)),
-  filterUserAllQuestionsRequest: (topicID) => dispatch(filterUserAllQuestionsRequest(topicID)),
-  getUserAllQuestionsLoadMore: () => dispatch(getUserAllQuestionsLoadMore())
-})  
+  getLawyerNewQuestionsRequest: () => dispatch(getLawyerNewQuestionsRequest()),
+  searchLawyerNewQuestionsRequest: (query) => dispatch(searchLawyerNewQuestionsRequest(query)),
+  filterLawyerNewQuestionsRequest: (topicID)=>dispatch(filterLawyerNewQuestionsRequest(topicID)),
+  getLawyerNewQuestionsLoadMore: () => dispatch(getLawyerNewQuestionsLoadMore())
+})
 export default connect(mapStateToProps, mapDispatchersToProps)(NewQuestionsScreen)

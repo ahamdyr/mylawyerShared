@@ -11,7 +11,7 @@ import {
   getUserOwnQuestionsNoMore  
 } from './actions'
 import {
-  searchUserOwnQuestionsApi
+  UserOwnQuestionsApi
 } from '../../Services/BackendServices/UserOwnQuestsServices'
 import _ from 'lodash'
 
@@ -26,7 +26,7 @@ function* getUserOwnQuestionsSaga(action) {
     var {
       data,
       nextPageToken
-    } = yield call(searchUserOwnQuestionsApi, lastPageToken, accessToken, topicID, query)
+    } = yield call(UserOwnQuestionsApi, lastPageToken, accessToken, topicID, query)
 
     yield put(getUserOwnQuestionsSuccess(data))
     yield put(getUserOwnQuestionsLoading(false))
@@ -59,7 +59,7 @@ function* loadMoreUserOwnQuestionsSaga(action) {
       var {
         data,
         nextPageToken
-      } = yield call(searchUserOwnQuestionsApi, lastPageToken, accessToken, topicID, query)
+      } = yield call(UserOwnQuestionsApi, lastPageToken, accessToken, topicID, query)
       var newData = [...lastData, ...data]
       yield put(getUserOwnQuestionsSuccess(newData))
       yield put(getUserOwnQuestionsLoadingMore(false))

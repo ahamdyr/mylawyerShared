@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity , Image, Dimensions } from 'react-native';
-import { timeDifference } from '../Constants';
+import { lockTimeLeft } from '../../Utils/DateTime';
 import { timer } from '../../../assets'
 
 export default class LockTimer extends React.PureComponent{
   render(){
-    const{MainPhotoURL, answeredBy, answerDate, style} = this.props
+    const{ lockDate, style } = this.props
     return(
       <View style={[styles.container, style]}>
         <Image
@@ -13,7 +13,7 @@ export default class LockTimer extends React.PureComponent{
           style={styles.imageStyle}
         />
         <Text style={styles.date}>
-          {'23h left to unlock'}
+          {`${lockTimeLeft(lockDate)} left to unlock`}
         </Text>
       </View>
     )

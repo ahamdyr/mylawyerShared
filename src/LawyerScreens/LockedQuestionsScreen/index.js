@@ -1,18 +1,18 @@
 import LockedQuestionsScreen from './LockedQuestionsScreen'
 import {connect} from 'react-redux'
 import {
-  getUserOwnQuestionsRequest,
-  searchUserOwnQuestionsRequest,
-  filterUserOwnQuestionsRequest,
-  getUserOwnQuestionsLoadMore
-} from '../../Redux/UserOwnQuests/actions'
+  getLawyerLockedQuestionsRequest,
+  filterLawyerLockedQuestionsRequest,
+  searchLawyerLockedQuestionsRequest,
+  getLawyerLockedQuestionsLoadMore
+} from '../../Redux/LawyerLockedQuests/actions'
 
 const mapStateToProps =  state => ({
   //questions: state.questions,
-  questions: state.getUserOwnQuestionsSuccess,
-  questionsLoading: state.getUserOwnQuestionsLoading,
-  loadingMore: state.getUserOwnQuestionsLoadingMore,
-  noMore: state.getUserOwnQuestionsNoMore,
+  questions: state.getLawyerLockedQuestionsSuccess,
+  questionsLoading: state.getLawyerLockedQuestionsLoading,
+  loadingMore: state.getLawyerLockedQuestionsLoadingMore,
+  noMore: state.getLawyerLockedQuestionsNoMore,
   
   currentUser: state.currentUser,
   accessToken: state.accessToken,
@@ -20,9 +20,9 @@ const mapStateToProps =  state => ({
 })
 
 const mapDispatchersToProps = dispatch => ({
-  getUserOwnQuestionsRequest: () => dispatch(getUserOwnQuestionsRequest()),
-  searchUserOwnQuestionsRequest: (query) => dispatch(searchUserOwnQuestionsRequest(query)),
-  filterUserOwnQuestionsRequest: (topicID)=>dispatch(filterUserOwnQuestionsRequest(topicID)),
-  getUserOwnQuestionsLoadMore: () => dispatch(getUserOwnQuestionsLoadMore())
-})  
+  getLawyerLockedQuestionsRequest: () => dispatch(getLawyerLockedQuestionsRequest()),
+  searchLawyerLockedQuestionsRequest: (query) => dispatch(searchLawyerLockedQuestionsRequest(query)),
+  filterLawyerLockedQuestionsRequest: (topicID)=>dispatch(filterLawyerLockedQuestionsRequest(topicID)),
+  getLawyerLockedQuestionsLoadMore: () => dispatch(getLawyerLockedQuestionsLoadMore())
+})
 export default connect(mapStateToProps, mapDispatchersToProps)(LockedQuestionsScreen)

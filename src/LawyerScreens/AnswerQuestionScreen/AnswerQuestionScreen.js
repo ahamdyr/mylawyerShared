@@ -1,21 +1,38 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, SafeAreaView, TextInput } from "react-native";
+import { StyleSheet, SafeAreaView } from "react-native";
 import Topic from '../../Components/Common/Topic'
-import AnswerBy from '../../Components/Common/AnswerBy'
 import BlackX from '../../Components/Common/BlackX'
-import { STATUS_BAR_HEIGHT, WIDTH, HEIGHT } from '../../Components/Constants'
+import { STATUS_BAR_HEIGHT } from '../../Components/Constants'
 import AttachmentBtn from '../../Components/Common/AttachmentBtn'
 import AnswerComponent from '../../Components/LawyerQuestionsList/AnswerComponent'
-import Spinner from '../../Screens/Spinner'
+import { navigate, goBack } from '../../Services/NavigationServices'
+import { answerApi } from '../../Services/BackendServices/AnswerServices'
+
 export default class AnswerQuestionScreen extends React.Component {
-  componentWillMount(){
-    // this.props.getAnswersRequest(this.props.navigation.getParam('question').id)
-    // this.props.getAttachsRequest(this.props.navigation.getParam('question').id)
+
+  _question = this.props.navigation.getParam('question')
+  _accessToken = this.props.accessToken
+  
+  _answerQuestion = async (answer) => {
+    try {
+      navigate('Spinner')
+      var res = await answerApi(this._question.id, this._accessToken, answer)
+      Alert.alert('Success', `Your answer has been sent.`)
+      navigate('NewQuestionsScreen')
+    } catch (error) {
+      Alert.alert('Error', `${error}\nTry again!`)
+      goBack()
+    }
   }
+
+  componentWillMount() {
+    this.props.getAttachsRequest(this._question.id)
+    // this.props.getAnswersRequest(this.props.navigation.getParam('question').id)
+  }
+
   render() {
-    //console.log('HEIGHT/3  ',HEIGHT/3)
-    const { 
-      //MainPhotoURL, authorName, qIndex, content, answeredBy, answerDate, isAnswered, answer 
+
+    const {
       id,
       title,
       body,
@@ -23,11 +40,11 @@ export default class AnswerQuestionScreen extends React.Component {
       addedOn,
       by,
       lastActivity
-    } = this.props.navigation.getParam('question')
+    } = this._question
     var {
-      answers,
+      //answers,
       attachs,
-      answersLoading,
+      //answersLoading,
       attachsLoading
     } = this.props
     return (
@@ -48,11 +65,12 @@ export default class AnswerQuestionScreen extends React.Component {
               //attachs={attachs[id]}
               attachs={attachs}
               attachsLoading={attachsLoading}
-              //style={styles.Attachments}
+            //style={styles.Attachments}
             />
-            : null          
+            : null
         }
         <AnswerComponent
+          onSubmit={(answer)=>this._answerQuestion(answer)}
           offset={attachs.length ? 270 : 220}
         />
       </SafeAreaView>

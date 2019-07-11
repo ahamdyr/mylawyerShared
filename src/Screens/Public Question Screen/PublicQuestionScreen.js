@@ -37,7 +37,8 @@ export default class PublicQuestionScreen extends React.Component {
         <Topic
           style={styles.topic}
           authorName={by.name}
-          topicName={`${topic.name.split(' ')[0]}...`}
+          topicName={topic.name}
+          //topicName={`${topic.name.split(' ')[0]}...`}
           title={title}
         />
         {

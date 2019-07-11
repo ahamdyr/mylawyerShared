@@ -10,7 +10,7 @@ export default class SolvedQuestionsScreen extends React.Component {
   componentWillMount(){
     this.willFocusSubscription = this.props.navigation.addListener('willFocus', () => {
       if(this.props.isLoggedUser){
-        this.props.getUserOwnQuestionsRequest()
+        this.props.getLawyerSolvedQuestionsRequest()
       }
     });
   }
@@ -18,34 +18,7 @@ export default class SolvedQuestionsScreen extends React.Component {
     this.willFocusSubscription.remove();
   }
   render() {
-    // if (!this.props.isLoggedUser) {
-    //   return (
-    //     <SafeAreaView style={[styles.container, {
-    //       alignItems: 'center',
-    //       justifyContent: 'center',
-    //     }]}>
-    //       <TouchableOpacity
-    //         style={{
-    //           backgroundColor: '#0b7f7c',
-    //           height: 50,
-    //           width: 150,
-    //           borderRadius: 10,
-    //           alignItems: 'center',
-    //           justifyContent: 'center',
-    //         }}
-    //         onPress={()=>navigate('SocialScreen')}
-    //       >
-    //         <Text style={{
-    //           fontSize: 16,
-    //           color: 'white'
-    //         }}>
-    //           You have to log in!
-    //         </Text>
-    //       </TouchableOpacity>
-
-    //     </SafeAreaView>
-    //   )
-    // }
+    
     var {
       currentUser,
       isLoggedUser,
@@ -56,34 +29,34 @@ export default class SolvedQuestionsScreen extends React.Component {
       loadingMore,
       noMore,
 
-      getUserOwnQuestionsRequest,
-      searchUserOwnQuestionsRequest,
-      filterUserOwnQuestionsRequest,
-      getUserOwnQuestionsLoadMore
+      getLawyerSolvedQuestionsRequest,
+      searchLawyerSolvedQuestionsRequest,
+      filterLawyerSolvedQuestionsRequest,
+      getLawyerSolvedQuestionsLoadMore
 
     } = this.props
 
-    // if(getUserOwnQuestionsLoading){
+    // if(getLawyerSolvedQuestionsLoading){
     //   return (<Spinner/>)
     // }
 
     return (
       <SafeAreaView style={styles.container}>
         <SelectComponent 
-          onSelect={(topicID)=>filterUserOwnQuestionsRequest(topicID)}
+          onSelect={(topicID)=>filterLawyerSolvedQuestionsRequest(topicID)}
         />
         <SearchComponent 
-          onSearch={(query)=>searchUserOwnQuestionsRequest(query)}
-          onCancel={()=>getUserOwnQuestionsRequest()}
+          onSearch={(query)=>searchLawyerSolvedQuestionsRequest(query)}
+          onCancel={()=>getLawyerSolvedQuestionsRequest()}
         />
         <QuestionsList 
-          refresh={() => getUserOwnQuestionsRequest()}
-          loadMore={() => getUserOwnQuestionsLoadMore()}
+          refresh={() => getLawyerSolvedQuestionsRequest()}
+          loadMore={() => getLawyerSolvedQuestionsLoadMore()}
           questions={questions}
           questionsLoading={questionsLoading}
           questionsLoadingMore={loadingMore}
           questionsNoMore={noMore}
-          screen={'solved'}
+          screen={'Solved'}
         />
       </SafeAreaView>
     );

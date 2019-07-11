@@ -12,6 +12,10 @@ import * as questionAttachs from './Attachs/reducers'
 import * as ContactUs from './ContactUs/reducers'
 import * as Majors from './LawyerMajors/reducers'
 import * as LawyerVerification from './LawyerVerification/reducers'
+import * as LawyerAllQuests from './LawyerAllQuests/reducers'
+import * as LawyerLockedQuests from './LawyerLockedQuests/reducers'
+import * as LawyerNewQuests from './LawyerNewQuests/reducers'
+import * as LawyerSolvedQuests from './LawyerSolvedQuests/reducers'
 
 export default combineReducers({
   socialModalOpen,
@@ -26,5 +30,9 @@ export default combineReducers({
   ...questionAttachs,
   ...ContactUs,
   ...Majors,
-  ...LawyerVerification
+  ...LawyerVerification,
+  ...LawyerAllQuests,
+  ...LawyerLockedQuests,
+  ...LawyerNewQuests,
+  ...LawyerSolvedQuests,
 })

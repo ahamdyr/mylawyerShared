@@ -5,6 +5,10 @@ import {getLawyersList, searchLawyersList} from './LawyersList/saga'
 import getLawyerDetails from './LawyerDetails/saga'
 import { getUserAllQuestions, loadMoreUserAllQuestions } from './UserAllQuests/saga'
 import {  getUserOwnQuestions, loadMoreUserOwnQuestions } from './UserOwnQuests/saga'
+import {  getLawyerAllQuestions, loadMoreLawyerAllQuestions } from './LawyerAllQuests/saga'
+import {  getLawyerLockedQuestions, loadMoreLawyerLockedQuestions } from './LawyerLockedQuests/saga'
+import {  getLawyerNewQuestions, loadMoreLawyerNewQuestions } from './LawyerNewQuests/saga'
+import {  getLawyerSolvedQuestions, loadMoreLawyerSolvedQuestions } from './LawyerSolvedQuests/saga'
 import getAnswersList from './Answers/saga'
 import getAttachsList from './Attachs/saga'
 import submitContactMessage from './ContactUs/saga'
@@ -25,5 +29,13 @@ export default function * mySaga () {
     fork(getAttachsList),
     fork(submitContactMessage),
     fork(getMajorsList),
+    fork(getLawyerAllQuestions),
+    fork(loadMoreLawyerAllQuestions),
+    fork(getLawyerLockedQuestions),
+    fork(loadMoreLawyerLockedQuestions),
+    fork(getLawyerNewQuestions),
+    fork(loadMoreLawyerNewQuestions),
+    fork(getLawyerSolvedQuestions),
+    fork(loadMoreLawyerSolvedQuestions),
   ])  
 }

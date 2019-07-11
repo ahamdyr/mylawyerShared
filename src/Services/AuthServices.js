@@ -16,12 +16,12 @@ import {
 export const saveUser = async (currentUser, userType) => {
   try {
     //console.log('currentUser ', currentUser)
-    Store.dispatch(setCurrentUser(currentUser))
     Store.dispatch(setLoggedUser(true))     
-    await AsyncStorage.setItem('currentUser', JSON.stringify(currentUser))
-    await AsyncStorage.setItem('userType', JSON.stringify(userType))
+    Store.dispatch(setCurrentUser(currentUser))
     let accessToken = currentUser.accessToken
     Store.dispatch(setAccessToken(accessToken))
+    await AsyncStorage.setItem('currentUser', JSON.stringify(currentUser))
+    await AsyncStorage.setItem('userType', JSON.stringify(userType))
     await AsyncStorage.setItem('accessToken', JSON.stringify(accessToken))  
       
   } catch (error) {
@@ -50,9 +50,9 @@ export const logOut = async () => {
     //console.log('currentUser ', currentUser)
     Store.dispatch(setCurrentUser({}))
     Store.dispatch(setLoggedUser(false))     
+    Store.dispatch(setAccessToken(''))
     await AsyncStorage.removeItem('currentUser')
     await AsyncStorage.removeItem('userType')
-    Store.dispatch(setAccessToken(''))
     await AsyncStorage.removeItem('accessToken') 
     //Store.dispatch(getUserOwnQuestionsSuccess([]))
     alert('You are logged out!')     
@@ -68,10 +68,10 @@ export const getUser = async () => {
   if(userTypeJson !== null){   
     var userType =JSON.parse(userTypeJson)
     //console.log('userType  ',userType)
+    await ReAuthenticate()
     if(userType == 'lawyer'){
       navigate('LawyerApp')
     }
-    await ReAuthenticate()
     //let currentUser = JSON.parse(currentUserJson)     
     // Store.dispatch(setCurrentUser(currentUser))
     // Store.dispatch(setLoggedUser(true))

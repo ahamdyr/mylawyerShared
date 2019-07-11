@@ -130,9 +130,14 @@ export const lawyerSignUp = async () => {
     //console.log('pickedUser ', pickedUser)
     currentUser = Object.assign({},currentUser, pickedUser)
 
-    await saveUser(currentUser, userType)
-
-    navigate('Step4')
+    if (currentUser.isActivated) {
+      await saveUser(currentUser, userType)
+      Alert.alert('LogIn', 'You logged in successfully')
+      navigate('LawyerApp')
+    }
+    else {
+      navigate('Step4')
+    }
   } catch (error) {
     Alert.alert('Error', `${error}`)
     goBack()
