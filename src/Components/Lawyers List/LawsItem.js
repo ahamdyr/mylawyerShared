@@ -41,7 +41,7 @@ class LawsItem extends React.PureComponent {
               <Text style={{ color: 'white', fontSize: 13.5 }}>
                 {major || 'Finance'}
               </Text>
-              <RatingView rating={rate || 3} />
+              <RatingView rating={rate || 3} disabled={true} />
             </View>
 
 

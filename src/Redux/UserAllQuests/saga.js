@@ -11,7 +11,8 @@ import {
   setUserAllQuestionsPageToken,  
 } from './actions'
 import {
-  UserAllQuestionsApi
+  UserAllQuestionsApi,
+  filterUserAllQuestionsApi
 } from '../../Services/BackendServices/UserAllQuestionsServices'
 import { goBack, navigate } from '../../Services/NavigationServices'
 import _ from 'lodash'
@@ -28,12 +29,12 @@ function* getUserAllQuestionsSaga(action) {
       var {
         data,
         nextPageToken
-      } = yield call(UserAllQuestionsApi, lastPageToken, topicID, query)
+      } = yield call(filterUserAllQuestionsApi, lastPageToken, topicID, query)
     }else{
       var {
         data,
         nextPageToken
-      } = yield call(searchUserAllQuestionsApi, lastPageToken, topicID, query)
+      } = yield call(UserAllQuestionsApi, lastPageToken, topicID, query)
     }
     yield put(getUserAllQuestionsSuccess(data))
     yield put(getUserAllQuestionsLoading(false))
@@ -68,12 +69,12 @@ function* loadMoreUserAllQuestionsSaga(action) {
         var {
           data,
           nextPageToken
-        } = yield call(UserAllQuestionsApi, lastPageToken, topicID, query)
+        } = yield call(filterUserAllQuestionsApi, lastPageToken, topicID, query)
       }else{
         var {
           data,
           nextPageToken
-        } = yield call(searchUserAllQuestionsApi, lastPageToken, topicID, query)        
+        } = yield call(UserAllQuestionsApi, lastPageToken, topicID, query)        
       }
       var newData = [...lastData, ...data]
       yield put(getUserAllQuestionsSuccess(newData))

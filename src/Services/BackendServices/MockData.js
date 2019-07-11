@@ -171,10 +171,11 @@ export const mockAllQuestions = [
 ]
 
 export const mockAnswers = [
-  {
+ {
     id: 1,
-    addedOn: "01/01/19",
+    addedOn: Date.UTC(2019, 1, 21, 13, 40, 30, 20), 
     body: answerBody,
+    rate: null,
     acceptedOn: "01/01/19",
     rejectedOn: "01/01/19",
     by: {
@@ -182,7 +183,20 @@ export const mockAnswers = [
       name: 'Amir Fawzy',
       photo: attachPhoto
     }
-  }
+  },
+  {
+    id: 2,
+    addedOn: Date.UTC(2019, 1, 21, 13, 40, 30, 20), 
+    body: answerBody,
+    rate: null,
+    acceptedOn: "01/01/19",
+    rejectedOn: "01/01/19",
+    by: {
+      id: 1,
+      name: 'Amir Fawzy',
+      photo: attachPhoto
+    }
+  },
 ]
 
 export const mockAttachs = {

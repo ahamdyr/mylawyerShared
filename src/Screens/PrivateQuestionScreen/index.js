@@ -5,6 +5,7 @@ import { getAttachsRequest } from '../../Redux/Attachs/actions'
 
 const mapStateToProps =  state => ({
   isLoggedUser: state.isLoggedUser,
+  accessToken: state.accessToken,
   // answers: state.answers,
   // attachs: state.attachs,
   answers: state.getAnswersSuccess,

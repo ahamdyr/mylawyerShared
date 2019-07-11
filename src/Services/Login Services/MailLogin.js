@@ -127,7 +127,12 @@ export const lawyerSignUp = async () => {
     // console.log('lawyerMajor ', lawyerMajor)
 
     var pickedUser = await LawyerRegister(userType, backendToken, lawyerMajor, lawyerIDsLinks, firmPapersLinks)
-    //console.log('pickedUser ', pickedUser)
+    // var pickedUser = {
+    //   id: 53,
+    //   type: 'lawyer',
+    //   accessToken: 'NTc6SW1SallqWm1ZakUwTFRnME0yRXRORE5rWVMwNVlXRmtMVEkwTVRjNVpUWmlaREpoWXlJOjFobFk4UzpWc3JuOGE5bVJTbm1Uck5fRU1LVkpwb3QxTzA=',
+    //   isActivated: true
+    // }
     currentUser = Object.assign({},currentUser, pickedUser)
 
     if (currentUser.isActivated) {

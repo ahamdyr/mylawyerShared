@@ -37,3 +37,5 @@ export const logo_text_colord = require('./images/logo_text_colord_3x.png')
 export const timer = require('./images/timer.png')
 export const lawyerIcon = require('./images/lawyerIcon.png')
 export const userLogo = require('./images/userLogo.png')
+export const reviewArrow = require('./images/arrowRight13x.png')
+

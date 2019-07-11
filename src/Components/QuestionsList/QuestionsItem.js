@@ -5,6 +5,8 @@ import Topic from '../Common/Topic'
 import AnswerBy from '../Common/AnswerBy'
 import WaitingAnswer from '../Common/WaitingAnswer'
 import { withNavigation } from 'react-navigation';
+import SeperatorLine from '../Common/SeperatorLine'
+import SubmitBtn from '../Common/SubmitBtn'
 import {navigate} from '../../Services/NavigationServices'
 import Store from '../../Redux/Store'
 class QuestionsItem extends React.PureComponent {
@@ -65,7 +67,20 @@ class QuestionsItem extends React.PureComponent {
             />
             :<WaitingAnswer/>
           }
-          
+          {
+            (routeName == 'MyQuestions' && lastActivity.type == 'answer' && lastActivity.rate == null) ?
+            <React.Fragment>
+                <SeperatorLine style={styles.line}/>
+                <SubmitBtn  
+                  style={styles.reviewBtn}
+                  text={'Review answer'}
+                  textStyle={styles.textStyle}
+                  onPress={()=>navigate('PrivateQuestionScreen', {question:this.props.item.item})}
+                  reviewBtn={true}
+                />
+            </React.Fragment>
+            : null
+          }
           
         </TouchableOpacity>
       </View>
@@ -82,5 +97,30 @@ const styles = StyleSheet.create({
     // borderBottomColor: '#0b7f7c',
     width: WIDTH,
     backgroundColor: 'white'
-  }
+  },
+  line: {
+    marginTop: 9,
+    marginBottom: 11,
+    width: WIDTH - 30,
+    alignSelf: 'center',
+    height: 1,
+    backgroundColor: "#dedede"
+  },
+  reviewBtn: {
+    marginBottom: 11,
+    width: WIDTH - 30,
+    alignSelf: 'center',
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: "#0b7f7c"
+  },
+  textStyle: {
+    fontFamily: "Lato-Heavy",
+    fontSize: 14,
+    fontWeight: "800",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "center",
+    color: "#ffffff"
+  },
 });

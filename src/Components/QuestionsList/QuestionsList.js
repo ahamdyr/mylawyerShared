@@ -4,6 +4,8 @@ import {WIDTH} from '../Constants'
 import QuestionsItem from './QuestionsItem'
 import StatusText from '../Common/StatusText'
 import Spinner from '../../Screens/Spinner'
+import {mockAllQuestions } from '../../Services/BackendServices/MockData'
+
 export default class QuestionsList extends React.PureComponent {
   
   renderItem = (item) => {
@@ -34,7 +36,7 @@ export default class QuestionsList extends React.PureComponent {
     return (
       <FlatList
         data={questions}
-        //data={questions}
+        //data={mockAllQuestions}
         keyExtractor={this._keyExtractor}
         renderItem={this.renderItem}
         //numColumns={2}
@@ -77,6 +79,7 @@ export default class QuestionsList extends React.PureComponent {
 
       }}>
         {
+          //mockAllQuestions.length ?
           questions.length ?
             this.renderQuestions(questions, refresh, loadMore)
             : questionsLoading ?
