@@ -32,9 +32,19 @@ export const GoogleAuth = async (token) => {
         }
       })
       .catch(err => {
-        alert(err)
+        showMessage({
+          message: `${err}\nTry again!`,
+          hideOnPress: true,
+          autoHide: false,
+          type: 'danger',
+        });
       })
   } catch (error) {
-    alert(error)
+    showMessage({
+      message: `${error}\nTry again!`,
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
   }
 }

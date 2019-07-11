@@ -35,7 +35,12 @@ export default class ContactUs extends React.Component {
       this.props.submitMessage(this.state.email, this.state.body)    
     }
     else {
-      alert('Your query must have at least valid email and message')
+      showMessage({
+        message: 'Your question has been submitted',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'success',
+      });
     }
   }
   render() {

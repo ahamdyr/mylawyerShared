@@ -31,6 +31,11 @@ export const FacebookAuth = async (token) => {
       }
     })
     .catch(err => {
-      alert(err)
+      showMessage({
+        message: `${err}`,
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
     })
 }

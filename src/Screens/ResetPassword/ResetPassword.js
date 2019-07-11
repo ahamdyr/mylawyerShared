@@ -33,7 +33,12 @@ export default class ResetPassword extends React.Component {
   }
   _onSubmit = async () => {
     if (this.state.password.length < 8) {
-      alert('password must be 8 digits or more !')
+      showMessage({
+        message: 'password must be 8 digits or more !',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
       return
     }
     await resetPassword(this.state.password, this.state.oldPassword)

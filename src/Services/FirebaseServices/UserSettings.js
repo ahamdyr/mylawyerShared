@@ -10,13 +10,28 @@ export const resetPassword = async (newPassword, oldPassword) => {
       .reauthenticateAndRetrieveDataWithCredential(credentials)
       .then(user => {
         user.user.updatePassword(newPassword)
-          .then(() => alert('Your password has been reset'))
+          .then(() => showMessage({
+            message: 'You are logged out',
+            hideOnPress: true,
+            autoHide: false,
+            type: 'success',
+          }))
       })
-      .catch(err => alert(`Old password \n${err}`))
+      .catch(err => showMessage({
+        message: `Old password \n${err}`,
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      }))
 
   }
   else {
-    alert(`Your credentials don't need password`)
+    showMessage({
+      message: `Your credentials don't need password`,
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
   }
 }
 

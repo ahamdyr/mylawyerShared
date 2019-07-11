@@ -44,11 +44,21 @@ export const SignUp = async (confCode, userName) => {
 
     await saveUser(currentUser, userType)
     
-    Alert.alert('LogIn', 'You logged in successfully')
+    showMessage({
+      message: 'You logged in successfully',
+      hideOnPress: true,
+      autoHide: false,
+      type: 'success',
+    });
     navigate('UserApp')
   } catch (error) {
     goBack()
-    alert(`${error} \nTry again`)
+    showMessage({
+      message: `${error}\nTry again!`,
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
   }
 }
 
@@ -60,7 +70,12 @@ export const Update = async (confCode) => {
     navigate('SideMenu')
   } catch (error) {
     goBack()
-    alert(`${error} \nTry again`)
+    showMessage({
+      message: `${error}\nTry again!`,
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
   }
 }
 
@@ -71,7 +86,12 @@ export const SignIn = async (phoneNumber) => {
     
     if(_.isEmpty(phoneCredentials))
     {
-      alert(`You are not registered with phone number\n try to register.`)
+      showMessage({
+        message: `You are not registered with phone number\n try to register.`,
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
       goBack()
     }
     else {
@@ -92,12 +112,22 @@ export const SignIn = async (phoneNumber) => {
 
       await saveUser(currentUser, userType)
 
-      Alert.alert('LogIn', 'You logged in successfully')
+      showMessage({
+        message: 'You logged in successfully',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'success',
+      });
       navigate('UserApp')
     }    
   } catch (error) {
     goBack()
-    alert(`${error} \nTry again`)
+    showMessage({
+      message: `${error} \nTry again`,
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
   }
 }
 
@@ -122,6 +152,11 @@ export const requestCode = async phoneNumber => {
       await confirmationResult(phoneNumber, captchaVerifier)
     }
   } catch (error) {
-    alert(`${error} \nTry again`)
+    showMessage({
+      message: `${error} \nTry again`,
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
   }
 }

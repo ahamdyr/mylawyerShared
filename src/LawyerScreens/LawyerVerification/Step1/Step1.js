@@ -19,7 +19,12 @@ export default class Step1 extends React.Component {
   }
   _onNext = () => {
     if(this.btnRef.props.major.id == 0){
-      alert('You must select major')
+      showMessage({
+        message: 'You must select major',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
     }
     else{
       navigate('Step2')

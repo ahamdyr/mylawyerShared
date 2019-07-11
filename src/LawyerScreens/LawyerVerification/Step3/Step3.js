@@ -21,7 +21,12 @@ export default class Step3 extends React.Component {
   }
   _onNext = () => {
     if (this.props.firmPapers.length == 0) {
-      alert('You must add Firm Papers')
+      showMessage({
+        message: 'You must add Firm Papers',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
     }
     else {
       lawyerSignUp()

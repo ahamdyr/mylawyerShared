@@ -7,7 +7,9 @@ import {setTopLevelNavigator} from '../../Services/NavigationServices'
 import { getUser, setPhoneCredentials } from '../../Services/AuthServices'
 import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 import axios from 'axios'
-
+import FlashMessage from "react-native-flash-message";
+import { showMessage } from "react-native-flash-message";
+global.showMessage = showMessage
 export default class AppContainer extends React.Component {
   async componentWillMount(){
     axios.defaults.baseURL = `https://hlogicodesk.pythonanywhere.com/api/beta/`
@@ -36,7 +38,7 @@ export default class AppContainer extends React.Component {
             nextHidden={true}
             previousHidden={true}
           />
-        
+        <FlashMessage position="top" />
       </View>
     </Provider>       
     );

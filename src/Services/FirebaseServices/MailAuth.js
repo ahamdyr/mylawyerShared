@@ -31,7 +31,12 @@ export const MailLogin = async(email, password)=>{
       }
     })
     .catch(err => {
-      alert(`User isn't registered \n try to register`)
+      showMessage({
+        message: `User isn't registered \n try to register`,
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
     })
 }
 

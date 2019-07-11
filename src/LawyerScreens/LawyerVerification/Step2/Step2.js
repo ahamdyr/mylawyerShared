@@ -20,7 +20,12 @@ export default class Step2 extends React.Component {
   }
   _onNext = () => {
     if (this.props.lawyerIDs.length == 0) {
-      alert('You must add Lawyer ID')
+      showMessage({
+        message: 'You must add Lawyer ID',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
     }
     else {
       navigate('Step3')

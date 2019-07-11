@@ -27,10 +27,20 @@ export default class PrivateQuestionScreen extends React.Component {
     try {
       navigate('Spinner')
       var res = await reviewAnswerApi(answerID, this._accessToken, rate)
-      Alert.alert('Success', `Your rate has been sent`)
+      showMessage({
+        message: `Your rate has been sent`,
+        hideOnPress: true,
+        autoHide: false,
+        type: 'success',
+      });
       goBack()
     } catch (error) {
-      Alert.alert('Error', `${error}\nTry again!`)
+      showMessage({
+        message: `${error}\nTry again!`,
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
       goBack()
     }
   }
@@ -38,10 +48,20 @@ export default class PrivateQuestionScreen extends React.Component {
     try {
       navigate('Spinner')
       var res = await reAskApi(this._question.id, this._accessToken)
-      Alert.alert('Success', `Your question has been re-posted`)
+      showMessage({
+        message: `Your question has been re-posted`,
+        hideOnPress: true,
+        autoHide: false,
+        type: 'success',
+      });
       navigate('AllQuestions')
     } catch (error) {
-      Alert.alert('Error', `${error}\nTry again!`)
+      showMessage({
+        message: `${error}\nTry again!`,
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
       goBack()
     }
   }

@@ -48,7 +48,12 @@ export default class Footer extends React.PureComponent {
         this.props.submitQuestion()    
       }
       else {
-        alert('Your query must have at least topic, title and body')
+        showMessage({
+          message: 'Your query must have at least topic, title and body',
+          hideOnPress: true,
+          autoHide: false,
+          type: 'danger',
+        });
       }
     }
     else {

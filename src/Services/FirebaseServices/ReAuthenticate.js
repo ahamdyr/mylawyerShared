@@ -38,6 +38,11 @@ export const ReAuthenticate = async () => {
     })
 
   } catch (error) {
-    alert(`${error} \nTry again`)
+    showMessage({
+      message: `${error}\nTry again!`,
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
   }
 }

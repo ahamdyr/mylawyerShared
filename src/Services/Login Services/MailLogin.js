@@ -42,7 +42,12 @@ export const SignIn = async () => {
     if (userType == 'lawyer') {
       if (currentUser.isActivated) {
         await saveUser(currentUser, userType)
-        Alert.alert('LogIn', 'You logged in successfully')
+        showMessage({
+          message: 'You logged in successfully',
+          hideOnPress: true,
+          autoHide: false,
+          type: 'success',
+        });
         navigate('LawyerApp')
       }
       else {
@@ -50,12 +55,22 @@ export const SignIn = async () => {
       }
     }
     else {
+      showMessage({
+        message: 'You logged in successfully',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'success',
+      });
       await saveUser(currentUser, userType)
-      Alert.alert('LogIn', 'You logged in successfully')
       navigate('UserApp')
     }
   } catch (error) {
-    Alert.alert('Error', `You are not registered\nRegister first...`)
+    showMessage({
+      message: `You are not registered\nRegister first...`,
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
     goBack()
   }
 }
@@ -85,12 +100,21 @@ const userSignUp = async () => {
 
     currentUser = Object.assign({}, currentUser, pickedUser)
 
-    await saveUser(currentUser, userType)
-
-    Alert.alert('Sign up', 'You have registered successfully')
+    await saveUser(currentUser, userType)    
+    showMessage({
+      message: 'You have registered successfully',
+      hideOnPress: true,
+      autoHide: false,
+      type: 'success',
+    });
     navigate('UserApp')
-  } catch (error) {
-    Alert.alert('Error', `You are already registered\n Try to log in`)
+  } catch (error) {      
+    showMessage({
+      message: `You are not registered\nRegister first...`,
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
     goBack()
   }
 }
@@ -137,14 +161,24 @@ export const lawyerSignUp = async () => {
 
     if (currentUser.isActivated) {
       await saveUser(currentUser, userType)
-      Alert.alert('LogIn', 'You logged in successfully')
+      showMessage({
+        message: 'You logged in successfully',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'success',
+      });
       navigate('LawyerApp')
     }
     else {
       navigate('Step4')
     }
   } catch (error) {
-    Alert.alert('Error', `${error}`)
+    showMessage({
+      message: `${error} \nTry again`,
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
     goBack()
   }
 }

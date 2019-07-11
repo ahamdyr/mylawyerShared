@@ -17,7 +17,12 @@ export default class LoginWithPhoneForm extends React.PureComponent {
   }
   _loginSubmit = () =>{
     if (!isValidPhoneNumber(this.phone)) {
-      alert('Provide valid phone number !')
+      showMessage({
+        message: 'Provide valid phone number !',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
     }
     else {
       this.props.onPress(this.phone)

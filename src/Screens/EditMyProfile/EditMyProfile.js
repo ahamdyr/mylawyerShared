@@ -54,8 +54,13 @@ export default class EditMyProfile extends React.Component {
   _onSubmit = async () => {
 
     if (this.state.email) {
-      if (!isValidEmailAddress(this.state.email)) {
-        alert('Badly formatted email !')
+      if (!isValidEmailAddress(this.state.email)) {        
+        showMessage({
+          message: 'Badly formatted email !',
+          hideOnPress: true,
+          autoHide: false,
+          type: 'danger',
+        });
         return
       }
       await updateUserEmail(this.state.email)
@@ -66,7 +71,18 @@ export default class EditMyProfile extends React.Component {
 
     if (this.state.displayName) {
       if (this.state.displayName.length == 0) {
-        alert('Invalid user name !')
+        showMessage({
+          message: 'You logged in successfully',
+          hideOnPress: true,
+          autoHide: false,
+          type: 'success',
+        });
+        showMessage({
+          message: 'Invalid user name !',
+          hideOnPress: true,
+          autoHide: false,
+          type: 'danger',
+        });
         return
       }
       await updateUserName(this.state.displayName)
@@ -84,7 +100,12 @@ export default class EditMyProfile extends React.Component {
 
     if (this.state.phoneNumber) {
       if (!isValidPhoneNumber(this.state.phoneNumber)) {
-        alert('Provide valid phone number !')
+        showMessage({
+          message: 'Provide valid phone number !',
+          hideOnPress: true,
+          autoHide: false,
+          type: 'danger',
+        });
         return
       }
       await updateUserPhoneNumber(this.state.phoneNumber)

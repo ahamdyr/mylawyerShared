@@ -22,8 +22,13 @@ export default class Settings extends React.Component {
   }
   _deleteAccount = async () => {
     await logOut()
-    await deleteAccount()
-    alert('Your account has been deleted')
+    await deleteAccount()      
+    showMessage({
+      message: 'Your account has been deleted',
+      hideOnPress: true,
+      autoHide: false,
+      type: 'success',
+    });
     goBack()
   }
   render() {

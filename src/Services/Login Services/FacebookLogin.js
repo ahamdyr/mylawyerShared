@@ -42,15 +42,30 @@ export const LoginWithFacebook = async () => {
 
       await saveUser(currentUser, userType)
 
-      Alert.alert('LogIn', 'You logged in successfully')
+      showMessage({
+        message: 'You logged in successfully',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'success',
+      });
       navigate('UserApp')
     }
     else {
-      alert('Login Failed \nTry again')
+      showMessage({
+        message: 'Login Failed \nTry again',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
       navigate('UserApp')
     }
   } catch (error) {
-    alert(`${error} \nTry again`)
+    showMessage({
+      message: `${error} \nTry again`,
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
     navigate('UserApp')
   }
 }

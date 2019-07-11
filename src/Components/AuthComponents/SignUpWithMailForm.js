@@ -15,6 +15,7 @@ import {
 } from '../../Redux/Auth/actions'
 import { isValidEmailAddress } from '../../Utils/InputValidation'
 
+
 export default class SignUpWithMailForm extends React.PureComponent {
   mail = '';
   password = '';
@@ -33,12 +34,27 @@ export default class SignUpWithMailForm extends React.PureComponent {
   }
   _submit = () => {
     if (!isValidEmailAddress(this.mail)) {
-      alert('Badly formatted email !')
+      showMessage({
+        message: 'Badly formatted email !',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
     }
     else if (this.password.length < 8) {
-      alert('password must be 8 digits or more !')
+      showMessage({
+        message: 'Password must be 8 digits or more !',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
     }
-    else if (this.userName.length == 0) alert('Invalid user name !')
+    else if (this.userName.length == 0) showMessage({
+      message: 'Invalid user name !',
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
     else {
       this.props.onPress()
     }

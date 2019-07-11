@@ -16,14 +16,22 @@ function* submitContactMessageSaga(action) {
     } = action
     
     var res = yield call(contactUsApi, email, body)
-    
-    alert('Your message has been sent successfully')
+    showMessage({
+      message: 'Your message has been sent successfully',
+      hideOnPress: true,
+      autoHide: false,
+      type: 'success',
+    });
     goBack()
     goBack()
     yield put(clearContactUsData(false))
-  } catch (error) {
-    
-    alert(error)
+  } catch (error) {    
+    showMessage({
+      message: `${error}`,
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
     goBack()
     yield put(clearContactUsData(false))
   }

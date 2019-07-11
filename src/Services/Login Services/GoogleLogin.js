@@ -42,16 +42,30 @@ export const LoginWithGoogle = async () => {
       currentUser = Object.assign({},currentUser, pickedUser)
 
       await saveUser(currentUser, userType)
-
-      Alert.alert('LogIn', 'You logged in successfully')
+      showMessage({
+        message: 'You logged in successfully',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'success',
+      });
       navigate('UserApp')
     }
     else {
-      alert('Login Cancelled \nTry again')
+      showMessage({
+        message: 'Login Cancelled \nTry again',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
       navigate('UserApp')
     }
   } catch (error) {
-    alert(`${error.message} \nTry again`)
+    showMessage({
+      message: `${error.message} \nTry again`,
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
     navigate('UserApp')
   }
 }

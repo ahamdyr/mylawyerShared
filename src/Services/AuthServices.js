@@ -55,7 +55,12 @@ export const logOut = async () => {
     await AsyncStorage.removeItem('userType')
     await AsyncStorage.removeItem('accessToken') 
     //Store.dispatch(getUserOwnQuestionsSuccess([]))
-    alert('You are logged out!')     
+    showMessage({
+      message: 'You are logged out',
+      hideOnPress: true,
+      autoHide: false,
+      type: 'success',
+    });
       
   } catch (error) {
     console.log(error)

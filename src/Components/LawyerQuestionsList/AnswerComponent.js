@@ -54,7 +54,12 @@ export default class AnswerComponent extends React.PureComponent {
       this.props.onSubmit(this.state.body)
     }
     else{
-      alert('You must have an answer to submit')
+      showMessage({
+        message: 'You must have an answer to submit',
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
     }
   }
 

@@ -26,10 +26,20 @@ export default class ViewQuestionScreen extends React.Component {
     try {
       navigate('Spinner')
       var res = await lockApi(this._question.id, this._accessToken)
-      Alert.alert('Success', `You have 24 hours to answer.\nGood Luck`)
+      showMessage({
+        message: `You have 24 hours to answer.\nGood Luck`,
+        hideOnPress: true,
+        autoHide: false,
+        type: 'success',
+      });
       navigate('AnswerQuestionScreen', {question:this._question})
     } catch (error) {
-      Alert.alert('Error', `${error}\nTry again!`)
+      showMessage({
+        message: `${error}\nTry again!`,
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
       goBack()
     }
   }

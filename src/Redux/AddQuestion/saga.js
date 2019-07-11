@@ -29,14 +29,24 @@ function* submitQuestionSaga(action) {
     //console.log('questionID  ',id)
     yield call(addQuestionAttachsService, attachments, id, accessToken)
     yield put(deleteAttachments())
-    alert('Your question has been submitted')
+    showMessage({
+      message: 'Your question has been submitted',
+      hideOnPress: true,
+      autoHide: false,
+      type: 'success',
+    });
     goBack()
     goBack()
     yield put(clearQuestion(false))
     //yield put(addQuestionLoading(false))
   } catch (error) {
     console.log('ask question error ',error)
-    alert('Something went error!\n Try again!')
+    showMessage({
+      message: 'Something went error!\n Try again!',
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
     yield put(clearQuestion(false))
     //goBack()
     //yield put(addQuestionLoading(false))

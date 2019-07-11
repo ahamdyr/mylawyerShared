@@ -21,7 +21,12 @@ export const uploadGalleryImage = async () => {
   let photosPerm = await Permissions.askAsync(Permissions.CAMERA_ROLL);
 
   if (photosPerm.status == "denied") {
-    alert('Enable Permissions in your App Settings')
+    showMessage({
+      message: 'Enable Permissions in your App Settings',
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
     return 0
   }
   let img = await ImagePicker.launchImageLibraryAsync({
@@ -44,7 +49,12 @@ export const uploadCameraImage = async () => {
   let camPerm = await Permissions.askAsync(Permissions.CAMERA);
   
   if(camPerm.status == "denied"){
-    alert('Enable Permissions in your App Settings')
+    showMessage({
+      message: 'Enable Permissions in your App Settings',
+      hideOnPress: true,
+      autoHide: false,
+      type: 'danger',
+    });
     return 0
   }
 

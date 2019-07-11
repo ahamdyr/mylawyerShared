@@ -17,10 +17,20 @@ export default class AnswerQuestionScreen extends React.Component {
     try {
       navigate('Spinner')
       var res = await answerApi(this._question.id, this._accessToken, answer)
-      Alert.alert('Success', `Your answer has been sent.`)
+      showMessage({
+        message: `Your answer has been sent.`,
+        hideOnPress: true,
+        autoHide: false,
+        type: 'success'
+      });
       navigate('NewQuestionsScreen')
     } catch (error) {
-      Alert.alert('Error', `${error}\nTry again!`)
+      showMessage({
+        message: `${error}\nTry again!`,
+        hideOnPress: true,
+        autoHide: false,
+        type: 'danger',
+      });
       goBack()
     }
   }
