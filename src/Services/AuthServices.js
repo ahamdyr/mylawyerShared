@@ -5,6 +5,7 @@ import {
   setCurrentUser,
   setAccessToken,
   setPhoneNumber,
+  setUserType,
   setPhoneAuthCredentials
 } from '../Redux/Auth/actions'
 import { ReAuthenticate } from './FirebaseServices/ReAuthenticate'
@@ -74,6 +75,7 @@ export const getUser = async () => {
     var userType =JSON.parse(userTypeJson)
     //console.log('userType  ',userType)
     if(userType == 'lawyer'){
+      Store.dispatch(setUserType(userType))
       navigate('LawyerApp')
     }
     await ReAuthenticate()

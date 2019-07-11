@@ -46,19 +46,25 @@ export default class PublicQuestionScreen extends React.Component {
             <WaitingAnswer />
             : answersLoading ?
               <Spinner />
-              : <React.Fragment>
-                <AnswerBy
-                  MainPhotoURL={lastActivity.by.photo}
-                  answeredBy={lastActivity.by.name}
-                  answerDate={lastActivity.addedOn}
-                  style={styles.answered}
-                />
-                <ScrollView>
-                  <Text style={styles.answer}>
-                    {answers[0].body}
-                  </Text>
-                </ScrollView>
-              </React.Fragment>
+              : <ScrollView>
+              {
+                answers.map((answer) => (
+                  <React.Fragment key={answer.id}>
+                    <AnswerBy
+                      MainPhotoURL={answer.by.photo}
+                      answeredBy={answer.by.name}
+                      answerDate={answer.addedOn}
+                      style={styles.answered}
+                    />
+                    <ScrollView style={{ marginHorizontal: 20 }} >
+                      <Text style={styles.answer}>
+                        {answer.body}
+                      </Text>
+                    </ScrollView>                    
+                  </React.Fragment>
+                ))
+              }
+            </ScrollView>
         }
       </SafeAreaView>
     );

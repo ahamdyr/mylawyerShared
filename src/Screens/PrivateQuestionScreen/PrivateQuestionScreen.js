@@ -107,7 +107,7 @@ export default class PrivateQuestionScreen extends React.Component {
               <Spinner />
               : <ScrollView>
                 {
-                  mockAnswers.map((answer) => (
+                  answers.map((answer) => (
                     <React.Fragment key={answer.id}>
                       <AnswerBy
                         MainPhotoURL={answer.by.photo}

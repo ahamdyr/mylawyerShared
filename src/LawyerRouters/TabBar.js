@@ -50,7 +50,6 @@ const  TabBar = createBottomTabNavigator(
     },
     LawyerSettings: {
       screen: SideMenu,
-      params: { userType: 'Lawyer' },
       navigationOptions: ({ navigation }) => ({
           title: "",
           tabBarIcon: ({focused}) => (<SettingsIcon 
