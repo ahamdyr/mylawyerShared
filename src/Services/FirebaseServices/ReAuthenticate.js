@@ -8,8 +8,9 @@ import 'firebase/auth'
 export const ReAuthenticate = async () => {
 
   try {
-    firebase.auth().onIdTokenChanged(async user => {
-
+    firebase.auth()
+      .onAuthStateChanged(async user => {
+      //.onIdTokenChanged(async user => {
       if (user) {
         var currentUser = (({
           displayName,
@@ -31,7 +32,6 @@ export const ReAuthenticate = async () => {
         var userType = getUserType()
 
         var pickedUser = await Register(userType, backendToken)
-
         currentUser = Object.assign({}, currentUser, pickedUser)
         await saveUser(currentUser, userType)
       }

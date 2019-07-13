@@ -23,7 +23,7 @@ export default class AnswerQuestionScreen extends React.Component {
         autoHide: false,
         type: 'success'
       });
-      navigate('NewQuestionsScreen')
+      navigate('SolvedQuestionsScreen')
     } catch (error) {
       showMessage({
         message: `${error}\nTry again!`,

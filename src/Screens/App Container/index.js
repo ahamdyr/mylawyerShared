@@ -17,7 +17,7 @@ export default class AppContainer extends React.Component {
     // axios.get('https://hlogicodesk.pythonanywhere.com/api/beta/users/deldel/')
     //   .then(()=>console.log('data deleted'))
     // gte user from storage
-    await getUser()
+    //await getUser()
     await setPhoneCredentials()
   }
   render() {

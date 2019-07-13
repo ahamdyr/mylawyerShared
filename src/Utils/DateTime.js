@@ -26,9 +26,11 @@ export const lockTimeLeft = (previous) => {
   var msPerDay = msPerHour * 24
   var msPerMonth = msPerDay * 30
   var msPerYear = msPerDay * 365
+
   var refrence = msPerDay
 
-  var elapsed = refrence - Date.now() - Date.parse(previous)
+  var elapsed = refrence - (Date.now() - Date.parse(previous))
+  
   if (elapsed < msPerMinute) {
     return Math.round(elapsed / 1000) + ' seconds'
   } else if (elapsed < msPerHour) {

@@ -48,7 +48,7 @@ export const SignIn = async () => {
           autoHide: false,
           type: 'success',
         });
-        navigate('LawyerApp')
+        //navigate('LawyerApp')
       }
       else {
         navigate('Step4')
@@ -167,7 +167,7 @@ export const lawyerSignUp = async () => {
         autoHide: false,
         type: 'success',
       });
-      navigate('LawyerApp')
+      //navigate('LawyerApp')
     }
     else {
       navigate('Step4')

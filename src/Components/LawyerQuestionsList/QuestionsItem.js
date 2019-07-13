@@ -12,6 +12,7 @@ class QuestionsItem extends React.PureComponent {
     //var isLoggedUser = Store.getState().isLoggedUser
     //var routeName = this.props.navigation.state.routeName
     var screen = this.props.screen
+    var question = this.props.item.item
     var {
       id,
       title,
@@ -20,7 +21,7 @@ class QuestionsItem extends React.PureComponent {
       addedOn,
       by,
       lastActivity
-    } = this.props.item.item
+    } = question
     return (
       <View style={styles.questCard}>
         <TouchableOpacity
@@ -29,8 +30,8 @@ class QuestionsItem extends React.PureComponent {
           onPress={() => {
             // isLoggedUser?
             // routeName == 'AllQuestions'
-            //   ? this.props.navigation.navigate('PublicQuestionScreen', { question: this.props.item.item })
-            //   : this.props.navigation.navigate('PrivateQuestionScreen', { question: this.props.item.item })
+            //   ? this.props.navigation.navigate('PublicQuestionScreen', { question: question })
+            //   : this.props.navigation.navigate('PrivateQuestionScreen', { question: question })
             // : navigate('SocialScreen')
           }}
         >
@@ -58,7 +59,7 @@ class QuestionsItem extends React.PureComponent {
                     style={styles.answerBtnStyle}
                     text={'Answer question'}
                     textStyle={styles.answerTextStyle}
-                    onPress={()=>navigate('AnswerQuestionScreen', {question: this.props.item.item})}
+                    onPress={()=>navigate('AnswerQuestionScreen', {question: question})}
                   />
                   <LockTimer 
                     lockDate={lastActivity.addedOn}
@@ -69,7 +70,7 @@ class QuestionsItem extends React.PureComponent {
                     style={styles.viewBtnStyle}
                     text={'View question…'}
                     textStyle={styles.viewTextStyle}
-                    onPress={()=>navigate('ViewQuestionScreen', {question: this.props.item.item})}
+                    onPress={()=>navigate('ViewQuestionScreen', {question: question})}
                   />
           }
 

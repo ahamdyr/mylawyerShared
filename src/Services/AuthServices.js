@@ -21,9 +21,10 @@ export const saveUser = async (currentUser, userType) => {
     Store.dispatch(setCurrentUser(currentUser))
     let accessToken = currentUser.accessToken
     Store.dispatch(setAccessToken(accessToken))
+    userType == 'lawyer' ? navigate('LawyerApp') : navigate('UserApp')
     await AsyncStorage.setItem('currentUser', JSON.stringify(currentUser))
     await AsyncStorage.setItem('userType', JSON.stringify(userType))
-    await AsyncStorage.setItem('accessToken', JSON.stringify(accessToken))  
+    //await AsyncStorage.setItem('accessToken', JSON.stringify(accessToken))  
       
   } catch (error) {
     console.log(error)
@@ -49,12 +50,13 @@ export const updateUserPhoneNumber = async (phoneNumber) => {
 export const logOut = async () => {
   try {
     //console.log('currentUser ', currentUser)
+    Store.dispatch(setUserType('user'))
     Store.dispatch(setCurrentUser({}))
     Store.dispatch(setLoggedUser(false))     
     Store.dispatch(setAccessToken(''))
     await AsyncStorage.removeItem('currentUser')
     await AsyncStorage.removeItem('userType')
-    await AsyncStorage.removeItem('accessToken') 
+    //await AsyncStorage.removeItem('accessToken') 
     //Store.dispatch(getUserOwnQuestionsSuccess([]))
     showMessage({
       message: 'You are logged out',
@@ -69,22 +71,22 @@ export const logOut = async () => {
 }
 
 export const getUser = async () => {
-  //let currentUserJson = await AsyncStorage.getItem('currentUser')
   let userTypeJson = await AsyncStorage.getItem('userType')
   if(userTypeJson !== null){   
     var userType =JSON.parse(userTypeJson)
-    //console.log('userType  ',userType)
     if(userType == 'lawyer'){
       Store.dispatch(setUserType(userType))
-      navigate('LawyerApp')
+      //navigate('LawyerApp')
     }
     await ReAuthenticate()
-    //let currentUser = JSON.parse(currentUserJson)     
+    // let currentUserJson = await AsyncStorage.getItem('currentUser')
+    // let currentUser = JSON.parse(currentUserJson)     
     // Store.dispatch(setCurrentUser(currentUser))
     // Store.dispatch(setLoggedUser(true))
     // let accessToken = currentUser.accessToken
     // Store.dispatch(setAccessToken(accessToken))
   }
+  else navigate('UserApp')
 }
 
 export const getUserType = () => Store.getState().userType
