@@ -61,7 +61,7 @@ export default class AnswerQuestionScreen extends React.Component {
       <SafeAreaView style={styles.container}>
 
         <BlackX
-          onPress={() => this.props.navigation.goBack()}
+          onPress={() => navigate('NewQuestionsScreen')}
         />
         <Topic
           style={styles.topic}

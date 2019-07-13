@@ -10,6 +10,7 @@ import axios from 'axios'
 import FlashMessage from "react-native-flash-message";
 import { showMessage } from "react-native-flash-message";
 global.showMessage = showMessage
+global.baseURL = `https://hlogicodesk.pythonanywhere.com/api/beta/`
 export default class AppContainer extends React.Component {
   async componentWillMount(){
     axios.defaults.baseURL = `https://hlogicodesk.pythonanywhere.com/api/beta/`

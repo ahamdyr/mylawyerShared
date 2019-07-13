@@ -29,13 +29,13 @@ export default class ViewQuestionScreen extends React.Component {
       showMessage({
         message: `You have 24 hours to answer.\nGood Luck`,
         hideOnPress: true,
-        autoHide: false,
+        autoHide: false,        
         type: 'success',
       });
       navigate('AnswerQuestionScreen', {question:this._question})
     } catch (error) {
       showMessage({
-        message: `${error}\nTry again!`,
+        message: `${error}`,
         hideOnPress: true,
         autoHide: false,
         type: 'danger',
@@ -53,7 +53,7 @@ export default class ViewQuestionScreen extends React.Component {
       by,
       lastActivity
     } = this._question
-
+    
     return (
       <SafeAreaView style={styles.container}>
 
