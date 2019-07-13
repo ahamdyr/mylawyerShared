@@ -56,7 +56,7 @@ export default class PublicQuestionScreen extends React.Component {
                       answerDate={answer.addedOn}
                       style={styles.answered}
                     />
-                    <ScrollView style={{ marginHorizontal: 20 }} >
+                    <ScrollView style={{ marginHorizontal: 20, marginVertical: 20 }} >
                       <Text style={styles.answer}>
                         {answer.body}
                       </Text>
@@ -98,12 +98,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start'
   },
   answer: {
-    fontFamily: 'Cairo-Regular',
-    fontSize: 14,
-    lineHeight: 20,
-    letterSpacing: 0.11,
-    color: '#131314',
-    marginHorizontal: 16
+    fontFamily: 'Cairo-Bold',
+    fontSize: 16,
+    fontWeight: "bold",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    color: "#454546",
+    //marginHorizontal: 16
   },
   closeIcon: {
     width: 16.5,

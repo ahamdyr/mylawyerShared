@@ -5,10 +5,8 @@ import SignUpWithMailForm from '../../Components/AuthComponents/SignUpWithMailFo
 import { withNavigation } from 'react-navigation'
 import { SignUp } from '../../Services/Login Services/MailLogin'
 import SocialBtn from '../../Components/Common/SocialBtn'
-import {
-  facebookIcon, google
-} from '../../../assets'
-
+import { facebookIcon, google } from '../../../assets'
+import { getUserType } from '../../Services/AuthServices'
 import { LoginWithFacebook } from '../../Services/Login Services/FacebookLogin'
 import { LoginWithGoogle } from '../../Services/Login Services/GoogleLogin'
 
@@ -35,21 +33,25 @@ class SignUpWithMail extends React.Component {
           {/* ==================================================== */}
           <SignUpWithMailForm onPress={() => SignUp()} />
           {/* ==================================================== */}
-          <View style={styles.Btns}>
-            <SocialBtn
-              style={styles.faceBookStyle}
-              icon={facebookIcon}
-              iconStyle={styles.faceBookIconStyle}
-              onPress={() => LoginWithFacebook()}
-            />
-            <View style={{ width: 30 }} />
-            <SocialBtn
-              style={styles.googleStyle}
-              icon={google}
-              iconStyle={styles.googleIconStyle}
-              onPress={() => LoginWithGoogle()}
-            />
-          </View>
+          {
+            getUserType() == 'lawyer' ?
+              null
+              : <View style={styles.Btns}>
+                <SocialBtn
+                  style={styles.faceBookStyle}
+                  icon={facebookIcon}
+                  iconStyle={styles.faceBookIconStyle}
+                  onPress={() => LoginWithFacebook()}
+                />
+                <View style={{ width: 30 }} />
+                <SocialBtn
+                  style={styles.googleStyle}
+                  icon={google}
+                  iconStyle={styles.googleIconStyle}
+                  onPress={() => LoginWithGoogle()}
+                />
+              </View>
+          }          
           {/* ==================================================== */}
         </View>
         {/* ==================================================== */}
