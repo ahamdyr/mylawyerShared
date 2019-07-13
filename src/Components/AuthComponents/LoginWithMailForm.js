@@ -48,6 +48,7 @@ export default class LoginWithMailForm extends React.PureComponent {
     return(
       <KeyboardAvoidingView 
         style={styles.container}
+        //keyboardVerticalOffset={100}
         behavior={'padding'}
       >
 
@@ -55,7 +56,9 @@ export default class LoginWithMailForm extends React.PureComponent {
 
         <View style={styles.inputContainer}>
           <MailLogo/>
-          <TextInput            
+          <TextInput  
+            ref= "emailRef"
+            autoFocus          
             blurOnSubmit={true}
             underlineColorAndroid={'transparent'}
             autoCapitalize={'none'}
@@ -72,6 +75,7 @@ export default class LoginWithMailForm extends React.PureComponent {
         <View style={styles.inputContainer}>
           <LockImage/>
           <TextInput
+            ref= "passwordRef"
             blurOnSubmit={true}
             underlineColorAndroid={'transparent'}
             secureTextEntry

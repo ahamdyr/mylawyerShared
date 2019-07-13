@@ -11,8 +11,38 @@ import {
 
 import { LoginWithFacebook } from '../../Services/Login Services/FacebookLogin'
 import { LoginWithGoogle } from '../../Services/Login Services/GoogleLogin'
+import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 
 class SignUpWithPhone extends React.Component {
+  index = 'name'
+  handleFocusNext = () => {
+    switch (this.index) {
+      case 'name':
+        this.refs.formRef.refs.phoneRef.focus()
+        this.index = 'phone'
+        break;     
+      case 'phone':
+        this.refs.formRef.refs.nameRef.focus()
+        this.index = 'name'
+        break;
+      default:
+        break;
+    }
+  }
+  handleFocusPrevious = () => {
+    switch (this.index) {
+      case 'name':
+        this.refs.formRef.refs.phoneRef.focus()
+        this.index = 'phone'
+        break;     
+      case 'phone':
+        this.refs.formRef.refs.nameRef.focus()
+        this.index = 'name'
+        break;
+      default:
+        break;
+    }
+  }
   render() {
     const { navigation } = this.props
     return (
@@ -32,10 +62,10 @@ class SignUpWithPhone extends React.Component {
             </Text>
         </View>
         {/* ==================================================== */}
-        <View style={styles.formContainer}>
-          <SignUpWithPhoneForm
-            onPress={() => this.props.navigation.navigate('PhoneVerification', { action: 'signUp' })} />
-        </View>
+        <SignUpWithPhoneForm
+          ref="formRef"
+          onPress={() => this.props.navigation.navigate('PhoneVerification', { action: 'signUp' })}
+        />
         {/* ==================================================== */}
         <View style={styles.Btns}>
           <SocialBtn
@@ -76,6 +106,16 @@ class SignUpWithPhone extends React.Component {
             </Text>
         </TouchableOpacity>
         {/* ==================================================== */}
+        <KeyboardAccessoryNavigation
+          //avoidKeyboard={true}
+          tintColor={'#0b7f7c'}
+          nextDisabled={false}
+          previousDisabled={false}
+          nextHidden={false}
+          previousHidden={false}
+          onNext={this.handleFocusNext}
+          onPrevious={this.handleFocusPrevious}
+        />
         {/* </TouchableOpacity> */}
       </SafeAreaView>
     );

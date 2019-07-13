@@ -4,7 +4,7 @@ import { styles } from './Styles'
 import { goBack } from '../../Services/NavigationServices'
 import SeperatorLine from '../../Components/Common/SeperatorLine'
 import SearchList from '../../Components/Common/SearchList'
-
+import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 export default class Search extends React.Component {
  
   render() {
@@ -62,6 +62,14 @@ export default class Search extends React.Component {
               </Text>
             </View>
         }
+        <KeyboardAccessoryNavigation
+          //avoidKeyboard={true}
+          tintColor={'#0b7f7c'}
+          nextDisabled={true}
+          previousDisabled={true}
+          nextHidden={true}
+          previousHidden={true}
+        />
         
       </SafeAreaView>
     );

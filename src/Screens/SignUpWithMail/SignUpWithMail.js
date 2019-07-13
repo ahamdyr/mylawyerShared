@@ -2,14 +2,14 @@ import React from 'react';
 import { Text, View, SafeAreaView, TouchableOpacity, Keyboard } from 'react-native';
 import { styles } from './Styles'
 import SignUpWithMailForm from '../../Components/AuthComponents/SignUpWithMailForm'
-import { withNavigation } from 'react-navigation'
-import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 import { SignUp } from '../../Services/Login Services/MailLogin'
 import SocialBtn from '../../Components/Common/SocialBtn'
 import { facebookIcon, google } from '../../../assets'
 import { getUserType } from '../../Services/AuthServices'
 import { LoginWithFacebook } from '../../Services/Login Services/FacebookLogin'
 import { LoginWithGoogle } from '../../Services/Login Services/GoogleLogin'
+import { withNavigation } from 'react-navigation'
+import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 
 class SignUpWithMail extends React.Component {
   index = 'name'

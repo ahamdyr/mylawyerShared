@@ -19,7 +19,24 @@ import {
 } from '../../Services/NavigationServices'
 import QuestionComponent from '../../Components/QuestionComponents/Question'
 import { isValidEmailAddress } from '../../Utils/InputValidation'
+import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
+
 export default class ContactUs extends React.Component {
+  index = 'title'
+  handleFocusNext = () => {
+    switch (this.index) {
+      case 'title':
+        this.refs.formRef.refs.bodyRef.focus()
+        this.index = 'body'
+        break;
+      case 'body':
+        this.refs.formRef.refs.titleRef.focus()
+        this.index = 'title'
+        break;
+      default:
+        break;
+    }
+  }
   state = {
     body: '',
     email: ''
@@ -56,6 +73,7 @@ export default class ContactUs extends React.Component {
         </Text>
 
         <QuestionComponent
+          ref="formRef"
           style={styles.questionContainer}
           offset={10}
           clear={clear}
@@ -70,6 +88,16 @@ export default class ContactUs extends React.Component {
           text={'SEND'}
           textStyle={styles.textStyle}
           onPress={()=> this.sendMessage()}
+        />
+        <KeyboardAccessoryNavigation
+          //avoidKeyboard={true}
+          tintColor={'#0b7f7c'}
+          nextDisabled={false}
+          previousDisabled={false}
+          nextHidden={false}
+          previousHidden={false}
+          onNext={this.handleFocusNext}
+          onPrevious={this.handleFocusNext}
         />
       </SafeAreaView>
     );

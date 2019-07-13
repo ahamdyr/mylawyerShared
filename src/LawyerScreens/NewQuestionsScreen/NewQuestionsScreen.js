@@ -4,6 +4,7 @@ import SelectComponent from '../../Components/QuestionsList/SelectComponent'
 import SearchComponent from '../../Components/QuestionsList/SearchComponent'
 import QuestionsList from '../../Components/LawyerQuestionsList/QuestionsList'
 import Spinner from '../../Screens/Spinner'
+import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 
 export default class NewQuestionsScreen extends React.Component {
   componentWillMount(){
@@ -56,6 +57,14 @@ export default class NewQuestionsScreen extends React.Component {
           questionsLoadingMore={loadingMore}
           questionsNoMore={noMore}
           screen={'New'}
+        />
+        <KeyboardAccessoryNavigation
+          //avoidKeyboard={true}
+          tintColor={'#0b7f7c'}
+          nextDisabled={true}
+          previousDisabled={true}
+          nextHidden={true}
+          previousHidden={true}
         />
       </SafeAreaView>
     );

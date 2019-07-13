@@ -7,6 +7,7 @@ import AttachmentBtn from '../../Components/Common/AttachmentBtn'
 import AnswerComponent from '../../Components/LawyerQuestionsList/AnswerComponent'
 import { navigate, goBack } from '../../Services/NavigationServices'
 import { answerApi } from '../../Services/BackendServices/AnswerServices'
+import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 
 export default class AnswerQuestionScreen extends React.Component {
 
@@ -82,6 +83,14 @@ export default class AnswerQuestionScreen extends React.Component {
         <AnswerComponent
           onSubmit={(answer)=>this._answerQuestion(answer)}
           offset={attachs.length ? 270 : 220}
+        />
+        <KeyboardAccessoryNavigation
+          //avoidKeyboard={true}
+          tintColor={'#0b7f7c'}
+          nextDisabled={true}
+          previousDisabled={true}
+          nextHidden={true}
+          previousHidden={true}
         />
       </SafeAreaView>
     );

@@ -31,7 +31,48 @@ import {
   updateUserPhoto
 } from '../../Services/FirebaseServices/UpdateUser'
 import { updateUserPhoneNumber } from '../../Services/AuthServices'
+import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
+
 export default class EditMyProfile extends React.Component {
+  index = 'name'
+  handleFocusNext = () => {
+    switch (this.index) {
+      case 'name':
+        this.refs.emailRef.focus()
+        this.index = 'email'
+        break;
+      case 'email':
+        this.refs.phoneRef.focus()
+        this.index = 'phone'
+        break;
+      case 'phone':
+        this.refs.nameRef.focus()
+        this.index = 'name'
+        break;
+      default:
+        this.refs.nameRef.focus()
+        break;
+    }
+  }
+  handleFocusPrevious = () => {
+    switch (this.index) {
+      case 'name':
+        this.refs.phoneRef.focus()
+        this.index = 'phone'
+        break;
+      case 'email':
+        this.refs.nameRef.focus()
+        this.index = 'name'
+        break;
+      case 'phone':
+        this.refs.emailRef.focus()
+        this.index = 'email'
+        break;
+      default:
+        this.refs.nameRef.focus()
+        break;
+    }
+  }
   state = {
     displayName: '',
     email: '',
@@ -176,6 +217,8 @@ export default class EditMyProfile extends React.Component {
               enabled
             >
               <TextInput
+                ref= "nameRef"
+                autoFocus
                 underlineColorAndroid={'transparent'}
                 blurOnSubmit={true}
                 placeholder={'user name'}
@@ -186,6 +229,7 @@ export default class EditMyProfile extends React.Component {
                 style={styles.line}
               />
               <TextInput
+                ref= "emailRef"
                 underlineColorAndroid={'transparent'}
                 blurOnSubmit={true}
                 placeholder={'email'}
@@ -197,6 +241,7 @@ export default class EditMyProfile extends React.Component {
                 style={styles.line}
               />
               <TextInput
+                ref= "phoneRef"
                 underlineColorAndroid={'transparent'}
                 blurOnSubmit={true}
                 placeholder={'phone number'}
@@ -224,6 +269,16 @@ export default class EditMyProfile extends React.Component {
           textStyle={styles.saveText}
           onPress={() => this._onSubmit()}
         /> */}
+        <KeyboardAccessoryNavigation
+          //avoidKeyboard={true}
+          tintColor={'#0b7f7c'}
+          nextDisabled={false}
+          previousDisabled={false}
+          nextHidden={false}
+          previousHidden={false}
+          onNext={this.handleFocusNext}
+          onPrevious={this.handleFocusPrevious}
+        />
       </SafeAreaView>
     );
   }

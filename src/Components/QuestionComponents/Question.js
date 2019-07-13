@@ -99,7 +99,11 @@ export default class QuestionComponent extends React.PureComponent {
           onPress={() => this._titleKeyBoardToggle()}>
           <TextInput
             blurOnSubmit={true}
-            ref={(ref) => this._titleRef = ref}
+            ref={(ref) => {
+              this._titleRef = ref
+              ref= "titleRef"
+            }}
+            autoFocus
             //value={this.state.title}
             style={styles.titleText}
             multiline={true}
@@ -107,7 +111,6 @@ export default class QuestionComponent extends React.PureComponent {
             underlineColorAndroid="transparent"
             placeholder={this.props.titlePlaceHolder || 'Title '}
             onChangeText={this._titleChange}
-            //autoFocus
             //shouldCancelWhenOutside={true}
           />
         </TouchableOpacity>
@@ -132,7 +135,10 @@ export default class QuestionComponent extends React.PureComponent {
               //value={this.state.body}
               autoGrow={false}
               scrollEnabled={true}
-              ref={(ref) => this._bodyRef = ref}
+              ref={(ref) => {
+                this._bodyRef = ref
+                ref= "bodyRef"
+              }}
               underlineColorAndroid="transparent"
               placeholder={this.props.bodyPlaceHolder || 'Write your problem here'}
               onChangeText={this._bodyChange}

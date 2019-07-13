@@ -5,6 +5,8 @@ import SearchComponent from '../../Components/QuestionsList/SearchComponent'
 import QuestionsList from '../../Components/QuestionsList/QuestionsList'
 import { navigate } from '../../Services/NavigationServices'
 import Spinner from '../Spinner'
+import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
+
 export default class MyQuestionsScreen extends React.Component {
   componentWillMount(){
     this.willFocusSubscription = this.props.navigation.addListener('willFocus', () => {
@@ -41,6 +43,14 @@ export default class MyQuestionsScreen extends React.Component {
               You have to log in!
             </Text>
           </TouchableOpacity>
+        <KeyboardAccessoryNavigation
+          //avoidKeyboard={true}
+          tintColor={'#0b7f7c'}
+          nextDisabled={true}
+          previousDisabled={true}
+          nextHidden={true}
+          previousHidden={true}
+        />
 
         </SafeAreaView>
       )
