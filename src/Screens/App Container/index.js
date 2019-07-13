@@ -5,7 +5,6 @@ import { Provider } from 'react-redux'
 import Store from '../../Redux/Store' 
 import {setTopLevelNavigator} from '../../Services/NavigationServices'
 import { getUser, setPhoneCredentials } from '../../Services/AuthServices'
-import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 import axios from 'axios'
 import FlashMessage from "react-native-flash-message";
 import { showMessage } from "react-native-flash-message";
@@ -31,14 +30,7 @@ export default class AppContainer extends React.Component {
             setTopLevelNavigator(navigatorRef)
           }}
         />
-          <KeyboardAccessoryNavigation
-            //avoidKeyboard={true}
-            nextDisabled={true}
-            tintColor={'#0b7f7c'}
-            previousDisabled={true}
-            nextHidden={true}
-            previousHidden={true}
-          />
+          
         <FlashMessage position="top" />
       </View>
     </Provider>       

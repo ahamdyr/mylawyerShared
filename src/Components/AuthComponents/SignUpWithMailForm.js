@@ -76,6 +76,8 @@ export default class SignUpWithMailForm extends React.PureComponent {
               source={UserIcon}
             />
             <TextInput
+              ref = "nameRef"
+              autoFocus
               underlineColorAndroid={'transparent'}
               blurOnSubmit={true}
               placeholderTextColor={'#ffffff'}
@@ -92,6 +94,7 @@ export default class SignUpWithMailForm extends React.PureComponent {
           <View style={styles.inputContainer}>
             <MailLogo />
             <TextInput
+              ref = "emailRef"
               underlineColorAndroid={'transparent'}
               blurOnSubmit={true}
               autoCapitalize={'none'}
@@ -108,6 +111,7 @@ export default class SignUpWithMailForm extends React.PureComponent {
           <View style={styles.inputContainer}>
             <LockImage />
             <TextInput
+              ref = "passwordRef"
               underlineColorAndroid={'transparent'}
               blurOnSubmit={true}
               autoCapitalize={'none'}

@@ -3,6 +3,7 @@ import { Text, View, SafeAreaView, TouchableOpacity, Keyboard } from 'react-nati
 import { styles } from './Styles'
 import SignUpWithMailForm from '../../Components/AuthComponents/SignUpWithMailForm'
 import { withNavigation } from 'react-navigation'
+import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 import { SignUp } from '../../Services/Login Services/MailLogin'
 import SocialBtn from '../../Components/Common/SocialBtn'
 import { facebookIcon, google } from '../../../assets'
@@ -11,6 +12,46 @@ import { LoginWithFacebook } from '../../Services/Login Services/FacebookLogin'
 import { LoginWithGoogle } from '../../Services/Login Services/GoogleLogin'
 
 class SignUpWithMail extends React.Component {
+  index = 'name'
+  handleFocusNext = () => {
+    switch (this.index) {
+      case 'name':
+        this.refs.formRef.refs.emailRef.focus()
+        this.index = 'email'
+        break;
+      case 'email':
+        this.refs.formRef.refs.passwordRef.focus()
+        this.index = 'password'
+        break;
+      case 'password':
+        this.refs.formRef.refs.nameRef.focus()
+        this.index = 'name'
+        break;
+      default:
+        this.refs.formRef.refs.nameRef.focus()
+        break;
+    }
+  }
+  handleFocusPrevious = () => {
+    switch (this.index) {
+      case 'name':
+        this.refs.formRef.refs.passwordRef.focus()
+        this.index = 'password'
+        break;
+      case 'email':
+        this.refs.formRef.refs.nameRef.focus()
+        this.index = 'name'
+        break;
+      case 'password':
+        this.refs.formRef.refs.emailRef.focus()
+        this.index = 'email'
+        break;
+      default:
+        this.refs.formRef.refs.nameRef.focus()
+        break;
+    }
+  }
+
   render() {
     const { navigation } = this.props
     return (
@@ -19,7 +60,7 @@ class SignUpWithMail extends React.Component {
         <View
           //activeOpacity={1}
           style={styles.editContainer}
-          //onPress={() => Keyboard.dismiss()}
+        //onPress={() => Keyboard.dismiss()}
         >
           {/* ==================================================== */}
           <View style={styles.loginTextContainer}>
@@ -31,7 +72,10 @@ class SignUpWithMail extends React.Component {
             </Text>
           </View>
           {/* ==================================================== */}
-          <SignUpWithMailForm onPress={() => SignUp()} />
+          <SignUpWithMailForm
+            ref="formRef"
+            onPress={() => SignUp()}
+          />
           {/* ==================================================== */}
           {
             getUserType() == 'lawyer' ?
@@ -51,7 +95,7 @@ class SignUpWithMail extends React.Component {
                   onPress={() => LoginWithGoogle()}
                 />
               </View>
-          }          
+          }
           {/* ==================================================== */}
         </View>
         {/* ==================================================== */}
@@ -78,6 +122,16 @@ class SignUpWithMail extends React.Component {
             </Text>
         </TouchableOpacity>
         {/* ==================================================== */}
+        <KeyboardAccessoryNavigation
+          //avoidKeyboard={true}
+          tintColor={'#0b7f7c'}
+          nextDisabled={false}
+          previousDisabled={false}
+          nextHidden={false}
+          previousHidden={false}
+          onNext={this.handleFocusNext}
+          onPrevious={this.handleFocusPrevious}
+        />
       </SafeAreaView>
     );
   }
