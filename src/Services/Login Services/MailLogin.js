@@ -45,7 +45,7 @@ export const SignIn = async () => {
         showMessage({
           message: 'You logged in successfully',
           hideOnPress: true,
-          autoHide: false,
+          duration: 3000,
           type: 'success',
         });
         //navigate('LawyerApp')
@@ -58,7 +58,7 @@ export const SignIn = async () => {
       showMessage({
         message: 'You logged in successfully',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'success',
       });
       await saveUser(currentUser, userType)
@@ -68,7 +68,7 @@ export const SignIn = async () => {
     showMessage({
       message: `You are not registered\nRegister first...`,
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
     goBack()
@@ -104,7 +104,7 @@ const userSignUp = async () => {
     showMessage({
       message: 'You have registered successfully',
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'success',
     });
     navigate('UserApp')
@@ -112,7 +112,7 @@ const userSignUp = async () => {
     showMessage({
       message: `You are not registered\nRegister first...`,
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
     goBack()
@@ -164,7 +164,7 @@ export const lawyerSignUp = async () => {
       showMessage({
         message: 'You logged in successfully',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'success',
       });
       //navigate('LawyerApp')
@@ -176,7 +176,7 @@ export const lawyerSignUp = async () => {
     showMessage({
       message: `${error} \nTry again`,
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
     goBack()

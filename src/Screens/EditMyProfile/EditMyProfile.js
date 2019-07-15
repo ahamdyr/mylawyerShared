@@ -99,7 +99,7 @@ export default class EditMyProfile extends React.Component {
         showMessage({
           message: 'Badly formatted email !',
           hideOnPress: true,
-          autoHide: false,
+          duration: 3000,
           type: 'danger',
         });
         return
@@ -115,13 +115,13 @@ export default class EditMyProfile extends React.Component {
         showMessage({
           message: 'You logged in successfully',
           hideOnPress: true,
-          autoHide: false,
+          duration: 3000,
           type: 'success',
         });
         showMessage({
           message: 'Invalid user name !',
           hideOnPress: true,
-          autoHide: false,
+          duration: 3000,
           type: 'danger',
         });
         return
@@ -144,7 +144,7 @@ export default class EditMyProfile extends React.Component {
         showMessage({
           message: 'Provide valid phone number !',
           hideOnPress: true,
-          autoHide: false,
+          duration: 3000,
           type: 'danger',
         });
         return

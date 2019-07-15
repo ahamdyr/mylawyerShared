@@ -24,7 +24,7 @@ export const uploadGalleryImage = async () => {
     showMessage({
       message: 'Enable Permissions in your App Settings',
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
     return 0
@@ -52,7 +52,7 @@ export const uploadCameraImage = async () => {
     showMessage({
       message: 'Enable Permissions in your App Settings',
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
     return 0

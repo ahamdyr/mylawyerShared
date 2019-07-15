@@ -28,7 +28,7 @@ export default class LoginWithMailForm extends React.PureComponent {
       showMessage({
         message: "Badly formatted email !",
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
     }
@@ -36,7 +36,7 @@ export default class LoginWithMailForm extends React.PureComponent {
       showMessage({
         message: "password must be 8 digits or more !",
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
     }

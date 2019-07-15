@@ -20,7 +20,7 @@ export default class LoginWithPhoneForm extends React.PureComponent {
       showMessage({
         message: 'Provide valid phone number !',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
     }

@@ -28,14 +28,14 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
       showMessage({
         message: 'Provide valid phone number !',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
     }
     else if (this.userName.length == 0)  showMessage({
       message: 'Invalid user name !',
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
     else {

@@ -45,7 +45,7 @@ export const LoginWithGoogle = async () => {
       showMessage({
         message: 'You logged in successfully',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'success',
       });
       navigate('UserApp')
@@ -54,7 +54,7 @@ export const LoginWithGoogle = async () => {
       showMessage({
         message: 'Login Cancelled \nTry again',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
       navigate('UserApp')
@@ -63,7 +63,7 @@ export const LoginWithGoogle = async () => {
     showMessage({
       message: `${error.message} \nTry again`,
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
     navigate('UserApp')

@@ -22,7 +22,7 @@ export default class Step1 extends React.Component {
       showMessage({
         message: 'You must select major',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
     }

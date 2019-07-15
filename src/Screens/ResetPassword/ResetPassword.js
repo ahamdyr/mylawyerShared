@@ -36,7 +36,7 @@ export default class ResetPassword extends React.Component {
       showMessage({
         message: 'password must be 8 digits or more !',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
       return

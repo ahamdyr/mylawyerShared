@@ -29,7 +29,7 @@ export default class ViewQuestionScreen extends React.Component {
       showMessage({
         message: `You have 24 hours to answer.\nGood Luck`,
         hideOnPress: true,
-        autoHide: false,        
+        duration: 3000,    
         type: 'success',
       });
       navigate('AnswerQuestionScreen', {question:this._question})
@@ -37,7 +37,7 @@ export default class ViewQuestionScreen extends React.Component {
       showMessage({
         message: `${error}`,
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
       goBack()

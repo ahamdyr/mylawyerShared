@@ -55,7 +55,7 @@ export default class ContactUs extends React.Component {
       showMessage({
         message: 'Your question has been submitted',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'success',
       });
     }

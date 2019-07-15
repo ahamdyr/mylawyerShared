@@ -34,7 +34,7 @@ export const FacebookAuth = async (token) => {
       showMessage({
         message: `${err}`,
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
     })

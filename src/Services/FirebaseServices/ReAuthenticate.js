@@ -41,7 +41,7 @@ export const ReAuthenticate = async () => {
     showMessage({
       message: `${error}\nTry again!`,
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
   }

@@ -34,7 +34,7 @@ export const MailLogin = async(email, password)=>{
       showMessage({
         message: `User isn't registered \n try to register`,
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
     })

@@ -21,7 +21,7 @@ export default class AnswerQuestionScreen extends React.Component {
       showMessage({
         message: `Your answer has been sent.`,
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'success'
       });
       navigate('SolvedQuestionsScreen')
@@ -29,7 +29,7 @@ export default class AnswerQuestionScreen extends React.Component {
       showMessage({
         message: `${error}\nTry again!`,
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
       goBack()

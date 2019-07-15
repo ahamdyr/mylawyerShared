@@ -35,7 +35,7 @@ export const GoogleAuth = async (token) => {
         showMessage({
           message: `${err}\nTry again!`,
           hideOnPress: true,
-          autoHide: false,
+          duration: 3000,
           type: 'danger',
         });
       })
@@ -43,7 +43,7 @@ export const GoogleAuth = async (token) => {
     showMessage({
       message: `${error}\nTry again!`,
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
   }

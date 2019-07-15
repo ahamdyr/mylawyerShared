@@ -19,7 +19,7 @@ function* submitContactMessageSaga(action) {
     showMessage({
       message: 'Your message has been sent successfully',
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'success',
     });
     goBack()
@@ -29,7 +29,7 @@ function* submitContactMessageSaga(action) {
     showMessage({
       message: `${error}`,
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
     goBack()

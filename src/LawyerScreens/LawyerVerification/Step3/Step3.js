@@ -24,7 +24,7 @@ export default class Step3 extends React.Component {
       showMessage({
         message: 'You must add Firm Papers',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
     }

@@ -37,7 +37,7 @@ export default class SignUpWithMailForm extends React.PureComponent {
       showMessage({
         message: 'Badly formatted email !',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
     }
@@ -45,14 +45,14 @@ export default class SignUpWithMailForm extends React.PureComponent {
       showMessage({
         message: 'Password must be 8 digits or more !',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
     }
     else if (this.userName.length == 0) showMessage({
       message: 'Invalid user name !',
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
     else {

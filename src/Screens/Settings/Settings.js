@@ -26,7 +26,7 @@ export default class Settings extends React.Component {
     showMessage({
       message: 'Your account has been deleted',
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'success',
     });
     goBack()

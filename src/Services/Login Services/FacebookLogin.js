@@ -45,7 +45,7 @@ export const LoginWithFacebook = async () => {
       showMessage({
         message: 'You logged in successfully',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'success',
       });
       navigate('UserApp')
@@ -54,7 +54,7 @@ export const LoginWithFacebook = async () => {
       showMessage({
         message: 'Login Failed \nTry again',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
       navigate('UserApp')
@@ -63,7 +63,7 @@ export const LoginWithFacebook = async () => {
     showMessage({
       message: `${error} \nTry again`,
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
     navigate('UserApp')

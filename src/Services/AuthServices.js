@@ -61,7 +61,7 @@ export const logOut = async () => {
     showMessage({
       message: 'You are logged out',
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'success',
     });
       

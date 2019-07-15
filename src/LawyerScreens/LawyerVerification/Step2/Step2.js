@@ -23,7 +23,7 @@ export default class Step2 extends React.Component {
       showMessage({
         message: 'You must add Lawyer ID',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
     }

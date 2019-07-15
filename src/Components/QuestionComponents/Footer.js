@@ -51,7 +51,7 @@ export default class Footer extends React.PureComponent {
         showMessage({
           message: 'Your query must have at least topic, title and body',
           hideOnPress: true,
-          autoHide: false,
+          duration: 3000,
           type: 'danger',
         });
       }

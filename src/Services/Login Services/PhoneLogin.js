@@ -47,7 +47,7 @@ export const SignUp = async (confCode, userName) => {
     showMessage({
       message: 'You logged in successfully',
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'success',
     });
     navigate('UserApp')
@@ -56,7 +56,7 @@ export const SignUp = async (confCode, userName) => {
     showMessage({
       message: `${error}\nTry again!`,
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
   }
@@ -73,7 +73,7 @@ export const Update = async (confCode) => {
     showMessage({
       message: `${error}\nTry again!`,
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
   }
@@ -89,7 +89,7 @@ export const SignIn = async (phoneNumber) => {
       showMessage({
         message: `You are not registered with phone number\n try to register.`,
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
       goBack()
@@ -115,7 +115,7 @@ export const SignIn = async (phoneNumber) => {
       showMessage({
         message: 'You logged in successfully',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'success',
       });
       navigate('UserApp')
@@ -125,7 +125,7 @@ export const SignIn = async (phoneNumber) => {
     showMessage({
       message: `${error} \nTry again`,
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
   }
@@ -155,7 +155,7 @@ export const requestCode = async phoneNumber => {
     showMessage({
       message: `${error} \nTry again`,
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
   }

@@ -32,7 +32,7 @@ function* submitQuestionSaga(action) {
     showMessage({
       message: 'Your question has been submitted',
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'success',
     });
     goBack()
@@ -44,7 +44,7 @@ function* submitQuestionSaga(action) {
     showMessage({
       message: `${error}\nTry again`,
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
     yield put(clearQuestion(false))

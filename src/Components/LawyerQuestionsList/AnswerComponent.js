@@ -57,7 +57,7 @@ export default class AnswerComponent extends React.PureComponent {
       showMessage({
         message: 'You must have an answer to submit',
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
     }

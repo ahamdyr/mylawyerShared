@@ -13,14 +13,14 @@ export const resetPassword = async (newPassword, oldPassword) => {
           .then(() => showMessage({
             message: 'You are logged out',
             hideOnPress: true,
-            autoHide: false,
+            duration: 3000,
             type: 'success',
           }))
       })
       .catch(err => showMessage({
         message: `Old password \n${err}`,
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       }))
 
@@ -29,7 +29,7 @@ export const resetPassword = async (newPassword, oldPassword) => {
     showMessage({
       message: `Your credentials don't need password`,
       hideOnPress: true,
-      autoHide: false,
+      duration: 3000,
       type: 'danger',
     });
   }

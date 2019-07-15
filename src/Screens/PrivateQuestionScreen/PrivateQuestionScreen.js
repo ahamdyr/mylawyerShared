@@ -30,7 +30,7 @@ export default class PrivateQuestionScreen extends React.Component {
       showMessage({
         message: `Your rate has been sent`,
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'success',
       });
       goBack()
@@ -38,7 +38,7 @@ export default class PrivateQuestionScreen extends React.Component {
       showMessage({
         message: `${error}\nTry again!`,
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
       goBack()
@@ -51,7 +51,7 @@ export default class PrivateQuestionScreen extends React.Component {
       showMessage({
         message: `Your question has been re-posted`,
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'success',
       });
       navigate('AllQuestions')
@@ -59,7 +59,7 @@ export default class PrivateQuestionScreen extends React.Component {
       showMessage({
         message: `${error}\nTry again!`,
         hideOnPress: true,
-        autoHide: false,
+        duration: 3000,
         type: 'danger',
       });
       goBack()
