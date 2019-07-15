@@ -76,10 +76,14 @@ export default class ResetPassword extends React.Component {
           </Text>
         </TouchableOpacity>
 
+        <Text style={styles.Text} >
+          Reset password
+        </Text>
+
         <View style={styles.fakePadding}/>
         {/* ///////////////////////////////////////////////////////////// */}
         <KeyboardAvoidingView
-          //keyboardVerticalOffset={STATUS_BAR_HEIGHT + 100}
+          keyboardVerticalOffset={STATUS_BAR_HEIGHT + 20}
           style={styles.viewContainer}
           behavior={'padding'}
           enabled

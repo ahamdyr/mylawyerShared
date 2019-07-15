@@ -62,6 +62,15 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     width: WIDTH,
   },
+  Text: {
+    fontFamily: 'Lato-Bold',
+    fontSize: 22,
+    fontWeight: "bold",
+    fontStyle: "normal",
+    letterSpacing: 0,
+    alignSelf: "center",
+    color: "#0b7f7c"
+  },
   saveText: {
     fontFamily: "Lato-Regular",
     fontSize: 13.8,
