@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { WIDTH, STATUS_BAR_HEIGHT } from '../../Constants'
+import { WIDTH, STATUS_BAR_HEIGHT, HEIGHT } from '../../Constants'
 
 export const styles = StyleSheet.create({
   picker: {
@@ -17,10 +17,11 @@ export const styles = StyleSheet.create({
     opacity: 0.26,
     backgroundColor: "#a0a0a4"
   },
-  modalStyle:{
-     position: 'absolute',
-     top:  110,
-     height: 300,
+  modalStyle: {
+    position: 'absolute',
+    top: (HEIGHT - 400) / 2,
+    //top: 110,
+    height: 400,
     width: WIDTH - 50,
     alignSelf: 'center',
     borderRadius: 10,

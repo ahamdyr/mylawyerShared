@@ -20,7 +20,7 @@ export default class UserTypeScreen extends React.Component {
       navigate('SocialScreen')
     }
     else{
-      navigate('LoginWithMail')
+      navigate('SignUpWithMail')
     }
   }
   render() {    

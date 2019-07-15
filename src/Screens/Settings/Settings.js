@@ -18,7 +18,8 @@ import 'firebase/auth'
 export default class Settings extends React.Component {
   _logOut = async () => {
     await logOut()
-    goBack()
+    navigate('Home')
+    //goBack()
   }
   _deleteAccount = async () => {
     await logOut()
@@ -29,7 +30,8 @@ export default class Settings extends React.Component {
       duration: 3000,
       type: 'success',
     });
-    goBack()
+    navigate('Home')
+    //goBack()
   }
   render() {
     var {

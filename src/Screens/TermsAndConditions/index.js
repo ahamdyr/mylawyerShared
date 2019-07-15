@@ -22,7 +22,7 @@ export default class TermsAndConditions extends React.Component {
           {mockContent}
         </Text>
         <WhiteX      
-          style={styles.close}    
+          //style={styles.close}    
           onPress={()=> {
             goBack()
           }}
@@ -37,10 +37,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#f6f6f6",
     alignItems: 'center',
-    //justifyContent: 'center',
+    justifyContent: 'space-between',
+    paddingTop: 40 + STATUS_BAR_HEIGHT,
+    paddingBottom: 24,
   },
   title: {
-    marginTop: 59 + STATUS_BAR_HEIGHT,
+    //marginTop: 59 + STATUS_BAR_HEIGHT,
     fontFamily: "LuxiSerif",
     fontSize: 24.3,
     fontWeight: "bold",
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
     color: "#0b7f7c"
   },
   content: {
-    marginTop: 66,
+    //marginTop: 66,
     width: 311,
     fontFamily: "Lato-Regular",
     fontSize: 18,

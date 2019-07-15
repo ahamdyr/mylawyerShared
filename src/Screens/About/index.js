@@ -28,7 +28,7 @@ export default class About extends React.Component {
           Version {Constants.manifest.version}
         </Text>
         <WhiteX      
-          style={styles.close}    
+          //style={styles.close}    
           onPress={()=> {
             goBack()
           }}
@@ -43,10 +43,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#f6f6f6",
     alignItems: 'center',
-    //justifyContent: 'center',
+    justifyContent: 'space-between',
+    paddingTop: 40 + STATUS_BAR_HEIGHT,
+    paddingBottom: 24,
   },
   title: {
-    marginTop: 59 + STATUS_BAR_HEIGHT,
+    //marginTop: 59 + STATUS_BAR_HEIGHT,
     fontFamily: "LuxiSerif",
     fontSize: 24.3,
     fontWeight: "bold",
@@ -55,8 +57,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#0b7f7c"
   },
-  version: {
-    marginTop: 20,
+  content: {
+    //marginTop: 66,
     width: 311,
     fontFamily: "Lato-Regular",
     fontSize: 18,
@@ -66,8 +68,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#0b7f7c"
   },
-  content: {
-    marginTop: 66,
+  version: {
+    //marginTop: 20,
     width: 311,
     fontFamily: "Lato-Regular",
     fontSize: 18,

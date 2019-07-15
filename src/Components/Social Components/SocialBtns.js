@@ -60,13 +60,13 @@ class SocialBtns extends React.PureComponent {
           style={styles.mailStyle}
           icon={Mail}
           iconStyle={styles.mailIconStyle}
-          onPress={() => navigation.navigate('LoginWithMail')}
+          onPress={() => navigation.navigate('SignUpWithMail')}
           />
         <SocialBtn
           style={styles.phoneStyle}
           icon={PhoneIcon}
           iconStyle={styles.phoneIconStyle}
-          onPress={() => navigation.navigate('LoginWithPhone')}
+          onPress={() => navigation.navigate('SignUpWithPhone')}
         />
 
       </View>

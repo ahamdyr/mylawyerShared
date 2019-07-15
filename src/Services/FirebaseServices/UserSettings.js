@@ -11,7 +11,7 @@ export const resetPassword = async (newPassword, oldPassword) => {
       .then(user => {
         user.user.updatePassword(newPassword)
           .then(() => showMessage({
-            message: 'You are logged out',
+            message: 'Your password has been updated.',
             hideOnPress: true,
             duration: 3000,
             type: 'success',

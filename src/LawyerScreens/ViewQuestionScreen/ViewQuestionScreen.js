@@ -74,7 +74,7 @@ export default class ViewQuestionScreen extends React.Component {
           onPress={()=>this._onSubmit()}
         />
         <Text style={styles.hintStyle}>
-          {`Please note that the question will be locked to you until you answer it`}
+          {`Please note that the question will be locked for just 24 hours to you to answer it`}
         </Text>
       </SafeAreaView>
     );

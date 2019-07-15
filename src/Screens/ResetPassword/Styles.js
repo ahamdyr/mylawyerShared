@@ -40,8 +40,8 @@ export const styles = StyleSheet.create({
     flex: 1,
     width: WIDTH,
     alignItems: 'center',
-    paddingTop: 200,
-    //justifyContent: 'center',
+    //paddingTop: 200,
+    justifyContent: 'center',
     //backgroundColor: 'red'
   },
   cancel: {
@@ -54,10 +54,12 @@ export const styles = StyleSheet.create({
     color: "#0b7f7c"
   },
   headerStyle: {
+    //flex: 1,
     flexDirection: 'row',
+    justifyContent: 'flex-end',
+    //backgroundColor: 'yellow',
     height: 20,
     alignItems: 'center',
-    justifyContent: 'flex-end',
     width: WIDTH,
   },
   saveText: {
@@ -70,9 +72,9 @@ export const styles = StyleSheet.create({
     color: "#ffffff"
   },
   saveBtn: {
-    position: 'absolute',
+    //position: 'absolute',
+    //bottom: 22,
     alignSelf: 'center',
-    bottom: 22,
     width: 224,
     height: 51.5,
     borderRadius: 25.8,
@@ -87,15 +89,19 @@ export const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    //backgroundColor: "red",
     backgroundColor: "#f6f6f6",
     //alignItems: 'center',
-    //justifyContent: 'space-between',
+    justifyContent: 'space-between',
     paddingTop: 22 + STATUS_BAR_HEIGHT,
     paddingBottom: 22
   },
   viewContainer:{
-    flex: 1,
+    //flex: 1,
     backgroundColor: "#f6f6f6",
+    //backgroundColor: 'green',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   profileImage: {
     marginTop: 10,
@@ -110,6 +116,10 @@ export const styles = StyleSheet.create({
     elevation: 10,
     shadowOpacity: 0.5,
     marginTop: 16
+  },
+  fakePadding: {
+    height: 90,
+    //backgroundColor: 'red'
   },
   question: {
     marginTop: 16,
