@@ -32,8 +32,8 @@ import LawsItem from './LawsItem'
           style={{
             flex: 1,
             alignSelf: 'stretch',
-            paddingLeft:18.5,
-            paddingRight:27.5,
+            paddingLeft:23,
+            paddingRight:23,
             backgroundColor:'#f6f6f6'
           }}
         />
