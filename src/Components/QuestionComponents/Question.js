@@ -10,7 +10,7 @@ import {
   Platform,
   KeyboardAvoidingView
 } from 'react-native';
-import { STATUS_BAR_HEIGHT, WIDTH, HEIGHT, MAIN_COLOR } from '../Constants'
+import { STATUS_BAR_HEIGHT, WIDTH, HEIGHT, MAIN_COLOR, LANGUAGE } from '../Constants'
 import SeperatorLine from '../Common/SeperatorLine'
 import KeyboardSpacer from 'react-native-keyboard-spacer'
 import KeyboardListener from 'react-native-keyboard-listener'
@@ -215,13 +215,13 @@ const styles = StyleSheet.create({
     paddingRight: 3
   },
   bodyText: {
-    //flex: 1,
+    //flex: 1,    
     flexWrap: 'wrap',
     fontFamily: 'Lato-Regular',
     letterSpacing: 0.4,
     fontSize: 16,
     color: '#74747a',
-    textAlign: 'center',
+    textAlign: LANGUAGE == 'ar' ? 'right' : 'left' ,
     //alignSelf: 'center',
     //width: 300,
     // marginTop: 10,
