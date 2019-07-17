@@ -22,6 +22,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 1
   },
   ContinueAs: {
+    //backgroundColor: 'blue',
     marginTop: 38.5,
     marginBottom: 38.5,
     alignSelf: 'center',

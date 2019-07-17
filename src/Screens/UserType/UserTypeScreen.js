@@ -10,6 +10,7 @@ import {
   navigate,
   goBack
 } from '../../Services/NavigationServices'
+import BlackX from '../../Components/Common/BlackX'
 import ImageIcon from '../../Components/Common/ImageIcon'
 import { userLogo, lawyerIcon } from '../../../assets'
 
@@ -29,6 +30,9 @@ export default class UserTypeScreen extends React.Component {
         style={styles.transparentContainer}
       >
         <View style={styles.container}>
+          <BlackX
+            onPress={() => goBack()}
+          />
           <Text style={styles.ContinueAs}>
             Continue as
           </Text>
