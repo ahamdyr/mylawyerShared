@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import Spinner from '../Spinner'
 import LawsList from '../../Components/Lawyers List/LawsList';
-
+import { mockLawyersList } from "../../Services/BackendServices/MockData"
 export default class LawyersScreen extends React.Component {
 
   componentDidMount(){
@@ -31,6 +31,7 @@ export default class LawyersScreen extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <LawsList lawyers={this.props.getLawyersSuccess}/>
+        {/* <LawsList lawyers={mockLawyersList}/> */}
       </SafeAreaView>
     );
   }

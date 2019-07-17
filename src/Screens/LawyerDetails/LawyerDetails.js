@@ -79,6 +79,7 @@ export default class LawyerDetails extends React.Component {
             style={styles.footer}
             onPress={async()=> {
               await WebBrowser.openBrowserAsync(`https://reachnetwork.co/${getFirstName(lawyer.name)}`)
+              //await WebBrowser.openBrowserAsync(lawyer.reachURL)
             }}
           >
             <Text style={styles.footerText}>
