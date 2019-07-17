@@ -82,12 +82,6 @@ export const styles = StyleSheet.create({
     marginHorizontal: 16
   },
   closeIcon: {
-    width: 16.5,
-    height: 16.5,
-    borderRadius: 0.8,
-    position: 'absolute',
-    top: 20,
-    right: 16,
-    left: 90
+    marginTop: STATUS_BAR_HEIGHT
   }
 });

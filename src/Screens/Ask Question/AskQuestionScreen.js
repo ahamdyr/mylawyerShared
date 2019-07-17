@@ -65,6 +65,7 @@ export default class AskQuestion extends React.Component {
       <SafeAreaView style={styles.container}>
         <BlackX
           onPress={() => goBack()}
+          style={styles.closeIcon}
         />
 
         <AskTitle />
