@@ -9,7 +9,12 @@ export const confirmationResult = async (phoneNumber, captchaVerifier) => {
     confirmResult = await firebase.auth().signInWithPhoneNumber(phoneNumber, captchaVerifier)
     verificationId = confirmResult.verificationId
   } catch (e) {
-    alert(e)
+    showMessage({
+      message: `${e}`,
+      hideOnPress: true,
+      duration: 3000,
+      type: 'danger',
+    });
   }
 }
 
@@ -40,7 +45,12 @@ export const PhoneAuth = async (confCode) => {
       }
     })
     .catch(err => {
-      alert(err)
+      showMessage({
+        message: `${err}`,
+        hideOnPress: true,
+        duration: 3000,
+        type: 'danger',
+      });
     })
 }
 

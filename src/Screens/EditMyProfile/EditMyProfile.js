@@ -245,7 +245,7 @@ export default class EditMyProfile extends React.Component {
                 underlineColorAndroid={'transparent'}
                 blurOnSubmit={true}
                 placeholder={'phone number'}
-                keyboardType={'number-pad'}
+                keyboardType={'phone-pad'}
                 onChangeText={this._edit_Phone_Number}
                 style={styles.inputStyle}
               />

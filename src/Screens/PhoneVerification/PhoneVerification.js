@@ -72,25 +72,23 @@ export default class PhoneVerification extends Component {
       <SafeAreaView style={styles.container}>
 
         <Text style={styles.header}>{headerText}</Text>
-        <View style={{ flexDirection: 'row' }}>
-          <TextInput
-            ref={'textInput'}
-            blurOnSubmit={true}
-            name={'code'}
-            type={'TextInput'}
-            underlineColorAndroid={'transparent'}
-            autoCapitalize={'none'}
-            autoCorrect={false}
-            placeholder={'_ _ _ _ _ _'}
-            keyboardType={'phone-pad'}
-            style={[styles.textInput]}
-            autoFocus
-            placeholderTextColor={'black'}
-            selectionColor={'black'}
-            onChangeText={this._onChangeCodeText}
-            maxLength={6}
-          />
-        </View>
+        <TextInput
+          ref={'textInput'}
+          blurOnSubmit={true}
+          name={'code'}
+          type={'TextInput'}
+          underlineColorAndroid={'transparent'}
+          autoCapitalize={'none'}
+          autoCorrect={false}
+          placeholder={'_ _ _ _ _ _'}
+          keyboardType={'phone-pad'}
+          style={[styles.textInput]}
+          autoFocus
+          placeholderTextColor={'black'}
+          selectionColor={'black'}
+          onChangeText={this._onChangeCodeText}
+          maxLength={6}
+        />
         <Text style={styles.hint}>
           {hintText}
         </Text>
@@ -129,11 +127,7 @@ const styles = StyleSheet.create({
   form: {
     marginTop: 60
   },
-  textInput: {
-    textAlign: 'center',
-    padding: 0,
-    margin: 0,
-    flex: 1,
+  textInput: {    
     fontSize: 40,
     color: 'black',
     height: 50,
