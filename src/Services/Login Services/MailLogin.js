@@ -80,6 +80,7 @@ const userSignUp = async () => {
     const email = Store.getState().userMail
     const password = Store.getState().userPassword
     const userName = Store.getState().userName
+    const userPhoneNumber = Store.getState().userPhoneNumber
     navigate('Spinner')
     var {
       currentUser,
@@ -87,16 +88,18 @@ const userSignUp = async () => {
       uid,
       refreshToken
     } = await MailSignUp(email, password)
-
+    
     // add userName
     currentUser.displayName = userName
     updateUserName(userName)
+    // add phoneNumber
+    currentUser.phoneNumber = userPhoneNumber
 
     var backendToken = base64Token(uid, userToken)
 
     var userType = getUserType()
 
-    var pickedUser = await Register(userType, backendToken)
+    var pickedUser = await Register(userType, backendToken, userPhoneNumber)
 
     currentUser = Object.assign({}, currentUser, pickedUser)
 
@@ -123,6 +126,7 @@ export const lawyerSignUp = async () => {
     const email = Store.getState().userMail
     const password = Store.getState().userPassword
     const userName = Store.getState().userName
+    const userPhoneNumber = Store.getState().userPhoneNumber
     navigate('Spinner')
     var {
       currentUser,
@@ -134,6 +138,9 @@ export const lawyerSignUp = async () => {
     // add userName
     currentUser.displayName = userName
     updateUserName(userName)
+    // add phoneNumber
+    currentUser.phoneNumber = userPhoneNumber
+
 
     var backendToken = base64Token(uid, userToken)
 
@@ -150,7 +157,7 @@ export const lawyerSignUp = async () => {
     // console.log('firmPapersLinks ', firmPapersLinks)
     // console.log('lawyerMajor ', lawyerMajor)
 
-    var pickedUser = await LawyerRegister(userType, backendToken, lawyerMajor, lawyerIDsLinks, firmPapersLinks)
+    var pickedUser = await LawyerRegister(userType, backendToken, lawyerMajor, lawyerIDsLinks, firmPapersLinks, userPhoneNumber)
     // var pickedUser = {
     //   id: 53,
     //   type: 'lawyer',

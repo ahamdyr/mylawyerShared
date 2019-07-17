@@ -20,6 +20,10 @@ class SignUpWithMail extends React.Component {
         this.index = 'email'
         break;
       case 'email':
+        this.refs.formRef.refs.phoneRef.focus()
+        this.index = 'phone'
+        break;
+      case 'phone':
         this.refs.formRef.refs.passwordRef.focus()
         this.index = 'password'
         break;

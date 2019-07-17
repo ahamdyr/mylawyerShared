@@ -1,8 +1,9 @@
 import axios from 'axios'
 
-export const Register = async (type, token) => {
+export const Register = async (type, token, userPhoneNumber) => {
   let requestBody = new FormData()
   requestBody.append('type', type)
+  //requestBody.append('phoneNumber', userPhoneNumber)
   return new Promise((resolve, reject) => {
     axios.post(
       `account/authenticate/`,
@@ -26,8 +27,8 @@ export const Register = async (type, token) => {
   })  
 }
 
-export const LawyerRegister = async (type, token, lawyerMajor, lawyerIDsLinks, firmPapersLinks) => {
-
+export const LawyerRegister = async (type, token, lawyerMajor, lawyerIDsLinks, firmPapersLinks, userPhoneNumber) => {
+  // add userPhoneNumber 
   var requestBody = `type=${type}&majors=${lawyerMajor.id}`
 
   lawyerIDsLinks.forEach(e=>{
