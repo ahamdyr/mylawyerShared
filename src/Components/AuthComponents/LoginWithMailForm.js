@@ -62,6 +62,7 @@ export default class LoginWithMailForm extends React.PureComponent {
             blurOnSubmit={true}
             underlineColorAndroid={'transparent'}
             autoCapitalize={'none'}
+            selectionColor={'white'}
             placeholder={'name@mail.com' }            
             keyboardType={'email-address'}
             style={styles.inputStyle}
@@ -79,7 +80,8 @@ export default class LoginWithMailForm extends React.PureComponent {
             blurOnSubmit={true}
             underlineColorAndroid={'transparent'}
             secureTextEntry
-            placeholder={'***********' }            
+            placeholder={'***********' }
+            selectionColor={'white'}            
             placeholderTextColor={'#ffffff'}
             style={styles.inputStyle}
             onChangeText={this._onPassChange}
