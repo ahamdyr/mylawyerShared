@@ -43,7 +43,7 @@ export default class LoginWithPhoneForm extends React.PureComponent {
             source={PhoneIcon}
           />
           <TextInput       
-            autoFocus  
+            //autoFocus  
             blurOnSubmit={true}
             underlineColorAndroid={'transparent'}
             placeholder={'+20 123 456 7890' }            

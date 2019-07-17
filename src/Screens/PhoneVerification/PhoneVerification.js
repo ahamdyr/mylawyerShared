@@ -83,7 +83,7 @@ export default class PhoneVerification extends Component {
           placeholder={'_ _ _ _ _ _'}
           keyboardType={'phone-pad'}
           style={[styles.textInput]}
-          autoFocus
+          //autoFocus
           placeholderTextColor={'black'}
           selectionColor={'black'}
           onChangeText={this._onChangeCodeText}

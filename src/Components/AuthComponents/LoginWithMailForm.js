@@ -58,7 +58,7 @@ export default class LoginWithMailForm extends React.PureComponent {
           <MailLogo/>
           <TextInput  
             ref= "emailRef"
-            autoFocus          
+            //autoFocus          
             blurOnSubmit={true}
             underlineColorAndroid={'transparent'}
             autoCapitalize={'none'}

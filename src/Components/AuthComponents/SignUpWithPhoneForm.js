@@ -60,7 +60,7 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
           />
           <TextInput
             ref= "nameRef"
-            autoFocus
+            //autoFocus
             underlineColorAndroid={'transparent'}
             blurOnSubmit={true}
             placeholderTextColor={'#ffffff'}

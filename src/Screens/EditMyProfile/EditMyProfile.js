@@ -218,7 +218,7 @@ export default class EditMyProfile extends React.Component {
             >
               <TextInput
                 ref= "nameRef"
-                autoFocus
+                //autoFocus
                 underlineColorAndroid={'transparent'}
                 blurOnSubmit={true}
                 placeholder={'user name'}

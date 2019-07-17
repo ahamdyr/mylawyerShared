@@ -103,7 +103,7 @@ export default class QuestionComponent extends React.PureComponent {
               this._titleRef = ref
               ref= "titleRef"
             }}
-            autoFocus
+            //autoFocus
             //value={this.state.title}
             style={styles.titleText}
             multiline={true}

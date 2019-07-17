@@ -77,7 +77,7 @@ export default class SignUpWithMailForm extends React.PureComponent {
             />
             <TextInput
               ref = "nameRef"
-              autoFocus
+              //autoFocus
               underlineColorAndroid={'transparent'}
               blurOnSubmit={true}
               placeholderTextColor={'#ffffff'}

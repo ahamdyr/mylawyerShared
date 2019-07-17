@@ -93,7 +93,7 @@ export default class ResetPassword extends React.Component {
           />
           <TextInput
             ref="old"
-            autoFocus
+            //autoFocus
             underlineColorAndroid={'transparent'}
             blurOnSubmit={true}
             secureTextEntry={true}
