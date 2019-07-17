@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     //alignItems: 'center',
     // justifyContent: 'flex-start',
-    marginTop: STATUS_BAR_HEIGHT
+    paddingTop: STATUS_BAR_HEIGHT
   },
   select: {
     backgroundColor: 'white',
