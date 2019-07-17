@@ -42,7 +42,8 @@ export default HomeStack = createStackNavigator({
     //headerBackTitle: 'null',
     headerTitle: <ImageIcon source={logo_text_colord} style={{
       width: 95,
-      height: 26.5
+      height: 26.5,
+      //backgroundColor: 'yellow'
     }} />,
     headerStyle:{
       elevation:0,
@@ -55,16 +56,16 @@ export default HomeStack = createStackNavigator({
 
 const styles = StyleSheet.create({
   menuIconStyle : {
-    width: 50,
+    width: 80,
     height: 50,
-    alignItems: 'center',
+    //alignItems: 'center',
     justifyContent: 'center',
     //backgroundColor: 'red'
   },
   searchIconStyle: {
-    width: 50,
+    width: 80,
     height: 50,
-    alignItems: 'center',
+    //alignItems: 'center',
     justifyContent: 'center',
     //backgroundColor: 'red'
   }

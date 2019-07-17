@@ -11,7 +11,13 @@ class SearchIcon extends React.Component {
         style={this.props.style}
       >   
         <Image
-          style={{width: 20, height: 20, marginRight:16}} 
+          style={{
+            width: 20, 
+            height: 20, 
+            //marginRight:16,
+            position: 'absolute',
+            right: 16
+          }} 
           source={SearchImage}
         />        
       </TouchableOpacity>     
