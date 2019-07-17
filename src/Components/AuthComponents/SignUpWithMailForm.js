@@ -12,14 +12,20 @@ import {
   setMail,
   setPassword,
   setUserName,
+  setPhoneNumber
 } from '../../Redux/Auth/actions'
 import { isValidEmailAddress } from '../../Utils/InputValidation'
 
 
 export default class SignUpWithMailForm extends React.PureComponent {
   mail = '';
+  phone = '';
   password = '';
   userName = '';
+  _onPhoneChange = (val) => {
+    this.phone = val
+    Store.dispatch(setPhoneNumber(val))
+  }
   _onMailChange = (val) => {
     this.mail = val
     Store.dispatch(setMail(val))
@@ -68,71 +74,90 @@ export default class SignUpWithMailForm extends React.PureComponent {
         behavior={'padding'}
       >
         <View style={{ marginTop: 20 }} />
-          <SeperatorLine />
+        <SeperatorLine />
 
-          <View style={styles.inputContainer}>
-            <ImageIcon
-              style={styles.userIcon}
-              source={UserIcon}
-            />
-            <TextInput
-              ref = "nameRef"
-              //autoFocus
-              underlineColorAndroid={'transparent'}
-              blurOnSubmit={true}
-              placeholderTextColor={'#ffffff'}
-              selectionColor={'white'}
-              autoCapitalize={'none'}
-              placeholder={'username'}
-              keyboardType={'default'}
-              style={styles.userNameText}
-              onChangeText={this._onNameChange}
-            />
-          </View>
+        <View style={styles.inputContainer}>
+          <ImageIcon
+            style={styles.userIcon}
+            source={UserIcon}
+          />
+          <TextInput
+            ref="nameRef"
+            //autoFocus
+            underlineColorAndroid={'transparent'}
+            blurOnSubmit={true}
+            placeholderTextColor={'#ffffff'}
+            selectionColor={'white'}
+            autoCapitalize={'none'}
+            placeholder={'username'}
+            keyboardType={'default'}
+            style={styles.userNameText}
+            onChangeText={this._onNameChange}
+          />
+        </View>
 
-          <SeperatorLine />
+        <SeperatorLine />
 
-          <View style={styles.inputContainer}>
-            <MailLogo />
-            <TextInput
-              ref = "emailRef"
-              underlineColorAndroid={'transparent'}
-              blurOnSubmit={true}
-              autoCapitalize={'none'}
-              placeholder={'name@mail.com'}
-              selectionColor={'white'}
-              keyboardType={'email-address'}
-              style={styles.inputStyle}
-              placeholderTextColor={'#ffffff'}
-              onChangeText={this._onMailChange}
-            />
-          </View>
+        <View style={styles.inputContainer}>
+          <MailLogo />
+          <TextInput
+            ref="emailRef"
+            underlineColorAndroid={'transparent'}
+            blurOnSubmit={true}
+            autoCapitalize={'none'}
+            placeholder={'name@mail.com'}
+            selectionColor={'white'}
+            keyboardType={'email-address'}
+            style={styles.inputStyle}
+            placeholderTextColor={'#ffffff'}
+            onChangeText={this._onMailChange}
+          />
+        </View>
 
-          <SeperatorLine />
+        <SeperatorLine />
+        <View style={styles.inputContainer}>
+          <ImageIcon
+            style={styles.phoneIconStyle}
+            source={PhoneIcon}
+          />
+          <TextInput
+            ref="phoneRef"
+            underlineColorAndroid={'transparent'}
+            blurOnSubmit={true}
+            placeholder={'+20 123 456 7890'}
+            keyboardType={'phone-pad'}
+            selectionColor={'white'}
+            style={styles.nmberStyle}
+            placeholderTextColor={'#ffffff'}
+            onChangeText={this._onPhoneChange}
+          />
+        </View>
 
-          <View style={styles.inputContainer}>
-            <LockImage />
-            <TextInput
-              ref = "passwordRef"
-              underlineColorAndroid={'transparent'}
-              blurOnSubmit={true}
-              autoCapitalize={'none'}
-              secureTextEntry
-              placeholder={'***********'}
-              selectionColor={'white'}
-              placeholderTextColor={'#ffffff'}
-              style={styles.inputStyle}
-              onChangeText={this._onPassChange}
-            />
-            {/* <Text
+        <SeperatorLine />
+
+        <View style={styles.inputContainer}>
+          <LockImage />
+          <TextInput
+            ref="passwordRef"
+            underlineColorAndroid={'transparent'}
+            blurOnSubmit={true}
+            autoCapitalize={'none'}
+            secureTextEntry
+            placeholder={'***********'}
+            selectionColor={'white'}
+            placeholderTextColor={'#ffffff'}
+            style={styles.inputStyle}
+            onChangeText={this._onPassChange}
+          />
+          {/* <Text
             style={styles.forgot}
             //onPress={()=>console.log('ajbfh')}
           >
             Forgot?
           </Text> */}
-          </View>
+        </View>
 
-          <SeperatorLine />
+        <SeperatorLine />
 
         <LoginButton
           text={'Sign up'}
@@ -157,7 +182,7 @@ const styles = StyleSheet.create({
     //backgroundColor: 'red',
   },
   inputContainer: {
-    width: 230,
+    width: 250,
     height: 60,
     flexDirection: 'row',
     alignItems: 'center',
@@ -197,6 +222,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Light',
     fontSize: 16,
     marginLeft: 18.5,
-    color: 'white'
+    color: 'white',
+    width: 200,
   }
 })
