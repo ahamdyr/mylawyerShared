@@ -68,10 +68,10 @@ export default class SignUpWithMailForm extends React.PureComponent {
   render() {
     return (
       <KeyboardAvoidingView
-        keyboardVerticalOffset={STATUS_BAR_HEIGHT}
+        //keyboardVerticalOffset={STATUS_BAR_HEIGHT}
         //contentContainerStyle={styles.container}
         style={styles.container}
-        behavior={'padding'}
+        // behavior={'position'}
       >
         <View style={{ marginTop: 20 }} />
         <SeperatorLine />

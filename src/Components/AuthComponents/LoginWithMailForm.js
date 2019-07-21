@@ -49,7 +49,7 @@ export default class LoginWithMailForm extends React.PureComponent {
       <KeyboardAvoidingView 
         style={styles.container}
         //keyboardVerticalOffset={100}
-        behavior={'padding'}
+        // behavior={'position'}
       >
 
         <SeperatorLine/>
