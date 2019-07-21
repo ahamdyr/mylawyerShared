@@ -49,15 +49,21 @@ export default class ContactUs extends React.Component {
   }
   sendMessage = () => {
     if (this.state.body && isValidEmailAddress(this.state.email)) {
-      this.props.submitMessage(this.state.email, this.state.body)    
-    }
-    else {
+      this.props.submitMessage(this.state.email, this.state.body) 
       showMessage({
         message: 'Your question has been submitted',
         hideOnPress: true,
         duration: 3000,
         type: 'success',
-      });
+      });   
+    }
+    else {
+      showMessage({
+        message: 'You must have a valid email and a message',
+        hideOnPress: true,
+        duration: 3000,
+        type: 'danger',
+      });  
     }
   }
   render() {
