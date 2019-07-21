@@ -68,11 +68,6 @@ class LoginWithMail extends React.Component {
         <KeyboardAccessoryNavigation
           //avoidKeyboard={true}
           tintColor={'#0b7f7c'}
-          accessoryStyle={{
-            //height: 30
-          }}
-          //previousButtonStyle={{width: 40, height: 40}}
-          //nextButtonStyle={{width: 40, height: 40}}
           nextDisabled={false}
           previousDisabled={false}
           nextHidden={false}

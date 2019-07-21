@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   lawyerPhoto: {
     flex: 1,
     overflow: 'hidden',
-    elevation: 10,
+    //elevation: 10,
     borderRadius: 8
   },
   lawyerImage: {

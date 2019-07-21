@@ -21,6 +21,7 @@
     "react-native-dropdown-menu": "^2.0.0",
     "react-native-flash-message": "^0.1.13",
     "react-native-keyboard-accessory": "^0.1.9",
+    "react-native-keyboard-aware-scroll-view": "^0.8.0",
     "react-native-keyboard-listener": "^1.1.0",
     "react-native-keyboard-spacer": "^0.4.1",
     "react-native-loading-spinner-overlay": "^1.0.1",
