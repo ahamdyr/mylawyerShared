@@ -28,7 +28,7 @@ export const Register = async (type, token, userPhoneNumber) => {
 }
 
 export const LawyerRegister = async (type, token, lawyerMajor, lawyerIDsLinks, firmPapersLinks, userPhoneNumber) => {
-  // add userPhoneNumber 
+  
   var requestBody = `type=${type}&majors=${lawyerMajor.id}`
 
   lawyerIDsLinks.forEach(e=>{
@@ -37,6 +37,9 @@ export const LawyerRegister = async (type, token, lawyerMajor, lawyerIDsLinks, f
   firmPapersLinks.forEach(x=>{
     requestBody = requestBody + `&firmPapers=${x}`
   })
+  if(userPhoneNumber){
+    requestBody = requestBody + `&phone=${userPhoneNumber}`
+  }
   return new Promise((resolve, reject) => {
     axios.post(
       `account/authenticate/`,

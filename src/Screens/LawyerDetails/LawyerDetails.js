@@ -78,8 +78,8 @@ export default class LawyerDetails extends React.Component {
           <TouchableOpacity 
             style={styles.footer}
             onPress={async()=> {
-              await WebBrowser.openBrowserAsync(`https://reachnetwork.co/${getFirstName(lawyer.name)}`)
-              //await WebBrowser.openBrowserAsync(lawyer.reachURL)
+              //await WebBrowser.openBrowserAsync(`https://reachnetwork.co/${getFirstName(lawyer.name)}`)
+              await WebBrowser.openBrowserAsync(lawyer.reachAccount)
             }}
           >
             <Text style={styles.footerText}>
