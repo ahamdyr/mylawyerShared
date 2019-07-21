@@ -8,7 +8,7 @@ import SeperatorLine from '../../Common/SeperatorLine'
 export default class SelectComponent extends React.PureComponent {
   _initialTopic = {
     id: '0',
-    name: 'All TOPICS'
+    name: this.props.ask ? 'Select Topic...' : 'All TOPICS'
   }
   componentDidMount() {
     this.props.getTopicsRequest()
@@ -19,7 +19,7 @@ export default class SelectComponent extends React.PureComponent {
       choosenLabel: itemValue
     })
     //console.log('itemValue ', itemValue.id == '0' ? '' : itemValue.id)
-    this.props.onSelect(itemValue.id == '0' ? '' : itemValue.id)
+    this.props.onSelect(itemValue.id == '0' ? '0' : itemValue.id)
   }
   state = { choosenLabel: this._initialTopic }
   render() {
