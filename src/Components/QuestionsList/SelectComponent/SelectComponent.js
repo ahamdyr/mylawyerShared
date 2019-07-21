@@ -29,7 +29,7 @@ export default class SelectComponent extends React.PureComponent {
       clear
     } = this.props
     if (clear) {
-      this.state.choosenLabel = this._initialTopic
+      this._onChange(this._initialTopic)
     }
     return (
       <TouchableOpacity 

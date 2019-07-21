@@ -23,11 +23,11 @@ export default class QuestionComponent extends React.PureComponent {
     body: ''
   }
   _titleChange = (val) => {
-    //this.setState({title : val}) 
+    this.setState({title : val}) 
     this.props.setQuestionTitle(val)
   }
   _bodyChange = (val) => {
-    //this.setState({body : val}) 
+    this.setState({body : val}) 
     this.props.setQuestionBody(val)
   }
   _titleKeyBoardToggle = () => {
@@ -59,11 +59,8 @@ export default class QuestionComponent extends React.PureComponent {
       key
     } = this.state
     if(clear){
-      //console.log('clear  ',clear)
-      this._bodyRef.clear()
-      this._titleRef.clear()
-      // this.state.title = ''
-      // this.state.body = ''
+      this._titleChange('')
+      this._bodyChange('')
     }
     //console.log('focused  ',focused)
     return (
@@ -104,7 +101,7 @@ export default class QuestionComponent extends React.PureComponent {
               ref= "titleRef"
             }}
             //autoFocus
-            //value={this.state.title}
+            value={this.state.title}
             style={styles.titleText}
             multiline={true}
             numberOfLines={2}
@@ -132,7 +129,7 @@ export default class QuestionComponent extends React.PureComponent {
             <TextInput
               blurOnSubmit={true}
               style={styles.bodyText}
-              //value={this.state.body}
+              value={this.state.body}
               autoGrow={false}
               scrollEnabled={true}
               ref={(ref) => {
