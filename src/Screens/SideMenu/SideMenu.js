@@ -13,7 +13,7 @@ import { defaultPicture } from '../../../assets'
 
 export default class SideMenu extends React.Component {
 
-  render() {    
+  render() {
     var {
       isLoggedUser,
       userPhoto,
@@ -28,7 +28,6 @@ export default class SideMenu extends React.Component {
           />
           {isLoggedUser ?
             <React.Fragment>
-              
               <SideMenuBtn
                 btnTitle={'My Profile'}
                 onPress={() => {
@@ -65,15 +64,11 @@ export default class SideMenu extends React.Component {
               navigate('About')
             }}
           />
-          {
-            userType == 'user' ?
-              <WhiteX
-                onPress={() => {
-                  goBack()
-                }}
-              />
-              : null
-          }          
+          <WhiteX
+            onPress={() => {
+              goBack()
+            }}
+          />
         </View>
       </SafeAreaView>
     );
