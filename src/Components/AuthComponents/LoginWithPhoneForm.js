@@ -32,7 +32,7 @@ export default class LoginWithPhoneForm extends React.PureComponent {
     return(
       <KeyboardAvoidingView 
         style={styles.container}
-        behavior={'padding'}
+        //behavior={'padding'}
       >
 
         <SeperatorLine />

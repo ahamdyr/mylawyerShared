@@ -45,10 +45,10 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
   render(){
     return(
       <KeyboardAvoidingView
-        keyboardVerticalOffset={STATUS_BAR_HEIGHT}
+        //keyboardVerticalOffset={STATUS_BAR_HEIGHT}
         style={styles.container}
-        behavior={'padding'}
-        enabled
+        //behavior={'padding'}
+        //enabled
       >
 
         <SeperatorLine />

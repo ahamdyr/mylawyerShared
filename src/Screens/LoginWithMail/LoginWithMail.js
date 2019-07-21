@@ -66,7 +66,8 @@ class LoginWithMail extends React.Component {
         </TouchableOpacity>
 
         <KeyboardAccessoryNavigation
-          //avoidKeyboard={true}
+          avoidKeyboard={true}
+          keyBoardMargin={10}
           tintColor={'#0b7f7c'}
           nextDisabled={false}
           previousDisabled={false}

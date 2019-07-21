@@ -136,7 +136,8 @@ class SignUpWithMail extends React.Component {
         </TouchableOpacity>
         {/* ==================================================== */}
         <KeyboardAccessoryNavigation
-          //avoidKeyboard={true}
+          avoidKeyboard={true}
+          keyBoardMargin={45}
           tintColor={'#0b7f7c'}
           nextDisabled={false}
           previousDisabled={false}
