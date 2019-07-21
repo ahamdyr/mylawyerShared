@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, SafeAreaView, TouchableOpacity, Keyboard } from 'react-native';
+import { Text, View, SafeAreaView, TouchableOpacity, BackHandler } from 'react-native';
 import { styles } from './Styles'
 import SignUpWithMailForm from '../../Components/AuthComponents/SignUpWithMailForm'
 import { SignUp } from '../../Services/Login Services/MailLogin'
@@ -10,8 +10,18 @@ import { LoginWithFacebook } from '../../Services/Login Services/FacebookLogin'
 import { LoginWithGoogle } from '../../Services/Login Services/GoogleLogin'
 import { withNavigation } from 'react-navigation'
 import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
+import { navigate } from '../../Services/NavigationServices'
 
 class SignUpWithMail extends React.Component {
+  componentWillMount(){
+    this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+      navigate('UserApp'); // works best when the goBack is async
+      return true;
+    });
+  }
+  componentWillUnmount() {
+    this.backHandler.remove();
+  }
   index = 'name'
   handleFocusNext = () => {
     switch (this.index) {
@@ -55,7 +65,6 @@ class SignUpWithMail extends React.Component {
         break;
     }
   }
-
   render() {
     const { navigation } = this.props
     return (

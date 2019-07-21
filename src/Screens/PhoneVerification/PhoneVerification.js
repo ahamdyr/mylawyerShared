@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   View,
-  Platform,
+  BackHandler,
   Alert
 } from 'react-native';
 
@@ -19,8 +19,19 @@ import {
   SignUp,
   Update
 } from '../../Services/Login Services/PhoneLogin'
+import { navigate } from '../../Services/NavigationServices'
 
 export default class PhoneVerification extends Component {
+
+  componentWillMount(){
+    this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+      navigate('UserApp'); // works best when the goBack is async
+      return true;
+    });
+  }
+  componentWillUnmount() {
+    this.backHandler.remove();
+  }
   
   confCode = "";
   constructor(props) {
