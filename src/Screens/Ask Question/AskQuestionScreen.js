@@ -80,7 +80,7 @@ export default class AskQuestion extends React.Component {
 
         <QuestionComponent
           ref="formRef"
-          offset={50}
+          offset={10}
           partial={attachs.length}
           setQuestionBody={(body) => setQuestionBody(body)}
           setQuestionTitle={(title) => setQuestionTitle(title)}

@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     width: WIDTH - 72,
     alignItems: 'center',
     //backgroundColor: 'blue',
-    justifyContent: 'center'
+    //justifyContent: 'center'
   },
   titleText: {
     //flex: 1,
