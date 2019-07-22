@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: MAIN_COLOR,
+    justifyContent: 'space-around',
   },
   formContainer:{
     position:'absolute',
@@ -17,9 +18,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   loginTextContainer:{
-    position: 'absolute',
-    top: 40,
-    left: 0,
+    // position: 'absolute',
+    // top: 40,
+    // left: 0,
     width: WIDTH,
     //height: 20,
     //backgroundColor: 'black',
@@ -32,11 +33,35 @@ export const styles = StyleSheet.create({
     fontSize: 40,
     //marginLeft: 130
   },
+  Btns: {
+    height: 56,
+    width: WIDTH,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // position: 'absolute',
+    // bottom: 140,
+    marginTop: 20
+  },
+  faceBookStyle: {
+    backgroundColor: 'rgb(61, 90, 150)'
+  },
+  googleStyle: {
+    backgroundColor: '#fffafa'
+  },
+  faceBookIconStyle: {
+    width: 9,
+    height: 20
+  },
+  googleIconStyle: {
+    width: 25,
+    height: 25
+  },
   termsContainer:{
-    position: 'absolute',
-    //top: 545,
-    left: 0,
-    bottom: 96.5,
+    // position: 'absolute',
+    // //top: 545,
+    // left: 0,
+    // bottom: 96.5,
     width: WIDTH,
     //height: 20,
     //backgroundColor: 'black',
@@ -57,9 +82,9 @@ export const styles = StyleSheet.create({
   footer:{    
     width: WIDTH,
     //backgroundColor: 'black',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
+    // position: 'absolute',
+    // bottom: 20,
+    // left: 0,
     justifyContent: 'center',
     alignItems: 'center',
     height: 49,

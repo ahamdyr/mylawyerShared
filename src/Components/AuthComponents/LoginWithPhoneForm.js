@@ -6,33 +6,33 @@ import LoginButton from '../Common/LoginButton'
 import ImageIcon from '../Common/ImageIcon'
 import LockImage from '../Common/LockImage'
 import {PhoneIcon, UserIcon } from '../../../assets'
+import { isValidPhoneNumber } from '../../Utils/InputValidation'
 import Store from '../../Redux/Store'
-import {
-  setMail,
-  setPassword,
-  setPhoneNumber
-} from '../../Redux/Auth/actions'
+import { setPhoneNumber } from '../../Redux/Auth/actions'
 export default class LoginWithPhoneForm extends React.PureComponent {
-  mail = '';
-  password = '';
-  _onMailChange = (val) =>{
-    this.mail = val
-  }
-  _onPassChange = (val) => {
-    this.password = val
-  }
+  phone = '';  
   _onPhoneChange = (val) => {
     this.phone = val
     Store.dispatch(setPhoneNumber(val))
   }
   _loginSubmit = () =>{
-    this.props.onPress
+    if (!isValidPhoneNumber(this.phone)) {
+      showMessage({
+        message: 'Provide valid phone number !',
+        hideOnPress: true,
+        duration: 3000,
+        type: 'danger',
+      });
+    }
+    else {
+      this.props.onPress(this.phone)
+    }
   }
   render(){
     return(
       <KeyboardAvoidingView 
         style={styles.container}
-        behavior={'padding'}
+        //behavior={'padding'}
       >
 
         <SeperatorLine />
@@ -42,44 +42,27 @@ export default class LoginWithPhoneForm extends React.PureComponent {
             style={styles.phoneIconStyle}
             source={PhoneIcon}
           />
-          <TextInput            
-            //underlineColorAndroid={'transparent'}
-            placeholder={'+20 100 712 1821' }            
+          <TextInput       
+            //autoFocus  
+            blurOnSubmit={true}
+            underlineColorAndroid={'transparent'}
+            placeholder={'+20 123 456 7890' }
+            selectionColor={'white'}            
             keyboardType={'phone-pad'}
             style={styles.nmberStyle}
-            autoFocus
+            placeholderTextColor={'#ffffff'}
             onChangeText={this._onPhoneChange}
           />
         </View>
 
         <SeperatorLine/>
 
-        {/* <View style={styles.inputContainer}>
-          <LockImage/>
-          <TextInput
-            //underlineColorAndroid={'transparent'}
-            secureTextEntry
-            placeholder={'***********' }            
-            //keyboardType={''}
-            style={styles.inputStyle}
-            onChangeText={this._onPassChange}
-          />
-          <Text
-            style={styles.forgot}
-            //onPress={()=>console.log('ajbfh')}
-          >
-            Forgot?
-          </Text>
-        </View>
-
-        <SeperatorLine/> */}
-
         <LoginButton
           text={'Login'}
           style={{
             marginTop: 26
           }}
-          onPress={this.props.onPress}
+          onPress={()=>this._loginSubmit()}
         />
 
       </KeyboardAvoidingView>

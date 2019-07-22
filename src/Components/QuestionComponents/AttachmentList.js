@@ -1,53 +1,53 @@
 import React from 'react';
-import { View, StyleSheet, FlatList, Text, Image, TouchableWithoutFeedback } from 'react-native';
-import {Linking} from 'expo'
-import Store from '../../Redux/Store'
-export default class AttachmentList extends React.Component {
-
-  // componentDidMount(){
-  //   this._list = [
-  //     Store.getState(),
-  //     Store.getState()
-  //   ]
-  // }
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  Text,
+  Image,
+  TouchableWithoutFeedback,
+  TouchableOpacity
+} from 'react-native';
+import { WIDTH } from '../Constants'
+export default class AttachmentList extends React.PureComponent {
 
   _list = [
     {
       name: 'doc.1',
-      uri: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80' 
+      uri: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80'
     },
     {
       name: 'doc.1',
-      uri: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80' 
+      uri: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80'
     },
     {
       name: 'doc.1',
-      uri: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80' 
+      uri: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80'
     }
   ]
 
+  _deleteItem = (item) => {
+    if (item.type == 'document') {
+      this.props.delQuestionDoc(item)
+    }
+    else {
+      this.props.delQuestionImg(item)
+    }
+  }
 
-  
 
   _renderItem = ({ item }) => {
     return (
-      <TouchableWithoutFeedback
-        onPress={()=> Linking.openURL(item.uri)}
-        style={{
-          
-          // justifyContent: 'space-between',
-          height: 240,
-          width: 120
-        }}>
-        <View style={{flex:1, alignItems: 'center',}}>
-        <View
+      <View style={styles.itemContainer}>
+        <TouchableOpacity
           style={styles.btnStyle}
+          onPress={() => this._deleteItem(item)}
         >
           <Text style={styles.btnTxtStyle}>
-            {item.name}
+            {'X'}
           </Text>
-        </View>
-        <Image          
+        </TouchableOpacity>
+        <Image
           source={{ uri: item.uri }}
           style={{
             width: 120,
@@ -55,22 +55,26 @@ export default class AttachmentList extends React.Component {
             marginTop: 20
           }}
         />
-        </View>  
-      </TouchableWithoutFeedback>
+      </View>
     );
   };
-  _keyExtractor = (item, index)=> String(index)
+  _keyExtractor = (item, index) => String(index)
+
   render() {
+    var { attachs } = this.props
     return (
       <View style={styles.container}>
-        <FlatList
-          style={{marginRight: 5}}
-          data={this._list}
-          renderItem={this._renderItem}
-          horizontal={true}
-          ItemSeparatorComponent={() => <View style={{margin: 15}}/>}
-          keyExtractor={this._keyExtractor}
-        />
+
+        <View style={styles.filesContainer}>
+          <FlatList
+            style={{ marginRight: 5 }}
+            data={attachs}
+            renderItem={this._renderItem}
+            horizontal={true}
+            ItemSeparatorComponent={() => <View style={{ margin: 15 }} />}
+            keyExtractor={this._keyExtractor}
+          />
+        </View>
       </View>
     );
   }
@@ -78,9 +82,19 @@ export default class AttachmentList extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: WIDTH,
+    height: 281.5,
+    backgroundColor: 'transparent',
+    flexDirection: 'column',
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#d5d5e0'
   },
-  btnStyle:{
+  filesContainer: {
+    height: 240,
+    marginLeft: 16,
+    marginTop: 24
+  },
+  btnStyle: {
     width: 70,
     height: 40,
     borderRadius: 10,
@@ -92,9 +106,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  btnTxtStyle:{
+  btnTxtStyle: {
     fontFamily: 'Lato-Regular',
     fontSize: 14,
     color: 'white'
+  },
+  itemContainer: {
+    height: 240,
+    width: 120,
+    alignItems: 'center'
   }
 });

@@ -13,8 +13,8 @@ import {
   google
 } from '../../../assets'
 
-import { LoginWithFacebook } from '../../Services/FacebookServices/FacebookLogin'
-import { LoginWithGoogle } from '../../Services/GoogleServices/GoogleLogin'
+import { LoginWithFacebook } from '../../Services/Login Services/FacebookLogin'
+import { LoginWithGoogle } from '../../Services/Login Services/GoogleLogin'
 export class WhiteX extends React.PureComponent {
   render() {
     return (
@@ -61,7 +61,7 @@ class SocialBtns extends React.PureComponent {
           icon={Mail}
           iconStyle={styles.mailIconStyle}
           onPress={() => navigation.navigate('SignUpWithMail')}
-        />
+          />
         <SocialBtn
           style={styles.phoneStyle}
           icon={PhoneIcon}
@@ -86,14 +86,22 @@ const styles = StyleSheet.create({
   faceBookStyle: {
     backgroundColor: 'rgb(61, 90, 150)'
   },
+  googleStyle: {
+    backgroundColor: '#fffafa'
+  },
+  faceBookIconStyle: {
+    width: 9,
+    height: 20
+  },
+  googleIconStyle: {
+    width: 25,
+    height: 25
+  },
   linkedInStle: {
     backgroundColor: 'rgb(17, 124, 179)'
   },
   twitterStyle: {
     backgroundColor: 'rgb(89, 173, 235)'
-  },
-  googleStyle:{
-    backgroundColor: '#fffafa'
   },
   mailStyle: {
     backgroundColor: 'rgb(11, 127, 124)'
@@ -103,14 +111,6 @@ const styles = StyleSheet.create({
   },
   closeStyle: {
     backgroundColor: 'rgb(11, 127, 124)'
-  },
-  faceBookIconStyle: {
-    width: 9,
-    height: 20
-  },
-  googleIconStyle: {
-    width: 25,
-    height: 25
   },
   linkedInIconStle: {
     width: 18,

@@ -1,4 +1,20 @@
+export const userType = (state = 'user', action) => {  
+  switch (action.type) {
+    case 'setUserType':
+      return action.userType
+    default:
+      return state
+  }
+}
 
+export const phoneCredentials = (state = {}, action) => {  
+  switch (action.type) {
+    case 'setPhoneAuthCredentials':
+      return action.phoneCredentials
+    default:
+      return state
+  }
+}
 
 export const userMail = (state = '', action) => {
   switch (action.type) {
@@ -17,6 +33,14 @@ export const userName = (state = '', action) => {
   }
 }
 
+export const accessToken = (state = '', action) => {
+  switch (action.type) {
+    case 'setAccessToken':
+      return action.accessToken
+    default:
+      return state
+  }
+}
 export const currentUser = (state = {}, action) => {
   switch (action.type) {
     case 'setCurrentUser':

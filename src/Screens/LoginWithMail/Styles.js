@@ -5,6 +5,8 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: MAIN_COLOR,
+    justifyContent: 'space-around',
+    //paddingVertical: 20,
   },
   formContainer:{
     position:'absolute',
@@ -17,9 +19,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   loginTextContainer:{
-    position: 'absolute',
-    top: 50,
-    left: 0,
+    // position: 'absolute',
+    // top: 50,
+    // left: 0,
     width: WIDTH,
     //height: 20,
     //backgroundColor: 'black',
@@ -41,9 +43,9 @@ export const styles = StyleSheet.create({
   footer:{    
     width: WIDTH,
     //backgroundColor: 'black',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
+    // position: 'absolute',
+    // bottom: 20,
+    // left: 0,
     justifyContent: 'center',
     alignItems: 'center',
     height: 49,

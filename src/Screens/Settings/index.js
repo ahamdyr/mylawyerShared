@@ -1,21 +1,18 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import Settings from './Settings'
+import {connect} from 'react-redux'
+// import {
+  
+// } from '../../Redux/SideMenu/actions'
 
-export default class Settings extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Settings!</Text>
-      </View>
-    );
-  }
-}
+const mapStateToProps =  state => ({
+  isLoggedUser: state.isLoggedUser,
+  userPhoto: state.currentUser.photoURL
+})
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  
+const mapDispatchersToProps = dispatch => ({
+  
+})
+
+
+export default connect(mapStateToProps, mapDispatchersToProps)(Settings)

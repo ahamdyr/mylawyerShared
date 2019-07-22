@@ -2,7 +2,8 @@ import { connect } from 'react-redux'
 import PhoneVerification from './PhoneVerification'
 
 const mapStateToProps =  state => ({
-  phoneNumber : state.userPhoneNumber
+  phoneNumber : state.userPhoneNumber,
+  userName : state.userName
 })
 
   

@@ -1,16 +1,16 @@
 import React from 'react';
-import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet, TouchableOpacity, StatusBar} from 'react-native';
-import {HEIGHT, MAIN_COLOR, WIDTH, STATUS_BAR_HEIGHT} from '../../Components/Constants'
+import { Modal, Text, SafeAreaView, View, Alert, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
+import { HEIGHT, MAIN_COLOR, WIDTH, STATUS_BAR_HEIGHT } from '../../Components/Constants'
 import SocialBtns from '../../Components/Social Components/SocialBtns'
-import {WhiteX} from '../../Components/Social Components/SocialBtns'
-import {withNavigation} from 'react-navigation'
+import { WhiteX } from '../../Components/Social Components/SocialBtns'
+import { withNavigation } from 'react-navigation'
 
 class SocialScreen extends React.Component {
-  
+
   render() {
-    const {navigation} = this.props
+    const { navigation } = this.props
     return (
-      <View style={{
+      <SafeAreaView style={{
         flex: 1,
         backgroundColor: 'transparent'
       }}>
@@ -20,30 +20,33 @@ class SocialScreen extends React.Component {
             Continue with
           </Text>
 
-          <SocialBtns/>
+          <SocialBtns />
 
-          <View style={styles.termsContainer}>
+          <TouchableOpacity
+            activeOpacity={1}
+            style={styles.termsContainer}
+            onPress={() => navigation.navigate('TermsAndConditions')}
+          >
             <Text style={styles.termsText}>
               By clicking Sign up you agree to our
-          </Text>
+            </Text>
             <Text
               style={[styles.termsText, { textDecorationLine: 'underline' }]}
-            //onPress={() => navigation.navigate('Terms')}
             >
               Terms of Service
-          </Text>
-          </View>
+            </Text>
+          </TouchableOpacity>
 
-          <WhiteX 
-            style={styles.close} 
-            onPress={()=> {
+          <WhiteX
+            style={styles.close}
+            onPress={() => {
               navigation.goBack()
             }}
           />
 
-        </View>        
-      </View>
-      
+        </View>
+      </SafeAreaView>
+
 
     );
   }
@@ -63,23 +66,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     //justifyContent: 'center',  
   },
-  continue:{
+  continue: {
     fontFamily: 'Lato-Bold',
     fontSize: 14,
     letterSpacing: 0.35,
     color: 'rgb(19,19,20)',
     marginTop: 28,
   },
-  close:{
+  close: {
     marginTop: 12
   },
-  termsContainer:{    
+  termsContainer: {
     marginTop: 35,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  termsText:{
-    fontFamily:'Lato-Light',
+  termsText: {
+    fontFamily: 'Lato-Light',
     fontSize: 12,
     color: 'rgb(82, 82, 82)',
   },

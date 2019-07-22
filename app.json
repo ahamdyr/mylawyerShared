@@ -7,43 +7,49 @@
     "platforms": [
       "ios",
       "android"
-    ],    
-    "version": "1.0.0",
+    ],
+    "version": "1.0.11",
     "orientation": "portrait",
-    "icon": "./assets/Icon-1024.png",
+    "icon": "./assets/images/logo.png",
     "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/images/Splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#0b7f7c"
     },
     "updates": {
       "enabled": true,
       "checkAutomatically": "ON_LOAD",
-      "fallbackToCacheTimeout": 1000
+      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.mylawyer.MyLawyer",
+      "bundleIdentifier": "com.mylawyer.MyLawyer.xXx",
       "supportsTablet": true,
-      "buildNumber": "1.0.0",
+      "buildNumber": "1.0.10",
       "infoPlist": {
-        "NSPhotoLibraryUsageDescription": "This app uses the photos to update your profile picture."
+        "NSPhotoLibraryUsageDescription": "This app uses the photos to update your profile picture.",
+        "NSCameraUsageDescription": "Allow My Lawyer experiences to use your camera"
       },
-      "usesIcloudStorage":true,
+      "usesIcloudStorage": true,
+      "splash": {
+        "image": "./assets/images/Splash.png",
+        "resizeMode": "cover",
+        "backgroundColor": "#0b7f7c"
+      },
       "config": {
         "usesNonExemptEncryption": false,
         "googleSignIn": {
-          "reservedClientId": "com.googleusercontent.apps.357729817077-j8codho5u6os0c5qf12iq968g3jh4tl9"
+          "reservedClientId": "com.googleusercontent.apps.367729817077-j8codho6u6os0c6qf12iq968g3jh4tl9"
         }
       }
     },
     "android": {
-      "config":{
-        "googleSignIn":{
-          "apiKey":"AIzaSyCuLfdKl1paE35pA_Rwoen-YQbFgeHtZPE",
-          "certificateHash": "07:02:84:0C:D8:06:94:0B:53:52:02:F5:96:13:CA:0D:E1:F5:06:A5"
+      "config": {
+        "googleSignIn": {
+          "apiKey": "AIzaSyCB76Ry4sEcSICgIhdP7EDRzRYhCNg8QhQ",          
+          "certificateHash": "07:02:84:0C:D8:06:94:0B:63:62:02:F6:96:13:CA:0D:E1:F6:06:A6"
         }
       },
       "permissions": [
@@ -75,11 +81,23 @@
         "com.sonyericsson.home.permission.BROADCAST_BADGE"
       ],
       "package": "com.mylawyer.MyLawyer",
-      "versionCode": 10    
+      "versionCode": 10
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "mylawyer",
+            "project": "mylawyer",
+            "authToken": "8581c8c32df84f4aa450dd414e3e6d9b1eb95aab0b35495e94a8299929534d7a"
+          }
+        }
+      ]
     },
     "scheme": "mylawyer",
-    "facebookScheme": "fb397884547607821",
-    "facebookAppId": "397884547607821",
+    "facebookScheme": "fb397884647607821",
+    "facebookAppId": "397884647607821",
     "facebookDisplayName": "MyLawyer"
   }
 }

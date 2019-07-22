@@ -1,11 +1,12 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, TextInput, KeyboardAvoidingView  } from 'react-native';
-import {MAIN_COLOR, WIDTH} from '../Constants'
+import {MAIN_COLOR, WIDTH, STATUS_BAR_HEIGHT} from '../Constants'
 import SeperatorLine from '../Common/SeperatorLine'
 import LoginButton from '../Common/LoginButton'
 import MailLogo from '../Common/MailIcon'
 import ImageIcon from '../Common/ImageIcon'
 import {PhoneIcon, UserIcon } from '../../../assets'
+import { isValidPhoneNumber } from '../../Utils/InputValidation'
 import Store from '../../Redux/Store'
 import {
   setUserName,
@@ -22,11 +23,32 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
     this.userName = val
     Store.dispatch(setUserName(val))
   }
+  _onSubmit = () => {
+    if (!isValidPhoneNumber(this.phone)) {
+      showMessage({
+        message: 'Provide valid phone number !',
+        hideOnPress: true,
+        duration: 3000,
+        type: 'danger',
+      });
+    }
+    else if (this.userName.length == 0)  showMessage({
+      message: 'Invalid user name !',
+      hideOnPress: true,
+      duration: 3000,
+      type: 'danger',
+    });
+    else {
+      this.props.onPress()
+    }
+  }
   render(){
     return(
-      <KeyboardAvoidingView 
+      <KeyboardAvoidingView
+        //keyboardVerticalOffset={STATUS_BAR_HEIGHT}
         style={styles.container}
-        behavior={'padding'}
+        //behavior={'padding'}
+        //enabled
       >
 
         <SeperatorLine />
@@ -37,29 +59,19 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
             source={UserIcon}
           />
           <TextInput
-            //underlineColorAndroid={'transparent'}
-            //secureTextEntry
+            ref= "nameRef"
+            //autoFocus
+            underlineColorAndroid={'transparent'}
+            blurOnSubmit={true}
+            placeholderTextColor={'#ffffff'}
+            selectionColor={'white'}
             autoCapitalize={'none'}
             placeholder={'username'}
             keyboardType={'default'}
-            style={styles.userNameText}
+            style={styles.userNameText}            
             onChangeText={this._onNameChange}
           />
         </View>
-
-        {/* <SeperatorLine />
-
-        <View style={styles.inputContainer}>
-          <MailLogo/>
-          <TextInput            
-            //underlineColorAndroid={'transparent'}
-            placeholder={'name@mail.com' }            
-            keyboardType={'email-address'}
-            style={styles.inputStyle}
-            autoFocus
-            onChangeText={this._onMailChange}
-          />
-        </View> */}
 
         <SeperatorLine />
 
@@ -68,12 +80,15 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
             style={styles.phoneIconStyle}
             source={PhoneIcon}
           />
-          <TextInput            
-            //underlineColorAndroid={'transparent'}
-            placeholder={'+20 100 712 1821' }            
+          <TextInput           
+            ref= "phoneRef" 
+            underlineColorAndroid={'transparent'}
+            blurOnSubmit={true}
+            placeholder={'+20 123 456 7890' }            
             keyboardType={'phone-pad'}
+            selectionColor={'white'}
             style={styles.nmberStyle}
-            autoFocus
+            placeholderTextColor={'#ffffff'}
             onChangeText={this._onPhoneChange}
           />
         </View>
@@ -85,7 +100,7 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
           style={{
             marginTop: 36
           }}
-          onPress={this.props.onPress}
+          onPress={()=>this._onSubmit()}
         />
 
       </KeyboardAvoidingView>

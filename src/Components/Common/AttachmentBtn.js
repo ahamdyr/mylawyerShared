@@ -16,6 +16,7 @@ export default class AttachmentBtn extends React.PureComponent {
   }
   render(){
     let {isOpened} = this.state
+    var { attachs, attachsLoading } = this.props
     return(
       <View>
         <TouchableOpacity 
@@ -27,10 +28,6 @@ export default class AttachmentBtn extends React.PureComponent {
                 source={attachment}
                 style={styles.attachmentIcon}
               />
-              {/* <Entypo
-                name="attachment"
-                style={styles.attachmentIcon}
-              /> */}
               <Text style={styles.filterText}>
                 ATTACHMENTS
               </Text>
@@ -47,7 +44,7 @@ export default class AttachmentBtn extends React.PureComponent {
               }           
           </View>         
         </TouchableOpacity>
-        {isOpened && <AttachmentView/>}
+        {isOpened && <AttachmentView attachs={attachs} attachsLoading={attachsLoading} />}
       </View>
     )
   }
@@ -58,17 +55,21 @@ const styles = StyleSheet.create({
     width: WIDTH,
     height: 52 ,
   },
-  attachContainer : {
+  attachContainer: {
     // width: WIDTH,
     // height: 52 ,
     flex: 1,
     flexDirection: 'row',
     backgroundColor: 'white',
     alignItems: 'center',
-    elevation: 20,
-    shadowRadius: 20,
-    //shadowColor: 'rgba(0, 0, 0, 0.5)',
-    shadowOpacity: 0.3,
+    elevation: 10,
+    shadowColor: "#00000026",
+    shadowOffset: {
+      width: 4,
+      height: 6.9
+    },
+    shadowRadius: 10,
+    shadowOpacity: 1
   },
   attachmentIcon:{    
     width:14.5,

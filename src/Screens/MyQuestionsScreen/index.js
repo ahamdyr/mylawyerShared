@@ -1,26 +1,28 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import SelectComponent from '../../Components/QuestionsList/SelectComponent'
-import SearchComponent from '../../Components/QuestionsList/SearchComponent'
-import QuestionsList from '../../Components/QuestionsList/QuestionsList'
-export default class MyQuestionsScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <SelectComponent></SelectComponent>
-        <SearchComponent></SearchComponent>
-        <QuestionsList></QuestionsList>
-      </View>
-    );
-  }
-}
+import MyQuestionsScreen from './MyQuestionsScreen'
+import {connect} from 'react-redux'
+import {
+  getUserOwnQuestionsRequest,
+  searchUserOwnQuestionsRequest,
+  filterUserOwnQuestionsRequest,
+  getUserOwnQuestionsLoadMore
+} from '../../Redux/UserOwnQuests/actions'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,  
-    backgroundColor: '#f6f6f6',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-});
+const mapStateToProps =  state => ({
+  //questions: state.questions,
+  questions: state.getUserOwnQuestionsSuccess,
+  questionsLoading: state.getUserOwnQuestionsLoading,
+  loadingMore: state.getUserOwnQuestionsLoadingMore,
+  noMore: state.getUserOwnQuestionsNoMore,
+  
+  currentUser: state.currentUser,
+  accessToken: state.accessToken,
+  isLoggedUser: state.isLoggedUser,
+})
+
+const mapDispatchersToProps = dispatch => ({
+  getUserOwnQuestionsRequest: () => dispatch(getUserOwnQuestionsRequest()),
+  searchUserOwnQuestionsRequest: (query) => dispatch(searchUserOwnQuestionsRequest(query)),
+  filterUserOwnQuestionsRequest: (topicID)=>dispatch(filterUserOwnQuestionsRequest(topicID)),
+  getUserOwnQuestionsLoadMore: () => dispatch(getUserOwnQuestionsLoadMore())
+})  
+export default connect(mapStateToProps, mapDispatchersToProps)(MyQuestionsScreen)

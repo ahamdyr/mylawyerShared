@@ -1,5 +1,5 @@
 import React from 'react'
-import { createStackNavigator} from 'react-navigation'
+import { createStackNavigator } from 'react-navigation'
 import {
   LoginWithMail,
   LoginWithPhone,
@@ -7,39 +7,51 @@ import {
   SignUpWithPhone
 } from '../Screens'
 import PhoneVerification from '../Screens/PhoneVerification'
-import HeaderTitle from '../Components/HomeHeaderIcons/Header Title'
+import { logo_text } from '../../assets'
+import ImageIcon from '../Components/Common/ImageIcon'
 import AuthBackArrow from '../Components/AuthComponents/AuthBackArrow'
-import {MAIN_COLOR} from '../Components/Constants'
+import { MAIN_COLOR } from '../Components/Constants'
+
 
 const AuthRouter = createStackNavigator({
-  LoginWithMail : {
+  LoginWithMail: {
     screen: LoginWithMail,
   },
-  LoginWithPhone:{
-    screen: LoginWithPhone
+  LoginWithPhone: {
+    screen: LoginWithPhone,
   },
   SignUpWithMail: {
     screen: SignUpWithMail,
   },
-  SignUpWithPhone:{
+  SignUpWithPhone: {
     screen: SignUpWithPhone,
   },
-  PhoneVerification:PhoneVerification
-},{
-  defaultNavigationOptions: ({navigation}) => ({
-    
-    headerLeft: <AuthBackArrow onPress={() =>navigation.navigate('App')}/>  ,
-    headerTitle: <HeaderTitle 
-                    title={`My Lawyer`}
-                    style = {{color: '#feffff'}}
-                  />,
-    headerStyle:{
-      elevation:0,
-      shadowOpacity:0,
-      backgroundColor: MAIN_COLOR,
+  PhoneVerification: {
+    screen: PhoneVerification,
+  }
+}, {
+    defaultNavigationOptions: ({ navigation }) => ({
+
+      headerLeft: <AuthBackArrow onPress={() => navigation.navigate('UserApp')} />,
+      headerTitle: <ImageIcon
+        source={logo_text}
+        style={{ width: 95, height: 26.5 }}
+      />,
+      headerStyle: {
+        elevation: 0,
+        shadowOpacity: 0,
+        shadowOffset: {
+          height: 0,
+          },
+        shadowRadius: 0,
+        backgroundColor: MAIN_COLOR,
+      },
+      gesturesEnabled: false
+    }),
+    headerLayoutPreset: "center",
+    navigationOptions: {
+      
     }
-  }),
-  headerLayoutPreset :"center",
-})
+  })
 
 export default AuthRouter

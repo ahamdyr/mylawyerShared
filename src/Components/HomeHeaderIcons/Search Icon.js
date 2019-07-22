@@ -1,16 +1,26 @@
 import React from 'react'
-import {Image, TouchableWithoutFeedback } from 'react-native';
+import {Image, TouchableOpacity } from 'react-native';
 import {SearchImage} from '../../../assets'
 
 class SearchIcon extends React.Component {
   render(){
     return (      
-      <TouchableWithoutFeedback onPress={this.props.onPress}>     
+      <TouchableOpacity 
+        activeOpacity={1}
+        onPress={this.props.onPress}
+        style={this.props.style}
+      >   
         <Image
-          style={{width: 20, height: 20, marginRight:16}} 
+          style={{
+            width: 20, 
+            height: 20, 
+            //marginRight:16,
+            position: 'absolute',
+            right: 16
+          }} 
           source={SearchImage}
         />        
-      </TouchableWithoutFeedback>     
+      </TouchableOpacity>     
     );
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View,TouchableOpacity , Image, Dimensions } from 'react-native';
-import { timeDifference } from '../Constants';
+import { timeDifference } from '../../Utils/DateTime';
+import { defaultPicture } from '../../../assets'
 
 export default class AnswerBy extends React.PureComponent{
   render(){
@@ -8,21 +9,21 @@ export default class AnswerBy extends React.PureComponent{
     return(
       <View style={[styles.container, style]}>
         <Image
-          source={{uri:MainPhotoURL}}
+          source={ MainPhotoURL ? {uri:MainPhotoURL} : defaultPicture}
           style={styles.imageStyle}
           resizeMode={'cover'}
         />
         <View style={styles.textContainer}>
           <View style={{flexDirection:'row'}}>
             <Text style={styles.answerBy}>
-              Answered by 
+              {this.props.lock ? 'Locked By' : 'Answered By'}
             </Text> 
             <Text style={styles.answeredBy}>
               {answeredBy}
             </Text>            
           </View>
           <Text style={styles.date}>
-            4 days ago
+            {timeDifference(answerDate)}
           </Text>
         </View>
         

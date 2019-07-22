@@ -1,4 +1,16 @@
+export const setPhoneAuthCredentials = (phoneCredentials) => {
+  return{
+    type: 'setPhoneAuthCredentials',
+    phoneCredentials
+  }
+}
 
+export const setUserType = (userType) => {
+  return{
+    type: 'setUserType',
+    userType
+  }
+}
 export const setLoggedUser = (isLogged) => {
   return{
     type: 'setLoggedUser',
@@ -15,6 +27,12 @@ export const setCurrentUser = (currentUser) =>{
   return{
     type: 'setCurrentUser',
     currentUser
+  }
+}
+export const setAccessToken = (accessToken) =>{
+  return{
+    type: 'setAccessToken',
+    accessToken
   }
 }
 export const setPhoneNumber = (phoneNumber) => {

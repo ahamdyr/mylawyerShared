@@ -1,48 +1,49 @@
 import React from 'react';
-import { StyleSheet, Text, View,TouchableOpacity ,ImageBackground, TouchableWithoutFeedback} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, TouchableWithoutFeedback } from 'react-native';
 import RatingView from './RatingView';
-import {withNavigation} from 'react-navigation'
-//import {openModal} from '../../Services/SocialModal'
+import { withNavigation } from 'react-navigation'
+import { defaultPicture } from '../../../assets'
+import { goBack, navigate} from '../../Services/NavigationServices'
+
 class LawsItem extends React.PureComponent {
-  render() {    
-    const {MainPhotoURL, Name, office, rating, major} = this.props.item.item
+  render() {
+    const {
+      id,
+      name,
+      office,
+      major,
+      photo,
+      rate,
+      bio
+    } = this.props.item.item
     return (
       <View style={styles.lawsCard}>
         <TouchableWithoutFeedback
           style={{ flex: 1 }}
           //onPress={()=>openModal()}
-          // onPress={()=>this.props.navigation.navigate('SocialScreen')}
+          onPress={() => navigate('LawyerDetails', { lawyer: this.props.item.item })}
         >
           <View style={styles.lawyerPhoto}>
             <ImageBackground
-              source={{ uri: MainPhotoURL }}
+              source={photo ? { uri: photo } : defaultPicture}
               style={styles.lawyerImage}
               resizeMode={'cover'}
             />
             <View
               style={styles.lowerThird}
             >
-                {/* <View
-                  style={[
-                    styles.productMeta,
-                    { flexDirection: 'row' },
-                  ]}
-                >
-                  <View> */}
-                    <Text style={{color:'white', fontWeight:'bold', fontSize:15.5}}>
-                      {Name}
-                    </Text>
-                    <Text style={{color:'white',  fontSize:13.5}}>
-                      {office}
-                    </Text>
-                    <Text style={{color:'white',  fontSize:13.5}}>
-                      {major}
-                    </Text>
-                    <RatingView rating={rating}/>
-                  {/* </View>                 
-                </View> */}
+              <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15.5 }}>
+                {name}
+              </Text>
+              <Text style={{ color: 'white', fontSize: 13.5 }}>
+                {office || 'Office 1'}
+              </Text>
+              <Text style={{ color: 'white', fontSize: 13.5 }}>
+                {major || 'Finance'}
+              </Text>
+              <RatingView rating={rate || 3} disabled={true} />
             </View>
-            
+
 
           </View>
         </TouchableWithoutFeedback>
@@ -77,14 +78,14 @@ const styles = StyleSheet.create({
     paddingBottom: 21,
     height: 103,
     bottom: 0,
-    justifyContent:'space-between',
+    justifyContent: 'space-between',
     //alignItems:''
   },
   productMeta: {
     // marginVertical:'bottiom',
     //marginTop: Dimensions.get('window').width / 2.0 - 135,
-    marginBottom:10,
-    paddingHorizontal:1,
+    marginBottom: 10,
+    paddingHorizontal: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end'
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
   lawyerPhoto: {
     flex: 1,
     overflow: 'hidden',
-    elevation: 10,
+    //elevation: 10,
     borderRadius: 8
   },
   lawyerImage: {

@@ -5,22 +5,34 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  TouchableWithoutFeedback,
+  SafeAreaView,
   View,
-  Platform,
+  BackHandler,
   Alert
 } from 'react-native';
 
-import 'firebase/auth'
 import { MAIN_COLOR, WIDTH } from '../../Components/Constants'
 
 import { 
-  sendVerificationCode, 
-  confirmVerificationCode 
-} from "../../Services/FirebaseServices/PhoneVerify";
+  requestCode,
+  SignIn,
+  SignUp,
+  Update
+} from '../../Services/Login Services/PhoneLogin'
+import { navigate } from '../../Services/NavigationServices'
 
 export default class PhoneVerification extends Component {
 
+  componentWillMount(){
+    this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+      navigate('UserApp'); // works best when the goBack is async
+      return true;
+    });
+  }
+  componentWillUnmount() {
+    this.backHandler.remove();
+  }
+  
   confCode = "";
   constructor(props) {
     super(props);
@@ -39,10 +51,10 @@ export default class PhoneVerification extends Component {
     );
   }
   _tryAgain = () => {
-    sendVerificationCode(this.props.phoneNumber)
+    requestCode(this.props.phoneNumber)
   }
   componentDidMount() {
-    sendVerificationCode(this.props.phoneNumber)
+    requestCode(this.props.phoneNumber)
   }
   _onChangeCodeText = (val) => {
     this.confCode = val;
@@ -53,8 +65,11 @@ export default class PhoneVerification extends Component {
       this.setState({ confCode: false })
     }
   }
-  _onSubmitVerfCode = () => {
-    confirmVerificationCode(this.confCode)
+  _onSubmitVerfCode = () => {    
+    let action = this.props.navigation.state.params.action
+    if(action == 'login') SignIn(this.confCode)
+    else if (action == 'signUp') SignUp(this.confCode, this.props.userName)
+    else if (action == 'update') Update(this.confCode) 
   }
 
 
@@ -65,32 +80,33 @@ export default class PhoneVerification extends Component {
     let hintText = 'Enter 6-digit code'
 
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
 
         <Text style={styles.header}>{headerText}</Text>
-        <View style={{ flexDirection: 'row' }}>
-          <TextInput
-            ref={'textInput'}
-            name={'code'}
-            type={'TextInput'}
-            underlineColorAndroid={'transparent'}
-            autoCapitalize={'none'}
-            autoCorrect={false}
-            placeholder={'_ _ _ _ _ _'}
-            keyboardType={Platform.OS === 'ios' ? 'number-pad' : 'numeric'}
-            style={[styles.textInput]}
-            returnKeyType='go'
-            autoFocus
-            placeholderTextColor={'black'}
-            selectionColor={'black'}
-            onChangeText={this._onChangeCodeText}
-            maxLength={6}
-          />
-        </View>
+        <TextInput
+          ref={'textInput'}
+          blurOnSubmit={true}
+          name={'code'}
+          type={'TextInput'}
+          underlineColorAndroid={'transparent'}
+          autoCapitalize={'none'}
+          autoCorrect={false}
+          placeholder={'_ _ _ _ _ _'}
+          keyboardType={'phone-pad'}
+          style={[styles.textInput]}
+          //autoFocus
+          placeholderTextColor={'black'}
+          selectionColor={'black'}
+          onChangeText={this._onChangeCodeText}
+          maxLength={6}
+        />
         <Text style={styles.hint}>
           {hintText}
         </Text>
         <TouchableOpacity
+          activeOpacity={
+            this.state.confCode ? 0.2 : 1
+          }
           style={[styles.button, {
             backgroundColor: this.state.confCode ? MAIN_COLOR : '#abaaaa'
           }]}
@@ -102,7 +118,7 @@ export default class PhoneVerification extends Component {
         </TouchableOpacity>
         {this._renderFooter()}
 
-      </View>
+      </SafeAreaView>
     );
   }
 }
@@ -122,11 +138,7 @@ const styles = StyleSheet.create({
   form: {
     marginTop: 60
   },
-  textInput: {
-    textAlign: 'center',
-    padding: 0,
-    margin: 0,
-    flex: 1,
+  textInput: {    
     fontSize: 40,
     color: 'black',
     height: 50,

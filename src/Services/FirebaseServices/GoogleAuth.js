@@ -6,19 +6,45 @@ export const GoogleAuth = async (token) => {
     return firebase
       .auth()
       .signInAndRetrieveDataWithCredential(credential)
-      .then(async userCredential => {
-        let currentUser = userCredential.user.providerData[0]
-        let userToken = await userCredential.user.getIdToken(true)
-
+      .then(async userCredential => {  
+        let user = userCredential.user       
+        let isNewUser = userCredential.additionalUserInfo.isNewUser 
+        let currentUser = (({ 
+          displayName,
+          email,
+          phoneNumber,
+          photoURL
+        }) => ({ 
+          displayName,
+          email,
+          phoneNumber,
+          photoURL
+        }))(user)
+        let userToken = await user.getIdToken(true)
+        let uid = user.uid
+        let refreshToken = user.refreshToken
         return {
           currentUser,
-          userToken
+          userToken,
+          uid,
+          refreshToken,
+          isNewUser
         }
       })
-      .catch(err=>{
-        alert(err)
+      .catch(err => {
+        showMessage({
+          message: `${err}\nTry again!`,
+          hideOnPress: true,
+          duration: 3000,
+          type: 'danger',
+        });
       })
   } catch (error) {
-    alert(error)
+    showMessage({
+      message: `${error}\nTry again!`,
+      hideOnPress: true,
+      duration: 3000,
+      type: 'danger',
+    });
   }
 }

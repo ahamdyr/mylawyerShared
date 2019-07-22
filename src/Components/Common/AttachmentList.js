@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, FlatList, Text, Image, TouchableWithoutFeedback } from 'react-native';
 import {Linking} from 'expo'
+import Spinner from '../../Screens/Spinner'
+
 export default class AttachmentList extends React.PureComponent {
   _list = [
     {
@@ -19,7 +21,7 @@ export default class AttachmentList extends React.PureComponent {
   _renderItem = ({ item }) => {
     return (
       <TouchableWithoutFeedback
-        onPress={()=> Linking.openURL(item.uri)}
+        onPress={()=> Linking.openURL(item.link)}
         style={{
           
           // justifyContent: 'space-between',
@@ -31,11 +33,11 @@ export default class AttachmentList extends React.PureComponent {
           style={styles.btnStyle}
         >
           <Text style={styles.btnTxtStyle}>
-            {item.name}
+            {item.id}
           </Text>
         </View>
         <Image          
-          source={{ uri: item.uri }}
+          source={{ uri: item.link }}
           style={{
             width: 120,
             height: 160,
@@ -48,11 +50,31 @@ export default class AttachmentList extends React.PureComponent {
   };
   _keyExtractor = (item, index)=> String(index)
   render() {
+    var { attachs, attachsLoading } = this.props
+    if(attachsLoading){
+      return (<Spinner/>)
+    }    
+    if(!attachs.length){
+      return (
+        <View style={[styles.container, {
+          alignItems: 'center',
+          justifyContent: 'center',
+        }]}>
+          <Text style={{
+            fontSize: 16,
+            color: '#0b7f7c'
+          }}>
+            No Attachments Found!
+        </Text>
+        </View>
+      )
+    }
     return (
       <View style={styles.container}>
         <FlatList
           style={{marginRight: 5}}
-          data={this._list}
+          //data={this._list}
+          data={attachs}
           renderItem={this._renderItem}
           horizontal={true}
           ItemSeparatorComponent={() => <View style={{margin: 15}}/>}

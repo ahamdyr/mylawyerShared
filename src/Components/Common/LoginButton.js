@@ -1,37 +1,37 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 
 
 
-export default class LoginButton extends React.PureComponent{
-  render(){
-    const {style, text, textStyle, onPress} = this.props
-    return(
+export default class LoginButton extends React.PureComponent {
+  render() {
+    const { style, text, textStyle, onPress } = this.props
+    return (
       <TouchableOpacity
         onPress={onPress}
-        style={[style,{
-          width:230,
-          height:52,
-          borderRadius:22.5,
-          backgroundColor:'#f5faf0',
-          elevation:20,
-          shadowOpacity:0.3,
-          shadowOffset:{
-            width:4,
-            height:6.9
+        style={[{
+          width: 230,
+          height: 52,
+          borderRadius: 22.5,
+          backgroundColor: '#f5faf0',
+          elevation: 20,
+          shadowOpacity: 0.3,
+          shadowOffset: {
+            width: 4,
+            height: 6.9
           },
-          alignItems:'center',
+          alignItems: 'center',
           justifyContent: 'center'
-        }]}
+        }, style]}
       >
-        <Text style={[textStyle,{
+        <Text style={[{
           fontFamily: 'Lato-Bold',
           fontSize: 16,
           color: '#0a0a09'
-        }]}>
-            {text}
+        }, textStyle]}>
+          {text}
         </Text>
-      </TouchableOpacity>      
+      </TouchableOpacity>
     )
   }
 }

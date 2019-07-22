@@ -10,6 +10,8 @@ import {
   setMail,
   setPassword
 } from '../../Redux/Auth/actions'
+import { isValidEmailAddress } from '../../Utils/InputValidation'
+
 export default class LoginWithMailForm extends React.PureComponent {
   mail = '';
   password = '';
@@ -22,26 +24,49 @@ export default class LoginWithMailForm extends React.PureComponent {
     Store.dispatch(setPassword(val))
   }
   _loginSubmit = () =>{
-    this.props.onPress
+    if (!isValidEmailAddress(this.mail)) {
+      showMessage({
+        message: "Badly formatted email !",
+        hideOnPress: true,
+        duration: 3000,
+        type: 'danger',
+      });
+    }
+    else if (this.password.length < 8) {
+      showMessage({
+        message: "password must be 8 digits or more !",
+        hideOnPress: true,
+        duration: 3000,
+        type: 'danger',
+      });
+    }
+    else {
+      this.props.onPress()
+    }
   }
   render(){
     return(
       <KeyboardAvoidingView 
         style={styles.container}
-        behavior={'padding'}
+        //keyboardVerticalOffset={100}
+        // behavior={'position'}
       >
 
         <SeperatorLine/>
 
         <View style={styles.inputContainer}>
           <MailLogo/>
-          <TextInput            
-            //underlineColorAndroid={'transparent'}
+          <TextInput  
+            ref= "emailRef"
+            //autoFocus          
+            blurOnSubmit={true}
+            underlineColorAndroid={'transparent'}
             autoCapitalize={'none'}
+            selectionColor={'white'}
             placeholder={'name@mail.com' }            
             keyboardType={'email-address'}
             style={styles.inputStyle}
-            autoFocus
+            placeholderTextColor={'#ffffff'}
             onChangeText={this._onMailChange}
           />
         </View>
@@ -51,20 +76,23 @@ export default class LoginWithMailForm extends React.PureComponent {
         <View style={styles.inputContainer}>
           <LockImage/>
           <TextInput
-            //underlineColorAndroid={'transparent'}
+            ref= "passwordRef"
+            blurOnSubmit={true}
+            underlineColorAndroid={'transparent'}
             secureTextEntry
-            placeholder={'***********' }            
-            //keyboardType={''}
+            placeholder={'***********' }
+            selectionColor={'white'}            
+            placeholderTextColor={'#ffffff'}
             style={styles.inputStyle}
             onChangeText={this._onPassChange}
             enablesReturnKeyAutomatically={true}
           />
-          <Text
+          {/* <Text
             style={styles.forgot}
             //onPress={()=>console.log('ajbfh')}
           >
             Forgot?
-          </Text>
+          </Text> */}
         </View>
 
         <SeperatorLine/>
@@ -74,7 +102,7 @@ export default class LoginWithMailForm extends React.PureComponent {
           style={{
             marginTop: 26
           }}
-          onPress={this.props.onPress}
+          onPress={()=>this._loginSubmit()}
         />
       </KeyboardAvoidingView>
 

@@ -7,6 +7,7 @@ import HomeIcon from '../Components/BottomTabIcons/Home Icon'
 import QuestionsIcon from '../Components/BottomTabIcons/Questions Icon'
 import AskIcon from '../Components/BottomTabIcons/Ask Icon'
 import MenuIcon from '../Components/HomeHeaderIcons/Menu Icon';
+import Store from '../Redux/Store'
 
 const  TabRouter = createBottomTabNavigator(
   {
@@ -39,7 +40,11 @@ const  TabRouter = createBottomTabNavigator(
           tabBarVisible: false,
           //tabBarButtonComponent: () => (<QuestionsIcon/>),
           tabBarIcon: ({focused}) => (<AskIcon 
-            onPress={() =>navigation.navigate('AskQuestion')}
+            onPress={() => { 
+              Store.getState().isLoggedUser ? 
+                navigation.navigate('AskQuestion')
+                : navigation.navigate('SocialScreen')              
+             }}
           />),
           // tabBarLabel:({focused}) => (
           //   <Text 
@@ -70,7 +75,7 @@ const  TabRouter = createBottomTabNavigator(
   },
   {
     initialRouteName:"Home",
-    
+    //initialRouteName:"Questions",
     tabBarOptions:{
       // showLabel:false,
       // showIcon:false
