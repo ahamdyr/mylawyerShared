@@ -29,6 +29,8 @@ export const questionTopic = (state = '', action) => {
   switch (action.type) {
     case SET_QUESTION_TOPIC:
       return action.topic
+    case 'clearQuestion':
+      return ''
     default:
       return state
   }
@@ -47,6 +49,8 @@ export const questionTitle = (state = '', action) => {
   switch (action.type) {
     case SET_QUESTION_TITLE:
       return action.title
+    case 'clearQuestion':
+      return ''
     default:
       return state
   }
@@ -56,6 +60,8 @@ export const questionBody = (state = '', action) => {
   switch (action.type) {
     case SET_QUESTION_BODY:
       return action.body
+    case 'clearQuestion':
+      return ''
     default:
       return state
   }

@@ -14,11 +14,7 @@ export default class SelectComponent extends React.PureComponent {
     this.props.getTopicsRequest()
   }
   _onChange = (itemValue) => {
-    //console.log('itemValue ',itemValue)
-    this.setState({
-      choosenLabel: itemValue
-    })
-    //console.log('itemValue ', itemValue.id == '0' ? '' : itemValue.id)
+    //this.setState({ choosenLabel: itemValue })
     this.props.onSelect(itemValue.id == '0' ? '' : itemValue.id)
   }
   state = { choosenLabel: this._initialTopic }
@@ -29,7 +25,7 @@ export default class SelectComponent extends React.PureComponent {
       clear
     } = this.props
     if (clear) {
-      this._onChange(this._initialTopic)
+      this._pickerRef.clear()
     }
     return (
       <TouchableOpacity 
@@ -47,9 +43,11 @@ export default class SelectComponent extends React.PureComponent {
             <StatusText text={'Loading...'} style={{ alignSelf: 'center', marginLeft: 20 }} />
             : getTopicsSuccess.length ?
               <CustomPicker
-                ref={ ref => this._pickerRef = ref}
+                ref={(ref) => {
+                  this._pickerRef = ref
+                }}
                 placeholder={'All Topics'}
-                value={this.state.choosenLabel}
+                //value={this.state.choosenLabel}
                 scrollViewProps={{
                   scrollEnabled: true,
                   indicatorStyle: 'black'
