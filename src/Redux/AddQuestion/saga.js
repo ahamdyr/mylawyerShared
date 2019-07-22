@@ -12,7 +12,6 @@ import { goBack, navigate} from '../../Services/NavigationServices'
 function* submitQuestionSaga(action) {
   try {    
     //yield put(addQuestionLoading(true))
-    yield put(clearQuestion(true))
     navigate('Spinner')
     var topic = yield select(state => state.questionTopic)
     var title = yield select(state => state.questionTitle)
@@ -24,10 +23,11 @@ function* submitQuestionSaga(action) {
     // var authorPhoto = yield select(state => state.currentUser.photo)
     var accessToken = yield select(state => state.accessToken)
     var attachments = [...imgs, ...docs]
-
+    
     var { id } = yield call(askQuestionApi, topic, accessToken, title, body)
     //console.log('questionID  ',id)
     yield call(addQuestionAttachsService, attachments, id, accessToken)
+    yield put(clearQuestion(true))
     yield put(deleteAttachments())
     showMessage({
       message: 'Your question has been submitted',
@@ -48,7 +48,7 @@ function* submitQuestionSaga(action) {
       type: 'danger',
     });
     yield put(clearQuestion(false))
-    //goBack()
+    goBack()
     //yield put(addQuestionLoading(false))
   }
 }

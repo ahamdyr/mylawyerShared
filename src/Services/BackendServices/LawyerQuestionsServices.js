@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 export const LawyerAllQuestionsApi = async (pageToken, accessToken, topicID, query) => {  
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => { 
     axios.get(
-      //`me/questions/?page=${pageToken}&topicId=${topicID}&query=${query}`,    
-      `questions/?page=${pageToken}&query=${query}`,    
+      //`me/questions/?page=${pageToken}&topicId=${topicID}&query=${query}`,
+      `questions/?page=${pageToken}&topicId=${topicID}&query=${query}`,    
       {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
@@ -29,7 +29,7 @@ export const LawyerNewQuestionsApi = async (pageToken, accessToken, topicID, que
   return new Promise((resolve, reject) => {
     axios.get(
       //`me/questions/?page=${pageToken}&topicId=${topicID}&query=${query}`,    
-      `me/questions/?page=${pageToken}&query=${query}&state=new`,    
+      `me/questions/?page=${pageToken}&topicId=${topicID}&query=${query}&state=new`,    
       {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
@@ -54,7 +54,7 @@ export const LawyerLockedQuestionsApi = async (pageToken, accessToken, topicID, 
   return new Promise((resolve, reject) => {
     axios.get(
       //`me/questions/?page=${pageToken}&topicId=${topicID}&query=${query}`,    
-      `me/questions/?page=${pageToken}&query=${query}&state=locked`,    
+      `me/questions/?page=${pageToken}&topicId=${topicID}&query=${query}&state=locked`,    
       {
         headers: {
           'Authorization': `Bearer ${accessToken}`,
@@ -79,7 +79,7 @@ export const LawyerSolvedQuestionsApi = async (pageToken, accessToken, topicID, 
   return new Promise((resolve, reject) => {
     axios.get(
       //`me/questions/?page=${pageToken}&topicId=${topicID}&query=${query}`,    
-      `me/questions/?page=${pageToken}&query=${query}&state=solved`,    
+      `me/questions/?page=${pageToken}&topicId=${topicID}&query=${query}&state=solved`,    
       {
         headers: {
           'Authorization': `Bearer ${accessToken}`,

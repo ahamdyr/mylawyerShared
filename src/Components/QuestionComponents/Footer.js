@@ -44,7 +44,7 @@ export default class Footer extends React.PureComponent {
   }
   _submit = () => {    
     if (this.props.isLoggedUser) {      
-      if (this.props.questionTitle && this.props.questionBody && this.props.questionTopic !== '0') {
+      if (this.props.questionTitle && this.props.questionBody && this.props.questionTopic) {
         this.props.submitQuestion()    
       }
       else {

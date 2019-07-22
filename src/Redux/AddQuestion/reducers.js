@@ -25,7 +25,7 @@ export const clearQuestion = (state = false, action) => {
       return state
   }
 }
-export const questionTopic = (state = '0', action) => {
+export const questionTopic = (state = '', action) => {
   switch (action.type) {
     case SET_QUESTION_TOPIC:
       return action.topic
