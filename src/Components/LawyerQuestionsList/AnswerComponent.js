@@ -1,7 +1,7 @@
 import React from 'react'
 import {
   StyleSheet,
-  TouchableWithoutFeedback,
+  Alert,
   View,
   TouchableOpacity,
   Keyboard,
@@ -16,6 +16,7 @@ import ImageIcon from '../Common/ImageIcon'
 import { STATUS_BAR_HEIGHT, WIDTH, HEIGHT, MAIN_COLOR } from '../Constants'
 import SeperatorLine from '../Common/SeperatorLine'
 import KeyboardListener from 'react-native-keyboard-listener'
+import { uploadCameraImage, uploadFile, uploadGalleryImage } from '../../Services/FilesServices'
 
 export default class AnswerComponent extends React.PureComponent {
   state = {
@@ -48,8 +49,29 @@ export default class AnswerComponent extends React.PureComponent {
       this._bodyRef.focus()
     }
   }
-  _onAnswerSubmit = () => {   
-    //console.log('this._bodyRef   ',this.state.body) 
+  _onAttachPress = () => {
+      Alert.alert('Select type', '', [
+        { text: 'Image', onPress: () => this._uploadGalleryImage(), style: 'default' },
+        { text: 'File', onPress: () => this._uploadFile(), style: 'default' },
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+      ], { cancelable: true })
+  }
+  _uploadFile = async () => {
+    let doc = await uploadFile()
+    doc ? this.props.setQuestionDoc(doc) : null
+  }
+  _uploadCameraImage = async () => {
+    let img = await uploadCameraImage()
+    img ? this.props.setQuestionImg(img) : null
+  }
+  _uploadGalleryImage = async () => {
+    let img = await uploadGalleryImage()
+    img ? this.props.setQuestionImg(img) : null
+  }
+  _onAnswerSubmit = () => {
     if(this.state.body.length){
       this.props.onSubmit(this.state.body)
     }
@@ -135,9 +157,9 @@ export default class AnswerComponent extends React.PureComponent {
               </ScrollView >
             </TouchableOpacity>
           </KeyboardAvoidingView>
-          {/* <View style={styles.attachBtnsContainer}>
+          <View style={styles.attachBtnsContainer}>
             <TouchableOpacity
-              //onPress={this._uploadCameraImage}
+              onPress={this._uploadCameraImage}
               style={styles.cameratIconContainer}>
               <ImageIcon
                 style={styles.cameratIcon}
@@ -146,14 +168,14 @@ export default class AnswerComponent extends React.PureComponent {
             </TouchableOpacity>
             <View style={{ marginRight: 10 }} />
             <TouchableOpacity
-              //onPress={this._onAttachPress}
+              onPress={this._onAttachPress}
               style={styles.cameratIconContainer}>
               <ImageIcon
                 style={styles.attachmentIcon}
                 source={attachment}
               />
             </TouchableOpacity>
-          </View> */}
+          </View>
         </View>
         <SubmitBtn
           style={styles.answerBtnStyle}
@@ -277,13 +299,15 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     paddingTop: 19,
-    paddingLeft: 21,
-    paddingRight: 18,
+    //paddingLeft: 21,
+    //paddingRight: 18,
     marginBottom: 10,
     //backgroundColor: 'blue',
   },
   bodyText: {
     //flex: 1,
+    paddingLeft: 21,
+    paddingRight: 18,
     flexWrap: 'wrap',
     fontFamily: "Lato-Regular",
     fontSize: 14,
