@@ -1,16 +1,15 @@
 import React from 'react'
 import {Image, TouchableOpacity, Text, StyleSheet} from 'react-native';
-import { focusedHome, dimmedHome } from '../../../assets'
+import { plusCircleActive } from '../../../assets'
 
-class HomeIcon extends React.Component {
+class AskIcon extends React.Component {
   render(){
-    var { focused } = this.props
-    const labelStyle = (focused) => {
+    const labelStyle = () => {
       return {
         fontFamily: "Lato-Bold",
         fontSize: 12,
         letterSpacing: 0,
-        color: focused ? '#0b7f7c' : '#9b9b9b',
+        color: '#0b7f7c',
         textAlign: "center",
         marginTop: 1,
       }
@@ -22,14 +21,14 @@ class HomeIcon extends React.Component {
         onPress={this.props.onPress}> 
         <Image
           style={styles.icon} 
-          source={ focused ? focusedHome : dimmedHome }
+          source={plusCircleActive}
         />
-        <Text style={labelStyle(focused)}>Home</Text>
+        <Text style={labelStyle()}>Ask</Text>
       </TouchableOpacity>     
     );
   }
 }
-export default  HomeIcon
+export default  AskIcon
 
 const styles = StyleSheet.create({
   label: {
@@ -44,5 +43,5 @@ const styles = StyleSheet.create({
     width: 60,
     alignItems: 'center',
   },
-  icon: { width: 28, height: 28, marginTop: 10 }
+  icon: { width: 32, height: 32, marginTop: 10 }
 })

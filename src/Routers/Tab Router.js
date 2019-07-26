@@ -1,13 +1,21 @@
 import React from 'react';
-import {Text} from 'react-native'
-import { Feather as Icon } from 'react-native-vector-icons'
 import { createBottomTabNavigator} from "react-navigation";
 import {Home, AskQuestion, Questions} from '../Screens'
 import HomeIcon from '../Components/BottomTabIcons/Home Icon'
 import QuestionsIcon from '../Components/BottomTabIcons/Questions Icon'
-import AskIcon from '../Components/BottomTabIcons/Ask Icon'
-import MenuIcon from '../Components/HomeHeaderIcons/Menu Icon';
+import AskIcon from '../Components/BottomTabIcons/AskIcon'
 import Store from '../Redux/Store'
+
+const labelStyle = (focused) => {
+  return {
+    fontFamily: "Lato-Bold",
+    fontSize: 12,
+    letterSpacing: 0,
+    color: focused ? '#0b7f7c' : '#9b9b9b',
+    textAlign: "center",
+    //marginBottom: 4,
+  }
+}
 
 const  TabRouter = createBottomTabNavigator(
   {
@@ -15,22 +23,14 @@ const  TabRouter = createBottomTabNavigator(
       screen: Home,
       navigationOptions: ({ navigation }) => ({
           title: "",
-          tabBarIcon: ({focused}) => (<HomeIcon 
-            focused={focused} 
-            //onPress={() =>navigation.navigate('Home')}
-            />),
-          // tabBarLabel:({focused}) => (
-            
-          //     focused?
-          //     <Text style={{
-          //       marginBottom:4,
-          //       fontWeight:'bold',
-          //       color:'#0b7f7c',
-          //       fontSize: 16
-          //     }}>___________</Text>
-          //     :null
-               
-          // )
+          tabBarIcon: ({focused}) => {
+            return (
+              <HomeIcon 
+                onPress={()=>navigation.navigate('Home')}
+                focused={focused}
+              />
+            )
+          },
       })
     },
     AskQuestion : {
@@ -38,44 +38,37 @@ const  TabRouter = createBottomTabNavigator(
       navigationOptions: ({ navigation }) => ({
           title: "",
           tabBarVisible: false,
-          //tabBarButtonComponent: () => (<QuestionsIcon/>),
-          tabBarIcon: ({focused}) => (<AskIcon 
-            onPress={() => { 
-              Store.getState().isLoggedUser ? 
-                navigation.navigate('AskQuestion')
-                : navigation.navigate('SocialScreen')              
-             }}
-          />),
-          // tabBarLabel:({focused}) => (
-          //   <Text 
-          //     style={{alignSelf:'center'}}          
-          //   >
-          //     {focused?'____':''}
-          //   </Text>
-          // )
+          tabBarIcon: ({focused}) => {
+            return (
+              <AskIcon
+                onPress={() => {
+                  Store.getState().isLoggedUser ?
+                    navigation.navigate('AskQuestion')
+                    : navigation.navigate('SocialScreen')
+                }}
+              />
+            )
+          },
       })
     },
     Questions: {
       screen: Questions,
       navigationOptions: ({ navigation }) => ({
           title: "",
-          tabBarIcon: ({focused}) => (<QuestionsIcon 
-            focused={focused} 
-            //onPress={() =>navigation.navigate('MyQuestions')}
-          />),
-          // tabBarLabel:({focused}) => (
-          //   <Text 
-          //     style={{alignSelf:'center'}}          
-          //   >
-          //     {focused?'____':''}
-          //   </Text>
-          // )
+          tabBarIcon: ({focused}) => {
+            return (
+              <QuestionsIcon 
+                onPress={()=>navigation.navigate('MyQuestions')}
+                focused={focused}
+              />
+            )
+          },
       })
     }
   },
   {
     initialRouteName:"Home",
-    //initialRouteName:"Questions",
+    //initialRouteName:"Questions",    
     tabBarOptions:{
       // showLabel:false,
       // showIcon:false
@@ -83,7 +76,18 @@ const  TabRouter = createBottomTabNavigator(
       //showLabel:true,
       
       tabStyle: {
-         marginBottom:-7   //Padding 0 here
+        //height: 86,
+        //backgroundColor: "red",
+        backgroundColor: "#ffffff",
+        shadowColor: "rgba(1, 11, 11, 0.29)",
+        shadowOffset: {
+          width: 1,
+          height: -2
+        },
+        shadowRadius: 10,
+        shadowOpacity: 1,
+        //justifyContent: 'flex-start'
+         //marginBottom:-7   //Padding 0 here
       },
         //activeBackgroundColor :'yellow',  //Doesn't work
     }

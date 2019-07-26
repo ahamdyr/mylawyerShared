@@ -16,7 +16,7 @@ import RatingView from '../../Components/Lawyers List/RatingView'
 import ImageIcon from '../../Components/Common/ImageIcon'
 import SubmitBtn from '../../Components/Common/SubmitBtn'
 import SeperatorLine from '../../Components/Common/SeperatorLine'
-import AskIcon from '../../Components/BottomTabIcons/Ask Icon'
+import GreenCircle from '../../Components/BottomTabIcons/GreenCircle'
 import { getNumSuffix, getFirstName } from '../../Utils/textModifier'
 import { defaultPicture } from '../../../assets'
 
@@ -37,7 +37,7 @@ export default class LawyerDetails extends React.Component {
               style={styles.lawyerPhoto}
               source={ lawyer.photo ? { uri: lawyer.photo } : defaultPicture}
             />
-            <AskIcon
+            <GreenCircle
               text={getNumSuffix(lawyer.id)}
               style={styles.orderStyle}
               textStyle={styles.orderTextStyle}
