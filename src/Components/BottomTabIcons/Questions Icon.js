@@ -1,9 +1,9 @@
 import React from 'react'
-import {Image, TouchableOpacity, Text, StyleSheet} from 'react-native';
+import { Image, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { focusedQuestions, dimmedQuestions } from '../../../assets'
 
 class QuestionsIcon extends React.Component {
-  render(){
+  render() {
     var { focused } = this.props
     const labelStyle = (focused) => {
       return {
@@ -15,22 +15,22 @@ class QuestionsIcon extends React.Component {
         marginTop: 1,
       }
     }
-    return (        
+    return (
       <TouchableOpacity
         style={styles.button}
         activeOpacity={1}
-        onPress={this.props.onPress}>  
-          <Image
-            style={styles.icon} 
-            source={focused ? focusedQuestions : dimmedQuestions }
-          />
-           <Text style={labelStyle(focused)}>Questions</Text>
-      </TouchableOpacity>  
-      
+        onPress={this.props.onPress}>
+        <Image
+          style={styles.icon}
+          source={focused ? focusedQuestions : dimmedQuestions}
+        />
+        <Text style={labelStyle(focused)}>Questions</Text>
+      </TouchableOpacity>
+
     );
   }
 }
-export default  QuestionsIcon
+export default QuestionsIcon
 
 const styles = StyleSheet.create({
   label: {
