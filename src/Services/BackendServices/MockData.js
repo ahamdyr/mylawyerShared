@@ -1,5 +1,5 @@
 //const lawyerPhoto = 'https://i1.wp.com/theremba.com/wp-content/uploads/2018/05/taylor-grote-415993-unsplash-1-e1527710649885.jpg?ssl=1'
-const attachPhoto = 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80' 
+export const attachPhoto = 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80' 
 const answerBody = `عقوبة الشيك بدون رصيد في السعودية
 من بين العديد من انواع العقوبات المختلفة التي تم وضعها في القانون السعودي ما تعلق بأمر الشيكات ، حيث تم سن عدد من العقوبات لمن يتهرب من دفع مبالغ شيكات او يثبت تحريره لها بدون رصيد.
 
