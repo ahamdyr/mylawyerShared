@@ -6,6 +6,38 @@ import SideMenu from '../Screens/SideMenu'
 import HomeIcon from '../Components/BottomTabIcons/Home Icon'
 import QuestionsIcon from '../Components/BottomTabIcons/Questions Icon'
 import SettingsIcon from '../Components/BottomTabIcons/SettingsIcon'
+import { WIDTH, OS } from '../Components/Constants'
+
+const Style = [
+  {
+    height: 68,
+    width: WIDTH - 30,
+    borderRadius: 34,
+    backgroundColor: "#ffffff",
+    //backgroundColor: "red",
+    shadowColor: "rgba(1, 11, 11, 0.29)",
+    shadowOffset: {
+      width: 1,
+      height: -2
+    },
+    shadowRadius: 10,
+    shadowOpacity: 1,
+    elevation: 16,
+  },
+  OS == 'ios' ? 
+    {
+      position: 'absolute',
+      left: 15,
+      right: 0,
+      bottom: 19,
+      zIndex: 1,
+    }
+    : 
+    {    
+      alignSelf: 'center',
+      marginBottom: 19,
+    }
+]
 
 const TabBar = createBottomTabNavigator(
   {
@@ -53,27 +85,10 @@ const TabBar = createBottomTabNavigator(
     }
   },
   {
-    //initialRouteName:"AllQuestionsTabs",
-    //initialRouteName:"Questions",
     tabBarOptions: {
-      // showLabel:false,
-      // showIcon:false
-      //activeTintColor: '#222',
-      //showLabel:true,
+      style: Style
+    },
 
-      tabStyle: {
-        //marginBottom: 3,   //Padding 0 here
-        backgroundColor: "#ffffff",
-        shadowColor: "rgba(1, 11, 11, 0.29)",
-        shadowOffset: {
-          width: 1,
-          height: -2
-        },
-        shadowRadius: 10,
-        shadowOpacity: 1
-      },
-      //activeBackgroundColor :'yellow',  //Doesn't work
-    }
   }
 );
 
