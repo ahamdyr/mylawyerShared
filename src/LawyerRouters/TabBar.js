@@ -7,9 +7,13 @@ import HomeIcon from '../Components/BottomTabIcons/Home Icon'
 import QuestionsIcon from '../Components/BottomTabIcons/Questions Icon'
 import SettingsIcon from '../Components/BottomTabIcons/SettingsIcon'
 import { WIDTH, OS } from '../Components/Constants'
+import { View, StyleSheet } from "react-native"
+import { BottomTabBar } from "react-navigation-tabs"
 
-const Style = [
-  {
+const TabBarComponent = (props) => (<BottomTabBar {...props} />)
+
+const styles = {
+  Tab_Bar_Style: {
     height: 68,
     width: WIDTH - 30,
     borderRadius: 34,
@@ -24,22 +28,15 @@ const Style = [
     shadowOpacity: 1,
     elevation: 16,
   },
-  OS == 'ios' ? 
-    {
-      position: 'absolute',
-      left: 15,
-      right: 0,
-      bottom: 19,
-      zIndex: 1,
-    }
-    : 
-    {    
-      alignSelf: 'center',
-      marginBottom: 19,
-    }
-]
+  BarContainer: {
+    position: 'absolute',
+    left: 15,
+    right: 0,
+    bottom: 19,
+  },
+}
 
-const TabBar = createBottomTabNavigator(
+export default TabBar = createBottomTabNavigator(
   {
     AllQuestionsTabs: {
       screen: AllQuestionsTabs,
@@ -85,11 +82,15 @@ const TabBar = createBottomTabNavigator(
     }
   },
   {
-    tabBarOptions: {
-      style: Style
+    tabBarComponent: props => {
+      return (
+        <View style={styles.BarContainer}>
+          <TabBarComponent {...props} />
+        </View>
+      )
     },
-
+    tabBarOptions: {
+      style: styles.Tab_Bar_Style
+    }
   }
 );
-
-export default TabBar
