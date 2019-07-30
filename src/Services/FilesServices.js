@@ -7,7 +7,7 @@ export const uploadFile = async () => {
   let doc = await DocumentPicker.getDocumentAsync()
   if (doc.type == 'success') {
     doc.uuid = guidGenerator()
-    doc.name = doc.uuid.split('-')[0]
+    //doc.name = doc.uri.substring(doc.uri.length - 10)   //name already exist
     doc.type = 'document'
     //console.log('doc', doc)
     return doc
@@ -37,7 +37,7 @@ export const uploadGalleryImage = async () => {
 
   if (!img.cancelled) {
     img.uuid = guidGenerator()
-    img.name = img.uuid.split('-')[0]
+    img.name = img.uri.substring(img.uri.length - 10)
     //console.log('doc', doc)
     return img
   }
@@ -65,7 +65,7 @@ export const uploadCameraImage = async () => {
   })
   if (!doc.cancelled) {
     doc.uuid = guidGenerator()
-    doc.name = doc.uuid.split('-')[0]
+    doc.name = doc.uri.substring(doc.uri.length - 10)
     //console.log('doc', doc)
     return doc
   }

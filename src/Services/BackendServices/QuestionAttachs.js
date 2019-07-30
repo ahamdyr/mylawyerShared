@@ -57,10 +57,10 @@ export const addAttachmentApi = async (questionID, accessToken, link, type) => {
 
 const addSingleAttachService = async (attachment, questionID, accessToken) => {
   return new Promise((resolve, reject) => {
-    var path = `Questions/${questionID}/${attachment.uuid}`
+    var path = `Questions/${questionID}/${attachment.name}`
     addToStorage(path, attachment.uri)
       .then(link => {
-        //console.log('link  ',link)
+        console.log('link  ',link)
         addAttachmentApi(questionID, accessToken, link, attachment.type)
           .then(data => resolve(data))
           .catch(err => reject(err))
