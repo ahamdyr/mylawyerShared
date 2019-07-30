@@ -48,7 +48,7 @@ export const LawyerRegister = async (type, token, lawyerMajor, lawyerIDsLinks, f
         headers: {
           'Accept': 'application/json',
           "Authorization": `Firebase ${token}`,
-          "Content-Type": "application/x-www-form-urlencoded"
+          //"Content-Type": "application/x-www-form-urlencoded"
         }
       }
     ).then((res) => {

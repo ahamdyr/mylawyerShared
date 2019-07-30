@@ -60,7 +60,7 @@ const addSingleAttachService = async (attachment, questionID, accessToken) => {
     var path = `Questions/${questionID}/${attachment.name}`
     addToStorage(path, attachment.uri)
       .then(link => {
-        console.log('link  ',link)
+        //console.log('link  ',link)
         addAttachmentApi(questionID, accessToken, link, attachment.type)
           .then(data => resolve(data))
           .catch(err => reject(err))
