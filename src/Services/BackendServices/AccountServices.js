@@ -29,16 +29,17 @@ export const Register = async (type, token, userPhoneNumber) => {
 
 export const LawyerRegister = async (type, token, lawyerMajor, lawyerIDsLinks, firmPapersLinks, userPhoneNumber) => {
   
-  var requestBody = `type=${type}&majors=${lawyerMajor.id}`
-
+  let requestBody = new FormData()
+  requestBody.append('type', type)
+  requestBody.append('majors', lawyerMajor.id)
   lawyerIDsLinks.forEach(e=>{
-    requestBody = requestBody + `&idPapers=${e}`
+    requestBody.append('idPapers', e)
   })
   firmPapersLinks.forEach(x=>{
-    requestBody = requestBody + `&firmPapers=${x}`
+    requestBody.append('firmPapers', x)
   })
   if(userPhoneNumber){
-    requestBody = requestBody + `&phone=${userPhoneNumber}`
+    requestBody.append('phone', userPhoneNumber)
   }
   return new Promise((resolve, reject) => {
     axios.post(
@@ -47,8 +48,7 @@ export const LawyerRegister = async (type, token, lawyerMajor, lawyerIDsLinks, f
       {
         headers: {
           'Accept': 'application/json',
-          "Authorization": `Firebase ${token}`,
-          //"Content-Type": "application/x-www-form-urlencoded"
+          "Authorization": `Firebase ${token}`
         }
       }
     ).then((res) => {
