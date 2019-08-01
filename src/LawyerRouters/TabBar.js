@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from "react-navigation";
 import AllQuestionsTabs from './AllQuestionsTabs'
 import MyQuestionsTabs from './MyQuestionsTabs'
-import SideMenu from '../Screens/SideMenu'
+import SideMenuStack from '../Routers/SideMenuStack'
 import HomeIcon from '../Components/BottomTabIcons/Home Icon'
 import QuestionsIcon from '../Components/BottomTabIcons/Questions Icon'
 import SettingsIcon from '../Components/BottomTabIcons/SettingsIcon'
@@ -67,13 +67,13 @@ export default TabBar = createBottomTabNavigator(
       })
     },
     LawyerSettings: {
-      screen: SideMenu,
+      screen: SideMenuStack,
       navigationOptions: ({ navigation }) => ({
         title: "",
         tabBarIcon: ({ focused }) => {
           return (
             <SettingsIcon
-              onPress={() => navigation.navigate('SideMenu')}
+              onPress={() => navigation.navigate('SideMenuStack')}
               focused={focused}
             />
           )

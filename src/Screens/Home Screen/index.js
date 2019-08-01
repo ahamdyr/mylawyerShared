@@ -36,7 +36,7 @@ export default HomeStack = createStackNavigator({
       style={styles.searchIconStyle}
     />,
     headerLeft: <MenuIcon 
-      onPress={() =>navigation.navigate('SideMenu')}
+      onPress={() =>navigation.navigate('SideMenuStack')}
       style={styles.menuIconStyle}
     />  ,
     //headerBackTitle: 'null',
