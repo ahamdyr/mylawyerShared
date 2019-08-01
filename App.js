@@ -59,7 +59,10 @@ export default class App extends React.Component {
         'Cairo-Regular': require('./assets/fonts/Cairo-Regular.ttf'),
         'Lora-Regular' : require('./assets/fonts/Lora-Regular.ttf'),
         'Lato-Light': require('./assets/fonts/Lato-Light.ttf'),
-        'Lato-Heavy': require('./assets/fonts/Lato-Heavy.ttf')
+        'Lato-Heavy': require('./assets/fonts/Lato-Heavy.ttf'),
+        'NunitoSans-Bold': require('./assets/fonts/NunitoSans-Bold.ttf'),
+        'NunitoSans-Regular': require('./assets/fonts/NunitoSans-Regular.ttf'),
+        'NunitoSans-SemiBold': require('./assets/fonts/NunitoSans-SemiBold.ttf')
       }),
     ]);
   };

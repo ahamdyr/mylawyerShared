@@ -9,10 +9,14 @@ import {
   goBack
 } from '../../Services/NavigationServices'
 import { defaultPicture } from '../../../assets'
+import { logOut } from '../../Services/AuthServices'
 
 
 export default class SideMenu extends React.Component {
-
+  _logOut = async () => {
+    await logOut()
+    navigate('Home')
+  }
   render() {
     var {
       isLoggedUser,
@@ -27,20 +31,12 @@ export default class SideMenu extends React.Component {
             source={userPhoto ? { uri: userPhoto } : defaultPicture}
           />
           {isLoggedUser ?
-            <React.Fragment>
-              <SideMenuBtn
-                btnTitle={'My Profile'}
-                onPress={() => {
-                  navigate('EditMyProfile')
-                }}
-              />
-              <SideMenuBtn
-                btnTitle={'Settings'}
-                onPress={() => {
-                  navigate('Settings')
-                }}
-              />
-            </React.Fragment>
+            <SideMenuBtn
+              btnTitle={'My Profile'}
+              onPress={() => {
+                navigate('ProfileStack')
+              }}
+            />
             : <SideMenuBtn
               btnTitle={'Login'}
               onPress={() => {
@@ -64,6 +60,13 @@ export default class SideMenu extends React.Component {
               navigate('About')
             }}
           />
+          {
+            isLoggedUser && 
+            <SideMenuBtn
+              btnTitle={'Log out'}
+              onPress={()=>this._logOut()}
+            />
+          }
           <WhiteX
             onPress={() => {
               goBack()
