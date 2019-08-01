@@ -18,9 +18,7 @@ import { defaultPicture } from '../../../assets'
 import ImageIcon from '../../Components/Common/ImageIcon'
 import SubmitBtn from '../../Components/Common/SubmitBtn'
 import SeperatorLine from '../../Components/Common/SeperatorLine'
-import {
-  STATUS_BAR_HEIGHT
-} from '../../Components/Constants'
+import { HEIGHT } from '../../Components/Constants'
 import { editProfileIcon } from '../../../assets'
 import { uploadFile, uploadImage } from '../../Services/FilesServices'
 import { isValidEmailAddress, isValidPhoneNumber } from '../../Utils/InputValidation'
@@ -32,8 +30,16 @@ import {
 } from '../../Services/FirebaseServices/UpdateUser'
 import { updateUserPhoneNumber } from '../../Services/AuthServices'
 import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
-
+import SaveIcon from '../../Components/ProfileHeaderIcons/SaveIcon'
 export default class EditMyProfile extends React.Component {
+
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Edit Profile',
+      //headerRight: <SaveIcon onPress={() => this._onSubmit()} />
+    }
+  }
+
   index = 'name'
   handleFocusNext = () => {
     switch (this.index) {
@@ -80,6 +86,7 @@ export default class EditMyProfile extends React.Component {
     photoURL: ''
   }
   _edit_Photo = async () => {
+    console.log('ajbfgsh')
     let doc = await uploadFile()
     doc ? this.setState({ photoURL: doc.uri }) : null
   }
@@ -95,7 +102,7 @@ export default class EditMyProfile extends React.Component {
   _onSubmit = async () => {
 
     if (this.state.email) {
-      if (!isValidEmailAddress(this.state.email)) {        
+      if (!isValidEmailAddress(this.state.email)) {
         showMessage({
           message: 'Badly formatted email !',
           hideOnPress: true,
@@ -112,12 +119,6 @@ export default class EditMyProfile extends React.Component {
 
     if (this.state.displayName) {
       if (this.state.displayName.length == 0) {
-        showMessage({
-          message: 'You logged in successfully',
-          hideOnPress: true,
-          duration: 3000,
-          type: 'success',
-        });
         showMessage({
           message: 'Invalid user name !',
           hideOnPress: true,
@@ -151,12 +152,24 @@ export default class EditMyProfile extends React.Component {
       }
       await updateUserPhoneNumber(this.state.phoneNumber)
       await updateUserProfile(this.state)
-      navigate('SideMenu')
+      showMessage({
+        message: 'Profile updated!',
+        hideOnPress: true,
+        duration: 3000,
+        type: 'success',
+      });
+      goBack()
     }
     else {
       this.state.phoneNumber = this.props.currentUser.phoneNumber
       await updateUserProfile(this.state)
-      navigate('SideMenu')
+      showMessage({
+        message: 'Profile updated!',
+        hideOnPress: true,
+        duration: 3000,
+        type: 'success',
+      });
+      goBack()
     }
   }
   render() {
@@ -172,30 +185,22 @@ export default class EditMyProfile extends React.Component {
     } = this.state
     return (
       <SafeAreaView style={styles.container} >
-        <TouchableOpacity
-          onPress={() => goBack()}
-          style={styles.headerStyle}
-        >
-          <Text style={styles.cancel}>
-            Cancel
-          </Text>
-        </TouchableOpacity>
+        <View style={styles.editContainer} >
 
-        <TouchableOpacity
-          style={styles.editContainer}
-          onPress={() => Keyboard.dismiss()}
-          activeOpacity={1}
-        >
+          <View style={styles.greenTop} />
+          
+          <SaveIcon onPress={() => this._onSubmit()} />
+
           <TouchableOpacity
-            style={styles.profileImage}
+            activeOpacity={1}
+            style={styles.profileImageBtn}
             onPress={() => this._edit_Photo()}
           >
             <ImageBackground
               source={
                 photoURL ? { uri: photoURL } : userPhoto ? { uri: userPhoto } : defaultPicture
               }
-              blurRadius={2}
-              borderRadius={40}
+              borderRadius={60}          
               style={styles.profileImage}
             >
               <ImageIcon
@@ -204,71 +209,69 @@ export default class EditMyProfile extends React.Component {
               />
             </ImageBackground>
           </TouchableOpacity>
-
-          <View style={styles.inputsContainer} >
+          
+          <TouchableOpacity
+            style={{ marginHorizontal: 32, marginTop: 50 }}
+            onPress={() => Keyboard.dismiss()}
+            activeOpacity={1}
+            >
             <KeyboardAvoidingView
-              keyboardVerticalOffset={STATUS_BAR_HEIGHT + 160}
-              style={{ 
-                alignItems: 'center',
-                justifyContent: 'center',
-                //backgroundColor: 'red'
-              }}
+              //style={{ backgroundColor: 'red' }}
+              keyboardVerticalOffset={(HEIGHT / 4)+113}
               behavior={'padding'}
               enabled
             >
+              <Text style={styles.labelStyle}>
+                {'Full Name'}
+              </Text>
               <TextInput
-                ref= "nameRef"
+                ref="nameRef"
                 //autoFocus
                 underlineColorAndroid={'transparent'}
                 blurOnSubmit={true}
-                placeholder={'user name'}
+                placeholder={currentUser.displayName}
+                placeholderTextColor={"#0d0d0d"}
                 onChangeText={this._edit_Name}
                 style={styles.name}
               />
               <SeperatorLine
                 style={styles.line}
               />
+              <Text style={styles.labelStyle}>
+                {'Email'}
+              </Text>
               <TextInput
-                ref= "emailRef"
+                ref="emailRef"
                 underlineColorAndroid={'transparent'}
                 blurOnSubmit={true}
-                placeholder={'email'}
+                placeholder={currentUser.email || ''}
+                placeholderTextColor={"#0d0d0d"}
                 onChangeText={this._edit_Email}
                 keyboardType={'email-address'}
-                style={styles.inputStyle}
+                style={styles.name}
               />
               <SeperatorLine
                 style={styles.line}
               />
+              <Text style={styles.labelStyle}>
+                {'Phone'}
+              </Text>
               <TextInput
-                ref= "phoneRef"
+                ref="phoneRef"
                 underlineColorAndroid={'transparent'}
                 blurOnSubmit={true}
-                placeholder={'phone number'}
+                placeholder={currentUser.phoneNumber || ''}
+                placeholderTextColor={"#0d0d0d"}
                 keyboardType={'phone-pad'}
                 onChangeText={this._edit_Phone_Number}
-                style={styles.inputStyle}
+                style={styles.name}
               />
               <SeperatorLine
                 style={styles.line}
               />
             </KeyboardAvoidingView>
-          </View>
-
-          <SubmitBtn
-            style={styles.saveBtn}
-            text={'Save'}
-            textStyle={styles.saveText}
-            onPress={() => this._onSubmit()}
-          />
-        </TouchableOpacity>
-
-        {/* <SubmitBtn
-          style={styles.saveBtn}
-          text={'Save'}
-          textStyle={styles.saveText}
-          onPress={() => this._onSubmit()}
-        /> */}
+          </TouchableOpacity>
+        </View>
         <KeyboardAccessoryNavigation
           //avoidKeyboard={true}
           tintColor={'#0b7f7c'}

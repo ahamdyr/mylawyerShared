@@ -3,8 +3,7 @@ import { createStackNavigator} from "react-navigation";
 import ProfileScreen from '../Screens/ProfileScreen'
 import EditMyProfile from '../Screens/EditMyProfile'
 import ResetPassword from '../Screens/ResetPassword'
-import ImageIcon from '../Components/Common/ImageIcon'
-import { BackArrow } from '../../assets'
+import BackIcon from '../Components/ProfileHeaderIcons/BackIcon'
 
 export default ProfileStack = createStackNavigator({
   ProfileScreen:{
@@ -27,7 +26,7 @@ export default ProfileStack = createStackNavigator({
       duration: 0,
     },
   }),
-  defaultNavigationOptions: {
+  defaultNavigationOptions: ({ navigation }) => ({
     headerTitleStyle: {
       fontFamily: "NunitoSans-Bold",
       fontSize: 18,
@@ -36,21 +35,12 @@ export default ProfileStack = createStackNavigator({
       textAlign: "center",
       color: "#ffffff"
     },
-    headerBackTitle: 'Back',
-    headerBackTitleStyle: {
-      fontFamily: "NunitoSans-Regular",
-      fontSize: 17,
-      fontWeight: "normal",
-      fontStyle: "normal",
-      letterSpacing: 0,
-      color: "#ffffff"
-    },
-    headerBackImage: () => <ImageIcon source={BackArrow} style={{height: 21, width: 12}} />,
+    headerLeft: () => <BackIcon onPress={() => navigation.goBack()} />,
     headerTintColor: 'white',
     headerStyle: {
       elevation: 0,
       shadowOpacity: 0,
       backgroundColor: '#0b7f7c',
     }
-  }
+  }),
 })
