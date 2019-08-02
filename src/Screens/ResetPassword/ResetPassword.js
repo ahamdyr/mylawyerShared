@@ -14,7 +14,7 @@ import { defaultPicture } from '../../../assets'
 import { navigate, goBack } from '../../Services/NavigationServices'
 import SubmitBtn from '../../Components/Common/SubmitBtn'
 import SeperatorLine from '../../Components/Common/SeperatorLine'
-import { STATUS_BAR_HEIGHT } from '../../Components/Constants'
+import { HEIGHT } from '../../Components/Constants'
 import { resetPassword } from '../../Services/FirebaseServices/UserSettings'
 import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 import SaveIcon from '../../Components/ProfileHeaderIcons/SaveIcon'
@@ -109,58 +109,67 @@ export default class ResetPassword extends React.Component {
           style={styles.profileImage}
         />
         {/* ///////////////////////////////////////////////////////////// */}
-        <KeyboardAvoidingView
-          keyboardVerticalOffset={STATUS_BAR_HEIGHT + 20}
-          style={styles.viewContainer}
-          behavior={'padding'}
-          enabled
+        <TouchableOpacity
+          style={{
+            flex: 1,
+            justifyContent: 'flex-start'
+          }}
+          onPress={() => Keyboard.dismiss()}
+          activeOpacity={1}
         >
-          <Text style={styles.labelStyle}>
-            {'OLD PASSWORD'}
-          </Text>
-          <TextInput
-            ref="oldPassword"
-            //autoFocus
-            underlineColorAndroid={'transparent'}
-            blurOnSubmit={true}
-            secureTextEntry={true}
-            placeholder={'Old password'}
-            onChangeText={this._editOldPassword}
-            style={styles.inputStyle}
-          />
-          <SeperatorLine style={styles.line}/>
-          {/* ///////////////////////////////////////////////////////////// */}
-          <Text style={styles.labelStyle}>
-            {'NEW PASSWORD'}
-          </Text>
-          <TextInput
-            ref="newPassword"
-            underlineColorAndroid={'transparent'}
-            blurOnSubmit={true}
-            secureTextEntry={true}
-            placeholder={'New password'}
-            onChangeText={this._editNewPassword}
-            style={styles.inputStyle}
-          />
-          <SeperatorLine style={styles.line}/>
-          {/* ///////////////////////////////////////////////////////////// */}
-          <Text style={styles.labelStyle}>
-            {'CONFIRM NEW PASSWORD'}
-          </Text>
-          <TextInput
-            ref="confirmNewPassword"
-            underlineColorAndroid={'transparent'}
-            blurOnSubmit={true}
-            secureTextEntry={true}
-            placeholder={'Confirm New password'}
-            onChangeText={this._editConfirmNewPassword}
-            style={styles.inputStyle}
-          />
-          <SeperatorLine style={styles.line}/>
+          <KeyboardAvoidingView
+            keyboardVerticalOffset={(HEIGHT / 4) + 163}
+            style={{marginHorizontal: 32}}
+            behavior={'padding'}
+            enabled
+          >
+            <Text style={styles.labelStyle}>
+              {'OLD PASSWORD'}
+            </Text>
+            <TextInput
+              ref="oldPassword"
+              //autoFocus
+              underlineColorAndroid={'transparent'}
+              blurOnSubmit={true}
+              secureTextEntry={true}
+              placeholder={'Old password'}
+              onChangeText={this._editOldPassword}
+              style={styles.inputStyle}
+            />
+            <SeperatorLine style={styles.line} />
+            {/* ///////////////////////////////////////////////////////////// */}
+            <Text style={styles.labelStyle}>
+              {'NEW PASSWORD'}
+            </Text>
+            <TextInput
+              ref="newPassword"
+              underlineColorAndroid={'transparent'}
+              blurOnSubmit={true}
+              secureTextEntry={true}
+              placeholder={'New password'}
+              onChangeText={this._editNewPassword}
+              style={styles.inputStyle}
+            />
+            <SeperatorLine style={styles.line} />
+            {/* ///////////////////////////////////////////////////////////// */}
+            <Text style={styles.labelStyle}>
+              {'CONFIRM NEW PASSWORD'}
+            </Text>
+            <TextInput
+              ref="confirmNewPassword"
+              underlineColorAndroid={'transparent'}
+              blurOnSubmit={true}
+              secureTextEntry={true}
+              placeholder={'Confirm New password'}
+              onChangeText={this._editConfirmNewPassword}
+              style={styles.inputStyle}
+            />
+            <SeperatorLine style={styles.line} />
 
-        </KeyboardAvoidingView>
+          </KeyboardAvoidingView>
+        </TouchableOpacity>
         {/* ///////////////////////////////////////////////////////////// */}
-        <View style={styles.fakePadding}/>
+        {/* <View style={styles.fakePadding}/> */}
         <KeyboardAccessoryNavigation
           //avoidKeyboard={true}
           tintColor={'#0b7f7c'}

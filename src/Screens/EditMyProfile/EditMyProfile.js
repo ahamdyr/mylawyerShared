@@ -187,7 +187,7 @@ export default class EditMyProfile extends React.Component {
         <View style={styles.editContainer} >
 
           <View style={styles.greenTop} />
-          
+
           <SaveIcon onPress={() => this._onSubmit()} />
 
           <TouchableOpacity
@@ -199,7 +199,7 @@ export default class EditMyProfile extends React.Component {
               source={
                 photoURL ? { uri: photoURL } : userPhoto ? { uri: userPhoto } : defaultPicture
               }
-              borderRadius={60}          
+              borderRadius={60}
               style={styles.profileImage}
             >
               <ImageIcon
@@ -208,15 +208,18 @@ export default class EditMyProfile extends React.Component {
               />
             </ImageBackground>
           </TouchableOpacity>
-          
+
           <TouchableOpacity
-            style={{ marginHorizontal: 32, marginTop: 50 }}
+            style={{
+              flex: 1,
+              justifyContent: 'flex-start'
+            }}
             onPress={() => Keyboard.dismiss()}
             activeOpacity={1}
-            >
+          >
             <KeyboardAvoidingView
-              //style={{ backgroundColor: 'red' }}
-              keyboardVerticalOffset={(HEIGHT / 4)+113}
+              style={{ marginHorizontal: 32 }}
+              keyboardVerticalOffset={(HEIGHT / 4) + 113}
               behavior={'padding'}
               enabled
             >

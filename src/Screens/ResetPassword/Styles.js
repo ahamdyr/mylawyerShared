@@ -117,8 +117,7 @@ export const styles = StyleSheet.create({
     // paddingBottom: 22
   },
   viewContainer:{
-    marginHorizontal: 32,
-    marginTop: 50
+    marginHorizontal: 32
   },
   profileImage: {
     marginTop: -88,
@@ -134,7 +133,7 @@ export const styles = StyleSheet.create({
     marginTop: 16
   },
   fakePadding: {
-    height: 150,
+    height: 200,
     //backgroundColor: 'red'
   },
   question: {
