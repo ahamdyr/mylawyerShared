@@ -26,12 +26,7 @@ import { WhiteX } from '../../Components/Social Components/SocialBtns'
 
 export default class ProfileScreen extends React.Component {
 
-  static navigationOptions = ({ navigation }) => {
-    return {
-      headerLeft: null,
-      title: 'Your Profile',
-    }
-  }
+  
   _deleteAccount = async () => {
     await logOut()
     await deleteAccount()      
@@ -53,14 +48,11 @@ export default class ProfileScreen extends React.Component {
     } = this.props.currentUser
     return (
       <SafeAreaView style={styles.container} >
-        {/* <TouchableOpacity
-          onPress={() => goBack()}
-          style={styles.headerStyle}
-        >
-          <Text style={styles.cancel}>
-            Cancel
+        <View style={styles.headerStyle}>
+          <Text style={styles.headerTextStyle}>
+            {'Your Profile'}
           </Text>
-        </TouchableOpacity> */}
+        </View>
         <View style={styles.greenTop} />
         <Image
           source={

@@ -17,10 +17,7 @@ export default class SaveIcon extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  BtnStyle : {
-    position: 'absolute',
-    //top: STATUS_BAR_HEIGHT + 50,
-    right: 13,
+  BtnStyle : {    
     width: 80,
     height: 50,
     flexDirection: 'row',

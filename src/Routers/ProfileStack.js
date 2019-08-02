@@ -18,9 +18,7 @@ export default ProfileStack = createStackNavigator({
 },
 {
   initialRouteName: "ProfileScreen",
-  //mode: 'modal',
-  headerLayoutPreset: 'center',
-  //headerMode: 'none'  
+  headerMode: 'none',  
   transitionConfig: () => ({
     transitionSpec: {
       duration: 0,

@@ -24,6 +24,12 @@ export default class Footer extends React.PureComponent {
       ], { cancelable: true })
       // : this._uploadFile()
   }
+  _uploadGalleryImage = async () => {
+    let img = await uploadGalleryImage()
+    //console.log(img)
+    //await addToStorage(`test/${guidGenerator()}`, img)
+    img ? this.props.setQuestionImg(img) : null
+  }
   _uploadFile = async () => {
     let doc = await uploadFile()
     //console.log(doc)
@@ -32,12 +38,6 @@ export default class Footer extends React.PureComponent {
   }
   _uploadCameraImage = async () => {
     let img = await uploadCameraImage()
-    //console.log(img)
-    //await addToStorage(`test/${guidGenerator()}`, img)
-    img ? this.props.setQuestionImg(img) : null
-  }
-  _uploadGalleryImage = async () => {
-    let img = await uploadGalleryImage()
     //console.log(img)
     //await addToStorage(`test/${guidGenerator()}`, img)
     img ? this.props.setQuestionImg(img) : null

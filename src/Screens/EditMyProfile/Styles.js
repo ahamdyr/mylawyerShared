@@ -52,6 +52,23 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
+  headerStyle: {
+    flexDirection: 'row',
+    height: STATUS_BAR_HEIGHT + 50,
+    width: WIDTH,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: MAIN_COLOR,
+    paddingTop: STATUS_BAR_HEIGHT,
+  },
+  headerTextStyle: {
+    fontFamily: "NunitoSans-Bold",
+    fontSize: 18,
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "center",
+    color: "#ffffff"
+  },
   cancel: {
     marginRight: 28,
     fontFamily: "Lato-Regular",
@@ -60,13 +77,6 @@ export const styles = StyleSheet.create({
     fontStyle: "normal",
     letterSpacing: 0.45,
     color: "#0b7f7c"
-  },
-  headerStyle: {
-    flexDirection: 'row',
-    height: 20,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    width: WIDTH,
   },
   saveText: {
     fontFamily: "Lato-Regular",
@@ -95,7 +105,7 @@ export const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "#f6f6f6",
+    //backgroundColor: "#f6f6f6",
     //alignItems: 'center',
     //justifyContent: 'space-between',
     // paddingTop: 22 + STATUS_BAR_HEIGHT,

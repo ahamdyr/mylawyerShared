@@ -26,13 +26,14 @@ const styles = StyleSheet.create({
     width: 80,
     height: 50,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     alignItems: 'center'
   },
   imageStyle: {
     height: 21, width: 12
   },
   textStyle: {
+    marginLeft: 5,
     fontFamily: "NunitoSans-Regular",
     fontSize: 17,
     fontWeight: "normal",

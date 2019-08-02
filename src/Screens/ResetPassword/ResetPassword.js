@@ -18,15 +18,11 @@ import { HEIGHT } from '../../Components/Constants'
 import { resetPassword } from '../../Services/FirebaseServices/UserSettings'
 import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 import SaveIcon from '../../Components/ProfileHeaderIcons/SaveIcon'
+import BackIcon from '../../Components/ProfileHeaderIcons/BackIcon'
 
 export default class ResetPassword extends React.Component {
 
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: 'Change Password',
-      //headerRight: <SaveIcon onPress={() => this._onSubmit()} />
-    }
-  }
+  
 
   index = 'oldPassword'
   handleFocusNext = () => {
@@ -98,9 +94,15 @@ export default class ResetPassword extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
 
-        <View style={styles.greenTop} />
+        <View style={styles.headerStyle}>
+          <BackIcon onPress={() => goBack()} />
+          <Text style={styles.headerTextStyle}>
+            {'Change Password'}
+          </Text>
+          <SaveIcon onPress={() => this._onSubmit()} />
+        </View>
 
-        <SaveIcon onPress={() => this._onSubmit()} />
+        <View style={styles.greenTop} />
 
         <Image
           source={

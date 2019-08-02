@@ -110,11 +110,28 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     //backgroundColor: "red",
-    backgroundColor: "#f6f6f6",
+    //backgroundColor: "#f6f6f6",
     // alignItems: 'center',
     //justifyContent: 'space-between',
     // paddingTop: 22 + STATUS_BAR_HEIGHT,
     // paddingBottom: 22
+  },
+  headerStyle: {
+    flexDirection: 'row',
+    height: STATUS_BAR_HEIGHT + 50,
+    width: WIDTH,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: MAIN_COLOR,
+    paddingTop: STATUS_BAR_HEIGHT,
+  },
+  headerTextStyle: {
+    fontFamily: "NunitoSans-Bold",
+    fontSize: 18,
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "center",
+    color: "#ffffff"
   },
   viewContainer:{
     marginHorizontal: 32

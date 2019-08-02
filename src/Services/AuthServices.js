@@ -33,8 +33,14 @@ export const saveUser = async (currentUser, userType) => {
 
 export const updateUserProfile = async (newData) => {
   try {
-    Store.dispatch(setCurrentUser(newData))
-    await AsyncStorage.setItem('currentUser', JSON.stringify(newData))
+    var currentUser = Store.getState().currentUser
+    Object.keys(newData).forEach(key => {
+      if (newData[key]){
+        currentUser[key] = newData[key]
+      }
+    })
+    Store.dispatch(setCurrentUser(currentUser))
+    await AsyncStorage.setItem('currentUser', JSON.stringify(currentUser))
   } catch (error) {
     console.log(error)
   }

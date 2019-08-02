@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 2,
     borderColor: MAIN_COLOR,    
-  },
+  },  
   editText: {
     fontFamily: "NunitoSans-Bold",
     fontSize: 14,
@@ -130,10 +130,20 @@ export const styles = StyleSheet.create({
   },
   headerStyle: {
     flexDirection: 'row',
-    height: 20,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+    height: STATUS_BAR_HEIGHT + 50,
     width: WIDTH,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    backgroundColor: MAIN_COLOR,    
+    paddingTop: STATUS_BAR_HEIGHT,
+  },
+  headerTextStyle: {
+    fontFamily: "NunitoSans-Bold",
+    fontSize: 18,
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "center",
+    color: "#ffffff"
   },
   saveText: {
     fontFamily: "Lato-Regular",
@@ -165,7 +175,7 @@ export const styles = StyleSheet.create({
     //backgroundColor: "#f6f6f6",
     //alignItems: 'center',
     //justifyContent: 'space-between',
-    //paddingTop: 22 + STATUS_BAR_HEIGHT,
+    //paddingTop: STATUS_BAR_HEIGHT,
     //paddingBottom: 22
   },
   inputsContainer:{
