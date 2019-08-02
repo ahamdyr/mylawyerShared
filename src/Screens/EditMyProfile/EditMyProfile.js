@@ -86,7 +86,6 @@ export default class EditMyProfile extends React.Component {
     photoURL: ''
   }
   _edit_Photo = async () => {
-    console.log('ajbfgsh')
     let doc = await uploadFile()
     doc ? this.setState({ photoURL: doc.uri }) : null
   }

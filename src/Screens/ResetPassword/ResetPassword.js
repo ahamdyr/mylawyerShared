@@ -3,53 +3,66 @@ import {
   Text,
   View,
   TouchableOpacity,
-  ImageBackground,
+  Image,
   TextInput,
   Keyboard,
   SafeAreaView,
   KeyboardAvoidingView
 } from 'react-native';
 import { styles } from './Styles'
-import {
-  navigate,
-  goBack
-} from '../../Services/NavigationServices'
+import { defaultPicture } from '../../../assets'
+import { navigate, goBack } from '../../Services/NavigationServices'
 import SubmitBtn from '../../Components/Common/SubmitBtn'
 import SeperatorLine from '../../Components/Common/SeperatorLine'
-import {
-  STATUS_BAR_HEIGHT
-} from '../../Components/Constants'
+import { STATUS_BAR_HEIGHT } from '../../Components/Constants'
 import { resetPassword } from '../../Services/FirebaseServices/UserSettings'
 import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
+import SaveIcon from '../../Components/ProfileHeaderIcons/SaveIcon'
 
 export default class ResetPassword extends React.Component {
-  index = 'old'
+
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Change Password',
+      //headerRight: <SaveIcon onPress={() => this._onSubmit()} />
+    }
+  }
+
+  index = 'oldPassword'
   handleFocusNext = () => {
     switch (this.index) {
-      case 'old':
-        this.refs.new.focus()
-        this.index = 'new'
+      case 'oldPassword':
+        this.refs.newPassword.focus()
+        this.index = 'newPassword'
         break;
-      case 'new':
-        this.refs.old.focus()
-        this.index = 'old'
+      case 'newPassword':
+        this.refs.confirmNewPassword.focus()
+        this.index = 'confirmNewPassword'
+        break;
+      case 'confirmNewPassword':
+        this.refs.oldPassword.focus()
+        this.index = 'oldPassword'
         break;
       default:
         break;
     }
   }
   state = {
-    password: '',
-    oldPassword: ''
+    oldPassword: '',
+    newPassword: '',
+    confirmNewPassword: ''
   }
-  _editPassword = (val) => {
-    this.state.password = val
+  _editNewPassword = (val) => {
+    this.state.newPassword = val
+  }
+  _editConfirmNewPassword = (val) => {
+    this.state.confirmNewPassword = val
   }
   _editOldPassword = (val) => {
     this.state.oldPassword = val
   }
   _onSubmit = async () => {
-    if (this.state.password.length < 8) {
+    if (this.state.newPassword.length < 8) {
       showMessage({
         message: 'password must be 8 digits or more !',
         hideOnPress: true,
@@ -58,29 +71,43 @@ export default class ResetPassword extends React.Component {
       });
       return
     }
-    await resetPassword(this.state.password, this.state.oldPassword)
+    if (this.state.newPassword !== this.state.confirmNewPassword) {
+      showMessage({
+        message: 'Your password and confirmation password do not match !',
+        hideOnPress: true,
+        duration: 3000,
+        type: 'danger',
+      });
+      return
+    }
+    await resetPassword(this.state.newPassword, this.state.oldPassword)
+    showMessage({
+      message: 'Password Changed!',
+      hideOnPress: true,
+      duration: 3000,
+      type: 'success',
+    });
     goBack()
   }
   render() {
 
+    var {
+      userPhoto
+    } = this.props
+
     return (
-      <SafeAreaView
-        style={styles.container}
-      >
-        <TouchableOpacity
-          onPress={() => goBack()}
-          style={styles.headerStyle}
-        >
-          <Text style={styles.cancel}>
-            Cancel
-          </Text>
-        </TouchableOpacity>
+      <SafeAreaView style={styles.container}>
 
-        <Text style={styles.Text} >
-          Reset password
-        </Text>
+        <View style={styles.greenTop} />
 
-        <View style={styles.fakePadding}/>
+        <SaveIcon onPress={() => this._onSubmit()} />
+
+        <Image
+          source={
+            userPhoto ? { uri: userPhoto } : defaultPicture
+          }
+          style={styles.profileImage}
+        />
         {/* ///////////////////////////////////////////////////////////// */}
         <KeyboardAvoidingView
           keyboardVerticalOffset={STATUS_BAR_HEIGHT + 20}
@@ -88,11 +115,11 @@ export default class ResetPassword extends React.Component {
           behavior={'padding'}
           enabled
         >
-          <SeperatorLine
-            style={styles.line}
-          />
+          <Text style={styles.labelStyle}>
+            {'OLD PASSWORD'}
+          </Text>
           <TextInput
-            ref="old"
+            ref="oldPassword"
             //autoFocus
             underlineColorAndroid={'transparent'}
             blurOnSubmit={true}
@@ -101,32 +128,39 @@ export default class ResetPassword extends React.Component {
             onChangeText={this._editOldPassword}
             style={styles.inputStyle}
           />
-          <SeperatorLine
-            style={styles.line}
-          />
+          <SeperatorLine style={styles.line}/>
+          {/* ///////////////////////////////////////////////////////////// */}
+          <Text style={styles.labelStyle}>
+            {'NEW PASSWORD'}
+          </Text>
           <TextInput
-            ref="new"
+            ref="newPassword"
             underlineColorAndroid={'transparent'}
             blurOnSubmit={true}
             secureTextEntry={true}
             placeholder={'New password'}
-            onChangeText={this._editPassword}
+            onChangeText={this._editNewPassword}
             style={styles.inputStyle}
           />
-          <SeperatorLine
-            style={styles.line}
+          <SeperatorLine style={styles.line}/>
+          {/* ///////////////////////////////////////////////////////////// */}
+          <Text style={styles.labelStyle}>
+            {'CONFIRM NEW PASSWORD'}
+          </Text>
+          <TextInput
+            ref="confirmNewPassword"
+            underlineColorAndroid={'transparent'}
+            blurOnSubmit={true}
+            secureTextEntry={true}
+            placeholder={'Confirm New password'}
+            onChangeText={this._editConfirmNewPassword}
+            style={styles.inputStyle}
           />
+          <SeperatorLine style={styles.line}/>
+
         </KeyboardAvoidingView>
         {/* ///////////////////////////////////////////////////////////// */}
         <View style={styles.fakePadding}/>
-
-        <SubmitBtn
-          style={styles.saveBtn}
-          text={'Submit'}
-          textStyle={styles.saveText}
-          onPress={() => this._onSubmit()}
-        />
-        {/* ///////////////////////////////////////////////////////////// */}
         <KeyboardAccessoryNavigation
           //avoidKeyboard={true}
           tintColor={'#0b7f7c'}
