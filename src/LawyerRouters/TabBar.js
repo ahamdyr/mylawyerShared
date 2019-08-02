@@ -69,11 +69,11 @@ export default TabBar = createBottomTabNavigator(
     LawyerSettings: {
       screen: SideMenuStack,
       navigationOptions: ({ navigation }) => ({
-        title: "",
+        title: "",        
         tabBarIcon: ({ focused }) => {
           return (
             <SettingsIcon
-              onPress={() => navigation.navigate('SideMenuStack')}
+              onPress={() => navigation.navigate('SideMenu')}
               focused={focused}
             />
           )
