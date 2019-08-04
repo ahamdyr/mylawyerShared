@@ -21,7 +21,7 @@ import ImageIcon from '../../Components/Common/ImageIcon'
 import SubmitBtn from '../../Components/Common/SubmitBtn'
 import SeperatorLine from '../../Components/Common/SeperatorLine'
 import { HEIGHT } from '../../Components/Constants'
-import { editProfileIcon } from '../../../assets'
+import { editProfileIcon, smallX } from '../../../assets'
 import { uploadFile, uploadGalleryImage } from '../../Services/FilesServices'
 import { isValidEmailAddress, isValidPhoneNumber } from '../../Utils/InputValidation'
 import { updateUserProfile } from '../../Services/AuthServices'
@@ -179,7 +179,8 @@ export default class EditMyProfile extends React.Component {
       duration: 3000,
       type: 'success',
     });
-    goBack()
+    //goBack()
+    navigate('ProfileScreen', {data: 'data'})
   }
   render() {
     var {
@@ -205,25 +206,45 @@ export default class EditMyProfile extends React.Component {
         </View>
 
         <View style={styles.greenTop} />
-
-        <TouchableOpacity
-          activeOpacity={1}
-          style={styles.profileImageBtn}
-          onPress={() => this._edit_Photo()}
-        >
-          <ImageBackground
-            source={
-              photoURL ? { uri: photoURL } : userPhoto ? { uri: userPhoto } : defaultPicture
-            }
-            borderRadius={60}
-            style={styles.profileImage}
-          >
-            <ImageIcon
-              style={styles.camera}
-              source={editProfileIcon}
-            />
-          </ImageBackground>
-        </TouchableOpacity>
+        {
+          // photoURL ?
+          //   <TouchableOpacity
+          //     activeOpacity={1}
+          //     style={styles.profileImageBtn}
+          //     onPress={() => this.setState({ photoURL: '' })}
+          //   >
+          //     <ImageBackground
+          //       source={
+          //         photoURL ? { uri: photoURL } : userPhoto ? { uri: userPhoto } : defaultPicture
+          //       }
+          //       borderRadius={60}
+          //       style={styles.profileImage}
+          //     >
+          //       <ImageIcon
+          //         style={{ width: 30, height: 30, position: 'absolute', top: 0, left: 0 }}
+          //         source={smallX}
+          //       />
+          //     </ImageBackground>
+          //   </TouchableOpacity> :
+            <TouchableOpacity
+              activeOpacity={1}
+              style={styles.profileImageBtn}
+              onPress={() => this._uploadGalleryImage()}
+            >
+              <ImageBackground
+                source={
+                  photoURL ? { uri: photoURL } : userPhoto ? { uri: userPhoto } : defaultPicture
+                }
+                borderRadius={60}
+                style={styles.profileImage}
+              >
+                <ImageIcon
+                  style={styles.camera}
+                  source={editProfileIcon}
+                />
+              </ImageBackground>
+            </TouchableOpacity>
+        }       
 
         <TouchableOpacity
           style={{

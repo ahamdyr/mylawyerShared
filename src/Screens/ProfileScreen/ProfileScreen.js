@@ -41,13 +41,16 @@ export default class ProfileScreen extends React.Component {
   }
   render() {
     var {
+      currentUser
+    } = this.props
+    var {
       displayName,
       email,
       phoneNumber,
       photoURL,
       id,
       type
-    } = this.props.currentUser
+    } = currentUser
     return (
       <SafeAreaView style={styles.container} >
         <View style={styles.headerStyle}>

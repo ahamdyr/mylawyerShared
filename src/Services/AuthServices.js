@@ -49,7 +49,7 @@ export const updateUserProfile = async (newData) => {
 export const updateUserPhoneNumber = async (phoneNumber) => {
   //navigate('Spinner')
   Store.dispatch(setPhoneNumber(phoneNumber))
-  navigate('PhoneVerification',{action: 'update'})
+  //navigate('PhoneVerification',{action: 'update'})
   //goBack()
 }
 

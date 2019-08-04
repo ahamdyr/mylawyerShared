@@ -46,5 +46,6 @@ export const dimmedQuestions = require('./images/dimmedQuestions.png')
 export const focusedProfile = require('./images/focusedProfile.png')
 export const dimmedProfile = require('./images/dimmedProfile.png')
 export const edit = require('./images/edit.png')
+export const smallX = require('./images/smallX.png')
 
 
