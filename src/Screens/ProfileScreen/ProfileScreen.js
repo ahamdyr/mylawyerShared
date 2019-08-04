@@ -23,6 +23,7 @@ import { deleteAccount } from '../../Services/FirebaseServices/UserSettings'
 import firebase from '../../Services/FirebaseServices/FirebaseApp'
 import 'firebase/auth'
 import { WhiteX } from '../../Components/Social Components/SocialBtns'
+import BackIcon from '../../Components/ProfileHeaderIcons/BackIcon'
 
 export default class ProfileScreen extends React.Component {
 
@@ -44,11 +45,13 @@ export default class ProfileScreen extends React.Component {
       email,
       phoneNumber,
       photoURL,
-      id
+      id,
+      type
     } = this.props.currentUser
     return (
       <SafeAreaView style={styles.container} >
         <View style={styles.headerStyle}>
+          <BackIcon onPress={() => goBack()} style={styles.BackIcon} />
           <Text style={styles.headerTextStyle}>
             {'Your Profile'}
           </Text>
@@ -120,14 +123,14 @@ export default class ProfileScreen extends React.Component {
         </View>
         <View style={{ flexDirection: "row", marginTop: 22, justifyContent: "space-around" }} >
           {
-            //firebase.auth().currentUser.providerData[0].providerId == 'password' ?
+            firebase.auth().currentUser.providerData[0].providerId == 'password' ?
               <SubmitBtn
                 style={styles.resetBtn}
                 text={'Change Password'}
                 textStyle={styles.resetText}
                 onPress={() => navigate('ResetPassword')}
               />
-              //: null                                                                  
+              : null                                                                  
           }          
           <SideMenuBtn
             btnTitle={'Delete Account'}
@@ -136,12 +139,16 @@ export default class ProfileScreen extends React.Component {
             onPress={() => this._deleteAccount()}
           />
         </View>
-        <WhiteX
-          style={styles.closeIcon}
-          onPress={() => {
-            goBack()
-          }}
-        />
+        {
+          type == 'user' ?
+            <WhiteX
+              style={styles.closeIcon}
+              onPress={() => {
+                goBack()
+              }}
+            />
+            : null
+        }
       </SafeAreaView>
     );
   }

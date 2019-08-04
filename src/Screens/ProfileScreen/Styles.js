@@ -133,9 +133,14 @@ export const styles = StyleSheet.create({
     height: STATUS_BAR_HEIGHT + 50,
     width: WIDTH,
     alignItems: 'center',
-    justifyContent: 'space-around',
-    backgroundColor: MAIN_COLOR,    
+    justifyContent: 'center',
+    backgroundColor: MAIN_COLOR,
     paddingTop: STATUS_BAR_HEIGHT,
+  },
+  BackIcon: {
+    position: 'absolute',
+    top: STATUS_BAR_HEIGHT,
+    left: 0
   },
   headerTextStyle: {
     fontFamily: "NunitoSans-Bold",

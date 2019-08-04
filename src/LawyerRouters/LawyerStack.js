@@ -5,6 +5,9 @@ import TabBar from './TabBar'
 import AnswerQuestionScreen from '../LawyerScreens/AnswerQuestionScreen'
 import ViewQuestionScreen from '../LawyerScreens/ViewQuestionScreen'
 import SideMenuStack from '../Routers/SideMenuStack'
+import ContactUs from '../Screens/ContactUs'
+import TermsAndConditions from '../Screens/TermsAndConditions'
+import About from '../Screens/About'
 
 export default  LawyerStack = createStackNavigator({
   TabBar:{
@@ -18,6 +21,15 @@ export default  LawyerStack = createStackNavigator({
   },
   SideMenuStack:{
     screen: SideMenuStack,
+  },
+  ContactUs:{
+    screen: ContactUs,
+  },
+  TermsAndConditions:{
+    screen: TermsAndConditions
+  },
+  About:{
+    screen: About
   },
 },{  
   initialRouteName: "TabBar",

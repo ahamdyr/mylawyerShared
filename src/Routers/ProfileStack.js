@@ -24,21 +24,21 @@ export default ProfileStack = createStackNavigator({
       duration: 0,
     },
   }),
-  defaultNavigationOptions: ({ navigation }) => ({
-    headerTitleStyle: {
-      fontFamily: "NunitoSans-Bold",
-      fontSize: 18,
-      fontStyle: "normal",
-      letterSpacing: 0,
-      textAlign: "center",
-      color: "#ffffff"
-    },
-    headerLeft: () => <BackIcon onPress={() => navigation.goBack()} />,
-    headerTintColor: 'white',
-    headerStyle: {
-      elevation: 0,
-      shadowOpacity: 0,
-      backgroundColor: '#0b7f7c',
-    }
-  }),
+  // defaultNavigationOptions: ({ navigation }) => ({
+  //   headerTitleStyle: {
+  //     fontFamily: "NunitoSans-Bold",
+  //     fontSize: 18,
+  //     fontStyle: "normal",
+  //     letterSpacing: 0,
+  //     textAlign: "center",
+  //     color: "#ffffff"
+  //   },
+  //   headerLeft: () => <BackIcon onPress={() => navigation.goBack()} />,
+  //   headerTintColor: 'white',
+  //   headerStyle: {
+  //     elevation: 0,
+  //     shadowOpacity: 0,
+  //     backgroundColor: '#0b7f7c',
+  //   }
+  // }),
 })

@@ -7,7 +7,7 @@ export default class BackIcon extends React.Component {
     return (
       <TouchableOpacity
         onPress={this.props.onPress}
-        style={styles.BtnStyle}
+        style={[styles.BtnStyle, this.props.style]}
       >
         <Image
           style={styles.imageStyle}
