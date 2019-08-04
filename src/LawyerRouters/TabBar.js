@@ -18,7 +18,6 @@ const styles = {
     width: WIDTH - 30,
     borderRadius: 34,
     backgroundColor: "#ffffff",
-    //backgroundColor: "red",
     shadowColor: "rgba(1, 11, 11, 0.29)",
     shadowOffset: {
       width: 1,
@@ -29,10 +28,12 @@ const styles = {
     elevation: 16,
   },
   BarContainer: {
+    //backgroundColor: "red",
     position: 'absolute',
-    left: 15,
-    right: 0,
     bottom: 19,
+    width: WIDTH,
+    height: 68,
+    alignItems: 'center',
   },
 }
 

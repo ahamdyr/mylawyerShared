@@ -26,24 +26,14 @@ export default class AppContainer extends React.Component {
   render() {
     return (
       <Provider store={Store}>
-        <View style={{ flex: 1 }}>
-          {/* <StatusBar translucent barStyle={'dark-content'} /> */}
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#f6f6f6' }}>
           <AppRouter
             ref={navigatorRef => {
               setTopLevelNavigator(navigatorRef)
             }}
           />
-          {/* <KeyboardAccessoryNavigation
-          //avoidKeyboard={true}
-          tintColor={'#0b7f7c'}
-          nextDisabled={true}
-          previousDisabled={true}
-          nextHidden={true}
-          previousHidden={true}
-        /> */}
-
           <FlashMessage position="top" />
-        </View>
+        </SafeAreaView>
       </Provider>
     );
   }

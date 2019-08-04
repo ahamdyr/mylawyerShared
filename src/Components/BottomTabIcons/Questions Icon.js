@@ -43,7 +43,14 @@ const styles = StyleSheet.create({
   button: {
     //backgroundColor: 'red',
     width: 60,
+    height: 68,
     alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: -7,
   },
-  icon: { width: 28, height: 28, marginTop: 10 }
+  icon: { 
+    width: 32, 
+    height: 32, 
+    //marginTop: 10 
+  }
 })

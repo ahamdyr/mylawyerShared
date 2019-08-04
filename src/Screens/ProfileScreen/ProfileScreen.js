@@ -51,7 +51,7 @@ export default class ProfileScreen extends React.Component {
     return (
       <SafeAreaView style={styles.container} >
         <View style={styles.headerStyle}>
-          <BackIcon onPress={() => goBack()} style={styles.BackIcon} />
+          {type == 'lawyer' ? <BackIcon onPress={() => goBack()} style={styles.BackIcon} /> : null}
           <Text style={styles.headerTextStyle}>
             {'Your Profile'}
           </Text>
