@@ -8,6 +8,7 @@ import {
   Keyboard,
   SafeAreaView,
   KeyboardAvoidingView,
+  ScrollView,
   Alert
 } from 'react-native';
 import { styles } from './Styles'
@@ -191,6 +192,7 @@ export default class EditMyProfile extends React.Component {
       phoneNumber,
       photoURL
     } = this.state
+    var keyboardVerticalOffset = (HEIGHT / 4) + 113
     return (
       <SafeAreaView style={styles.container} >
 
@@ -226,17 +228,18 @@ export default class EditMyProfile extends React.Component {
         <TouchableOpacity
           style={{
             flex: 1,
-            justifyContent: 'flex-start'
+            //justifyContent: 'flex-start',
           }}
           onPress={() => Keyboard.dismiss()}
           activeOpacity={1}
         >
-          <KeyboardAvoidingView
+          <ScrollView style={{ marginHorizontal: 32 }}>
+          {/* <KeyboardAvoidingView
             style={{ marginHorizontal: 32 }}
-            keyboardVerticalOffset={(HEIGHT / 4) + 113}
+            keyboardVerticalOffset={keyboardVerticalOffset}
             behavior={'padding'}
             enabled
-          >
+          > */}
             <Text style={styles.labelStyle}>
               {'Full Name'}
             </Text>
@@ -285,11 +288,12 @@ export default class EditMyProfile extends React.Component {
             <SeperatorLine
               style={styles.line}
             />
-          </KeyboardAvoidingView>
+          {/* </KeyboardAvoidingView> */}
+          </ScrollView>
         </TouchableOpacity>
 
         <KeyboardAccessoryNavigation
-          //avoidKeyboard={true}
+          avoidKeyboard={true}
           tintColor={'#0b7f7c'}
           nextDisabled={false}
           previousDisabled={false}

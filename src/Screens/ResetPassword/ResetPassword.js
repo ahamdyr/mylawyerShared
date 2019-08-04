@@ -7,7 +7,8 @@ import {
   TextInput,
   Keyboard,
   SafeAreaView,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  ScrollView
 } from 'react-native';
 import { styles } from './Styles'
 import { defaultPicture } from '../../../assets'
@@ -22,7 +23,7 @@ import BackIcon from '../../Components/ProfileHeaderIcons/BackIcon'
 
 export default class ResetPassword extends React.Component {
 
-  
+
 
   index = 'oldPassword'
   handleFocusNext = () => {
@@ -114,17 +115,18 @@ export default class ResetPassword extends React.Component {
         <TouchableOpacity
           style={{
             flex: 1,
-            justifyContent: 'flex-start'
+            //justifyContent: 'center',
           }}
           onPress={() => Keyboard.dismiss()}
           activeOpacity={1}
         >
-          <KeyboardAvoidingView
-            keyboardVerticalOffset={(HEIGHT / 4) + 163}
-            style={{marginHorizontal: 32}}
+        <ScrollView style={{ marginHorizontal: 32 }}>
+          {/* <KeyboardAvoidingView
+            keyboardVerticalOffset={(HEIGHT / 4) + 223}
+            style={{ marginHorizontal: 32 }}
             behavior={'padding'}
             enabled
-          >
+          > */}
             <Text style={styles.labelStyle}>
               {'OLD PASSWORD'}
             </Text>
@@ -168,12 +170,13 @@ export default class ResetPassword extends React.Component {
             />
             <SeperatorLine style={styles.line} />
 
-          </KeyboardAvoidingView>
+          {/* </KeyboardAvoidingView> */}
+        </ScrollView>
         </TouchableOpacity>
         {/* ///////////////////////////////////////////////////////////// */}
         {/* <View style={styles.fakePadding}/> */}
         <KeyboardAccessoryNavigation
-          //avoidKeyboard={true}
+          avoidKeyboard={true}
           tintColor={'#0b7f7c'}
           accessoryStyle={{
             //height: 30
