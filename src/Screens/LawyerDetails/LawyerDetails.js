@@ -3,7 +3,8 @@ import {
   Text, 
   View, 
   TouchableOpacity,
-  SafeAreaView
+  SafeAreaView,
+  Alert
 } from 'react-native';
 import { styles } from './Styles'
 import {
@@ -38,7 +39,8 @@ export default class LawyerDetails extends React.Component {
               source={ lawyer.photo ? { uri: lawyer.photo } : defaultPicture}
             />
             <GreenCircle
-              text={getNumSuffix(lawyer.id)}
+              //text={getNumSuffix(lawyer.id)}
+              text={lawyer.id}
               style={styles.orderStyle}
               textStyle={styles.orderTextStyle}
             />
@@ -78,8 +80,10 @@ export default class LawyerDetails extends React.Component {
           <TouchableOpacity 
             style={styles.footer}
             onPress={async()=> {
+              lawyer.reachAccount ?
+                await WebBrowser.openBrowserAsync(lawyer.reachAccount)
+                : Alert.alert('Sorry',`${getFirstName(lawyer.name)} doesn\'t have reach account yet.`)         
               //await WebBrowser.openBrowserAsync(`https://reachnetwork.co/${getFirstName(lawyer.name)}`)
-              await WebBrowser.openBrowserAsync(lawyer.reachAccount)
             }}
           >
             <Text style={styles.footerText}>
