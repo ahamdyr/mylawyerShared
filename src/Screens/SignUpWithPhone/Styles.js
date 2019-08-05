@@ -5,17 +5,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: MAIN_COLOR,
-    justifyContent: 'space-around',
-  },
-  formContainer:{
-    position:'absolute',
-    top: 190,
-    left: 0,
-    bottom: 157.5,
-    width: WIDTH,
-    //backgroundColor: 'black',
-    //justifyContent: 'center',
-    alignItems: 'center',
+    //justifyContent: 'space-around',
   },
   loginTextContainer:{
     // position: 'absolute',
@@ -24,7 +14,7 @@ export const styles = StyleSheet.create({
     width: WIDTH,
     //height: 20,
     //backgroundColor: 'black',
-    justifyContent: 'center',
+    //justifyContent: 'center',
     alignItems: 'center',
   },
   loginText:{
@@ -32,6 +22,18 @@ export const styles = StyleSheet.create({
     color: 'white',
     fontSize: 40,
     //marginLeft: 130
+  },
+  formContainer:{
+    flex: 1,
+    alignItems: 'center'
+  },
+  lowerThird: {
+    height: 200,
+    position: 'absolute',
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    //marginTop: 20
   },
   Btns: {
     height: 56,
@@ -41,7 +43,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     // position: 'absolute',
     // bottom: 140,
-    marginTop: 20
+    //marginTop: 20
   },
   faceBookStyle: {
     backgroundColor: 'rgb(61, 90, 150)'
@@ -79,15 +81,23 @@ export const styles = StyleSheet.create({
     color: '#fefefe',
     textDecorationLine: 'underline'
   },
-  footer:{    
+  footer: {
     width: WIDTH,
+    height: 49,
+    backgroundColor: "#0b7f7c",
+    shadowColor: "rgba(0, 0, 0, 0.06)",
+    shadowOffset: {
+      width: 0,
+      height: -8
+    },
+    shadowRadius: 12,
+    shadowOpacity: 1,
+    elevation: 18,
     //backgroundColor: 'black',
     // position: 'absolute',
-    // bottom: 20,
+    // bottom: 10,
     // left: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    height: 49,
-    
   }
 });

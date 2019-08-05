@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, TextInput, KeyboardAvoidingView  } from 'react-native';
+import {StyleSheet, Text, View, ScrollView, TextInput, KeyboardAvoidingView  } from 'react-native';
 import {MAIN_COLOR, WIDTH, STATUS_BAR_HEIGHT} from '../Constants'
 import SeperatorLine from '../Common/SeperatorLine'
 import LoginButton from '../Common/LoginButton'
@@ -44,12 +44,7 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
   }
   render(){
     return(
-      <KeyboardAvoidingView
-        //keyboardVerticalOffset={STATUS_BAR_HEIGHT}
-        style={styles.container}
-        //behavior={'padding'}
-        //enabled
-      >
+      <ScrollView contentContainerStyle={styles.container}>
 
         <SeperatorLine />
 
@@ -103,7 +98,7 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
           onPress={()=>this._onSubmit()}
         />
 
-      </KeyboardAvoidingView>
+      </ScrollView>
 
     )
   }
