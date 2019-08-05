@@ -13,7 +13,7 @@ import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 import { navigate } from '../../Services/NavigationServices'
 
 class SignUpWithMail extends React.Component {
-  componentWillMount(){
+  componentWillMount() {
     this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
       navigate('UserApp'); // works best when the goBack is async
       return true;
@@ -70,26 +70,29 @@ class SignUpWithMail extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         {/* ==================================================== */}
-        <View
+        {/* <View
           //activeOpacity={1}
           style={styles.editContainer}
         //onPress={() => Keyboard.dismiss()}
-        >
-          {/* ==================================================== */}
-          <View style={styles.loginTextContainer}>
-            <Text style={styles.loginText}>
-              Create Your
+        > */}
+        {/* ==================================================== */}
+        <View style={styles.loginTextContainer}>
+          <Text style={styles.loginText}>
+            Create Your
             </Text>
-            <Text style={styles.loginText}>
-              Account
+          <Text style={styles.loginText}>
+            Account
             </Text>
-          </View>
-          {/* ==================================================== */}
+        </View>
+        {/* ==================================================== */}
+        <View style={styles.formContainer}>
           <SignUpWithMailForm
             ref="formRef"
             onPress={() => SignUp()}
           />
-          {/* ==================================================== */}
+        </View>
+        {/* ==================================================== */}
+        <View style={styles.lowerThird}>
           {
             getUserType() == 'lawyer' ?
               null
@@ -110,30 +113,31 @@ class SignUpWithMail extends React.Component {
               </View>
           }
           {/* ==================================================== */}
-        </View>
-        {/* ==================================================== */}
-        <View style={styles.termsContainer}>
-          <Text style={styles.termsText}>
-            By clicking Sign up you agree to our
+          {/* </View> */}
+          {/* ==================================================== */}
+          <View style={styles.termsContainer}>
+            <Text style={styles.termsText}>
+              By clicking Sign up you agree to our
           </Text>
-          <Text
-            style={[styles.termsText, { textDecorationLine: 'underline' }]}
-            onPress={() => navigation.navigate('TermsAndConditions')}
-          >
-            Terms of Service
+            <Text
+              style={[styles.termsText, { textDecorationLine: 'underline' }]}
+              onPress={() => navigation.navigate('TermsAndConditions')}
+            >
+              Terms of Service
           </Text>
-        </View>
-        {/* ==================================================== */}
-        <TouchableOpacity
-          style={styles.footer}
-          onPress={() => navigation.navigate('LoginWithMail')}
-        >
-          <Text
-            style={styles.footerText}
+          </View>
+          {/* ==================================================== */}
+          <TouchableOpacity
+            style={styles.footer}
+            onPress={() => navigation.navigate('LoginWithMail')}
           >
-            Already have an Account?
+            <Text
+              style={styles.footerText}
+            >
+              Already have an Account?
             </Text>
-        </TouchableOpacity>
+          </TouchableOpacity>
+        </View>
         {/* ==================================================== */}
         <KeyboardAccessoryNavigation
           avoidKeyboard={true}

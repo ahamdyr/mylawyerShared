@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native'
-import { MAIN_COLOR, WIDTH } from '../../Components/Constants';
+import { MAIN_COLOR, WIDTH, HEIGHT, STATUS_BAR_HEIGHT } from '../../Components/Constants';
 
 export const styles = StyleSheet.create({
   container: {
@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     backgroundColor: MAIN_COLOR,
     //backgroundColor: 'red',
     //paddingVertical: 20,
-    justifyContent: 'space-around',
+    //justifyContent: 'space-between',
   },
   editContainer:{
     //flex: 1,
@@ -16,22 +16,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     //backgroundColor: 'blue',
   },
-  formContainer:{
-    position:'absolute',
-    top: 190,
-    left: 0,
-    bottom: 157.5,
-    width: WIDTH,
-    //backgroundColor: 'black',
-    //justifyContent: 'center',
-    alignItems: 'center',
-  },
   loginTextContainer:{
     //marginTop: 20,
     width: WIDTH,
     //height: 80,
     //backgroundColor: 'black',
-    justifyContent: 'center',
+    //justifyContent: 'center',
     alignItems: 'center',
   },
   loginText:{
@@ -39,6 +29,21 @@ export const styles = StyleSheet.create({
     color: 'white',
     fontSize: 40,
     //marginLeft: 130
+  },
+  formContainer:{
+    flex: 1,
+    //height: 300,
+    //paddingTop: 30,
+    //backgroundColor: 'red',
+    alignItems: 'center',
+  },
+  lowerThird: {
+    height: 160,
+    position: 'absolute',
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    //marginTop: 20
   },
   Btns: {
     height: 56,
@@ -48,7 +53,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     //position: 'absolute',
     //bottom: 120,
-    marginTop: 20
+    //marginTop: 20
   },
   faceBookStyle: {
     backgroundColor: 'rgb(61, 90, 150)'
@@ -87,16 +92,23 @@ export const styles = StyleSheet.create({
     color: '#fefefe',
     textDecorationLine: 'underline'
   },
-  footer:{    
+  footer: {
     width: WIDTH,
+    height: 49,
+    backgroundColor: "#0b7f7c",
+    shadowColor: "rgba(0, 0, 0, 0.06)",
+    shadowOffset: {
+      width: 0,
+      height: -8
+    },
+    shadowRadius: 12,
+    shadowOpacity: 1,
+    elevation: 18,
     //backgroundColor: 'black',
-    //marginTop: 10,
-    //position: 'absolute',
-    //bottom: 20,
-    //left: 0,
+    // position: 'absolute',
+    // bottom: 10,
+    // left: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    height: 49,
-    
   }
 });

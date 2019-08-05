@@ -67,10 +67,10 @@ export default class SignUpWithMailForm extends React.PureComponent {
   }
   render() {
     return (
-      <KeyboardAvoidingView
+      <ScrollView
         //keyboardVerticalOffset={STATUS_BAR_HEIGHT}
         //contentContainerStyle={styles.container}
-        style={styles.container}
+        contentContainerStyle={styles.container}
         // behavior={'position'}
       >
         <View style={{ marginTop: 20 }} />
@@ -162,12 +162,12 @@ export default class SignUpWithMailForm extends React.PureComponent {
         <LoginButton
           text={'Sign up'}
           style={{
-            marginTop: 25
+            marginTop: 20
           }}
           onPress={() => this._submit()}
         />
 
-      </KeyboardAvoidingView>
+      </ScrollView>
 
     )
   }
