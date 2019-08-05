@@ -128,11 +128,8 @@ export default class EditMyProfile extends React.Component {
         });
         return
       }
-      await updateUserEmail(this.state.email)
+      updateUserEmail(this.state.email)
     }
-    // else {
-    //   this.state.email = this.props.currentUser.email
-    // }
 
     if (this.state.displayName) {
       if (this.state.displayName.length == 0) {
@@ -144,18 +141,12 @@ export default class EditMyProfile extends React.Component {
         });
         return
       }
-      await updateUserName(this.state.displayName)
+      updateUserName(this.state.displayName)
     }
-    // else {
-    //   this.state.displayName = this.props.currentUser.displayName
-    // }
 
     if (this.state.photoURL) {
       this.state.photoURL = await updateUserPhoto(this.state.photoURL)
     }
-    // else {
-    //   this.state.photoURL = this.props.userPhoto
-    // }
 
     if (this.state.phoneNumber) {
       if (!isValidPhoneNumber(this.state.phoneNumber)) {
@@ -169,10 +160,8 @@ export default class EditMyProfile extends React.Component {
       }
       await updateUserPhoneNumber(this.state.phoneNumber)
     }
-    // else {
-    //   this.state.phoneNumber = this.props.currentUser.phoneNumber
-    // }    
-    await updateUserProfile(this.state)
+        
+    updateUserProfile(this.state)
     showMessage({
       message: 'Profile updated!',
       hideOnPress: true,

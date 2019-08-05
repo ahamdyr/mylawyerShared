@@ -24,7 +24,7 @@ export const updateUserPhoto = async (userPhoto) => {
   navigate('Spinner')
   var path = `${firebase.auth().currentUser.uid}/userImage.png`
   var photoURL = await addToStorage(path, userPhoto)
-  await firebase.auth().currentUser.updateProfile({
+  firebase.auth().currentUser.updateProfile({
     photoURL: photoURL
   })
   goBack()

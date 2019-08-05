@@ -32,18 +32,16 @@ export const saveUser = async (currentUser, userType) => {
 }
 
 export const updateUserProfile = async (newData) => {
-  try {
-    var currentUser = Store.getState().currentUser
-    Object.keys(newData).forEach(key => {
-      if (newData[key]){
-        currentUser[key] = newData[key]
-      }
-    })
-    Store.dispatch(setCurrentUser(currentUser))
-    await AsyncStorage.setItem('currentUser', JSON.stringify(currentUser))
-  } catch (error) {
-    console.log(error)
-  }
+  var currentUser = Store.getState().currentUser
+  Object.keys(newData).forEach(key => {
+    if (newData[key]) {
+      currentUser[key] = newData[key]
+    }
+  })
+  Store.dispatch(setCurrentUser(currentUser))
+  AsyncStorage.setItem('currentUser', JSON.stringify(currentUser), err => {
+    if (err) alert(err)
+  })
 }
 
 export const updateUserPhoneNumber = async (phoneNumber) => {
