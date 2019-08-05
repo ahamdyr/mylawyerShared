@@ -8,7 +8,7 @@ import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 import { navigate } from '../../Services/NavigationServices'
 
 class LoginWithPhone extends React.Component {
-  componentWillMount(){
+  componentWillMount() {
     this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
       navigate('UserApp'); // works best when the goBack is async
       return true;
@@ -27,12 +27,14 @@ class LoginWithPhone extends React.Component {
             Login
             </Text>
         </View>
-        <View style={{ height: 100 }} />
+        {/* <View style={{ height: 100 }} /> */}
         {/* login form */}
-        <LoginWithPhoneForm
-          onPress={(phoneNumber) => { SignIn(phoneNumber) }}
-        />
-        <View style={{ height: 100 }} />
+        <View style={styles.formContainer}>
+          <LoginWithPhoneForm
+            onPress={(phoneNumber) => { SignIn(phoneNumber) }}
+          />
+        </View>
+        {/* <View style={{ height: 100 }} /> */}
 
         {/* footer */}
         <TouchableOpacity

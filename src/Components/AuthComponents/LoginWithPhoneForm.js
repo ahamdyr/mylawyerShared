@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, TextInput, KeyboardAvoidingView  } from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView  } from 'react-native';
 import {MAIN_COLOR, WIDTH} from '../Constants'
 import SeperatorLine from '../Common/SeperatorLine'
 import LoginButton from '../Common/LoginButton'
@@ -30,10 +30,7 @@ export default class LoginWithPhoneForm extends React.PureComponent {
   }
   render(){
     return(
-      <KeyboardAvoidingView 
-        style={styles.container}
-        //behavior={'padding'}
-      >
+      <ScrollView contentContainerStyle={styles.container}>
 
         <SeperatorLine />
 
@@ -65,7 +62,7 @@ export default class LoginWithPhoneForm extends React.PureComponent {
           onPress={()=>this._loginSubmit()}
         />
 
-      </KeyboardAvoidingView>
+      </ScrollView>
 
     )
   }
