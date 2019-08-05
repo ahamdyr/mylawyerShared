@@ -46,24 +46,26 @@ class LoginWithMail extends React.Component {
             </Text>
         </View>
 
-        <View style={{height: 50}} />
+        {/* <View style={{height: 50}} /> */}
 
         {/* login form */}
-        <LoginWithMailForm ref="formRef" onPress={() => SignIn()} />
+        <View style={styles.formContainer}>
+          <LoginWithMailForm ref="formRef" onPress={() => SignIn()} />
+        </View>
         
-        <View style={{height: 50}} />
+        {/* <View style={{height: 50}} /> */}
         
         {/* footer */}
-        <TouchableOpacity
-          style={styles.footer}
-          onPress={() => { navigation.navigate('SignUpWithMail') }}
-        >
-          <Text
-            style={styles.footerText}
+          <TouchableOpacity
+            style={styles.footer}
+            onPress={() => { navigation.navigate('SignUpWithMail') }}
           >
-            Don't have an account ?
+            <Text
+              style={styles.footerText}
+            >
+              Don't have an account ?
             </Text>
-        </TouchableOpacity>
+          </TouchableOpacity>
 
         <KeyboardAccessoryNavigation
           avoidKeyboard={true}
