@@ -67,6 +67,7 @@ class SignUpWithMail extends React.Component {
   }
   render() {
     const { navigation } = this.props
+    var isLawyer = getUserType() == 'lawyer'
     return (
       <SafeAreaView style={styles.container}>
         {/* ==================================================== */}
@@ -92,9 +93,9 @@ class SignUpWithMail extends React.Component {
           />
         </View>
         {/* ==================================================== */}
-        <View style={styles.lowerThird}>
+        <View style={[styles.lowerThird, isLawyer ? {height: 100} : null]}>
           {
-            getUserType() == 'lawyer' ?
+            isLawyer ?
               null
               : <View style={styles.Btns}>
                 <SocialBtn
