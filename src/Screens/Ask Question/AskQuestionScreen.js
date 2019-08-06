@@ -15,11 +15,13 @@ export default class AskQuestion extends React.Component {
   handleFocusNext = () => {
     switch (this.index) {
       case 'title':
-        this.refs.formRef.refs.bodyRef.focus()
+        //this.refs.formRef.refs.bodyRef.focus()
+        this.refs.formRef._bodyRef.focus()
         this.index = 'body'
         break;
       case 'body':
-        this.refs.formRef.refs.titleRef.focus()
+        //this.refs.formRef.refs.titleRef.focus()
+        this.refs.formRef._titleRef.focus()
         this.index = 'title'
         break;
       default:

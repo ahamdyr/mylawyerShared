@@ -100,8 +100,8 @@ export default class QuestionComponent extends React.PureComponent {
             blurOnSubmit={true}
             ref={(ref) => {
               this._titleRef = ref
-              ref= "titleRef"
             }}
+            //ref= "titleRef"
             //autoFocus
             //value={this.state.title}
             style={styles.titleText}
@@ -136,8 +136,8 @@ export default class QuestionComponent extends React.PureComponent {
               scrollEnabled={true}
               ref={(ref) => {
                 this._bodyRef = ref
-                ref= "bodyRef"
               }}
+              //ref= "bodyRef"
               underlineColorAndroid="transparent"
               placeholder={this.props.bodyPlaceHolder || 'Write your problem here'}
               onChangeText={this._bodyChange}
