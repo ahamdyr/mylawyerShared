@@ -26,14 +26,16 @@ export default class AppContainer extends React.Component {
   render() {
     return (
       <Provider store={Store}>
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#f6f6f6' }}>
+        {/* <SafeAreaView style={{ flex: 1, backgroundColor: '#f6f6f6' }}> */}
+        <View style={{ flex: 1, backgroundColor: '#f6f6f6' }}>
           <AppRouter
             ref={navigatorRef => {
               setTopLevelNavigator(navigatorRef)
             }}
           />
           <FlashMessage position="top" />
-        </SafeAreaView>
+        {/* </SafeAreaView> */}
+        </View>
       </Provider>
     );
   }
