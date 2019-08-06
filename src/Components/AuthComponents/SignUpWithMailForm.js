@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: 250,
-    height: 60,
+    height: 50,
     flexDirection: 'row',
     alignItems: 'center',
   },
