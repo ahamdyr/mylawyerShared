@@ -9,8 +9,12 @@ import SettingsIcon from '../Components/BottomTabIcons/SettingsIcon'
 import { WIDTH, OS } from '../Components/Constants'
 import { View, StyleSheet } from "react-native"
 import { BottomTabBar } from "react-navigation-tabs"
+import { Platform, Dimensions } from 'react-native'
 
 const TabBarComponent = (props) => (<BottomTabBar {...props} />)
+
+const { height, width } = Dimensions.get('window')
+const isSafeAreaSupported = Platform.OS === 'ios' && (height > 800 || width > 800)
 
 const styles = {
   Tab_Bar_Style: {
@@ -30,7 +34,7 @@ const styles = {
   BarContainer: {
     //backgroundColor: "red",
     position: 'absolute',
-    bottom: 19,
+    bottom: isSafeAreaSupported ? 45 : 19,
     width: WIDTH,
     height: 68,
     alignItems: 'center',
