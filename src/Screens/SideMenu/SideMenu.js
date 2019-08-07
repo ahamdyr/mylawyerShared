@@ -67,11 +67,15 @@ export default class SideMenu extends React.Component {
               onPress={()=>this._logOut()}
             />
           }
-          <WhiteX
-            onPress={() => {
-              goBack()
-            }}
-          />
+          {
+            userType == 'user' ?
+              <WhiteX
+                onPress={() => {
+                  goBack()
+                }}
+              />
+              : null
+          }          
         </View>
       </SafeAreaView>
     );
