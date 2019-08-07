@@ -23,11 +23,12 @@ export default class SideMenu extends React.Component {
       userPhoto,
       userType
     } = this.props
+    var isUser = userType == 'user'
     return (
       <SafeAreaView style={styles.safeArea}>
         <View style={[
             styles.container,
-            userType == 'user' ? {marginBottom: 30} : {marginBottom: 120}
+            isUser || !isLoggedUser ? {marginBottom: 30} : {marginBottom: 120}
           ]}
         >
           <ImageIcon
@@ -72,7 +73,7 @@ export default class SideMenu extends React.Component {
             />
           }
           {
-            userType == 'user' ?
+            isUser || !isLoggedUser ?
               <WhiteX
                 onPress={() => {
                   goBack()
