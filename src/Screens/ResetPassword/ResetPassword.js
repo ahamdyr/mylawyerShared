@@ -177,6 +177,7 @@ export default class ResetPassword extends React.Component {
         {/* <View style={styles.fakePadding}/> */}
         <KeyboardAccessoryNavigation
           avoidKeyboard={true}
+          inSafeAreaView={true}
           tintColor={'#0b7f7c'}
           accessoryStyle={{
             //height: 30

@@ -106,6 +106,7 @@ export default class AnswerQuestionScreen extends React.Component {
           Platform.OS == 'ios' ?
             <KeyboardAccessoryNavigation
               //avoidKeyboard={true}
+              inSafeAreaView={true}
               tintColor={'#0b7f7c'}
               nextDisabled={true}
               previousDisabled={true}

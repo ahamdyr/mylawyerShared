@@ -97,6 +97,7 @@ export default class ContactUs extends React.Component {
         />
         <KeyboardAccessoryNavigation
           //avoidKeyboard={true}
+          inSafeAreaView={true}
           tintColor={'#0b7f7c'}
           nextDisabled={false}
           previousDisabled={false}

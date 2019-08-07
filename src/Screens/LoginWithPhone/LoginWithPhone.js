@@ -49,6 +49,7 @@ class LoginWithPhone extends React.Component {
         </TouchableOpacity>
         <KeyboardAccessoryNavigation
           //avoidKeyboard={true}
+          inSafeAreaView={true}
           tintColor={'#0b7f7c'}
           nextDisabled={true}
           previousDisabled={true}
