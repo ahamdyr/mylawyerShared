@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginTop: 46.5 + STATUS_BAR_HEIGHT,
-    marginBottom: 24  
+    //marginBottom: 100 
   },
   profileImage:{
     width: 80,

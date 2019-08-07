@@ -25,7 +25,11 @@ export default class SideMenu extends React.Component {
     } = this.props
     return (
       <SafeAreaView style={styles.safeArea}>
-        <View style={styles.container}>
+        <View style={[
+            styles.container,
+            userType == 'user' ? {marginBottom: 30} : {marginBottom: 120}
+          ]}
+        >
           <ImageIcon
             style={styles.profileImage}
             source={userPhoto ? { uri: userPhoto } : defaultPicture}
