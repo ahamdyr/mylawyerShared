@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, TouchableOpacity, Platform } from 'react-native';
 import { styles } from './Styles'
 import LoginWithMailForm from '../../Components/AuthComponents/LoginWithMailForm'
 import { withNavigation } from 'react-navigation'
@@ -61,10 +61,22 @@ class LoginWithMail extends React.Component {
             onPress={() => { navigation.navigate('SignUpWithMail') }}
           >
             <Text
-              style={styles.footerText}
+              style={[
+                styles.footerText,
+                Platform.OS == 'android' ? {textDecorationLine: 'underline'} : null
+              ]}
             >
               Don't have an account ?
             </Text>
+            {
+              Platform.OS == 'ios' ? 
+                <View style={{
+                    height: 0.5, width: 170,
+                    backgroundColor: '#fefefe', alignSelf: "center"                    
+                  }}
+                />
+                : null
+            }
           </TouchableOpacity>
 
         <KeyboardAccessoryNavigation

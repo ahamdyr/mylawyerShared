@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, SafeAreaView, TouchableOpacity, BackHandler } from 'react-native';
+import { Text, View, SafeAreaView, TouchableOpacity, BackHandler, Platform } from 'react-native';
 import { styles } from './Styles'
 import SignUpWithMailForm from '../../Components/AuthComponents/SignUpWithMailForm'
 import { SignUp } from '../../Services/Login Services/MailLogin'
@@ -133,10 +133,22 @@ class SignUpWithMail extends React.Component {
             onPress={() => navigation.navigate('LoginWithMail')}
           >
             <Text
-              style={styles.footerText}
+              style={[
+                styles.footerText,
+                Platform.OS == 'android' ? {textDecorationLine: 'underline'} : null
+              ]}
             >
               Already have an Account?
             </Text>
+            {
+              Platform.OS == 'ios' ? 
+                <View style={{
+                    height: 0.5, width: 180,
+                    backgroundColor: '#fefefe', alignSelf: "center"                    
+                  }}
+                />
+                : null
+            }
           </TouchableOpacity>
         </View>
         {/* ==================================================== */}

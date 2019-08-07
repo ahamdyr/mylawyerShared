@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, SafeAreaView, TouchableOpacity, BackHandler } from 'react-native';
+import { Text, View, SafeAreaView, TouchableOpacity, BackHandler, Platform } from 'react-native';
 import { styles } from './Styles'
 import SignUpWithPhoneForm from '../../Components/AuthComponents/SignUpWithPhoneForm'
 import { withNavigation } from 'react-navigation'
@@ -114,10 +114,22 @@ class SignUpWithPhone extends React.Component {
             onPress={() => navigation.navigate('LoginWithPhone')}
           >
             <Text
-              style={styles.footerText}
+              style={[
+                styles.footerText,
+                Platform.OS == 'android' ? {textDecorationLine: 'underline'} : null
+              ]}
             >
               Already have an Account?
             </Text>
+            {
+              Platform.OS == 'ios' ? 
+                <View style={{
+                    height: 0.5, width: 180,
+                    backgroundColor: '#fefefe', alignSelf: "center"                    
+                  }}
+                />
+                : null
+            }
           </TouchableOpacity>
         </View>
         {/* ==================================================== */}

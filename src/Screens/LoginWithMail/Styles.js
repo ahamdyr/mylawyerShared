@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
     fontFamily:'Lato-Light',
     fontSize: 16,
     color: '#fefefe',
-    textDecorationLine: 'underline'
+    //textDecorationLine: 'underline'
   },
   footer: {
     width: WIDTH,
