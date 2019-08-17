@@ -6,7 +6,9 @@ import StackRouter from './Stack Router'
 import TabRouter from './Tab Router'
 import {ScrollView, StyleSheet, View, Text} from 'react-native'
 import { DrawerItems, SafeAreaView } from 'react-navigation';
-import {  Constants, Updates } from 'expo'
+import { Updates } from 'expo';
+
+import Constants from 'expo-constants';
 
 const CustomDrawerContentComponent = props => (
   <View style={styles.container}>

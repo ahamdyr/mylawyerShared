@@ -1,7 +1,7 @@
 import { createMaterialTopTabNavigator } from "react-navigation";
 import MyQuestions from '../My Questions'
 import AllQuestions from '../All Questions'
-import {Constants} from 'expo'
+import Constants from 'expo-constants';
 import { Dimensions } from "react-native";
 
 const statusBarHeight = Constants.statusBarHeight

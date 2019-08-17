@@ -1,5 +1,7 @@
 import { guidGenerator } from './Guid'
-import {DocumentPicker, ImagePicker, Permissions} from 'expo'
+import * as Permissions from 'expo-permissions';
+import * as ImagePicker from 'expo-image-picker';
+import * as DocumentPicker from 'expo-document-picker';
 import { Platform } from 'react-native'
 
 export const uploadFile = async () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image, TouchableWithoutFeedback } from "react-native";
 import {WIDTH} from '../Constants'
-import { DocumentPicker } from 'expo'
+import * as DocumentPicker from 'expo-document-picker';
 import AttachmentList from './AttachmentList'
 export default class AttachmentView extends React.PureComponent {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { Constants } from "expo";
+import Constants from 'expo-constants';
 import { STATUS_BAR_HEIGHT } from '../../Components/Constants'
 import { mockContent } from '../../Services/BackendServices/MockData'
 import { WhiteX } from '../../Components/Social Components/SocialBtns'

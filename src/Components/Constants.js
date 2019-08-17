@@ -1,7 +1,6 @@
-import { Constants } from 'expo'
+import Constants from 'expo-constants';
 import { Dimensions, Platform } from 'react-native'
-import { Localization } from 'expo-localization';
-
+import * as Localization from 'expo-localization';
 export const STATUS_BAR_HEIGHT = Constants.statusBarHeight
 export const HEIGHT = Dimensions.get('window').height
 export const WIDTH = Dimensions.get('window').width

@@ -3,7 +3,8 @@ import { Register, Login } from '../BackendServices/AccountServices'
 import { saveUser, getUserType, getPhoneCredentials, savePhoneCredentials } from '../AuthServices'
 import { Alert } from 'react-native'
 import { goBack, navigate } from '../NavigationServices'
-import { Linking, WebBrowser } from 'expo'
+import { Linking } from 'expo';
+import * as WebBrowser from 'expo-web-browser';
 import { PhoneAuth, confirmationResult, PhoneUpdate, isRegisteredUser } from '../FirebaseServices/PhoneAuth'
 import { updateUserName, updateUserPhoneNumber } from '../FirebaseServices/UpdateUser'
 import Store from '../../Redux/Store'

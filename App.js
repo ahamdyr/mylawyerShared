@@ -1,5 +1,7 @@
 import React from 'react';
-import { AppLoading, Asset, Font, Icon, Updates } from 'expo';
+import { AppLoading, Asset, Updates } from 'expo';
+import * as Font from 'expo-font'
+import * as Icon from '@expo/vector-icons'
 import Sentry from 'sentry-expo';
 import AppContainer from './src/Screens/App Container'
 import Updating from "./src/Screens/Updating"

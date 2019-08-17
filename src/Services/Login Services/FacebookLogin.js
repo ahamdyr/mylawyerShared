@@ -1,4 +1,4 @@
-import { Facebook } from 'expo'
+import * as Facebook from 'expo-facebook';
 import { FacebookAuth } from '../FirebaseServices/FacebookAuth'
 import { base64Token } from '../Guid'
 import { Register, Login } from '../BackendServices/AccountServices'

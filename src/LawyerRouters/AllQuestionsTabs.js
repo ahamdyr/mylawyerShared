@@ -1,7 +1,7 @@
 import { createMaterialTopTabNavigator } from "react-navigation";
 import NewQuestionsScreen from '../LawyerScreens/NewQuestionsScreen'
 import AllQuestionsScreen from '../LawyerScreens/AllQuestionsScreen'
-import {Constants} from 'expo'
+import Constants from 'expo-constants';
 import { Dimensions } from "react-native";
 
 const statusBarHeight = Constants.statusBarHeight

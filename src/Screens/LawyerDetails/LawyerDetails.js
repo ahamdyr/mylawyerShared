@@ -11,7 +11,8 @@ import {
   navigate,
   goBack
 } from '../../Services/NavigationServices'
-import { Linking, WebBrowser } from 'expo'
+import { Linking } from 'expo';
+import * as WebBrowser from 'expo-web-browser';
 import BlackX from '../../Components/Common/BlackX'
 import RatingView from '../../Components/Lawyers List/RatingView'
 import ImageIcon from '../../Components/Common/ImageIcon'
