@@ -76,7 +76,7 @@ export default TabBar = createBottomTabNavigator(
     tabBarOptions: {   
       style: isSafeAreaSupported ? 
         {
-          height: 68,
+          height: 48,
           width: WIDTH - 30,
           borderRadius: 34,
           backgroundColor: "#ffffff",
@@ -91,7 +91,8 @@ export default TabBar = createBottomTabNavigator(
           justifyContent: 'center',
           alignSelf: 'center',
           position: 'absolute',
-          bottom: isSafeAreaSupported ? 65 : 19,
+          bottom: 30,
+          paddingTop: 30,
         }
         : {
             height: 68,
