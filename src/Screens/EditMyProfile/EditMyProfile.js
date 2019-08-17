@@ -305,7 +305,7 @@ export default class EditMyProfile extends React.Component {
         <KeyboardAccessoryNavigation
           avoidKeyboard={true}
           inSafeAreaView={true}
-          bumperHeight={0}
+          //bumperHeight={0}
           //alwaysVisible={true}
           tintColor={'#0b7f7c'}
           nextDisabled={false}
