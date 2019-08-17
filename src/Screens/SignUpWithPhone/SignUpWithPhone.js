@@ -1,5 +1,7 @@
 import React from 'react';
-import { Text, View, SafeAreaView, TouchableOpacity, BackHandler, Platform } from 'react-native';
+import { 
+  Text, View, SafeAreaView, TouchableOpacity, BackHandler, Platform, Dimensions
+} from 'react-native';
 import { styles } from './Styles'
 import SignUpWithPhoneForm from '../../Components/AuthComponents/SignUpWithPhoneForm'
 import { withNavigation } from 'react-navigation'
@@ -54,6 +56,8 @@ class SignUpWithPhone extends React.Component {
     }
   }
   render() {
+    const { height, width } = Dimensions.get('window')
+    const isSafeAreaSupported = Platform.OS === 'ios' && (height > 800 || width > 800)
     const { navigation } = this.props
     return (
       <SafeAreaView style={styles.container}>
@@ -80,7 +84,10 @@ class SignUpWithPhone extends React.Component {
           />
         </View>
         {/* ==================================================== */}
-        <View style={styles.lowerThird}>
+        <View style={[
+          styles.lowerThird,
+          isSafeAreaSupported ? { height: 200, marginBottom: 30 } : null
+          ]}>
           <View style={styles.Btns}>
             <SocialBtn
               style={styles.faceBookStyle}

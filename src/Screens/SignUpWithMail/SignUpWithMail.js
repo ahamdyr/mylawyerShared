@@ -1,5 +1,7 @@
 import React from 'react';
-import { Text, View, SafeAreaView, TouchableOpacity, BackHandler, Platform } from 'react-native';
+import { 
+  Text, View, SafeAreaView, TouchableOpacity, BackHandler, Platform, Dimensions 
+} from 'react-native';
 import { styles } from './Styles'
 import SignUpWithMailForm from '../../Components/AuthComponents/SignUpWithMailForm'
 import { SignUp } from '../../Services/Login Services/MailLogin'
@@ -66,6 +68,8 @@ class SignUpWithMail extends React.Component {
     }
   }
   render() {
+    const { height, width } = Dimensions.get('window')
+    const isSafeAreaSupported = Platform.OS === 'ios' && (height > 800 || width > 800)
     const { navigation } = this.props
     var isLawyer = getUserType() == 'lawyer'
     return (
@@ -93,7 +97,11 @@ class SignUpWithMail extends React.Component {
           />
         </View>
         {/* ==================================================== */}
-        <View style={[styles.lowerThird, isLawyer ? {height: 100} : null]}>
+        <View style={[
+          styles.lowerThird, 
+          isLawyer ? {height: 100} : null,
+          isSafeAreaSupported ? { height: 200, marginBottom: 30 } : null
+          ]}>
           {
             isLawyer ?
               null
