@@ -21,7 +21,8 @@ const AppRouter = createStackNavigator({
   defaultNavigationOptions: {
     gesturesEnabled: false,
   },
-  initialRouteName: 'AuthLoading',
+  initialRouteName: 'UserApp',
+  //initialRouteName: 'AuthLoading',
   headerMode: "none"
 })
 
