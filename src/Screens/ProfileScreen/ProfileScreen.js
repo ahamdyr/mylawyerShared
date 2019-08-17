@@ -78,20 +78,16 @@ export default class ProfileScreen extends React.Component {
           <Text style={styles.labelStyle}>
             {'Full Name'}
           </Text>
-          <TextInput
-            value={displayName}
-            disabled={true}            
-            style={styles.name}
-          />
+          <Text style={styles.name}>
+            {displayName}
+          </Text>
           <SeperatorLine style={styles.line} />
           <Text style={styles.labelStyle}>
             {'Username'}
           </Text>
-          <TextInput
-            value={displayName.split(' ')[0] + id}
-            disabled={true}            
-            style={styles.name}
-          />
+          <Text style={styles.name}>
+            {displayName.split(' ')[0] + id}
+          </Text>
           <SeperatorLine style={styles.line} />
           {
             email ?
@@ -99,11 +95,9 @@ export default class ProfileScreen extends React.Component {
                 <Text style={styles.labelStyle}>
                   {'Email'}
                 </Text>
-                <TextInput
-                  value={email}
-                  disabled={true}
-                  style={styles.name}
-                />
+                <Text style={styles.name}>
+                  {email}
+                </Text>
                 <SeperatorLine style={styles.line} />
               </React.Fragment>
               : null
@@ -114,11 +108,9 @@ export default class ProfileScreen extends React.Component {
                 <Text style={styles.labelStyle}>
                   {'Phone'}
                 </Text>
-                <TextInput
-                  value={phoneNumber}
-                  disabled={true}
-                  style={styles.name}
-                />
+                <Text style={styles.name}>
+                  {phoneNumber}
+                </Text>
                 <SeperatorLine style={styles.line} />
               </React.Fragment>
               : null
