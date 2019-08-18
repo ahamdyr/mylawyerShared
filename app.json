@@ -8,7 +8,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0.18",
+    "version": "1.0.20",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
     "splash": {
@@ -27,7 +27,7 @@
     "ios": {
       "bundleIdentifier": "com.mylawyer.MyLawyer.xXx",
       "supportsTablet": true,
-      "buildNumber": "1.0.18",
+      "buildNumber": "1.0.20",
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "This app uses the photos to update your profile picture.",
         "NSCameraUsageDescription": "Allow My Lawyer experiences to use your camera"
@@ -81,7 +81,7 @@
         "com.sonyericsson.home.permission.BROADCAST_BADGE"
       ],
       "package": "com.mylawyer.MyLawyer",
-      "versionCode": 18
+      "versionCode": 20
     },
     "hooks": {
       "postPublish": [
