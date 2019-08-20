@@ -177,7 +177,7 @@ export const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    //backgroundColor: "#f6f6f6",
+    //backgroundColor: MAIN_COLOR,
     //alignItems: 'center',
     //justifyContent: 'space-between',
     //paddingTop: STATUS_BAR_HEIGHT,

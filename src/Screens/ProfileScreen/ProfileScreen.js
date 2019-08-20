@@ -53,6 +53,7 @@ export default class ProfileScreen extends React.Component {
     } = currentUser
     return (
       <SafeAreaView style={styles.container} >
+        <View style={{flex: 1, backgroundColor: '#f6f6f6'}}>
         <View style={styles.headerStyle}>
           {type == 'lawyer' ? <BackIcon onPress={() => goBack()} style={styles.BackIcon} /> : null}
           <Text style={styles.headerTextStyle}>
@@ -144,6 +145,7 @@ export default class ProfileScreen extends React.Component {
             />
             : null
         }
+        </View>
       </SafeAreaView>
     );
   }

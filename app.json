@@ -80,7 +80,7 @@
         "com.sec.android.provider.badge.permission.WRITE",
         "com.sonyericsson.home.permission.BROADCAST_BADGE"
       ],
-      "package": "com.mylawyer.MyLawyer",
+      "package": "com.mylawyer.MyLawyer.pro",
       "versionCode": 21
     },
     "hooks": {
