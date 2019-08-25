@@ -5,17 +5,25 @@ import * as DocumentPicker from 'expo-document-picker';
 import { Platform } from 'react-native'
 
 export const uploadFile = async () => {
-
-  let doc = await DocumentPicker.getDocumentAsync()
-  if (doc.type == 'success') {
-    doc.uuid = guidGenerator()
-    //doc.name = doc.uri.substring(doc.uri.length - 10)   //name already exist
-    doc.type = 'document'
-    //console.log('doc', doc)
-    return doc
-  }
-  else {
-    return 0
+  try {
+    let doc = await DocumentPicker.getDocumentAsync()
+    if (doc.type == 'success') {
+      doc.uuid = guidGenerator()
+      //doc.name = doc.uri.substring(doc.uri.length - 10)   //name already exist
+      doc.type = 'document'
+      //console.log('doc', doc)
+      return doc
+    }
+    else {
+      return 0
+    }
+  } catch (error) {
+    showMessage({
+      message: `${error}`,
+      hideOnPress: true,
+      duration: 3000,
+      type: 'danger',
+    });
   }
 }
 
