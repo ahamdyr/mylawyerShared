@@ -3,7 +3,7 @@
     "name": "My Lawyer",
     "slug": "mylawyer",
     "privacy": "public",
-    "sdkVersion": "33.0.0",
+    "sdkVersion": "34.0.0",
     "platforms": [
       "ios",
       "android"
@@ -49,7 +49,7 @@
       "config": {
         "googleSignIn": {
           "apiKey": "AIzaSyCB76Ry4sEcSICgIhdP7EDRzRYhCNg8QhQ",          
-          "certificateHash": "07:02:84:0C:D8:06:94:0B:53:52:02:F5:96:13:CA:0D:E1:F5:06:A5"
+          "certificateHash": "E0:2B:53:83:35:56:A5:03:E9:24:F2:85:F6:7F:00:EA:AB:12:EB:78"
         }
       },
       "permissions": [
@@ -80,7 +80,7 @@
         "com.sec.android.provider.badge.permission.WRITE",
         "com.sonyericsson.home.permission.BROADCAST_BADGE"
       ],
-      "package": "com.mylawyer.MyLawyer.pro",
+      "package": "com.mylawyer.MyLawyerPro",
       "versionCode": 22
     },
     "hooks": {
