@@ -12,12 +12,12 @@ import { showMessage } from "react-native-flash-message";
 
 global.showMessage = showMessage
 //global.baseURL = `https://hlogicodesk.pythonanywhere.com/api/beta/`
-global.baseURL = `http://api.mylawyer-app.com/api/beta/`
+global.baseURL = `http://api.mylawyer-app.com/beta/`
 
 export default class AppContainer extends React.Component {
   async componentWillMount() {
     //axios.defaults.baseURL = `https://hlogicodesk.pythonanywhere.com/api/beta/`
-    axios.defaults.baseURL = `http://api.mylawyer-app.com/api/beta/`
+    axios.defaults.baseURL = `http://api.mylawyer-app.com/beta/`
     // delete backend database
     // axios.get('https://hlogicodesk.pythonanywhere.com/api/beta/users/deldel/')
     //   .then(()=>console.log('data deleted'))
