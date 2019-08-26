@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { STATUS_BAR_HEIGHT } from '../../Components/Constants'
-import { mockContent } from '../../Services/BackendServices/MockData'
+import { terms } from '../../Services/BackendServices/MockData'
 import { WhiteX } from '../../Components/Social Components/SocialBtns'
 import {
   navigate,
@@ -19,7 +19,7 @@ export default class TermsAndConditions extends React.Component {
         <Text
           style={styles.content}
         >
-          {mockContent}
+          {terms}
         </Text>
         <WhiteX      
           //style={styles.close}    

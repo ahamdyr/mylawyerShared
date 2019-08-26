@@ -282,4 +282,15 @@ export const mockAttachs = {
     ],
 }
 
-export const mockContent = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
+export const aboutUs = `With My lawyer, you have your lawyer always with you ..
+Get the fastest answer for any legal inquiry!
+My lawyer makes it very easy to connect with many certified lawyers any time,
+To ask about cases and legal advices.
+You can also contact any lawyer privately, with confidentiality.
+
+- ask any lawyer public/ private 
+- You can accept or decline the answer to your inquiry 
+- You can Rate lawyers
+- many types of cases .. sivil , criminal ... etc.`
+
+export const terms = `We do not own any data, information or material ("Content") that you submit in the Mobile Application in the course of using the Service. You shall have sole responsibility for the accuracy, quality, integrity, legality, reliability, appropriateness, and intellectual property ownership or right to use of all submitted Content. We may, but have no obligation to, monitor and review Content in the Mobile Application submitted or created using our Services by you. Unless specifically permitted by you, your use of the Mobile Application does not grant us the license to use, reproduce, adapt, modify, publish or distribute the Content created by you or stored in your user account for commercial, marketing or any similar purpose. But you grant us permission to access, copy, distribute, store, transmit, reformat, display and perform the Content of your user account solely as required for the purpose of providing the Services to you.`
