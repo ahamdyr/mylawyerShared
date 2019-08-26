@@ -24,7 +24,7 @@ export const LoginWithGoogle = async () => {
         iosStandaloneAppClientId: iOSStandAlone,
         iosClientId: iOSClientId,
         scopes: ['profile', 'email'],
-        redirectUrl: redirectUrl
+        //redirectUrl: redirectUrl
       }
     )
 

@@ -8,7 +8,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0.22",
+    "version": "1.0.23",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
     "splash": {
@@ -52,6 +52,7 @@
           "certificateHash": "E0:2B:53:83:35:56:A5:03:E9:24:F2:85:F6:7F:00:EA:AB:12:EB:78"
         }
       },
+      "package": "com.mylawyer.android",
       "permissions": [
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION",
@@ -80,8 +81,7 @@
         "com.sec.android.provider.badge.permission.WRITE",
         "com.sonyericsson.home.permission.BROADCAST_BADGE"
       ],
-      "package": "com.mylawyer.MyLawyerPro",
-      "versionCode": 22
+      "versionCode": 23
     },
     "hooks": {
       "postPublish": [
