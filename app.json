@@ -8,7 +8,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0.23",
+    "version": "1.0.24",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
     "splash": {
@@ -27,7 +27,7 @@
     "ios": {
       "bundleIdentifier": "com.mylawyer.MyLawyer",
       "supportsTablet": false,
-      "buildNumber": "1.0.23",
+      "buildNumber": "1.0.24",
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "This app uses the photos to update your profile picture.",
         "NSCameraUsageDescription": "Allow My Lawyer experiences to use your camera"
