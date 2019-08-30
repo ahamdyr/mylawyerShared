@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, WebView, ActivityIndicator } from 'react-native';
 import { STATUS_BAR_HEIGHT } from '../../Components/Constants'
 import { terms } from '../../Services/BackendServices/MockData'
 import { WhiteX } from '../../Components/Social Components/SocialBtns'
@@ -8,6 +8,15 @@ import {
   goBack
 } from '../../Services/NavigationServices'
 export default class TermsAndConditions extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      webviewLoaded: false
+    }
+  }
+  _onLoadEnd () {
+    this.setState({ webviewLoaded: true })
+  }
   render() {
     return (
       <SafeAreaView style={styles.container}>
@@ -16,11 +25,27 @@ export default class TermsAndConditions extends React.Component {
         >
           Terms and conditions
         </Text>
-        <Text
+        <View style={{ flex: 1 }}>
+          {!this.state.webviewLoaded &&
+            <ActivityIndicator
+              color='#009688'
+              size='large'
+              //style={styles.ActivityIndicatorStyle}
+            />}
+          <WebView
+            source={{ uri: 'http://mylawyer-app.com/terms/' }}
+            onLoadEnd={this._onLoadEnd.bind(this)}
+            style={{
+              width: 311,
+              marginVertical: 5,
+            }}
+          />
+        </View>
+        {/* <Text
           style={styles.content}
         >
           {terms}
-        </Text>
+        </Text> */}
         <WhiteX      
           //style={styles.close}    
           onPress={()=> {
