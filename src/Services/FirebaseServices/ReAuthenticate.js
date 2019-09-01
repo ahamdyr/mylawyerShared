@@ -47,5 +47,8 @@ export const ReAuthenticate = async () => {
           });
         }
       }
+      else {
+        navigate('UserApp')
+      }
     })
 }
