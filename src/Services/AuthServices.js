@@ -27,7 +27,13 @@ export const saveUser = async (currentUser, userType) => {
     //await AsyncStorage.setItem('accessToken', JSON.stringify(accessToken))  
       
   } catch (error) {
-    console.log(error)
+    navigate('UserApp')
+    showMessage({
+      message: `${error}\nTry again!`,
+      hideOnPress: true,
+      duration: 3000,
+      type: 'danger',
+    });
   }
 }
 
