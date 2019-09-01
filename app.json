@@ -27,7 +27,7 @@
     "ios": {
       "bundleIdentifier": "com.mylawyer.MyLawyer",
       "supportsTablet": false,
-      "buildNumber": "1.0.24",
+      "buildNumber": "1.0.25",
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "This app uses the photos to update your profile picture.",
         "NSCameraUsageDescription": "Allow My Lawyer experiences to use your camera"
