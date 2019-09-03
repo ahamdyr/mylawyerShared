@@ -5,14 +5,15 @@ import {
 import MenuIcon from '../../Components/HomeHeaderIcons/Menu Icon'
 import SearchIcon from '../../Components/HomeHeaderIcons/Search Icon'
 import { createStackNavigator} from "react-navigation";
-import LawyersScreen from '../Lawyers Screen'
+import MajorsScreen from '../MajorsScreen'
 import Search from '../Search'
+import LawyersScreen from '../LawyersScreen'
 import { logo_text_colord } from '../../../assets'
 import ImageIcon from '../../Components/Common/ImageIcon'
 
 export default HomeStack = createStackNavigator({
   Home:{
-    screen: LawyersScreen,    
+    screen: MajorsScreen,    
     // navigationOptions: ({ navigation }) => ({
     //   headerRight: <SearchIcon onPress={() =>navigation.navigate('Search')}/>,
     //   headerLeft: <MenuIcon onPress={() =>navigation.navigate('SideMenu')}/>  ,
@@ -28,6 +29,9 @@ export default HomeStack = createStackNavigator({
   Search:{
     screen: Search,
   },
+  LawyersScreen:{
+    screen: LawyersScreen,
+  }
 },{  
   headerLayoutPreset :"center",
   defaultNavigationOptions: ({ navigation }) => ({
