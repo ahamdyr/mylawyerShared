@@ -19,6 +19,7 @@ class LawsItem extends React.PureComponent {
       bio
     } = this.props.item
     var { index } = this.props
+    //console.log('photo ',this.props.item)
     return (
       <TouchableOpacity
         style={[
@@ -42,9 +43,9 @@ class LawsItem extends React.PureComponent {
             <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15.5 }}>
               {name}
             </Text>
-            <Text style={{ color: 'white', fontSize: 13.5 }}>
+            {/* <Text style={{ color: 'white', fontSize: 13.5 }}>
               {office || 'Office 1'}
-            </Text>
+            </Text> */}
             <Text style={{ color: 'white', fontSize: 13.5 }}>
               {major || 'Finance'}
             </Text>
