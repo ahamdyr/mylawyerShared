@@ -10,9 +10,9 @@ export default class Topic extends React.PureComponent{
 
         <View style={styles.upper}>
 
-          <Text style={styles.authorNameStyle}>
+          {/* <Text style={styles.authorNameStyle}>
             By {authorName}
-          </Text>
+          </Text> */}
           <View style={styles.right}>
             <Image
               source={topic}
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     fontFamily:'Cairo-Bold',
     fontSize: 18,
     color: '#0b7f7c',
-    marginHorizontal:15.5
+    marginHorizontal:15.5,
+    marginTop: 15,
   }
 })
