@@ -54,7 +54,7 @@ export default class LawyerDetails extends React.Component {
                 {lawyer.name}
               </Text>
               <Text style={styles.officeText} >
-                {lawyer.office || 'Office 1'}
+                {lawyer.majors[0].name}
               </Text>
             </View>
             <RatingView 
@@ -69,7 +69,7 @@ export default class LawyerDetails extends React.Component {
             style={styles.askBtnStyle}
             text={`ASK ${getFirstName(lawyer.name).toUpperCase()}`}
             textStyle={styles.askTextStyle}
-            onPress={()=>navigate('AskQuestion')}
+            onPress={()=>navigate('AskQuestion', {lawyer: lawyer})}
           />
 
           <Text style={styles.bio}>

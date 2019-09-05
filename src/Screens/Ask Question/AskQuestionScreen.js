@@ -49,7 +49,8 @@ export default class AskQuestion extends React.Component {
       clearQuestion
     } = this.props
     var attachs = [...docs, ...imgs]
-
+    var lawyer = this.props.navigation.state.params.lawyer ? this.props.navigation.state.params.lawyer : null
+    
     if (addQuestionLoading) {
       return (
         <SafeAreaView style={{
@@ -70,7 +71,7 @@ export default class AskQuestion extends React.Component {
           style={styles.closeIcon}
         />
 
-        <AskTitle />
+        <AskTitle name={lawyer ? lawyer.name : null}/>
 
         <SelectComponent
           onSelect={(topic) => setQuestionTopic(topic)}

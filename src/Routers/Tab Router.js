@@ -32,7 +32,7 @@ const TabRouter = createBottomTabNavigator(
             <AskIcon
               onPress={() => {
                 Store.getState().isLoggedUser ?
-                  navigation.navigate('AskQuestion')
+                  navigation.navigate('AskQuestion', {lawyer: null})
                   : navigation.navigate('SocialScreen')
               }}
             />
