@@ -13,7 +13,7 @@ class LawsItem extends React.PureComponent {
       id,
       name,
       office,
-      major,
+      majors,
       photo,
       rate,
       bio
@@ -47,7 +47,7 @@ class LawsItem extends React.PureComponent {
               {office || 'Office 1'}
             </Text> */}
             <Text style={{ color: 'white', fontSize: 13.5 }}>
-              {major || 'Finance'}
+              {majors[0].name || 'Finance'}
             </Text>
             <RatingView rating={rate || 3} disabled={true} />
           </View>
