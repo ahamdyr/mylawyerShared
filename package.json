@@ -30,6 +30,7 @@
     "google-libphonenumber": "^3.2.3",
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
+    "react-native-country-picker-modal": "^0.8.0",
     "react-native-custom-picker": "^0.4.0",
     "react-native-dropdown-menu": "^2.0.0",
     "react-native-flash-message": "^0.1.13",
