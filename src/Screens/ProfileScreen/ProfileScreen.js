@@ -129,7 +129,7 @@ export default class ProfileScreen extends React.Component {
               : null                                                                  
           }          
           <SideMenuBtn
-            btnTitle={'Delete Account'}
+            btnTitle={'Deactivate Account'}
             style={styles.deleteBtn}
             textStyle={styles.deleteText}
             onPress={() => this._deleteAccount()}
