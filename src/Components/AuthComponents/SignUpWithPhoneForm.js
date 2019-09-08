@@ -18,7 +18,6 @@ import { isValidPhoneNumber } from "../../Utils/InputValidation";
 import Store from "../../Redux/Store";
 import { setUserName, setPhoneNumber } from "../../Redux/Auth/actions";
 import CountryPicker from "react-native-country-picker-modal";
-import { AntDesign } from "@expo/vector-icons";
 
 export default class SignUpWithPhoneForm extends React.PureComponent {
   constructor(props) {
