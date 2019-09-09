@@ -14,6 +14,7 @@ import { mockAnswers } from '../../Services/BackendServices/MockData'
 import { reviewAnswerApi } from '../../Services/BackendServices/AnswerServices'
 import { reAskApi } from '../../Services/BackendServices/LockService'
 import { navigate, goBack } from '../../Services/NavigationServices'
+import QuestionBody from '../../Components/Common/QuestionBody'
 export default class PrivateQuestionScreen extends React.Component {
 
   _question = this.props.navigation.getParam('question')
@@ -94,6 +95,7 @@ export default class PrivateQuestionScreen extends React.Component {
           topicName={topic.name}
           title={title}
         />
+        <QuestionBody body={body}/>
         <AttachmentBtn
           //attachs={attachs[id]}
           attachs={attachs}
@@ -202,8 +204,8 @@ const styles = StyleSheet.create({
   topic: {
     marginTop: 50,
     paddingBottom: 21,
-    borderBottomWidth: 0.5,
-    borderBottomColor: '#d5d5e0'
+    // borderBottomWidth: 0.5,
+    // borderBottomColor: '#d5d5e0'
   },
   Attachments: {
     marginTop: 22.5,

@@ -11,6 +11,7 @@ import { addQuestionAttachsService } from '../../Services/BackendServices/Questi
 import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 import Store from '../../Redux/Store'
 import { deleteAttachments } from '../../Redux/AddQuestion/actions'
+import QuestionBody from '../../Components/Common/QuestionBody'
 
 export default class AnswerQuestionScreen extends React.Component {
 
@@ -84,6 +85,7 @@ export default class AnswerQuestionScreen extends React.Component {
           topicName={topic.name}
           title={title}
         />
+        <QuestionBody body={body}/>
         {
           attachs.length ?
             <AttachmentBtn
