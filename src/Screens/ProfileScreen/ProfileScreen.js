@@ -20,6 +20,7 @@ import SubmitBtn from '../../Components/Common/SubmitBtn'
 import SeperatorLine from '../../Components/Common/SeperatorLine'
 import { logOut } from '../../Services/AuthServices'
 import { deleteAccount } from '../../Services/FirebaseServices/UserSettings'
+import { deactivateAccount } from '../../Services/BackendServices/AccountServices'
 import firebase from '../../Services/FirebaseServices/FirebaseApp'
 import 'firebase/auth'
 import { WhiteX } from '../../Components/Social Components/SocialBtns'
@@ -30,9 +31,10 @@ export default class ProfileScreen extends React.Component {
   
   _deleteAccount = async () => {
     await logOut()
-    await deleteAccount()      
+    await deleteAccount()
+    await deactivateAccount(this.props.currentUser.accessToken)      
     showMessage({
-      message: 'Your account has been deleted',
+      message: 'Your account has been deactivated',
       hideOnPress: true,
       duration: 3000,
       type: 'success',

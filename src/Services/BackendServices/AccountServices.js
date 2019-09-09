@@ -63,3 +63,27 @@ export const LawyerRegister = async (type, token, lawyerMajor, lawyerIDsLinks, f
     })
   })  
 }
+
+export const deactivateAccount = async (token) => {
+
+  return new Promise((resolve, reject) => {
+    axios.post(
+      `https://hlogicodesk.pythonanywhere.com/api/beta/account/deactivate/`,
+      {
+        headers: {
+          'Accept': 'application/json',
+          "Authorization": `Firebase ${token}`
+        }
+      }
+    ).then((res) => {
+      if(res.data.data) {
+        resolve(res.data.data) 
+      }
+      else{
+        reject(res.data.error.message)
+      }
+    }).catch(err => {
+      reject(err)
+    })
+  })  
+}
