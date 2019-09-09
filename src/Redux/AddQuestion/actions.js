@@ -72,9 +72,10 @@ export const delQuestionImg = (img) => {
   }
 }
 
-export const submitQuestion = () =>{
+export const submitQuestion = (assignedTo) =>{
   return{
-    type: SUBMIT_QUESTION
+    type: SUBMIT_QUESTION,
+    assignedTo
   }
 }
 

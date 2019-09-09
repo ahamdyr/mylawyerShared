@@ -23,8 +23,8 @@ function* submitQuestionSaga(action) {
     // var authorPhoto = yield select(state => state.currentUser.photo)
     var accessToken = yield select(state => state.accessToken)
     var attachments = [...imgs, ...docs]
-    
-    var { id } = yield call(askQuestionApi, topic, accessToken, title, body)
+    var { assignedTo } = action
+    var { id } = yield call(askQuestionApi, topic, accessToken, title, body, assignedTo)
     //console.log('questionID  ',id)
     yield call(addQuestionAttachsService, attachments, id, accessToken)
     yield put(clearQuestion(true))

@@ -49,7 +49,7 @@ export default class AskQuestion extends React.Component {
       clearQuestion
     } = this.props
     var attachs = [...docs, ...imgs]
-    var lawyer = this.props.navigation.state.params.lawyer ? this.props.navigation.state.params.lawyer : null
+    var lawyer = this.props.navigation.state.params.lawyer
     
     if (addQuestionLoading) {
       return (
@@ -103,7 +103,7 @@ export default class AskQuestion extends React.Component {
         <Footer
           setQuestionDoc={(x) => setQuestionDoc(x)}
           setQuestionImg={(y) => setQuestionImg(y)}
-          submitQuestion={() => submitQuestion()}
+          submitQuestion={() => submitQuestion(lawyer ? lawyer.id : null)}
           isLoggedUser={isLoggedUser}
           currentUser={currentUser}
           questionBody={questionBody}

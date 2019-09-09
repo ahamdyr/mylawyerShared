@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-export const askQuestionApi = async (topicID, accessToken, title, body) => {  
-  
+export const askQuestionApi = async (topicID, accessToken, title, body, assignedTo) => {
   let requestBody = new FormData()
   requestBody.append('title', title)
   requestBody.append('body', body)
+  assignedTo ? requestBody.append('assignedTo', assignedTo) : null
   
   return new Promise((resolve, reject) => {
     axios.post(
