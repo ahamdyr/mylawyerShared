@@ -9,21 +9,25 @@ import axios from 'axios'
 import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 import FlashMessage from "react-native-flash-message";
 import { showMessage } from "react-native-flash-message";
+import { registerExpoPushToken } from '../../Services/ExpoNotifications'
 
 global.showMessage = showMessage
+// developement url
 //global.baseURL = `https://hlogicodesk.pythonanywhere.com/api/beta/`
+//axios.defaults.baseURL = `https://hlogicodesk.pythonanywhere.com/api/beta/`
+// production url
 global.baseURL = `http://api.mylawyer-app.com/beta/`
+axios.defaults.baseURL = `http://api.mylawyer-app.com/beta/`
 
 export default class AppContainer extends React.Component {
   async componentWillMount() {
-    //axios.defaults.baseURL = `https://hlogicodesk.pythonanywhere.com/api/beta/`
-    axios.defaults.baseURL = `http://api.mylawyer-app.com/beta/`
     // delete backend database
     // axios.get('https://hlogicodesk.pythonanywhere.com/api/beta/users/deldel/')
     //   .then(()=>console.log('data deleted'))
     // gte user from storage
     //await getUser()
-    await setPhoneCredentials()
+    registerExpoPushToken()
+    setPhoneCredentials()
   }
   render() {
     return (
