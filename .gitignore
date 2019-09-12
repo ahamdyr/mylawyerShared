@@ -12,3 +12,4 @@ npm-debug.*
 yarn-error.log
 .vscode/**/*
 .tmp/**/*
+**/.DS_Store
