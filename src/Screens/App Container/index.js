@@ -9,7 +9,6 @@ import axios from 'axios'
 import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 import FlashMessage from "react-native-flash-message";
 import { showMessage } from "react-native-flash-message";
-import { registerExpoPushToken } from '../../Services/ExpoNotifications'
 
 global.showMessage = showMessage
 // developement url
@@ -26,7 +25,6 @@ export default class AppContainer extends React.Component {
     //   .then(()=>console.log('data deleted'))
     // gte user from storage
     //await getUser()
-    registerExpoPushToken()
     setPhoneCredentials()
   }
   render() {

@@ -4,6 +4,7 @@ import { saveUser, getUserType } from '../AuthServices'
 import firebase from './FirebaseApp'
 import 'firebase/auth'
 import { navigate } from '../NavigationServices'
+import { registerExpoPushToken } from '../ExpoNotifications'
 
 export const ReAuthenticate = async () => {
 
@@ -36,7 +37,9 @@ export const ReAuthenticate = async () => {
           currentUser = Object.assign({}, currentUser, pickedUser)
 
           await saveUser(currentUser, userType)
-          
+
+          registerExpoPushToken()
+
         } catch (error) {
           navigate('UserApp')
           showMessage({

@@ -22,8 +22,8 @@ export const saveUser = async (currentUser, userType) => {
     let accessToken = currentUser.accessToken
     Store.dispatch(setAccessToken(accessToken))
     userType == 'lawyer' ? navigate('LawyerApp') : navigate('UserApp')
-    await AsyncStorage.setItem('currentUser', JSON.stringify(currentUser))
-    await AsyncStorage.setItem('userType', JSON.stringify(userType))
+    AsyncStorage.setItem('currentUser', JSON.stringify(currentUser))
+    AsyncStorage.setItem('userType', JSON.stringify(userType))
     //await AsyncStorage.setItem('accessToken', JSON.stringify(accessToken))  
       
   } catch (error) {
@@ -103,7 +103,7 @@ export const getUserType = () => Store.getState().userType
 
 export const savePhoneCredentials = async (phoneCredentials) => {
   Store.dispatch(setPhoneAuthCredentials(phoneCredentials))
-  await AsyncStorage.setItem('phoneCredentials', JSON.stringify(phoneCredentials))
+  AsyncStorage.setItem('phoneCredentials', JSON.stringify(phoneCredentials))
 }
 
 export const setPhoneCredentials = async () => {

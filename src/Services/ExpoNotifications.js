@@ -1,6 +1,6 @@
 import { Notifications } from "expo";
 import * as Permissions from "expo-permissions";
-import Store from '../Redux/Store'
+import Store from "../Redux/Store";
 
 export const registerExpoPushToken = async () => {
   const PUSH_ENDPOINT =
@@ -42,29 +42,31 @@ export const registerExpoPushToken = async () => {
 
   // POST the token to your backend server from where you can retrieve it to send push notifications.
   var requestBody = `expoToken=${token}`;
-  var userToken = Store.getState().accessToken
+  var userToken = Store.getState().accessToken;
 
   return new Promise((resolve, reject) => {
     fetch(PUSH_ENDPOINT, {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${userToken}`,
-        "Accept": "application/json",
-        "Content-Type": `application/x-www-form-urlencoded`
+        Authorization: `Bearer ${userToken}`,
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       body: requestBody
     })
       .then(res => {
-        if (res.data.data) {
-          //console.log('res.data.data  ',res.data)
-          resolve(res.data);
-        } else {
-          //console.log('res.data.error  ',res.data)
-          reject(res.data.error.message);
-        }
+        res.json().then(data => {
+          if (data.data) {
+            //console.log('data ', data.data)
+            resolve(data.data);
+          } else {
+            //console.log('data.error ', data.error.message)
+            reject(data.error.message);
+          }
+        });
       })
       .catch(err => {
-        //console.log('err  ',err)
+        //console.log('err ', err)
         reject(err);
       });
   });
