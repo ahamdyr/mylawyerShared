@@ -1,6 +1,7 @@
 import { Notifications } from "expo";
 import * as Permissions from "expo-permissions";
 import Store from '../Redux/Store'
+
 export const registerExpoPushToken = async () => {
   const PUSH_ENDPOINT =
     "https://hlogicodesk.pythonanywhere.com/api/beta/sandbox/messaging/";
@@ -27,20 +28,27 @@ export const registerExpoPushToken = async () => {
   // Get the token that uniquely identifies this device
   let token = await Notifications.getExpoPushTokenAsync();
 
+  // // test actual device tokens
+  // Notifications.getDevicePushTokenAsync()
+  //   .then(res => {
+  //     console.log('res ', res)
+  //   })
+  //   .catch(err => console.log(err))
+
   // notification handler
   this._notificationSubscription = Notifications.addListener(notification => {
     //console.log('notification ', JSON.stringify(notification))
   });
 
   // POST the token to your backend server from where you can retrieve it to send push notifications.
-  var requestBody = `fcmToken=${token}`;
+  var requestBody = `expoToken=${token}`;
   var userToken = Store.getState().accessToken
-  
+
   return new Promise((resolve, reject) => {
     fetch(PUSH_ENDPOINT, {
       method: "POST",
       headers: {
-        "Authorization": `Firebase ${userToken}`,
+        "Authorization": `Bearer ${userToken}`,
         "Accept": "application/json",
         "Content-Type": `application/x-www-form-urlencoded`
       },
