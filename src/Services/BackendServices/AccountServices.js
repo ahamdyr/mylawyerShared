@@ -72,7 +72,7 @@ export const deactivateAccount = async (token) => {
       {
         headers: {
           'Accept': 'application/json',
-          "Authorization": `Firebase ${token}`
+          "Authorization": `Bearer ${token}`
         }
       }
     ).then((res) => {
