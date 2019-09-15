@@ -1,5 +1,6 @@
 node_modules/**/*
 .expo/*
+.expo-shared/*
 local/**/*
 npm-debug.*
 *.jks
@@ -10,3 +11,5 @@ npm-debug.*
 *yarn.lock
 yarn-error.log
 .vscode/**/*
+.tmp/**/*
+**/.DS_Store

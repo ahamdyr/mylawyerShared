@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native';
 //import {AskImage} from '../../assets'
 
-class AskIcon extends React.Component {
+class GreenCircle extends React.Component {
   render() {
     return (
       // <TouchableWithoutFeedback onPress={this.props.onPress}>   
@@ -33,4 +33,4 @@ class AskIcon extends React.Component {
     );
   }
 }
-export default AskIcon
+export default GreenCircle

@@ -3,16 +3,16 @@
     "name": "My Lawyer",
     "slug": "mylawyer",
     "privacy": "public",
-    "sdkVersion": "32.0.0",
+    "sdkVersion": "34.0.0",
     "platforms": [
       "ios",
       "android"
     ],
-    "version": "1.0.11",
+    "version": "1.0.26",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
     "splash": {
-      "image": "./assets/images/Splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "cover",
       "backgroundColor": "#0b7f7c"
     },
@@ -24,17 +24,20 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "notification": {
+      "icon": "./assets/images/notificationIcon.png"
+    },
     "ios": {
-      "bundleIdentifier": "com.mylawyer.MyLawyer.xXx",
-      "supportsTablet": true,
-      "buildNumber": "1.0.10",
+      "bundleIdentifier": "com.mylawyer.MyLawyer",
+      "supportsTablet": false,
+      "buildNumber": "1.0.26",
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "This app uses the photos to update your profile picture.",
         "NSCameraUsageDescription": "Allow My Lawyer experiences to use your camera"
       },
       "usesIcloudStorage": true,
       "splash": {
-        "image": "./assets/images/Splash.png",
+        "image": "./assets/images/splash.png",
         "resizeMode": "cover",
         "backgroundColor": "#0b7f7c"
       },
@@ -49,9 +52,11 @@
       "config": {
         "googleSignIn": {
           "apiKey": "AIzaSyCB76Ry4sEcSICgIhdP7EDRzRYhCNg8QhQ",          
-          "certificateHash": "07:02:84:0C:D8:06:94:0B:63:62:02:F6:96:13:CA:0D:E1:F6:06:A6"
+          "certificateHash": "E0:2B:53:83:35:56:A5:03:E9:24:F2:85:F6:7F:00:EA:AB:12:EB:78"
         }
       },
+      "package": "com.mylawyer.android",
+      "googleServicesFile": "./google-services.json",
       "permissions": [
         "ACCESS_COARSE_LOCATION",
         "ACCESS_FINE_LOCATION",
@@ -80,8 +85,7 @@
         "com.sec.android.provider.badge.permission.WRITE",
         "com.sonyericsson.home.permission.BROADCAST_BADGE"
       ],
-      "package": "com.mylawyer.MyLawyer",
-      "versionCode": 10
+      "versionCode": 26
     },
     "hooks": {
       "postPublish": [

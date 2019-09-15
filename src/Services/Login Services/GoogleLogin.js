@@ -1,28 +1,35 @@
-import { Google } from 'expo'
+import * as Google from 'expo-google-app-auth'
+import * as AppAuth from 'expo-app-auth'
 import { GoogleAuth } from '../FirebaseServices/GoogleAuth'
 import { base64Token } from '../Guid'
 import { Register, Login } from '../BackendServices/AccountServices'
 import { saveUser, getUserType } from '../AuthServices'
-import { Alert } from 'react-native'
+import { Platform } from 'react-native'
 import { goBack, navigate } from '../NavigationServices'
+import { Linking } from 'expo'
 
-const iOSClientId = "357729817077-pc4lpp2oramc13sopec41m5fbmdgk5ib.apps.googleusercontent.com"
-const androidClientId = "357729817077-m8729cqlpeuq7ovf0skaqvmehgaa4t5n.apps.googleusercontent.com"
-//const androidStandAlone = "357729817077-9cdl1mk3mkr3r204o3d216pj9onor1m7.apps.googleusercontent.com"
-//const iOSStandAlone = "357729817077-j8codho5u6os0c5qf12iq968g3jh4tl9.apps.googleusercontent.com"
+const iOSClientId =
+  '357729817077-pc4lpp2oramc13sopec41m5fbmdgk5ib.apps.googleusercontent.com'
+const androidClientId =
+  '357729817077-m8729cqlpeuq7ovf0skaqvmehgaa4t5n.apps.googleusercontent.com'
+const androidStandAlone =
+  '357729817077-mp5l84a8itg794fls46bgltdg3pr6bai.apps.googleusercontent.com'
+const iOSStandAlone =
+  '357729817077-j8codho5u6os0c5qf12iq968g3jh4tl9.apps.googleusercontent.com'
+var appRedirect =
+  Platform.OS === 'ios' ? 'com.mylawyer.MyLawyer' : 'com.mylawyer.MyLawyerPro'
+var redirectUrl = __DEV__ ? null : `${appRedirect}:/oauth2redirect/google`
 
 export const LoginWithGoogle = async () => {
   try {
-    const { type, accessToken } = await Google.logInAsync(
-      {
-        // behavior: 'web',
-        //androidStandaloneAppClientId: androidStandAlone,
-        androidClientId: androidClientId,
-        //iosStandaloneAppClientId: iOSStandAlone,
-        iosClientId: iOSClientId,
-        scopes: ['profile', 'email']
-      }
-    )
+    const { type, accessToken } = await Google.logInAsync({
+      androidStandaloneAppClientId: androidStandAlone,
+      androidClientId: androidClientId,
+      iosStandaloneAppClientId: iOSStandAlone,
+      iosClientId: iOSClientId,
+      scopes: ['profile', 'email']
+      //redirectUrl: redirectUrl
+    })
 
     if (type === 'success') {
       navigate('Spinner')
@@ -39,24 +46,40 @@ export const LoginWithGoogle = async () => {
       var userType = getUserType()
       var pickedUser = await Register(userType, backendToken)
 
-      currentUser = Object.assign({},currentUser, pickedUser)
+      currentUser = Object.assign({}, currentUser, pickedUser)
 
-      await saveUser(currentUser, userType)
-      showMessage({
-        message: 'You logged in successfully',
-        hideOnPress: true,
-        duration: 3000,
-        type: 'success',
-      });
-      navigate('UserApp')
-    }
-    else {
+      userType = currentUser.type
+
+      if (userType == 'lawyer') {
+        if (currentUser.isActivated) {
+          await saveUser(currentUser, userType)
+          showMessage({
+            message: 'You logged in successfully',
+            hideOnPress: true,
+            duration: 3000,
+            type: 'success'
+          })
+          //navigate('LawyerApp')
+        } else {
+          navigate('Step4')
+        }
+      } else {
+        showMessage({
+          message: 'You logged in successfully',
+          hideOnPress: true,
+          duration: 3000,
+          type: 'success'
+        })
+        await saveUser(currentUser, userType)
+        //navigate('UserApp')
+      }
+    } else {
       showMessage({
         message: 'Login Cancelled \nTry again',
         hideOnPress: true,
         duration: 3000,
-        type: 'danger',
-      });
+        type: 'danger'
+      })
       navigate('UserApp')
     }
   } catch (error) {
@@ -64,8 +87,8 @@ export const LoginWithGoogle = async () => {
       message: `${error.message} \nTry again`,
       hideOnPress: true,
       duration: 3000,
-      type: 'danger',
-    });
+      type: 'danger'
+    })
     navigate('UserApp')
   }
 }

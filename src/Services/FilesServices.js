@@ -1,19 +1,29 @@
 import { guidGenerator } from './Guid'
-import {DocumentPicker, ImagePicker, Permissions} from 'expo'
+import * as Permissions from 'expo-permissions';
+import * as ImagePicker from 'expo-image-picker';
+import * as DocumentPicker from 'expo-document-picker';
 import { Platform } from 'react-native'
 
 export const uploadFile = async () => {
-
-  let doc = await DocumentPicker.getDocumentAsync()
-  if (doc.type == 'success') {
-    doc.uuid = guidGenerator()
-    doc.name = doc.uuid.split('-')[0]
-    doc.type = 'document'
-    //console.log('doc', doc)
-    return doc
-  }
-  else {
-    return 0
+  try {
+    let doc = await DocumentPicker.getDocumentAsync()
+    if (doc.type == 'success') {
+      doc.uuid = guidGenerator()
+      //doc.name = doc.uri.substring(doc.uri.length - 10)   //name already exist
+      doc.type = 'document'
+      //console.log('doc', doc)
+      return doc
+    }
+    else {
+      return 0
+    }
+  } catch (error) {
+    showMessage({
+      message: `${error}`,
+      hideOnPress: true,
+      duration: 3000,
+      type: 'danger',
+    });
   }
 }
 
@@ -37,7 +47,7 @@ export const uploadGalleryImage = async () => {
 
   if (!img.cancelled) {
     img.uuid = guidGenerator()
-    img.name = img.uuid.split('-')[0]
+    img.name = img.uri.substring(img.uri.length - 10)
     //console.log('doc', doc)
     return img
   }
@@ -65,7 +75,7 @@ export const uploadCameraImage = async () => {
   })
   if (!doc.cancelled) {
     doc.uuid = guidGenerator()
-    doc.name = doc.uuid.split('-')[0]
+    doc.name = doc.uri.substring(doc.uri.length - 10)
     //console.log('doc', doc)
     return doc
   }

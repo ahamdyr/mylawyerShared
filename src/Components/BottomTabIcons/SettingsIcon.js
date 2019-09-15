@@ -1,31 +1,36 @@
 import React from 'react'
-import {Image, TouchableWithoutFeedback, Text, StyleSheet} from 'react-native';
-import { MenuImage } from '../../../assets'
+import { Image, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { focusedProfile, dimmedProfile } from '../../../assets'
 
 class SettingsIcon extends React.Component {
-  render(){
-    return ( 
-       
-      <TouchableWithoutFeedback onPress={this.props.onPress}>  
-        <React.Fragment>   
-          <Image
-            style={{width: 20, height: 20}} 
-            source={MenuImage}
-          />
-          {
-            this.props.focused ?
-              <Text style={styles.label}>
-                ___________
-              </Text>
-              : null
-          }
-        </React.Fragment>             
-      </TouchableWithoutFeedback>  
-      
+  render() {
+    var { focused } = this.props
+    const labelStyle = (focused) => {
+      return {
+        fontFamily: "Lato-Bold",
+        fontSize: 12,
+        letterSpacing: 0,
+        color: focused ? '#0b7f7c' : '#9b9b9b',
+        textAlign: "center",
+        marginTop: 1,
+      }
+    }
+    return (
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={1}
+        onPress={this.props.onPress}>
+        <Image
+          style={styles.icon}
+          source={focused ? focusedProfile : dimmedProfile}
+        />
+        <Text style={labelStyle(focused)}>Profile</Text>
+      </TouchableOpacity>
+
     );
   }
 }
-export default  SettingsIcon
+export default SettingsIcon
 
 const styles = StyleSheet.create({
   label: {
@@ -34,5 +39,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#0b7f7c',
     fontSize: 16
+  },
+  button: {
+    //backgroundColor: 'red',
+    width: 60,
+    height: 68,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: -7,
+  },
+  icon: { 
+    width: 32, 
+    height: 32, 
+    //marginTop: 10 
   }
 })

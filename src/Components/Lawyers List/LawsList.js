@@ -4,8 +4,8 @@ import LawsItem from './LawsItem'
 
   export default class LawsList extends React.Component {
   
-  renderItem = (item) => {
-    return <LawsItem item={item}  />
+  renderItem = ({item, index}) => {
+    return <LawsItem item={item} index={index} />
   }
 
   _keyExtractor = (item, index) => String(index)
@@ -19,6 +19,7 @@ import LawsItem from './LawsItem'
           numColumns={2}
           scrollEnabled={true}
           //onEndReached={this._handleMore}
+          ItemSeparatorComponent={() => <View style={{ margin: 8 }} />}
           onEndReachedThreshold={0.2}
           //ListFooterComponent={this._renderFooter}
           //ListHeaderComponent={this._renderHeader}

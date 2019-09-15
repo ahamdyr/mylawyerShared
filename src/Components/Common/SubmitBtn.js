@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import ImageIcon from './ImageIcon'
-import {reviewArrow} from '../../../assets'
-
+import { reviewArrow, edit } from '../../../assets'
 
 export default class SubmitBtn extends React.PureComponent {
   render() {
-    const { style, text, textStyle, onPress, reviewBtn } = this.props
+    const { style, text, textStyle, onPress, reviewBtn, editBtn } = this.props
     return (
       <TouchableOpacity
         onPress={onPress}
@@ -25,8 +24,20 @@ export default class SubmitBtn extends React.PureComponent {
           shadowOpacity: 1,
           alignItems: 'center',
           justifyContent: 'center'
-        }, style, reviewBtn ? {flexDirection: "row"} : {}]}
+        }, style, reviewBtn || editBtn ? { flexDirection: "row" } : {}]}
       >
+        {
+          editBtn ?
+            <ImageIcon
+              style={{
+                width: 16,
+                height: 16,
+                marginRight: 7
+              }}
+              source={edit}
+            />
+            : null
+        }
         <Text style={[{
           fontFamily: 'Lato-Bold',
           fontSize: 16,
@@ -36,7 +47,7 @@ export default class SubmitBtn extends React.PureComponent {
         </Text>
         {
           reviewBtn ?
-            <ImageIcon 
+            <ImageIcon
               style={{
                 width: 16,
                 height: 16,

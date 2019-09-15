@@ -11,38 +11,34 @@ import FlashMessage from "react-native-flash-message";
 import { showMessage } from "react-native-flash-message";
 
 global.showMessage = showMessage
-global.baseURL = `https://hlogicodesk.pythonanywhere.com/api/beta/`
+// developement url
+//global.baseURL = `https://hlogicodesk.pythonanywhere.com/api/beta/`
+//axios.defaults.baseURL = `https://hlogicodesk.pythonanywhere.com/api/beta/`
+// production url
+global.baseURL = `http://api.mylawyer-app.com/beta/`
+axios.defaults.baseURL = `http://api.mylawyer-app.com/beta/`
 
 export default class AppContainer extends React.Component {
   async componentWillMount() {
-    axios.defaults.baseURL = `https://hlogicodesk.pythonanywhere.com/api/beta/`
     // delete backend database
     // axios.get('https://hlogicodesk.pythonanywhere.com/api/beta/users/deldel/')
     //   .then(()=>console.log('data deleted'))
     // gte user from storage
     //await getUser()
-    await setPhoneCredentials()
+    setPhoneCredentials()
   }
   render() {
     return (
       <Provider store={Store}>
-        <View style={{ flex: 1 }}>
-          {/* <StatusBar translucent barStyle={'dark-content'} /> */}
+        {/* <SafeAreaView style={{ flex: 1, backgroundColor: '#f6f6f6' }}> */}
+        <View style={{ flex: 1, backgroundColor: '#f6f6f6' }}>
           <AppRouter
             ref={navigatorRef => {
               setTopLevelNavigator(navigatorRef)
             }}
           />
-          {/* <KeyboardAccessoryNavigation
-          //avoidKeyboard={true}
-          tintColor={'#0b7f7c'}
-          nextDisabled={true}
-          previousDisabled={true}
-          nextHidden={true}
-          previousHidden={true}
-        /> */}
-
           <FlashMessage position="top" />
+        {/* </SafeAreaView> */}
         </View>
       </Provider>
     );

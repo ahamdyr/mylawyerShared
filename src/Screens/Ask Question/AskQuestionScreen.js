@@ -15,11 +15,13 @@ export default class AskQuestion extends React.Component {
   handleFocusNext = () => {
     switch (this.index) {
       case 'title':
-        this.refs.formRef.refs.bodyRef.focus()
+        //this.refs.formRef.refs.bodyRef.focus()
+        this.refs.formRef._bodyRef.focus()
         this.index = 'body'
         break;
       case 'body':
-        this.refs.formRef.refs.titleRef.focus()
+        //this.refs.formRef.refs.titleRef.focus()
+        this.refs.formRef._titleRef.focus()
         this.index = 'title'
         break;
       default:
@@ -47,7 +49,8 @@ export default class AskQuestion extends React.Component {
       clearQuestion
     } = this.props
     var attachs = [...docs, ...imgs]
-
+    var lawyer = this.props.navigation.state.params.lawyer
+    
     if (addQuestionLoading) {
       return (
         <SafeAreaView style={{
@@ -68,7 +71,7 @@ export default class AskQuestion extends React.Component {
           style={styles.closeIcon}
         />
 
-        <AskTitle />
+        <AskTitle name={lawyer ? lawyer.name : null}/>
 
         <SelectComponent
           onSelect={(topic) => setQuestionTopic(topic)}
@@ -100,7 +103,7 @@ export default class AskQuestion extends React.Component {
         <Footer
           setQuestionDoc={(x) => setQuestionDoc(x)}
           setQuestionImg={(y) => setQuestionImg(y)}
-          submitQuestion={() => submitQuestion()}
+          submitQuestion={() => submitQuestion(lawyer ? lawyer.id : null)}
           isLoggedUser={isLoggedUser}
           currentUser={currentUser}
           questionBody={questionBody}
@@ -110,6 +113,7 @@ export default class AskQuestion extends React.Component {
         />
         <KeyboardAccessoryNavigation
           //avoidKeyboard={true}
+          inSafeAreaView={true}
           tintColor={'#0b7f7c'}
           nextDisabled={false}
           previousDisabled={false}

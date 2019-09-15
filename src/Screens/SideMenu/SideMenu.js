@@ -9,42 +9,44 @@ import {
   goBack
 } from '../../Services/NavigationServices'
 import { defaultPicture } from '../../../assets'
+import { logOut } from '../../Services/AuthServices'
 
 
 export default class SideMenu extends React.Component {
-
+  _logOut = async () => {
+    await logOut()
+    navigate('Home')
+  }
   render() {
     var {
       isLoggedUser,
       userPhoto,
       userType
     } = this.props
+    var isUser = userType == 'user'
     return (
       <SafeAreaView style={styles.safeArea}>
-        <View style={styles.container}>
+        <View style={[
+            styles.container,
+            isUser || !isLoggedUser ? {marginBottom: 30} : {marginBottom: 120}
+          ]}
+        >
           <ImageIcon
             style={styles.profileImage}
             source={userPhoto ? { uri: userPhoto } : defaultPicture}
           />
           {isLoggedUser ?
-            <React.Fragment>
-              <SideMenuBtn
-                btnTitle={'My Profile'}
-                onPress={() => {
-                  navigate('EditMyProfile')
-                }}
-              />
-              <SideMenuBtn
-                btnTitle={'Settings'}
-                onPress={() => {
-                  navigate('Settings')
-                }}
-              />
-            </React.Fragment>
+            <SideMenuBtn
+              btnTitle={'My Profile'}
+              onPress={() => {
+                navigate('ProfileStack')
+              }}
+            />
             : <SideMenuBtn
               btnTitle={'Login'}
               onPress={() => {
-                navigate('UserTypeScreen')
+                navigate('SocialScreen')
+                //navigate('UserTypeScreen')
               }}
             />
           }
@@ -64,11 +66,22 @@ export default class SideMenu extends React.Component {
               navigate('About')
             }}
           />
-          <WhiteX
-            onPress={() => {
-              goBack()
-            }}
-          />
+          {
+            isLoggedUser && 
+            <SideMenuBtn
+              btnTitle={'Log out'}
+              onPress={()=>this._logOut()}
+            />
+          }
+          {
+            isUser || !isLoggedUser ?
+              <WhiteX
+                onPress={() => {
+                  goBack()
+                }}
+              />
+              : null
+          }          
         </View>
       </SafeAreaView>
     );

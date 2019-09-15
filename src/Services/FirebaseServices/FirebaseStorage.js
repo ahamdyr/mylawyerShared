@@ -37,6 +37,7 @@ const addFileToFirebase = async (file, mainPath) => {
     var path = `${mainPath}/${file.name}`
     addToStorage(path, file.uri)
       .then(link => {
+        //console.log('link  ',link)
         resolve(link)
       })
       .catch(err => reject(err))

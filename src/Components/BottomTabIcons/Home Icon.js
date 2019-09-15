@@ -1,25 +1,31 @@
 import React from 'react'
-import {Image, TouchableWithoutFeedback, Text, StyleSheet} from 'react-native';
-import {HomeImage} from '../../../assets'
+import {Image, TouchableOpacity, Text, StyleSheet} from 'react-native';
+import { focusedHome, dimmedHome } from '../../../assets'
 
 class HomeIcon extends React.Component {
   render(){
+    var { focused } = this.props
+    const labelStyle = (focused) => {
+      return {
+        fontFamily: "Lato-Bold",
+        fontSize: 12,
+        letterSpacing: 0,
+        color: focused ? '#0b7f7c' : '#9b9b9b',
+        textAlign: "center",
+        marginTop: 1,
+      }
+    }
     return (      
-      <TouchableWithoutFeedback onPress={this.props.onPress}>     
-        <React.Fragment>
+      <TouchableOpacity 
+        style={styles.button}
+        activeOpacity={1}
+        onPress={this.props.onPress}> 
         <Image
-          style={{width: 19.5, height: 20.5}} 
-          source={HomeImage}
+          style={styles.icon} 
+          source={ focused ? focusedHome : dimmedHome }
         />
-        {
-          this.props.focused?
-          <Text style={styles.label}>
-            ___________
-          </Text>
-          :null
-        }        
-        </React.Fragment>
-      </TouchableWithoutFeedback>     
+        <Text style={labelStyle(focused)}>Home</Text>
+      </TouchableOpacity>     
     );
   }
 }
@@ -32,5 +38,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#0b7f7c',
     fontSize: 16
+  },
+  button: {
+    //backgroundColor: 'red',
+    width: 60,
+    height: 68,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: -7,
+  },
+  icon: { 
+    width: 32, 
+    height: 32, 
+    //marginTop: 10 
   }
 })

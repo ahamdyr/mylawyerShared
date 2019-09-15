@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image, Alert, Platform } from 'react-native';
 import { WIDTH } from '../Constants'
-import Ask from '../BottomTabIcons/Ask Icon'
+import Ask from '../BottomTabIcons/GreenCircle'
 import { camera, attachment } from '../../../assets'
 import ImageIcon from '../Common/ImageIcon'
 import { navigate, goBack } from '../../Services/NavigationServices'
@@ -24,6 +24,12 @@ export default class Footer extends React.PureComponent {
       ], { cancelable: true })
       // : this._uploadFile()
   }
+  _uploadGalleryImage = async () => {
+    let img = await uploadGalleryImage()
+    //console.log(img)
+    //await addToStorage(`test/${guidGenerator()}`, img)
+    img ? this.props.setQuestionImg(img) : null
+  }
   _uploadFile = async () => {
     let doc = await uploadFile()
     //console.log(doc)
@@ -32,12 +38,6 @@ export default class Footer extends React.PureComponent {
   }
   _uploadCameraImage = async () => {
     let img = await uploadCameraImage()
-    //console.log(img)
-    //await addToStorage(`test/${guidGenerator()}`, img)
-    img ? this.props.setQuestionImg(img) : null
-  }
-  _uploadGalleryImage = async () => {
-    let img = await uploadGalleryImage()
     //console.log(img)
     //await addToStorage(`test/${guidGenerator()}`, img)
     img ? this.props.setQuestionImg(img) : null
@@ -57,7 +57,8 @@ export default class Footer extends React.PureComponent {
       }
     }
     else {
-      navigate('UserTypeScreen')
+      navigate('SocialScreen')
+      //navigate('UserTypeScreen')
     }
   }
 

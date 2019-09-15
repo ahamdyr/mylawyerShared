@@ -13,13 +13,14 @@ export default class LoginButton extends React.PureComponent {
           width: 230,
           height: 52,
           borderRadius: 22.5,
-          backgroundColor: '#f5faf0',
-          elevation: 20,
-          shadowOpacity: 0.3,
+          backgroundColor: "#ffffff",
+          shadowColor: "rgba(0, 0, 0, 0.15)",
           shadowOffset: {
             width: 4,
             height: 6.9
           },
+          shadowRadius: 20,
+          shadowOpacity: 1,
           alignItems: 'center',
           justifyContent: 'center'
         }, style]}

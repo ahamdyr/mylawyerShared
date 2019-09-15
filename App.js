@@ -1,5 +1,7 @@
 import React from 'react';
-import { AppLoading, Asset, Font, Icon, Updates } from 'expo';
+import { AppLoading, Asset, Updates } from 'expo';
+import * as Font from 'expo-font'
+import * as Icon from '@expo/vector-icons'
 import Sentry from 'sentry-expo';
 import AppContainer from './src/Screens/App Container'
 import Updating from "./src/Screens/Updating"
@@ -59,7 +61,11 @@ export default class App extends React.Component {
         'Cairo-Regular': require('./assets/fonts/Cairo-Regular.ttf'),
         'Lora-Regular' : require('./assets/fonts/Lora-Regular.ttf'),
         'Lato-Light': require('./assets/fonts/Lato-Light.ttf'),
-        'Lato-Heavy': require('./assets/fonts/Lato-Heavy.ttf')
+        'Lato-Heavy': require('./assets/fonts/Lato-Heavy.ttf'),
+        'NunitoSans-Bold': require('./assets/fonts/NunitoSans-Bold.ttf'),
+        'NunitoSans-Regular': require('./assets/fonts/NunitoSans-Regular.ttf'),
+        'NunitoSans-SemiBold': require('./assets/fonts/NunitoSans-SemiBold.ttf'),
+        'Cairo-Black': require('./assets/fonts/Cairo-Black.ttf')
       }),
     ]);
   };

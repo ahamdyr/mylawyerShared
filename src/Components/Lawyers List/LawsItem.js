@@ -1,9 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from 'react-native';
 import RatingView from './RatingView';
 import { withNavigation } from 'react-navigation'
 import { defaultPicture } from '../../../assets'
-import { goBack, navigate} from '../../Services/NavigationServices'
+import { goBack, navigate } from '../../Services/NavigationServices'
+import { attachPhoto } from '../../Services/BackendServices/MockData'
+import { WIDTH } from '../Constants'
 
 class LawsItem extends React.PureComponent {
   render() {
@@ -11,43 +13,50 @@ class LawsItem extends React.PureComponent {
       id,
       name,
       office,
-      major,
+      majors,
       photo,
       rate,
       bio
-    } = this.props.item.item
+    } = this.props.item
+    var { index } = this.props
+    //console.log('photo ',this.props.item)
     return (
-      <View style={styles.lawsCard}>
-        <TouchableWithoutFeedback
-          style={{ flex: 1 }}
-          //onPress={()=>openModal()}
-          onPress={() => navigate('LawyerDetails', { lawyer: this.props.item.item })}
-        >
-          <View style={styles.lawyerPhoto}>
-            <ImageBackground
-              source={photo ? { uri: photo } : defaultPicture}
-              style={styles.lawyerImage}
-              resizeMode={'cover'}
-            />
-            <View
-              style={styles.lowerThird}
-            >
-              <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15.5 }}>
-                {name}
-              </Text>
-              <Text style={{ color: 'white', fontSize: 13.5 }}>
-                {office || 'Office 1'}
-              </Text>
-              <Text style={{ color: 'white', fontSize: 13.5 }}>
-                {major || 'Finance'}
-              </Text>
-              <RatingView rating={rate || 3} disabled={true} />
-            </View>
-
-
+      <TouchableOpacity
+        style={[
+          styles.lawsCard,
+          index % 2 == 0 ? { marginRight: 15 } : null
+        ]}
+        activeOpacity={1}
+        //onPress={()=>openModal()}
+        onPress={() => navigate('LawyerDetails', { lawyer: this.props.item })}
+      >
+        <View style={styles.lawyerPhoto}>
+          <ImageBackground
+            source={photo ? { uri: photo } : defaultPicture}
+            //source={{ uri: attachPhoto }}
+            style={styles.lawyerImage}
+            resizeMode={'cover'}
+          />
+          <View
+            style={styles.lowerThird}
+          >
+            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15.5 }}>
+              {name}
+            </Text>
+            {/* <Text style={{ color: 'white', fontSize: 13.5 }}>
+              {office || 'Office 1'}
+            </Text> */}
+            {
+              this.props.item.hasOwnProperty('majors') ?
+                <Text style={{ color: 'white', fontSize: 13.5 }}>
+                  {majors[0].name || 'Finance'}
+                </Text>
+                : null
+            }
+            <RatingView rating={rate || 3} disabled={true} />
           </View>
-        </TouchableWithoutFeedback>
-      </View>
+        </View>
+      </TouchableOpacity>
     );
   }
 }
@@ -56,17 +65,18 @@ export default withNavigation(LawsItem)
 
 const styles = StyleSheet.create({
   lawsCard: {
-    borderColor: '#f6f6f6',
-    borderBottomWidth: 0,
-    borderRadius: 8,
+    //borderColor: '#f6f6f6',
+    //borderBottomWidth: 0,
+    //borderRadius: 8,
     // shadowColor: '#000',
     // shadowOffset: { width: 0, height: 2 },
     // shadowOpacity: 0.1,
     // shadowRadius: 2,
-    flex: 1,
-    margin: 7.5,
+    //flex: 1,
+    //margin: 7.5,
     height: 263,
-    width: 156.3,
+    //width: 156.3,
+    width: (WIDTH - 61) / 2,
     //elevation: 10,
     backgroundColor: '#f6f6f6'
   },
@@ -80,15 +90,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     justifyContent: 'space-between',
     //alignItems:''
-  },
-  productMeta: {
-    // marginVertical:'bottiom',
-    //marginTop: Dimensions.get('window').width / 2.0 - 135,
-    marginBottom: 10,
-    paddingHorizontal: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end'
   },
   lawyerPhoto: {
     flex: 1,

@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { Constants } from "expo";
+import Constants from 'expo-constants';
 import { STATUS_BAR_HEIGHT } from '../../Components/Constants'
-import { mockContent } from '../../Services/BackendServices/MockData'
+import { aboutUs } from '../../Services/BackendServices/MockData'
 import { WhiteX } from '../../Components/Social Components/SocialBtns'
 import {
   navigate,
@@ -20,7 +20,7 @@ export default class About extends React.Component {
         <Text
           style={styles.content}
         >
-          {mockContent}
+          {aboutUs}
         </Text>
         <Text
           style={styles.version}
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#f6f6f6",
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: "space-around",
     paddingTop: 40 + STATUS_BAR_HEIGHT,
     paddingBottom: 24,
   },

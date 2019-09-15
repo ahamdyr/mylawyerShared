@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontFamily: "Lato-Regular",
     fontSize: 16,
-    //fontWeight: "500",
+    textAlign: 'left',
     fontStyle: "normal",
     letterSpacing: 0,
     color: "#ffffff"

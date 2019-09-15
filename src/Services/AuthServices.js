@@ -18,32 +18,43 @@ export const saveUser = async (currentUser, userType) => {
   try {
     //console.log('currentUser ', currentUser)
     Store.dispatch(setLoggedUser(true))     
+    Store.dispatch(setUserType(userType))
     Store.dispatch(setCurrentUser(currentUser))
     let accessToken = currentUser.accessToken
     Store.dispatch(setAccessToken(accessToken))
     userType == 'lawyer' ? navigate('LawyerApp') : navigate('UserApp')
-    await AsyncStorage.setItem('currentUser', JSON.stringify(currentUser))
-    await AsyncStorage.setItem('userType', JSON.stringify(userType))
+    AsyncStorage.setItem('currentUser', JSON.stringify(currentUser))
+    AsyncStorage.setItem('userType', JSON.stringify(userType))
     //await AsyncStorage.setItem('accessToken', JSON.stringify(accessToken))  
       
   } catch (error) {
-    console.log(error)
+    navigate('UserApp')
+    showMessage({
+      message: `${error}\nTry again!`,
+      hideOnPress: true,
+      duration: 3000,
+      type: 'danger',
+    });
   }
 }
 
 export const updateUserProfile = async (newData) => {
-  try {
-    Store.dispatch(setCurrentUser(newData))
-    await AsyncStorage.setItem('currentUser', JSON.stringify(newData))
-  } catch (error) {
-    console.log(error)
-  }
+  var currentUser = Store.getState().currentUser
+  Object.keys(newData).forEach(key => {
+    if (newData[key]) {
+      currentUser[key] = newData[key]
+    }
+  })
+  Store.dispatch(setCurrentUser(currentUser))
+  AsyncStorage.setItem('currentUser', JSON.stringify(currentUser), err => {
+    if (err) alert(err)
+  })
 }
 
 export const updateUserPhoneNumber = async (phoneNumber) => {
   //navigate('Spinner')
   Store.dispatch(setPhoneNumber(phoneNumber))
-  navigate('PhoneVerification',{action: 'update'})
+  //navigate('PhoneVerification',{action: 'update'})
   //goBack()
 }
 
@@ -93,7 +104,7 @@ export const getUserType = () => Store.getState().userType
 
 export const savePhoneCredentials = async (phoneCredentials) => {
   Store.dispatch(setPhoneAuthCredentials(phoneCredentials))
-  await AsyncStorage.setItem('phoneCredentials', JSON.stringify(phoneCredentials))
+  AsyncStorage.setItem('phoneCredentials', JSON.stringify(phoneCredentials))
 }
 
 export const setPhoneCredentials = async () => {

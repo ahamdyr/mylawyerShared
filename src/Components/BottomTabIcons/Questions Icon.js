@@ -1,31 +1,36 @@
 import React from 'react'
-import {Image, TouchableWithoutFeedback, Text, StyleSheet} from 'react-native';
-import {QuestionsImage} from '../../../assets'
+import { Image, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { focusedQuestions, dimmedQuestions } from '../../../assets'
 
 class QuestionsIcon extends React.Component {
-  render(){
-    return ( 
-       
-      <TouchableWithoutFeedback onPress={this.props.onPress}>  
-        <React.Fragment>   
-          <Image
-            style={{width: 20, height: 20}} 
-            source={QuestionsImage}
-          />
-          {
-            this.props.focused ?
-              <Text style={styles.label}>
-                ___________
-              </Text>
-              : null
-          }
-        </React.Fragment>             
-      </TouchableWithoutFeedback>  
-      
+  render() {
+    var { focused } = this.props
+    const labelStyle = (focused) => {
+      return {
+        fontFamily: "Lato-Bold",
+        fontSize: 12,
+        letterSpacing: 0,
+        color: focused ? '#0b7f7c' : '#9b9b9b',
+        textAlign: "center",
+        marginTop: 1,
+      }
+    }
+    return (
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={1}
+        onPress={this.props.onPress}>
+        <Image
+          style={styles.icon}
+          source={focused ? focusedQuestions : dimmedQuestions}
+        />
+        <Text style={labelStyle(focused)}>Questions</Text>
+      </TouchableOpacity>
+
     );
   }
 }
-export default  QuestionsIcon
+export default QuestionsIcon
 
 const styles = StyleSheet.create({
   label: {
@@ -34,5 +39,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#0b7f7c',
     fontSize: 16
+  },
+  button: {
+    //backgroundColor: 'red',
+    width: 60,
+    height: 68,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: -7,
+  },
+  icon: { 
+    width: 32, 
+    height: 32, 
+    //marginTop: 10 
   }
 })

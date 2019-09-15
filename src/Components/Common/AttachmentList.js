@@ -1,7 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, FlatList, Text, Image, TouchableWithoutFeedback } from 'react-native';
+import { View, StyleSheet, FlatList, Text, Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import {Linking} from 'expo'
 import Spinner from '../../Screens/Spinner'
+import Store from '../../Redux/Store'
+import {
+  delQuestionDoc,
+  delQuestionImg
+} from '../../Redux/AddQuestion/actions'
 
 export default class AttachmentList extends React.PureComponent {
   _list = [
@@ -18,35 +23,60 @@ export default class AttachmentList extends React.PureComponent {
       uri: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80' 
     }
   ]
+  _deleteItem = (item) => {
+    if (item.type == 'document') {
+      Store.dispatch(delQuestionDoc(item))
+    }
+    else {
+      Store.dispatch(delQuestionImg(item))
+    }
+  }
   _renderItem = ({ item }) => {
-    return (
-      <TouchableWithoutFeedback
-        onPress={()=> Linking.openURL(item.link)}
-        style={{
-          
-          // justifyContent: 'space-between',
-          height: 240,
-          width: 120
-        }}>
-        <View style={{flex:1, alignItems: 'center',}}>
-        <View
-          style={styles.btnStyle}
-        >
-          <Text style={styles.btnTxtStyle}>
-            {item.id}
-          </Text>
+    if (item.uri) {
+      return (
+        <View style={styles.itemContainer}>
+          <TouchableOpacity
+            style={styles.btnStyle}
+            onPress={() => this._deleteItem(item)}
+          >
+            <Text style={styles.btnTxtStyle}>
+              {'X'}
+            </Text>
+          </TouchableOpacity>
+          <Image
+            source={{ uri: item.uri }}
+            style={{
+              width: 120,
+              height: 160,
+              marginTop: 20
+            }}
+          />
         </View>
-        <Image          
-          source={{ uri: item.link }}
-          style={{
-            width: 120,
-            height: 160,
-            marginTop: 20
-          }}
-        />
-        </View>  
-      </TouchableWithoutFeedback>
-    );
+      )
+    }
+    else {
+      return (
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={()=> Linking.openURL(item.link)}
+          style={styles.itemContainer}
+        >
+          <View style={styles.btnStyle}>
+            <Text style={styles.btnTxtStyle}>
+              {item.id}
+            </Text>
+          </View>
+          <Image
+            source={{ uri: item.link }}
+            style={{
+              width: 120,
+              height: 160,
+              marginTop: 20
+            }}
+          />
+        </TouchableOpacity>
+      );
+    }    
   };
   _keyExtractor = (item, index)=> String(index)
   render() {
@@ -105,5 +135,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato-Regular',
     fontSize: 14,
     color: 'white'
+  },
+  itemContainer: {
+    height: 240,
+    width: 120,
+    alignItems: 'center'
   }
 });

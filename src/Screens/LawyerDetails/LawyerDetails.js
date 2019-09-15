@@ -3,20 +3,22 @@ import {
   Text, 
   View, 
   TouchableOpacity,
-  SafeAreaView
+  SafeAreaView,
+  Alert
 } from 'react-native';
 import { styles } from './Styles'
 import {
   navigate,
   goBack
 } from '../../Services/NavigationServices'
-import { Linking, WebBrowser } from 'expo'
+import { Linking } from 'expo';
+import * as WebBrowser from 'expo-web-browser';
 import BlackX from '../../Components/Common/BlackX'
 import RatingView from '../../Components/Lawyers List/RatingView'
 import ImageIcon from '../../Components/Common/ImageIcon'
 import SubmitBtn from '../../Components/Common/SubmitBtn'
 import SeperatorLine from '../../Components/Common/SeperatorLine'
-import AskIcon from '../../Components/BottomTabIcons/Ask Icon'
+import GreenCircle from '../../Components/BottomTabIcons/GreenCircle'
 import { getNumSuffix, getFirstName } from '../../Utils/textModifier'
 import { defaultPicture } from '../../../assets'
 
@@ -37,8 +39,9 @@ export default class LawyerDetails extends React.Component {
               style={styles.lawyerPhoto}
               source={ lawyer.photo ? { uri: lawyer.photo } : defaultPicture}
             />
-            <AskIcon
-              text={getNumSuffix(lawyer.id)}
+            <GreenCircle
+              //text={getNumSuffix(lawyer.id)}
+              text={lawyer.id}
               style={styles.orderStyle}
               textStyle={styles.orderTextStyle}
             />
@@ -50,9 +53,13 @@ export default class LawyerDetails extends React.Component {
               <Text style={styles.nameText} > 
                 {lawyer.name}
               </Text>
-              <Text style={styles.officeText} >
-                {lawyer.office || 'Office 1'}
-              </Text>
+              {
+                lawyer.hasOwnProperty('majors') ?
+                  <Text style={styles.officeText} >
+                    {lawyer.majors[0].name}
+                  </Text>
+                  : null
+              }              
             </View>
             <RatingView 
               disabled={true}
@@ -66,7 +73,7 @@ export default class LawyerDetails extends React.Component {
             style={styles.askBtnStyle}
             text={`ASK ${getFirstName(lawyer.name).toUpperCase()}`}
             textStyle={styles.askTextStyle}
-            onPress={()=>navigate('AskQuestion')}
+            onPress={()=>navigate('AskQuestion', {lawyer: lawyer})}
           />
 
           <Text style={styles.bio}>
@@ -78,8 +85,10 @@ export default class LawyerDetails extends React.Component {
           <TouchableOpacity 
             style={styles.footer}
             onPress={async()=> {
+              lawyer.reachAccount ?
+                await WebBrowser.openBrowserAsync(lawyer.reachAccount)
+                : Alert.alert('Sorry',`${getFirstName(lawyer.name)} doesn\'t have reach account yet.`)         
               //await WebBrowser.openBrowserAsync(`https://reachnetwork.co/${getFirstName(lawyer.name)}`)
-              await WebBrowser.openBrowserAsync(lawyer.reachAccount)
             }}
           >
             <Text style={styles.footerText}>

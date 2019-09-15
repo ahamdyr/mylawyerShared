@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, TouchableOpacity, Platform } from 'react-native';
 import { styles } from './Styles'
 import LoginWithMailForm from '../../Components/AuthComponents/LoginWithMailForm'
 import { withNavigation } from 'react-navigation'
@@ -46,27 +46,42 @@ class LoginWithMail extends React.Component {
             </Text>
         </View>
 
-        <View style={{height: 50}} />
+        {/* <View style={{height: 50}} /> */}
 
         {/* login form */}
-        <LoginWithMailForm ref="formRef" onPress={() => SignIn()} />
+        <View style={styles.formContainer}>
+          <LoginWithMailForm ref="formRef" onPress={() => SignIn()} />
+        </View>
         
-        <View style={{height: 50}} />
+        {/* <View style={{height: 50}} /> */}
         
         {/* footer */}
-        <TouchableOpacity
-          style={styles.footer}
-          onPress={() => { navigation.navigate('SignUpWithMail') }}
-        >
-          <Text
-            style={styles.footerText}
+          <TouchableOpacity
+            style={styles.footer}
+            onPress={() => { navigation.navigate('SignUpWithMail') }}
           >
-            Don't have an account ?
+            <Text
+              style={[
+                styles.footerText,
+                Platform.OS == 'android' ? {textDecorationLine: 'underline'} : null
+              ]}
+            >
+              Don't have an account ?
             </Text>
-        </TouchableOpacity>
+            {
+              Platform.OS == 'ios' ? 
+                <View style={{
+                    height: 0.5, width: 170,
+                    backgroundColor: '#fefefe', alignSelf: "center"                    
+                  }}
+                />
+                : null
+            }
+          </TouchableOpacity>
 
         <KeyboardAccessoryNavigation
           avoidKeyboard={true}
+          inSafeAreaView={true}
           keyBoardMargin={10}
           tintColor={'#0b7f7c'}
           nextDisabled={false}

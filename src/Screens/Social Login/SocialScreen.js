@@ -37,6 +37,18 @@ class SocialScreen extends React.Component {
             </Text>
           </TouchableOpacity>
 
+          <TouchableOpacity
+            activeOpacity={1}
+            style={styles.footer}
+            onPress={() => navigation.navigate('LoginWithPhone')}
+          >
+            <Text
+              style={[styles.footerText, { textDecorationLine: 'underline' }]}
+            >
+              Already have an Account?
+            </Text>
+          </TouchableOpacity>
+
           <WhiteX
             style={styles.close}
             onPress={() => {
@@ -58,7 +70,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     bottom: 0,
-    height: 273,
+    height: 323,
     width: WIDTH,
     borderTopLeftRadius: 48,
     borderTopRightRadius: 48,
@@ -81,9 +93,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  footer: {
+    marginTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   termsText: {
     fontFamily: 'Lato-Light',
     fontSize: 12,
+    color: 'rgb(82, 82, 82)',
+  },
+  footerText: {
+    fontFamily: 'Lato-Light',
+    fontSize: 15,
     color: 'rgb(82, 82, 82)',
   },
 });

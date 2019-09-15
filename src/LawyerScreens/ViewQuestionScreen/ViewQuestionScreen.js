@@ -6,6 +6,7 @@ import { STATUS_BAR_HEIGHT, WIDTH } from '../../Components/Constants'
 import SubmitBtn from '../../Components/Common/SubmitBtn'
 import { navigate, goBack } from '../../Services/NavigationServices'
 import { lockApi } from '../../Services/BackendServices/LockService'
+import QuestionBody from '../../Components/Common/QuestionBody'
 
 export default class ViewQuestionScreen extends React.Component {
   
@@ -67,6 +68,7 @@ export default class ViewQuestionScreen extends React.Component {
           topicName={topic.name}
           title={title}
         />
+        <QuestionBody body={body}/>
         <SubmitBtn 
           style={styles.answerBtnStyle}
           text={'Add to my questions'}
@@ -94,9 +96,9 @@ const styles = StyleSheet.create({
   topic: {
     marginTop: 50,
     paddingBottom: 21,
-    borderBottomWidth: 0.5,
+    // borderBottomWidth: 0.5,
     backgroundColor: "#f6f6f6",
-    borderBottomColor: '#d5d5e0'
+    // borderBottomColor: '#d5d5e0'
   },
   answerBtnStyle: {
     marginTop: 20,

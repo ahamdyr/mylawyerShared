@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 
 const mapStateToProps =  state => ({
   // isLoggedUser: state.isLoggedUser,
-  // userPhoto: state.currentUser.photoURL
+  userPhoto: state.currentUser.photoURL
 })
 
   

@@ -6,6 +6,8 @@ import BlackX from '../../Components/Common/BlackX'
 import { STATUS_BAR_HEIGHT, WIDTH } from '../../Components/Constants'
 import WaitingAnswer from '../../Components/Common/WaitingAnswer'
 import Spinner from '../Spinner'
+import QuestionBody from '../../Components/Common/QuestionBody'
+
 export default class PublicQuestionScreen extends React.Component {
   componentWillMount(){
     this.props.getAnswersRequest(this.props.navigation.getParam('question').id)
@@ -41,6 +43,7 @@ export default class PublicQuestionScreen extends React.Component {
           //topicName={`${topic.name.split(' ')[0]}...`}
           title={title}
         />
+        <QuestionBody body={body}/>
         {
           lastActivity.type !== 'answer' ?
             <WaitingAnswer />
@@ -84,8 +87,8 @@ const styles = StyleSheet.create({
   topic: {
     marginTop: 50,
     paddingBottom: 21,
-    borderBottomWidth: 0.5,
-    borderBottomColor: '#d5d5e0'
+    // borderBottomWidth: 0.5,
+    // borderBottomColor: '#d5d5e0'
   },
   answered: {
     marginLeft: 16,

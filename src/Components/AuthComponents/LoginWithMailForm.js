@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableWithoutFeedback, TextInput, KeyboardAvoidingView, Keyboard  } from 'react-native';
+import {StyleSheet, Text, View, ScrollView, TextInput, KeyboardAvoidingView, Keyboard  } from 'react-native';
 import {MAIN_COLOR, WIDTH} from '../Constants'
 import SeperatorLine from '../Common/SeperatorLine'
 import LoginButton from '../Common/LoginButton'
@@ -46,12 +46,7 @@ export default class LoginWithMailForm extends React.PureComponent {
   }
   render(){
     return(
-      <KeyboardAvoidingView 
-        style={styles.container}
-        //keyboardVerticalOffset={100}
-        // behavior={'position'}
-      >
-
+      <ScrollView contentContainerStyle={styles.container}>
         <SeperatorLine/>
 
         <View style={styles.inputContainer}>
@@ -104,8 +99,7 @@ export default class LoginWithMailForm extends React.PureComponent {
           }}
           onPress={()=>this._loginSubmit()}
         />
-      </KeyboardAvoidingView>
-
+      </ScrollView>  
     )
   }
 }

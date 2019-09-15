@@ -23,6 +23,7 @@ class QuestionsItem extends React.PureComponent {
         by,
         lastActivity
     } = this.props.item.item
+    //console.log('this.props.item.item  ',this.props.item.item)
     return (
       <View style={styles.questCard}>
         <TouchableOpacity

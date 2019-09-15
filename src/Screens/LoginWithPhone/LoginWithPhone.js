@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, BackHandler, SafeAreaView } from 'react-native';
+import { Text, View, TouchableOpacity, BackHandler, SafeAreaView, Platform } from 'react-native';
 import { styles } from './Styles'
 import LoginWithPhoneForm from '../../Components/AuthComponents/LoginWithPhoneForm'
 import { withNavigation } from 'react-navigation'
@@ -8,7 +8,7 @@ import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 import { navigate } from '../../Services/NavigationServices'
 
 class LoginWithPhone extends React.Component {
-  componentWillMount(){
+  componentWillMount() {
     this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
       navigate('UserApp'); // works best when the goBack is async
       return true;
@@ -27,12 +27,14 @@ class LoginWithPhone extends React.Component {
             Login
             </Text>
         </View>
-        <View style={{ height: 100 }} />
+        {/* <View style={{ height: 100 }} /> */}
         {/* login form */}
-        <LoginWithPhoneForm
-          onPress={(phoneNumber) => { SignIn(phoneNumber) }}
-        />
-        <View style={{ height: 100 }} />
+        <View style={styles.formContainer}>
+          <LoginWithPhoneForm
+            onPress={(phoneNumber) => { SignIn(phoneNumber) }}
+          />
+        </View>
+        {/* <View style={{ height: 100 }} /> */}
 
         {/* footer */}
         <TouchableOpacity
@@ -40,13 +42,26 @@ class LoginWithPhone extends React.Component {
           onPress={() => { navigation.navigate('SignUpWithPhone') }}
         >
           <Text
-            style={styles.footerText}
+            style={[
+              styles.footerText,
+              Platform.OS == 'android' ? { textDecorationLine: 'underline' } : null
+            ]}
           >
             Don't have an account ?
-            </Text>
+          </Text>
+          {
+            Platform.OS == 'ios' ?
+              <View style={{
+                height: 0.5, width: 170,
+                backgroundColor: '#fefefe', alignSelf: "center"
+              }}
+              />
+              : null
+          }
         </TouchableOpacity>
         <KeyboardAccessoryNavigation
           //avoidKeyboard={true}
+          inSafeAreaView={true}
           tintColor={'#0b7f7c'}
           nextDisabled={true}
           previousDisabled={true}

@@ -1,87 +1,128 @@
 import React from 'react';
-import { createBottomTabNavigator} from "react-navigation";
+import { View, StyleSheet, Platform, Dimensions } from "react-native"
+import { createBottomTabNavigator } from "react-navigation";
 import AllQuestionsTabs from './AllQuestionsTabs'
 import MyQuestionsTabs from './MyQuestionsTabs'
-import SideMenu from '../Screens/SideMenu'
+import SideMenuStack from '../Routers/SideMenuStack'
 import HomeIcon from '../Components/BottomTabIcons/Home Icon'
 import QuestionsIcon from '../Components/BottomTabIcons/Questions Icon'
 import SettingsIcon from '../Components/BottomTabIcons/SettingsIcon'
+import { WIDTH, OS } from '../Components/Constants'
+import { BottomTabBar } from "react-navigation-tabs"
 
-const  TabBar = createBottomTabNavigator(
+const TabBarComponent = (props) => (<BottomTabBar {...props} />)
+
+const { height, width } = Dimensions.get('window')
+const isSafeAreaSupported = Platform.OS === 'ios' && (height > 800 || width > 800)
+
+export default TabBar = createBottomTabNavigator(
   {
     AllQuestionsTabs: {
       screen: AllQuestionsTabs,
       navigationOptions: ({ navigation }) => ({
-          title: "",
-          tabBarIcon: ({focused}) => (<HomeIcon 
-            focused={focused} 
-            //onPress={() =>navigation.navigate('Home')}
-            />),
-          // tabBarLabel:({focused}) => (
-            
-          //     focused?
-          //     <Text style={{
-          //       marginBottom:4,
-          //       fontWeight:'bold',
-          //       color:'#0b7f7c',
-          //       fontSize: 16
-          //     }}>___________</Text>
-          //     :null
-               
-          // )
+        title: "",
+        tabBarIcon: ({ focused }) => {
+          return (
+            <HomeIcon
+              onPress={() => navigation.navigate('AllQuestionsTabs')}
+              focused={focused}
+            />
+          )
+        },
       })
     },
     MyQuestionsTabs: {
       screen: MyQuestionsTabs,
       navigationOptions: ({ navigation }) => ({
-          title: "",
-          tabBarIcon: ({focused}) => (<QuestionsIcon 
-            focused={focused} 
-            //onPress={() =>navigation.navigate('MyQuestions')}
-          />),
-          // tabBarLabel:({focused}) => (
-          //   <Text 
-          //     style={{alignSelf:'center'}}          
-          //   >
-          //     {focused?'____':''}
-          //   </Text>
-          // )
+        title: "",
+        tabBarIcon: ({ focused }) => {
+          return (
+            <QuestionsIcon
+              onPress={() => navigation.navigate('MyQuestionsTabs')}
+              focused={focused}
+            />
+          )
+        },
       })
     },
     LawyerSettings: {
-      screen: SideMenu,
+      screen: SideMenuStack,
       navigationOptions: ({ navigation }) => ({
-          title: "",
-          tabBarIcon: ({focused}) => (<SettingsIcon 
-            focused={focused} 
-            //onPress={() =>navigation.navigate('MyQuestions')}
-          />),
-          // tabBarLabel:({focused}) => (
-          //   <Text 
-          //     style={{alignSelf:'center'}}          
-          //   >
-          //     {focused?'____':''}
-          //   </Text>
-          // )
+        title: "",        
+        tabBarIcon: ({ focused }) => {
+          return (
+            <SettingsIcon
+              onPress={() => navigation.navigate('SideMenu')}
+              focused={focused}
+            />
+          )
+        },
       })
     }
   },
   {
-    //initialRouteName:"AllQuestionsTabs",
-    //initialRouteName:"Questions",
-    tabBarOptions:{
-      // showLabel:false,
-      // showIcon:false
-      //activeTintColor: '#222',
-      //showLabel:true,
-      
-      tabStyle: {
-         marginBottom:-7,   //Padding 0 here
-         backgroundColor: "#f6f6f6"
-      },
-        //activeBackgroundColor :'yellow',  //Doesn't work
+    tabBarComponent: props => {
+      if (isSafeAreaSupported) {
+        return (<TabBarComponent {...props} />)
+      }
+      else {
+        return (
+          <View style={styles.BarContainer}>
+            <TabBarComponent {...props} />
+          </View>
+        )
+      }
+    },
+    tabBarOptions: {   
+      style: isSafeAreaSupported ? 
+        {
+          height: 48,
+          width: WIDTH - 30,
+          borderRadius: 34,
+          backgroundColor: "#ffffff",
+          shadowColor: "rgba(1, 11, 11, 0.29)",
+          shadowOffset: {
+            width: 1,
+            height: -2
+          },
+          shadowRadius: 10,
+          shadowOpacity: 1,
+          elevation: 16,
+          justifyContent: 'center',
+          alignSelf: 'center',
+          position: 'absolute',
+          bottom: 30,
+          paddingTop: 30,
+        }
+        : {
+            height: 68,
+            width: WIDTH - 30,
+            borderRadius: 34,
+            backgroundColor: "#ffffff",
+            shadowColor: "rgba(1, 11, 11, 0.29)",
+            shadowOffset: {
+              width: 1,
+              height: -2
+            },
+            shadowRadius: 10,
+            shadowOpacity: 1,
+            elevation: 16,
+            justifyContent: 'center',
+            // alignSelf: 'center',
+            // position: 'absolute',
+            // bottom: isSafeAreaSupported ? 65 : 19,
+        }
     }
   }
 );
 
-export default TabBar
+const styles = StyleSheet.create({
+  BarContainer: {
+    //backgroundColor: "red",
+    position: 'absolute',
+    bottom: isSafeAreaSupported ? 65 : 19,
+    width: WIDTH,
+    height: 68,
+    alignItems: 'center',
+  },
+})

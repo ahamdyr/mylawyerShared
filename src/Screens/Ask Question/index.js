@@ -31,7 +31,7 @@ const mapDispatchersToProps = dispatch => ({
   setQuestionImg: (img) => dispatch(setQuestionImg(img)),
   delQuestionDoc: (doc) => dispatch(delQuestionDoc(doc)),
   delQuestionImg: (img) => dispatch(delQuestionImg(img)),
-  submitQuestion: () => dispatch(submitQuestion()),
+  submitQuestion: (assignedTo) => dispatch(submitQuestion(assignedTo)),
   setQuestionTopic: (topic) => dispatch(setQuestionTopic(topic))
 })
 

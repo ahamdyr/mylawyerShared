@@ -42,7 +42,8 @@ class QuestionsItem extends React.PureComponent {
             title={title}
           />
           {
-            screen == 'Solved' ?
+            //screen == 'Solved' ?
+            lastActivity.type == 'answer' ?
               <AnswerBy
                 MainPhotoURL={lastActivity.by.photo}
                 answeredBy={lastActivity.by.name}
@@ -53,7 +54,8 @@ class QuestionsItem extends React.PureComponent {
                   marginBottom: 18
                 }}
               />
-              : screen == 'Locked' || (screen == 'New' && lastActivity.type == 'lock')  ?
+              //: screen == 'Locked' || (screen == 'New' && lastActivity.type == 'lock')  ?
+              : lastActivity.type == 'lock' ?
                 <React.Fragment>
                   <SubmitBtn 
                     style={styles.answerBtnStyle}

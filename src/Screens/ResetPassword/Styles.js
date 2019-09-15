@@ -3,22 +3,33 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   inputStyle: {
-    marginTop: 17,
-    marginBottom: 22,
-    fontFamily: "Lato-Regular",
-    fontSize: 24,
+    marginBottom: 10,
+    fontFamily: "NunitoSans-Regular",
+    fontSize: 16,
     fontWeight: "normal",
     fontStyle: "normal",
     letterSpacing: 0,
-    textAlign: 'center',
+    color: "#090909"
+  },
+  greenTop: {
     width: WIDTH,
-    color: "#0b7f7c"
+    height: (HEIGHT/4) - (50 + STATUS_BAR_HEIGHT), 
+    backgroundColor: MAIN_COLOR,
+  },
+  labelStyle: {
+    marginTop: 23,
+    fontFamily: "NunitoSans-SemiBold",
+    fontSize: 12,
+    fontStyle: "normal",
+    lineHeight: 18,
+    letterSpacing: 0,
+    color: "#0d0d0d"
   },
   line: {
-    width: 230,
+    width: WIDTH - 64,
     height: 1,
     opacity: 0.26,
-    backgroundColor: "#a0a0a4"
+    backgroundColor: "#002e2c"
   },
   name: {
     marginTop: 27,    
@@ -99,26 +110,38 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     //backgroundColor: "red",
-    backgroundColor: "#f6f6f6",
-    //alignItems: 'center',
+    //backgroundColor: "#f6f6f6",
+    // alignItems: 'center',
+    //justifyContent: 'space-between',
+    // paddingTop: 22 + STATUS_BAR_HEIGHT,
+    // paddingBottom: 22
+  },
+  headerStyle: {
+    flexDirection: 'row',
+    height: STATUS_BAR_HEIGHT + 50,
+    width: WIDTH,
+    alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: 22 + STATUS_BAR_HEIGHT,
-    paddingBottom: 22
+    backgroundColor: MAIN_COLOR,
+    paddingTop: STATUS_BAR_HEIGHT,
+  },
+  headerTextStyle: {
+    fontFamily: "NunitoSans-Bold",
+    fontSize: 18,
+    fontStyle: "normal",
+    letterSpacing: 0,
+    textAlign: "center",
+    color: "#ffffff"
   },
   viewContainer:{
-    //flex: 1,
-    backgroundColor: "#f6f6f6",
-    //backgroundColor: 'green',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginHorizontal: 32
   },
   profileImage: {
-    marginTop: 10,
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: -88,
+    alignSelf: 'center',
+    width: 120,
+    height: 120,
+    borderRadius: 60
   },
   select: {
     backgroundColor: 'white',
@@ -127,7 +150,7 @@ export const styles = StyleSheet.create({
     marginTop: 16
   },
   fakePadding: {
-    height: 90,
+    height: 200,
     //backgroundColor: 'red'
   },
   question: {
