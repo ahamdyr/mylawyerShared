@@ -18,6 +18,7 @@ export const saveUser = async (currentUser, userType) => {
   try {
     //console.log('currentUser ', currentUser)
     Store.dispatch(setLoggedUser(true))     
+    Store.dispatch(setUserType(userType))
     Store.dispatch(setCurrentUser(currentUser))
     let accessToken = currentUser.accessToken
     Store.dispatch(setAccessToken(accessToken))
