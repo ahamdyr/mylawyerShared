@@ -11,7 +11,7 @@ export default class MajorsList extends React.Component {
       <View style={styles.majorContainer}>
         <Text 
           style={styles.majorTitle}
-          onPress={()=>navigate('LawyersScreen', { lawyers: lawyers })}
+          onPress={()=>navigate('LawyersScreen', { major: item })}
         >
           {name}
         </Text>

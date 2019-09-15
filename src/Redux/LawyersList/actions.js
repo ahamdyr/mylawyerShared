@@ -5,9 +5,10 @@ export const GET_LAWYERS_LOADING = 'GET_LAWYERS_LOADING'
 export const GET_LAWYERS_ERROR = 'GET_LAWYERS_ERROR'
 export const SET_LAWYERS_PG_TOKEN = 'SET_LAWYERS_PG_TOKEN'
 
-export const getLawyersRequest = () => {
+export const getLawyersRequest = (majorId) => {
   return{
-    type: GET_LAWYERS_REQUEST
+    type: GET_LAWYERS_REQUEST,
+    majorId
   }
 }
 export const searchLawyersRequest = (query) => {
