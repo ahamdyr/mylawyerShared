@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     backgroundColor: MAIN_COLOR,
   },
   editBtn: {
-    marginTop: 22,
+    //marginTop: 22,
     alignSelf: 'center',
     width: 158,
     height: 44,
@@ -40,11 +40,11 @@ export const styles = StyleSheet.create({
     color: MAIN_COLOR
   },
   labelStyle: {
-    marginTop: 23,
+    marginTop: 15,
     fontFamily: "NunitoSans-SemiBold",
     fontSize: 12,
     fontStyle: "normal",
-    lineHeight: 18,
+    //lineHeight: 18,
     letterSpacing: 0,
     color: "#0d0d0d"
   },
@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
   },
   name: {
     //marginTop: 50,    
-    marginBottom: 10,
+    marginBottom: 4,
     fontFamily: "NunitoSans-Regular",
     fontSize: 16,
     fontWeight: "normal",
