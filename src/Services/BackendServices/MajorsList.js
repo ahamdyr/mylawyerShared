@@ -3,7 +3,7 @@ import axios from 'axios'
 export const getMajorsApi = async () => {
   return new Promise((resolve, reject) => {
     axios.get(
-      `https://hlogicodesk.pythonanywhere.com/api/beta/grouped_lawyers/`,    
+      `grouped_lawyers/`,    
       {
         headers: {
           'Accept': 'application/json'

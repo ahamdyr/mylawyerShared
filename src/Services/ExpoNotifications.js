@@ -4,7 +4,7 @@ import Store from "../Redux/Store";
 
 export const registerExpoPushToken = async () => {
   const PUSH_ENDPOINT =
-    "https://hlogicodesk.pythonanywhere.com/api/beta/sandbox/messaging/";
+    `${baseURL}sandbox/messaging/`;
 
   const { status: existingStatus } = await Permissions.getAsync(
     Permissions.NOTIFICATIONS
