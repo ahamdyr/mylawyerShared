@@ -7,7 +7,8 @@ import {
   TextInput,
   Keyboard,
   SafeAreaView,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Alert
 } from 'react-native'
 import { styles } from './Styles'
 import { navigate, goBack } from '../../Services/NavigationServices'
@@ -37,8 +38,22 @@ export default class ProfileScreen extends React.Component {
     })
     navigate('Home')
   }
+  _onSwitchPress = () => {
+    Alert.alert(
+      'Switch account',
+      `Any questions you asked as a user will be deleted once you switch to a lawyer.`,
+      [        
+        {
+          text: 'Cancel',
+          style: 'cancel'
+        },
+        { text: 'OK', onPress: () => this._switchAccount(), style: 'default' },
+      ],
+      { cancelable: true }
+    )
+  }
   _switchAccount = async () => {
-    console.log('pressed')
+    navigate('LawyerAuth')
   }
   render() {
     var { currentUser } = this.props
@@ -62,7 +77,7 @@ export default class ProfileScreen extends React.Component {
               flex: 1,
               marginTop: 5,
               marginBottom: 100,
-              justifyContent: 'space-between'
+              justifyContent: type == 'lawyer' ? 'space-around' : 'space-between'
             }}
           >
             <SubmitBtn
@@ -119,10 +134,11 @@ export default class ProfileScreen extends React.Component {
                 onPress={() => this._deleteAccount()}
               />
             </View>
-            <SwitchBtn
-              //style={{marginTop: 10}}
-              onPress={() => this._switchAccount()}
-            />
+            {type == 'user' ? (
+              <SwitchBtn
+                onPress={() => this._onSwitchPress()}
+              />
+            ) : null}
           </View>
           {type == 'user' ? (
             <WhiteX

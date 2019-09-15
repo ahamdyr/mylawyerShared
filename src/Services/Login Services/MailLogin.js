@@ -1,5 +1,5 @@
 import { base64Token } from '../Guid'
-import { Register, LawyerRegister } from '../BackendServices/AccountServices'
+import { Register, LawyerRegister, LawyerSwitchApi } from '../BackendServices/AccountServices'
 import { saveUser, getUserType } from '../AuthServices'
 import { Alert } from 'react-native'
 import { goBack, navigate } from '../NavigationServices'
@@ -39,6 +39,8 @@ export const SignIn = async () => {
 
     currentUser = Object.assign({}, currentUser, pickedUser)
 
+    userType = currentUser.type
+
     if (userType == 'lawyer') {
       if (currentUser.isActivated) {
         await saveUser(currentUser, userType)
@@ -62,7 +64,7 @@ export const SignIn = async () => {
         type: 'success',
       });
       await saveUser(currentUser, userType)
-      navigate('UserApp')
+      //navigate('UserApp')
     }
   } catch (error) {
     showMessage({
@@ -179,6 +181,36 @@ export const lawyerSignUp = async () => {
     else {
       navigate('Step4')
     }
+  } catch (error) {
+    showMessage({
+      message: `${error} \nTry again`,
+      hideOnPress: true,
+      duration: 3000,
+      type: 'danger',
+    });
+    goBack()
+  }
+}
+
+export const lawyerSwitch = async () => {
+  try {
+    var user = Store.getState().currentUser
+    const userPhoneNumber = user.phoneNumber
+    const token = user.accessToken
+    const uid = user.id
+    navigate('Spinner')
+    
+    var lawyerMajor = Store.getState().lawyerMajor
+    var lawyerIDs = Store.getState().lawyerIDs
+    var firmPapers = Store.getState().firmPapers
+
+    var lawyerIDsLinks = await addFilesToFirebase(lawyerIDs, `Lawyers/${uid}/lawyerIDs`)
+    var firmPapersLinks = await addFilesToFirebase(firmPapers, `Lawyers/${uid}/firmPapers`)
+
+    var pickedUser = await LawyerSwitchApi(token, lawyerMajor, lawyerIDsLinks, firmPapersLinks, userPhoneNumber)
+    
+    navigate('Step4')
+
   } catch (error) {
     showMessage({
       message: `${error} \nTry again`,

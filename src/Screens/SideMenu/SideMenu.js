@@ -45,7 +45,8 @@ export default class SideMenu extends React.Component {
             : <SideMenuBtn
               btnTitle={'Login'}
               onPress={() => {
-                navigate('UserTypeScreen')
+                navigate('SocialScreen')
+                //navigate('UserTypeScreen')
               }}
             />
           }

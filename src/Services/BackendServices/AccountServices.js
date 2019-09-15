@@ -26,7 +26,41 @@ export const Register = async (type, token, userPhoneNumber) => {
     })
   })  
 }
-
+export const LawyerSwitchApi = async (token, lawyerMajor, lawyerIDsLinks, firmPapersLinks, userPhoneNumber) => {
+  let requestBody = new FormData()
+  requestBody.append('type', 'lawyer')
+  requestBody.append('majors', lawyerMajor.id)
+  lawyerIDsLinks.forEach(e=>{
+    requestBody.append('idPapers', e)
+  })
+  firmPapersLinks.forEach(x=>{
+    requestBody.append('firmPapers', x)
+  })
+  if(userPhoneNumber){
+    requestBody.append('phone', userPhoneNumber)
+  }
+  return new Promise((resolve, reject) => {
+    axios.put(
+      `account/`,
+      requestBody,
+      {
+        headers: {
+          'Accept': 'application/json',
+          "Authorization": `Bearer ${token}`
+        }
+      }
+    ).then((res) => {
+      if(res.data.data) {
+        resolve(res.data.data) 
+      }
+      else{
+        reject(res.data.error.message)
+      }
+    }).catch(err => {
+      reject(err)
+    })
+  })
+}
 export const LawyerRegister = async (type, token, lawyerMajor, lawyerIDsLinks, firmPapersLinks, userPhoneNumber) => {
   
   let requestBody = new FormData()

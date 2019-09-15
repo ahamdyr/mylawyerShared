@@ -11,7 +11,7 @@ import Attachs from '../../../Components/LawyerVerifyComp/Attachs'
 import {
   uploadCameraImage, uploadFile, uploadGalleryImage
 } from '../../../Services/FilesServices'
-import { lawyerSignUp } from '../../../Services/Login Services/MailLogin'
+import { lawyerSignUp, lawyerSwitch } from '../../../Services/Login Services/MailLogin'
 
 export default class Step3 extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -29,7 +29,8 @@ export default class Step3 extends React.Component {
       });
     }
     else {
-      lawyerSignUp()
+      //lawyerSignUp()
+      lawyerSwitch()
     }
   }
   _onAttachPress = () => {

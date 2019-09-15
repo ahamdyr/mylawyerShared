@@ -34,7 +34,8 @@ export default class MyQuestionsScreen extends React.Component {
               alignItems: 'center',
               justifyContent: 'center',
             }}
-            onPress={()=>navigate('UserTypeScreen')}
+            onPress={()=>navigate('SocialScreen')}
+            //onPress={()=>navigate('UserTypeScreen')}
           >
             <Text style={{
               fontSize: 16,
