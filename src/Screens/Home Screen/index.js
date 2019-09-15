@@ -5,53 +5,118 @@ import {
 import MenuIcon from '../../Components/HomeHeaderIcons/Menu Icon'
 import SearchIcon from '../../Components/HomeHeaderIcons/Search Icon'
 import { createStackNavigator} from "react-navigation";
-import LawyersScreen from '../Lawyers Screen'
+import MajorsScreen from '../MajorsScreen'
 import Search from '../Search'
+import LawyersScreen from '../LawyersScreen'
 import { logo_text_colord } from '../../../assets'
 import ImageIcon from '../../Components/Common/ImageIcon'
 
-export default HomeStack = createStackNavigator({
-  Home:{
-    screen: LawyersScreen,    
-    // navigationOptions: ({ navigation }) => ({
-    //   headerRight: <SearchIcon onPress={() =>navigation.navigate('Search')}/>,
-    //   headerLeft: <MenuIcon onPress={() =>navigation.navigate('SideMenu')}/>  ,
-    //   //headerBackTitle: 'null',
-    //   headerTitle:<HeaderTitle title={`My Lawyer`}/>,
-    //   headerStyle:{
-    //     elevation:0,
-    //     shadowOpacity:0,
-    //     backgroundColor:'#f6f6f6',
-    //   }
-    // }),
-  },
-  Search:{
-    screen: Search,
-  },
-},{  
-  headerLayoutPreset :"center",
-  defaultNavigationOptions: ({ navigation }) => ({
-    headerRight: <SearchIcon 
-      onPress={() =>navigation.navigate('Search')}
-      style={styles.searchIconStyle}
-    />,
-    headerLeft: <MenuIcon 
-      onPress={() =>navigation.navigate('SideMenuStack')}
-      style={styles.menuIconStyle}
-    />  ,
-    //headerBackTitle: 'null',
-    headerTitle: <ImageIcon source={logo_text_colord} style={{
-      width: 95,
-      height: 26.5,
-      //backgroundColor: 'yellow'
-    }} />,
-    headerStyle:{
-      elevation:0,
-      shadowOpacity:0,
-      backgroundColor:'#f6f6f6',
+export default HomeStack = createStackNavigator(
+  {
+    Home: {
+      screen: MajorsScreen,      
+      navigationOptions: ({ navigation }) => ({
+        headerRight: (
+          <SearchIcon
+            onPress={() => navigation.navigate('Search')}
+            style={styles.searchIconStyle}
+          />
+        ),
+        headerLeft: (
+          <MenuIcon
+            onPress={() => navigation.navigate('SideMenuStack')}
+            style={styles.menuIconStyle}
+          />
+        ),
+        //headerBackTitle: 'null',
+        headerTitle: (
+          <ImageIcon
+            source={logo_text_colord}
+            style={{
+              width: 95,
+              height: 26.5
+              //backgroundColor: 'yellow'
+            }}
+          />
+        ),
+        headerStyle: {
+          elevation: 0,
+          shadowOpacity: 0,
+          backgroundColor: '#f6f6f6'
+        }
+      })
+    },
+    Search: {
+      screen: Search,
+      navigationOptions: ({ navigation }) => ({
+        headerRight: (
+          <SearchIcon
+            onPress={() => navigation.navigate('Search')}
+            style={styles.searchIconStyle}
+          />
+        ),
+        headerLeft: (
+          <MenuIcon
+            onPress={() => navigation.navigate('SideMenuStack')}
+            style={styles.menuIconStyle}
+          />
+        ),
+        //headerBackTitle: 'null',
+        headerTitle: (
+          <ImageIcon
+            source={logo_text_colord}
+            style={{
+              width: 95,
+              height: 26.5
+              //backgroundColor: 'yellow'
+            }}
+          />
+        ),
+        headerStyle: {
+          elevation: 0,
+          shadowOpacity: 0,
+          backgroundColor: '#f6f6f6'
+        }
+      })
+    },
+    LawyersScreen: {
+      screen: LawyersScreen,
     }
-  }),
-});
+  },
+  {
+    headerLayoutPreset: 'center',
+    // defaultNavigationOptions: ({ navigation }) => ({
+    //   headerRight: (
+    //     <SearchIcon
+    //       onPress={() => navigation.navigate('Search')}
+    //       style={styles.searchIconStyle}
+    //     />
+    //   ),
+    //   headerLeft: (
+    //     <MenuIcon
+    //       onPress={() => navigation.navigate('SideMenuStack')}
+    //       style={styles.menuIconStyle}
+    //     />
+    //   ),
+    //   //headerBackTitle: 'null',
+    //   headerTitle: (
+    //     <ImageIcon
+    //       source={logo_text_colord}
+    //       style={{
+    //         width: 95,
+    //         height: 26.5
+    //         //backgroundColor: 'yellow'
+    //       }}
+    //     />
+    //   ),
+    //   headerStyle: {
+    //     elevation: 0,
+    //     shadowOpacity: 0,
+    //     backgroundColor: '#f6f6f6'
+    //   }
+    // })
+  }
+)
 
 
 const styles = StyleSheet.create({

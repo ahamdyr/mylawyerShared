@@ -102,7 +102,7 @@ export const deactivateAccount = async (token) => {
 
   return new Promise((resolve, reject) => {
     axios.post(
-      `https://hlogicodesk.pythonanywhere.com/api/beta/account/deactivate/`,
+      `account/deactivate/`,
       {
         headers: {
           'Accept': 'application/json',

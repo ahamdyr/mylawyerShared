@@ -8,7 +8,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0.25",
+    "version": "1.0.26",
     "orientation": "portrait",
     "icon": "./assets/images/logo.png",
     "splash": {
@@ -85,7 +85,7 @@
         "com.sec.android.provider.badge.permission.WRITE",
         "com.sonyericsson.home.permission.BROADCAST_BADGE"
       ],
-      "versionCode": 25
+      "versionCode": 26
     },
     "hooks": {
       "postPublish": [

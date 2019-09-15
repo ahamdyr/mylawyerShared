@@ -46,9 +46,13 @@ class LawsItem extends React.PureComponent {
             {/* <Text style={{ color: 'white', fontSize: 13.5 }}>
               {office || 'Office 1'}
             </Text> */}
-            <Text style={{ color: 'white', fontSize: 13.5 }}>
-              {majors[0].name || 'Finance'}
-            </Text>
+            {
+              this.props.item.hasOwnProperty('majors') ?
+                <Text style={{ color: 'white', fontSize: 13.5 }}>
+                  {majors[0].name || 'Finance'}
+                </Text>
+                : null
+            }
             <RatingView rating={rate || 3} disabled={true} />
           </View>
         </View>

@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-export const getLawyersApi = async (pageToken) => {
+export const getLawyersApi = async (pageToken, majorId) => {
   return new Promise((resolve, reject) => {
     axios.get(
-      `lawyers/?page=${pageToken}`,    
+      `lawyers/?page=${pageToken}&majorId=${majorId}`,    
       {
         headers: {
           'Accept': 'application/json'
