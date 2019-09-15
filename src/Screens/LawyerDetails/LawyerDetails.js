@@ -53,9 +53,13 @@ export default class LawyerDetails extends React.Component {
               <Text style={styles.nameText} > 
                 {lawyer.name}
               </Text>
-              <Text style={styles.officeText} >
-                {lawyer.majors[0].name}
-              </Text>
+              {
+                lawyer.hasOwnProperty('majors') ?
+                  <Text style={styles.officeText} >
+                    {lawyer.majors[0].name}
+                  </Text>
+                  : null
+              }              
             </View>
             <RatingView 
               disabled={true}
