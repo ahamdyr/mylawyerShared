@@ -16,6 +16,7 @@ import * as LawyerAllQuests from './LawyerAllQuests/reducers'
 import * as LawyerLockedQuests from './LawyerLockedQuests/reducers'
 import * as LawyerNewQuests from './LawyerNewQuests/reducers'
 import * as LawyerSolvedQuests from './LawyerSolvedQuests/reducers'
+import * as MajorsList from './MajorsList/reducers'
 
 export default combineReducers({
   socialModalOpen,
@@ -35,4 +36,5 @@ export default combineReducers({
   ...LawyerLockedQuests,
   ...LawyerNewQuests,
   ...LawyerSolvedQuests,
+  ...MajorsList,
 })

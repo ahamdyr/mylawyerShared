@@ -13,6 +13,7 @@ import getAnswersList from './Answers/saga'
 import getAttachsList from './Attachs/saga'
 import submitContactMessage from './ContactUs/saga'
 import getMajorsList from './LawyerMajors/saga'
+import getMajors from './MajorsList/saga'
  
 export default function * mySaga () {
   yield all([
@@ -37,5 +38,6 @@ export default function * mySaga () {
     fork(loadMoreLawyerNewQuestions),
     fork(getLawyerSolvedQuestions),
     fork(loadMoreLawyerSolvedQuestions),
+    fork(getMajors),
   ])  
 }

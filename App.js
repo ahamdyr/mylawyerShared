@@ -64,7 +64,8 @@ export default class App extends React.Component {
         'Lato-Heavy': require('./assets/fonts/Lato-Heavy.ttf'),
         'NunitoSans-Bold': require('./assets/fonts/NunitoSans-Bold.ttf'),
         'NunitoSans-Regular': require('./assets/fonts/NunitoSans-Regular.ttf'),
-        'NunitoSans-SemiBold': require('./assets/fonts/NunitoSans-SemiBold.ttf')
+        'NunitoSans-SemiBold': require('./assets/fonts/NunitoSans-SemiBold.ttf'),
+        'Cairo-Black': require('./assets/fonts/Cairo-Black.ttf')
       }),
     ]);
   };

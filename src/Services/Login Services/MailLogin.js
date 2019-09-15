@@ -138,7 +138,7 @@ export const lawyerSignUp = async () => {
     } = await MailSignUp(email, password)
 
     // add userName
-    currentUser.displayName = userName
+    currentUser.displayName = userName.toString()
     updateUserName(userName)
     // add phoneNumber
     currentUser.phoneNumber = userPhoneNumber
