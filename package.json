@@ -9,6 +9,7 @@
     "postinstall": "node ./scripts/stfu.js",
     "eject": "expo eject",
     "build:android": "expo build:android -t app-bundle --release-channel android",
+    "build:devandroid": "expo build:android --release-channel devandroid",
     "build:ios": "expo build:ios --release-channel ios"
   },
   "dependencies": {
