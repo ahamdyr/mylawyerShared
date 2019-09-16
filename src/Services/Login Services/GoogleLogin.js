@@ -16,9 +16,7 @@ const androidStandAlone =
   '357729817077-mp5l84a8itg794fls46bgltdg3pr6bai.apps.googleusercontent.com'
 const iOSStandAlone =
   '357729817077-j8codho5u6os0c5qf12iq968g3jh4tl9.apps.googleusercontent.com'
-var appRedirect =
-  Platform.OS === 'ios' ? 'com.mylawyer.MyLawyer' : 'com.mylawyer.android'
-var redirectUrl = `${appRedirect}:/oauth2redirect/google`
+var redirectUrl = `${AppAuth.OAuthRedirect}:/oauth2redirect/google`
 
 export const LoginWithGoogle = async () => {
   try {
