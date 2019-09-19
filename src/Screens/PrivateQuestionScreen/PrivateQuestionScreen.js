@@ -15,6 +15,8 @@ import { reviewAnswerApi } from '../../Services/BackendServices/AnswerServices'
 import { reAskApi } from '../../Services/BackendServices/LockService'
 import { navigate, goBack } from '../../Services/NavigationServices'
 import QuestionBody from '../../Components/Common/QuestionBody'
+import PrivacyButton from '../../Components/Common/PrivacyButton'
+
 export default class PrivateQuestionScreen extends React.Component {
 
   _question = this.props.navigation.getParam('question')
@@ -96,6 +98,7 @@ export default class PrivateQuestionScreen extends React.Component {
           title={title}
         />
         <QuestionBody body={body}/>
+        {/* <PrivacyButton style={styles.privacy}/> */}
         <AttachmentBtn
           //attachs={attachs[id]}
           attachs={attachs}
@@ -251,5 +254,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 20,
     right: 16
-  }
+  },
+  privacy: {
+
+  },
 });
