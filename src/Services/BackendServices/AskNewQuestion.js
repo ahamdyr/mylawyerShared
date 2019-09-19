@@ -18,13 +18,15 @@ export const askQuestionApi = async (topicID, accessToken, title, body, assigned
       }
     ).then((res) => {
       if(res.data.data) {
-        //console.log(res.data.data)
+        // console.log(res.data.data)
         resolve(res.data.data) 
       }
       else{
+        // console.log(res.data.error.message)
         reject(res.data.error.message)
       }
     }).catch(err => {
+      // console.log(err)
       reject(err)
     })
   })  
