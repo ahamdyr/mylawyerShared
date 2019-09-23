@@ -53,6 +53,7 @@ export default class PrivacyButton extends React.PureComponent {
     else{
       navigate('Spinner')
       var res = await changeQuestionPrivacyApi(questionID, itemValue, accessToken)
+      this._initialTopic = itemValue
       goBack()
     }
   }

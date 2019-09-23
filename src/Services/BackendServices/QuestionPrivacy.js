@@ -1,11 +1,14 @@
 import axios from 'axios'
 
 export const changeQuestionPrivacyApi = async (questionID, privacy, accessToken) => {  
-
+    
   let requestBody = new FormData()
-  privacy == 'Public' ?
+  if(privacy == 'Public'){
     requestBody.append('makePublic', true)
-    : requestBody.append('makePrivate', true)  
+  }
+  else{
+    requestBody.append('makePrivate', true)
+  }
 
   return new Promise((resolve, reject) => {
     axios.put(
