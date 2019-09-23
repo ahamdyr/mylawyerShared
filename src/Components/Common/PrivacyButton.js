@@ -11,6 +11,8 @@ import { downArrow } from '../../../assets'
 import { CustomPicker } from 'react-native-custom-picker'
 import SeperatorLine from './SeperatorLine'
 import { WIDTH, STATUS_BAR_HEIGHT, HEIGHT } from '../Constants'
+import { changeQuestionPrivacyApi } from '../../Services/BackendServices/QuestionPrivacy'
+import { navigate, goBack } from '../../Services/NavigationServices'
 
 export default class PrivacyButton extends React.PureComponent {
 
@@ -41,8 +43,18 @@ export default class PrivacyButton extends React.PureComponent {
   }
   _initialTopic = this.props.isPrivate ? 'Private' : 'Public'
 
-  _onChange = (itemValue) => {
-    console.log('itemValue ',itemValue)
+  _onChange = async (itemValue) => {
+    var {
+      questionID, accessToken
+    } = this.props
+    if(itemValue == this._initialTopic){
+      //console.log('no change')
+    }
+    else{
+      navigate('Spinner')
+      var res = await changeQuestionPrivacyApi(questionID, itemValue, accessToken)
+      goBack()
+    }
   }
 
   state = { choosenLabel: this._initialTopic }

@@ -102,7 +102,12 @@ export default class PrivateQuestionScreen extends React.Component {
         />
         {
           canMakePrivate || canMakePublic ?
-            <PrivacyButton style={styles.privacy} isPrivate={isPrivate}/>
+            <PrivacyButton 
+              style={styles.privacy} 
+              isPrivate={isPrivate}
+              questionID={id}
+              accessToken={this._accessToken}
+            />
             : null
         }
         <QuestionBody body={body}/>
