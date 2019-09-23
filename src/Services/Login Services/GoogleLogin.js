@@ -18,9 +18,10 @@ const iOSStandAlone =
   '357729817077-j8codho5u6os0c5qf12iq968g3jh4tl9.apps.googleusercontent.com'
 var redirectUrl = `${AppAuth.OAuthRedirect}:/oauth2redirect/google`
 
+// firebase auth
 export const LoginWithGoogle = async () => {
   try {
-    const { type, accessToken, user } = await Google.logInAsync({
+    const { type, accessToken } = await Google.logInAsync({
       androidStandaloneAppClientId: androidStandAlone,
       androidClientId: androidClientId,
       iosStandaloneAppClientId: iOSStandAlone,
@@ -31,23 +32,21 @@ export const LoginWithGoogle = async () => {
 
     if (type === 'success') {
       navigate('Spinner')
-      // var {
-      //   currentUser,
-      //   userToken,
-      //   uid,
-      //   refreshToken,
-      //   isNewUser
-      // } = await GoogleAuth(accessToken)
+      var {
+        currentUser,
+        userToken,
+        uid,
+        refreshToken,
+        isNewUser
+      } = await GoogleAuth(accessToken)
 
-      // var backendToken = base64Token(uid, userToken)
+      var backendToken = base64Token(uid, userToken)
+            
+      var userType = getUserType()      
 
-      var userType = getUserType()
-
-      var backendToken = base64Token(user.id, accessToken)
-
-      var currentUser = await Register(userType, backendToken, `Google`)
-      // console.log('currentUser ',currentUser)
-      // currentUser = Object.assign({}, currentUser, pickedUser)
+      var pickedUser = await Register(userType, backendToken)
+      
+      currentUser = Object.assign({}, currentUser, pickedUser)
 
       userType = currentUser.type
 
@@ -93,3 +92,69 @@ export const LoginWithGoogle = async () => {
     navigate('UserApp')
   }
 }
+
+// // backend auth
+// export const LoginWithGoogle = async () => {
+//   try {
+//     const { type, accessToken, user } = await Google.logInAsync({
+//       androidStandaloneAppClientId: androidStandAlone,
+//       androidClientId: androidClientId,
+//       iosStandaloneAppClientId: iOSStandAlone,
+//       iosClientId: iOSClientId,
+//       scopes: ['profile', 'email'],
+//       redirectUrl: redirectUrl
+//     })
+
+//     if (type === 'success') {
+//       navigate('Spinner')
+                  
+//       var userType = getUserType()
+
+//       var backendToken = base64Token(user.id, accessToken)
+
+//       var currentUser = await Register(userType, backendToken, `Google`)
+//       console.log('currentUser ',currentUser)      
+//       userType = currentUser.type
+
+//       if (userType == 'lawyer') {
+//         if (currentUser.isActivated) {
+//           await saveUser(currentUser, userType)
+//           showMessage({
+//             message: 'You logged in successfully',
+//             hideOnPress: true,
+//             duration: 3000,
+//             type: 'success'
+//           })
+//           //navigate('LawyerApp')
+//         } else {
+//           navigate('Step4')
+//         }
+//       } else {
+//         showMessage({
+//           message: 'You logged in successfully',
+//           hideOnPress: true,
+//           duration: 3000,
+//           type: 'success'
+//         })
+//         await saveUser(currentUser, userType)
+//         //navigate('UserApp')
+//       }
+//     } else {
+//       showMessage({
+//         message: 'Login Cancelled \nTry again',
+//         hideOnPress: true,
+//         duration: 3000,
+//         type: 'danger'
+//       })
+//       navigate('UserApp')
+//     }
+//   } catch (error) {
+//     showMessage({
+//       message: `${error.message} \nTry again`,
+//       hideOnPress: true,
+//       duration: 3000,
+//       type: 'danger'
+//     })
+//     navigate('UserApp')
+//   }
+// }
