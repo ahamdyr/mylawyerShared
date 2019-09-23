@@ -77,14 +77,17 @@ export default class PrivateQuestionScreen extends React.Component {
       topic,
       addedOn,
       by,
-      lastActivity
+      lastActivity,
+      canMakePublic,
+      canMakePrivate,
+      isPrivate
     } = this.props.navigation.getParam('question')
     var {
       answers,
       attachs,
       answersLoading,
       attachsLoading
-    } = this.props
+    } = this.props                   
     return (
       <SafeAreaView style={styles.container}>
 
@@ -97,8 +100,12 @@ export default class PrivateQuestionScreen extends React.Component {
           topicName={topic.name}
           title={title}
         />
+        {
+          canMakePrivate || canMakePublic ?
+            <PrivacyButton style={styles.privacy} isPrivate={isPrivate}/>
+            : null
+        }
         <QuestionBody body={body}/>
-        {/* <PrivacyButton style={styles.privacy}/> */}
         <AttachmentBtn
           //attachs={attachs[id]}
           attachs={attachs}
@@ -256,6 +263,7 @@ const styles = StyleSheet.create({
     right: 16
   },
   privacy: {
-
+    alignSelf: 'flex-end',
+    marginRight: 15,
   },
 });
