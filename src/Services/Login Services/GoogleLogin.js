@@ -20,7 +20,7 @@ var redirectUrl = `${AppAuth.OAuthRedirect}:/oauth2redirect/google`
 
 export const LoginWithGoogle = async () => {
   try {
-    const { type, accessToken } = await Google.logInAsync({
+    const { type, accessToken, user } = await Google.logInAsync({
       androidStandaloneAppClientId: androidStandAlone,
       androidClientId: androidClientId,
       iosStandaloneAppClientId: iOSStandAlone,
@@ -31,20 +31,23 @@ export const LoginWithGoogle = async () => {
 
     if (type === 'success') {
       navigate('Spinner')
-      var {
-        currentUser,
-        userToken,
-        uid,
-        refreshToken,
-        isNewUser
-      } = await GoogleAuth(accessToken)
+      // var {
+      //   currentUser,
+      //   userToken,
+      //   uid,
+      //   refreshToken,
+      //   isNewUser
+      // } = await GoogleAuth(accessToken)
 
-      var backendToken = base64Token(uid, userToken)
+      // var backendToken = base64Token(uid, userToken)
 
       var userType = getUserType()
-      var pickedUser = await Register(userType, backendToken)
 
-      currentUser = Object.assign({}, currentUser, pickedUser)
+      var backendToken = base64Token(user.id, accessToken)
+
+      var currentUser = await Register(userType, backendToken, `Google`)
+      // console.log('currentUser ',currentUser)
+      // currentUser = Object.assign({}, currentUser, pickedUser)
 
       userType = currentUser.type
 

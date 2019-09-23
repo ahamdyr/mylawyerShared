@@ -5,6 +5,7 @@ import { Register, Login } from '../BackendServices/AccountServices'
 import { saveUser, getUserType } from '../AuthServices'
 import { Alert } from 'react-native'
 import { goBack, navigate } from '../NavigationServices'
+import axios from 'axios'
 
 const FACEBOOK_APP_ID = '397884547607821'
 const FACEBOOK_APP_SECRET = '192cab05f1eb403b690ca981db3a1974'
@@ -23,21 +24,29 @@ export const LoginWithFacebook = async () => {
 
     if (type === 'success') {
       navigate('Spinner')
-      var {
-        currentUser,
-        userToken,
-        uid,
-        refreshToken,
-        isNewUser
-      } = await FacebookAuth(token)
+      // var {
+      //   currentUser,
+      //   userToken,
+      //   uid,
+      //   refreshToken,
+      //   isNewUser
+      // } = await FacebookAuth(token)
 
-      var backendToken = base64Token(uid, userToken)
+      // var backendToken = base64Token(uid, userToken)
 
       var userType = getUserType()
 
-      var pickedUser = await Register(userType, backendToken)
+      var  fbUser = await axios.get(`https://graph.facebook.com/me?access_token=${token}`);
 
-      currentUser = Object.assign({}, currentUser, pickedUser)
+      var uid = fbUser.data.id
+
+      var backendToken = base64Token(uid, token)
+
+      var currentUser  = await Register(userType, backendToken, `Facebook`)
+      // console.log('currentUser ',currentUser)
+      // var pickedUser = await Register(userType, backendToken)
+
+      // currentUser = Object.assign({}, currentUser, pickedUser)
 
       userType = currentUser.type
 

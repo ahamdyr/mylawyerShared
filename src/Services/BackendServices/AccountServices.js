@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const Register = async (type, token, userPhoneNumber) => {
+export const Register = async (type, token, provider, userPhoneNumber) => {
   let requestBody = new FormData()
   requestBody.append('type', type)
   //requestBody.append('phoneNumber', userPhoneNumber)
@@ -11,7 +11,7 @@ export const Register = async (type, token, userPhoneNumber) => {
       {
         headers: {
           'Accept': 'application/json',
-          "Authorization": `Firebase ${token}`
+          "Authorization": provider ? `${provider} ${token}` :`Firebase ${token}`
         }
       }
     ).then((res) => {
