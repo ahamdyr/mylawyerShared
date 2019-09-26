@@ -5,47 +5,43 @@ export const Register = async (type, token, provider, userPhoneNumber) => {
   requestBody.append('type', type)
   //requestBody.append('phoneNumber', userPhoneNumber)
   return new Promise((resolve, reject) => {
-    axios.post(
-      `account/authenticate/`,
-      requestBody,
-      {
-        headers: {
-          'Accept': 'application/json',
-          "Authorization": provider ? `${provider} ${token}` :`Firebase ${token}`
+    fetch(`${baseURL}account/authenticate/`,{
+      method: 'POST',
+      body: JSON.stringify({
+        type
+      }),
+      headers: {
+        'Authorization': provider ? `${provider} ${token}` :`Firebase ${token}`
+      }
+    }).then(res => {
+      res.json().then(data => {
+        if(data.data){
+          resolve(data.data)
         }
-      }
-    ).then((res) => {
-      if(res.data.data) {
-        resolve(res.data.data) 
-      }
-      else{
-        reject(res.data.error.message)
-      }
-    }).catch(err => {
-      reject(err)
-    })
+        else{
+          reject(data.error.message)
+        }
+      })
+    }).catch(err => reject(err))
   })  
 }
 export const LoginWithMail = async (token) => {
   return new Promise((resolve, reject) => {
-    axios.post(
-      `account/authenticate/`,
-      {
-        headers: {
-          'Accept': 'application/json',
-          "Authorization": `Basic ${token}`
+    fetch(`${baseURL}account/authenticate/`,{
+      method: 'POST',
+      headers: {
+        'Authorization': `Basic ${token}`
+      }
+    }).then(res => {
+      res.json().then(data => {
+        if(data.data){
+          resolve(data.data)
         }
-      }
-    ).then((res) => {
-      if(res.data.data) {
-        resolve(res.data.data) 
-      }
-      else{
-        reject(res.data.error.message)
-      }
-    }).catch(err => {
-      reject(err)
-    })
+        else{
+          reject(data.error.message)
+        }
+      })
+    }).catch(err => reject(err))
   })  
 }
 export const SignUpWithMail = async (token, name, phone) => {
