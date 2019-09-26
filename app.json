@@ -44,7 +44,7 @@
       "config": {
         "usesNonExemptEncryption": false,
         "googleSignIn": {
-          "reservedClientId": "com.googleusercontent.apps.367729817077-j8codho6u6os0c6qf12iq968g3jh4tl9"
+          "reservedClientId": "com.googleusercontent.apps.357729817077-j8codho5u6os0c5qf12iq968g3jh4tl9"
         }
       }
     },
