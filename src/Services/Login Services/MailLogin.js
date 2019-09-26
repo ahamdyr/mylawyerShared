@@ -207,10 +207,10 @@ export const lawyerSwitch = async () => {
     var lawyerIDsLinks = await addFilesToFirebase(lawyerIDs, `Lawyers/${uid}/lawyerIDs`)
     var firmPapersLinks = await addFilesToFirebase(firmPapers, `Lawyers/${uid}/firmPapers`)
 
-    var pickedUser = await LawyerSwitchApi(token, lawyerMajor, lawyerIDsLinks, firmPapersLinks, userPhoneNumber)
-    
-    navigate('Step4')
-
+    var currentUser = await LawyerSwitchApi(token, lawyerMajor, lawyerIDsLinks, firmPapersLinks, userPhoneNumber)
+    //console.log('currentUser ',currentUser)
+    var userType = currentUser.type
+    await saveUser(currentUser, userType)
   } catch (error) {
     showMessage({
       message: `${error} \nTry again`,
@@ -293,7 +293,7 @@ const userSignUp = async () => {
       duration: 3000,
       type: 'success',
     });
-    navigate('UserApp')
+    //navigate('UserApp')
   } catch (error) {      
     showMessage({
       message: `${error}`,
