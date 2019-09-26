@@ -31,7 +31,7 @@ export default class Step4 extends React.Component {
 
         <ReturnBtn 
           btnTitle={'Return to home'}
-          onPress={()=>navigate('Home')}
+          onPress={()=>navigate('LawyerApp')}
         />
       </SafeAreaView>
     );

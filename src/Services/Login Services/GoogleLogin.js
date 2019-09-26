@@ -115,30 +115,13 @@ export const LoginWithGoogle = async () => {
       var currentUser = await Register(userType, backendToken, `Google`)
       //console.log('currentUser ',currentUser)      
       userType = currentUser.type
-
-      if (userType == 'lawyer') {
-        if (currentUser.isActivated) {
-          await saveUser(currentUser, userType)
-          showMessage({
-            message: 'You logged in successfully',
-            hideOnPress: true,
-            duration: 3000,
-            type: 'success'
-          })
-          //navigate('LawyerApp')
-        } else {
-          navigate('Step4')
-        }
-      } else {
-        showMessage({
-          message: 'You logged in successfully',
-          hideOnPress: true,
-          duration: 3000,
-          type: 'success'
-        })
-        await saveUser(currentUser, userType)
-        //navigate('UserApp')
-      }
+      await saveUser(currentUser, userType)
+      showMessage({
+        message: 'You logged in successfully',
+        hideOnPress: true,
+        duration: 3000,
+        type: 'success'
+      })      
     } else {
       showMessage({
         message: 'Login Cancelled \nTry again',

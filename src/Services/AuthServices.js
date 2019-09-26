@@ -24,8 +24,8 @@ export const saveUser = async (currentUser, userType) => {
     let accessToken = currentUser.accessToken
     Store.dispatch(setAccessToken(accessToken))
     userType == 'lawyer' ? 
-      navigate('LawyerApp')
-      //currentUser.isActivated ? navigate('LawyerApp') : navigate('Step4')
+      //navigate('LawyerApp')
+      currentUser.isActivated ? navigate('LawyerApp') : navigate('Step4')
       : navigate('UserApp')
     AsyncStorage.setItem('currentUser', JSON.stringify(currentUser))
     AsyncStorage.setItem('userType', JSON.stringify(userType))

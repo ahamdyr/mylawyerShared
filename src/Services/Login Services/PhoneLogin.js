@@ -71,32 +71,13 @@ export const SignInWithPhone = async (phone, confCode) => {
     var currentUser = await AuthWithPhoneApi(backendToken)
 
     userType = currentUser.type
-
-    if (userType == 'lawyer') {
-      if (currentUser.isActivated) {
-        await saveUser(currentUser, userType)
-        showMessage({
-          message: 'You logged in successfully',
-          hideOnPress: true,
-          duration: 3000,
-          type: 'success',
-        });
-        //navigate('LawyerApp')
-      }
-      else {
-        navigate('Step4')
-      }
-    }
-    else {
-      showMessage({
-        message: 'You logged in successfully',
-        hideOnPress: true,
-        duration: 3000,
-        type: 'success',
-      });
-      await saveUser(currentUser, userType)
-      //navigate('UserApp')
-    }
+    await saveUser(currentUser, userType)
+    showMessage({
+      message: 'You logged in successfully',
+      hideOnPress: true,
+      duration: 3000,
+      type: 'success',
+    });    
   } catch (error) {
     goBack()
     showMessage({

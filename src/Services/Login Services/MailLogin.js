@@ -233,35 +233,16 @@ export const SignIn = async () => {
     var currentUser = await LoginWithMail(backendToken)
     //console.log('currentUser ',currentUser)
     userType = currentUser.type
-
-    if (userType == 'lawyer') {
-      if (currentUser.isActivated) {
-        await saveUser(currentUser, userType)
-        showMessage({
-          message: 'You logged in successfully',
-          hideOnPress: true,
-          duration: 3000,
-          type: 'success',
-        });
-        //navigate('LawyerApp')
-      }
-      else {
-        navigate('Step4')
-      }
-    }
-    else {
-      showMessage({
-        message: 'You logged in successfully',
-        hideOnPress: true,
-        duration: 3000,
-        type: 'success',
-      });
-      await saveUser(currentUser, userType)
-      //navigate('UserApp')
-    }
+    await saveUser(currentUser, userType)
+    showMessage({
+      message: 'You logged in successfully',
+      hideOnPress: true,
+      duration: 3000,
+      type: 'success',
+    });    
   } catch (error) {
     showMessage({
-      message: `You are not registered\nRegister first...`,
+      message: `${error}`,
       hideOnPress: true,
       duration: 3000,
       type: 'danger',
