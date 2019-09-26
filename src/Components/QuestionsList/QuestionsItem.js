@@ -129,9 +129,9 @@ const styles = StyleSheet.create({
     color: "#ffffff"
   },
   privacyText: {
-    position: "absolute",
-    right: 15,
-    bottom: 17,
+    alignSelf: 'flex-end',
+    marginRight: 15,
+    marginTop: -30,
     fontFamily:'Lato-Bold',
     fontSize: 12,
     color: "#0b7f7c",
