@@ -1,5 +1,5 @@
 import { base64Token } from '../Guid'
-import { Register, LawyerRegister, LawyerSwitchApi } from '../BackendServices/AccountServices'
+import { Register, LawyerRegister, LawyerSwitchApi, LoginWithMail, SignUpWithMail } from '../BackendServices/AccountServices'
 import { saveUser, getUserType } from '../AuthServices'
 import { Alert } from 'react-native'
 import { goBack, navigate } from '../NavigationServices'
@@ -18,111 +18,111 @@ export const SignUp = async () => {
   }
 }
 
-export const SignIn = async () => {
-  try {
-    const email = Store.getState().userMail
-    const password = Store.getState().userPassword
+// export const SignIn = async () => {
+//   try {
+//     const email = Store.getState().userMail
+//     const password = Store.getState().userPassword
 
-    navigate('Spinner')
-    var {
-      currentUser,
-      userToken,
-      uid,
-      refreshToken
-    } = await MailLogin(email, password)
+//     navigate('Spinner')
+//     var {
+//       currentUser,
+//       userToken,
+//       uid,
+//       refreshToken
+//     } = await MailLogin(email, password)
 
-    var backendToken = base64Token(uid, userToken)
+//     var backendToken = base64Token(uid, userToken)
 
-    var userType = getUserType()
+//     var userType = getUserType()
 
-    var pickedUser = await Register(userType, backendToken)
+//     var pickedUser = await Register(userType, backendToken)
 
-    currentUser = Object.assign({}, currentUser, pickedUser)
+//     currentUser = Object.assign({}, currentUser, pickedUser)
 
-    userType = currentUser.type
+//     userType = currentUser.type
 
-    if (userType == 'lawyer') {
-      if (currentUser.isActivated) {
-        await saveUser(currentUser, userType)
-        showMessage({
-          message: 'You logged in successfully',
-          hideOnPress: true,
-          duration: 3000,
-          type: 'success',
-        });
-        //navigate('LawyerApp')
-      }
-      else {
-        navigate('Step4')
-      }
-    }
-    else {
-      showMessage({
-        message: 'You logged in successfully',
-        hideOnPress: true,
-        duration: 3000,
-        type: 'success',
-      });
-      await saveUser(currentUser, userType)
-      //navigate('UserApp')
-    }
-  } catch (error) {
-    showMessage({
-      message: `You are not registered\nRegister first...`,
-      hideOnPress: true,
-      duration: 3000,
-      type: 'danger',
-    });
-    goBack()
-  }
-}
+//     if (userType == 'lawyer') {
+//       if (currentUser.isActivated) {
+//         await saveUser(currentUser, userType)
+//         showMessage({
+//           message: 'You logged in successfully',
+//           hideOnPress: true,
+//           duration: 3000,
+//           type: 'success',
+//         });
+//         //navigate('LawyerApp')
+//       }
+//       else {
+//         navigate('Step4')
+//       }
+//     }
+//     else {
+//       showMessage({
+//         message: 'You logged in successfully',
+//         hideOnPress: true,
+//         duration: 3000,
+//         type: 'success',
+//       });
+//       await saveUser(currentUser, userType)
+//       //navigate('UserApp')
+//     }
+//   } catch (error) {
+//     showMessage({
+//       message: `You are not registered\nRegister first...`,
+//       hideOnPress: true,
+//       duration: 3000,
+//       type: 'danger',
+//     });
+//     goBack()
+//   }
+// }
 
-const userSignUp = async () => {
-  try {
-    const email = Store.getState().userMail
-    const password = Store.getState().userPassword
-    const userName = Store.getState().userName
-    const userPhoneNumber = Store.getState().userPhoneNumber
-    navigate('Spinner')
-    var {
-      currentUser,
-      userToken,
-      uid,
-      refreshToken
-    } = await MailSignUp(email, password)
+// const userSignUp = async () => {
+//   try {
+//     const email = Store.getState().userMail
+//     const password = Store.getState().userPassword
+//     const userName = Store.getState().userName
+//     const userPhoneNumber = Store.getState().userPhoneNumber
+//     navigate('Spinner')
+//     var {
+//       currentUser,
+//       userToken,
+//       uid,
+//       refreshToken
+//     } = await MailSignUp(email, password)
     
-    // add userName
-    currentUser.displayName = userName
-    updateUserName(userName)
-    // add phoneNumber
-    currentUser.phoneNumber = userPhoneNumber
+//     // add userName
+//     currentUser.displayName = userName
+//     updateUserName(userName)
+//     // add phoneNumber
+//     currentUser.phoneNumber = userPhoneNumber
 
-    var backendToken = base64Token(uid, userToken)
+//     var backendToken = base64Token(uid, userToken)
 
-    var userType = getUserType()
+//     var userType = getUserType()
 
-    var pickedUser = await Register(userType, backendToken, userPhoneNumber)
+//     var pickedUser = await Register(userType, backendToken, userPhoneNumber)
 
-    currentUser = Object.assign({}, currentUser, pickedUser)
+//     currentUser = Object.assign({}, currentUser, pickedUser)
 
-    await saveUser(currentUser, userType)    
-    showMessage({
-      message: 'You have registered successfully',
-      hideOnPress: true,
-      duration: 3000,
-      type: 'success',
-    });
-    navigate('UserApp')
-  } catch (error) {      
-    showMessage({
-      message: `You are not registered\nRegister first...`,
-      hideOnPress: true,
-      duration: 3000,
-      type: 'danger',
-    });
-    goBack()
-  }
-}
+//     await saveUser(currentUser, userType)    
+//     showMessage({
+//       message: 'You have registered successfully',
+//       hideOnPress: true,
+//       duration: 3000,
+//       type: 'success',
+//     });
+//     navigate('UserApp')
+//   } catch (error) {      
+//     showMessage({
+//       message: `You are not registered\nRegister first...`,
+//       hideOnPress: true,
+//       duration: 3000,
+//       type: 'danger',
+//     });
+//     goBack()
+//   }
+// }
 export const lawyerSignUp = async () => {
   try {
     const email = Store.getState().userMail
@@ -214,6 +214,89 @@ export const lawyerSwitch = async () => {
   } catch (error) {
     showMessage({
       message: `${error} \nTry again`,
+      hideOnPress: true,
+      duration: 3000,
+      type: 'danger',
+    });
+    goBack()
+  }
+}
+export const SignIn = async () => {
+  try {
+    const email = Store.getState().userMail
+    const password = Store.getState().userPassword
+
+    navigate('Spinner')
+
+    var backendToken = base64Token(email, password)
+    var userType = getUserType()
+    var currentUser = await LoginWithMail(backendToken)
+    //console.log('currentUser ',currentUser)
+    userType = currentUser.type
+
+    if (userType == 'lawyer') {
+      if (currentUser.isActivated) {
+        await saveUser(currentUser, userType)
+        showMessage({
+          message: 'You logged in successfully',
+          hideOnPress: true,
+          duration: 3000,
+          type: 'success',
+        });
+        //navigate('LawyerApp')
+      }
+      else {
+        navigate('Step4')
+      }
+    }
+    else {
+      showMessage({
+        message: 'You logged in successfully',
+        hideOnPress: true,
+        duration: 3000,
+        type: 'success',
+      });
+      await saveUser(currentUser, userType)
+      //navigate('UserApp')
+    }
+  } catch (error) {
+    showMessage({
+      message: `You are not registered\nRegister first...`,
+      hideOnPress: true,
+      duration: 3000,
+      type: 'danger',
+    });
+    goBack()
+  }
+}
+
+const userSignUp = async () => {
+  try {
+    const email = Store.getState().userMail
+    const password = Store.getState().userPassword
+    const userName = Store.getState().userName
+    const userPhoneNumber = Store.getState().userPhoneNumber
+    navigate('Spinner')    
+
+    var backendToken = base64Token(email, password)
+
+    var userType = getUserType()
+
+    var currentUser = await SignUpWithMail(backendToken, userName, userPhoneNumber)
+    //console.log('currentUser ',currentUser)
+    userType = currentUser.type
+
+    await saveUser(currentUser, userType)    
+    showMessage({
+      message: 'You have registered successfully',
+      hideOnPress: true,
+      duration: 3000,
+      type: 'success',
+    });
+    navigate('UserApp')
+  } catch (error) {      
+    showMessage({
+      message: `${error}`,
       hideOnPress: true,
       duration: 3000,
       type: 'danger',

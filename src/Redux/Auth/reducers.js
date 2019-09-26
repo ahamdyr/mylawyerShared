@@ -58,6 +58,14 @@ export const userPhoneNumber = (state = '', action) => {
       return state
   }
 }
+export const countryCode = (state = '', action) => {
+  switch (action.type) {
+    case 'setPhoneNumber':
+      return action.countryCode
+    default:
+      return state
+  }
+}
 
 export const userPassword = (state = '', action) => {
   switch (action.type) {

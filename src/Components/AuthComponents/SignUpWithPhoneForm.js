@@ -56,7 +56,7 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
         type: "danger"
       });
     else {
-      Store.dispatch(setPhoneNumber(this.phone));
+      Store.dispatch(setPhoneNumber(this.state.phone, this.state.country.callingCode));
       Store.dispatch(setUserName(this.userName));
       this.props.onPress();
     }

@@ -3,6 +3,7 @@ import PhoneVerification from './PhoneVerification'
 
 const mapStateToProps =  state => ({
   phoneNumber : state.userPhoneNumber,
+  countryCode: state.countryCode,
   userName : state.userName
 })
 

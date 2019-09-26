@@ -44,8 +44,8 @@ export default class LoginWithPhoneForm extends React.PureComponent {
         type: "danger"
       });
     } else {
-      Store.dispatch(setPhoneNumber(this.phone));
-      this.props.onPress(this.phone);
+      Store.dispatch(setPhoneNumber(this.state.phone, this.state.country.callingCode));
+      this.props.onPress();
     }
   };
   _changeCountry = country => {
