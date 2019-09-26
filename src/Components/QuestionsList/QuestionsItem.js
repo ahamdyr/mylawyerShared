@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     marginRight: 15,
     marginTop: -30,
+    marginBottom: 23,
     fontFamily:'Lato-Bold',
     fontSize: 12,
     color: "#0b7f7c",
