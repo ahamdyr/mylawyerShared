@@ -63,7 +63,7 @@ export default class LawyerDetails extends React.Component {
             </View>
             <RatingView 
               disabled={true}
-              rating={lawyer.rate || 3}
+              rating={lawyer.rate || 0}
               style={styles.ratingStyle}
               starStyle={styles.starStyle}
             />
