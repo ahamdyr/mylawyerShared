@@ -133,7 +133,7 @@ export const LoginWithGoogle = async () => {
     }
   } catch (error) {
     showMessage({
-      message: `${error.message} \nTry again`,
+      message: `${error} \nTry again`,
       hideOnPress: true,
       duration: 3000,
       type: 'danger'
