@@ -74,17 +74,16 @@ export const SignUpWithMail = async (token, name, phone) => {
   })  
 }
 export const LawyerSwitchApi = async (token, lawyerMajor, lawyerIDsLinks, firmPapersLinks, userPhoneNumber) => {
-  let requestBody = new FormData()
-  requestBody.append('type', 'lawyer')
-  requestBody.append('majors', lawyerMajor.id)
+  var requestBody = `type=lawyer`
+  requestBody+= `&majors=${lawyerMajor.id}`
   lawyerIDsLinks.forEach(e=>{
-    requestBody.append('idPapers', e)
+    requestBody+= `&idPapers=${e}`
   })
   firmPapersLinks.forEach(x=>{
-    requestBody.append('firmPapers', x)
+    requestBody+= `&firmPapers=${x}`
   })
   if(userPhoneNumber){
-    requestBody.append('phone', userPhoneNumber)
+    requestBody+= `&phone=${userPhoneNumber}`
   }
   return new Promise((resolve, reject) => {
     axios.put(
@@ -93,7 +92,8 @@ export const LawyerSwitchApi = async (token, lawyerMajor, lawyerIDsLinks, firmPa
       {
         headers: {
           'Accept': 'application/json',
-          "Authorization": `Bearer ${token}`
+          "Authorization": `Bearer ${token}`,
+          'Content-Type': 'application/x-www-form-urlencoded'
         }
       }
     ).then((res) => {
