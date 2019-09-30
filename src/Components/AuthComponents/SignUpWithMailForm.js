@@ -26,9 +26,9 @@ export default class SignUpWithMailForm extends React.PureComponent {
   state = {
     phone: '',
     country: {
-      cca2: "EG",
-      callingCode: "20",
-      name: "Egypt"
+      cca2: "KW",
+      callingCode: "965",
+      name: "Kuwait"
     }
   };
   _onChangeMobNumberText = val => {
@@ -107,7 +107,7 @@ export default class SignUpWithMailForm extends React.PureComponent {
           <CountryPicker
             ref={countryPicker => (this.countryPicker = countryPicker)}
             closeable
-            //filterable
+            filterable
             transparent
             onChange={this._changeCountry}
             cca2={this.state.country.cca2}
