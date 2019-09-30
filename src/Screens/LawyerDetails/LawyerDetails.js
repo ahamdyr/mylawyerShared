@@ -39,12 +39,12 @@ export default class LawyerDetails extends React.Component {
               style={styles.lawyerPhoto}
               source={ lawyer.photo ? { uri: lawyer.photo } : defaultPicture}
             />
-            <GreenCircle
+            {/* <GreenCircle
               //text={getNumSuffix(lawyer.id)}
               text={lawyer.id}
               style={styles.orderStyle}
               textStyle={styles.orderTextStyle}
-            />
+            /> */}
           </View>
           
 
