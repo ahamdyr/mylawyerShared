@@ -32,8 +32,8 @@ export default class SignUpWithMailForm extends React.PureComponent {
     }
   };
   _onChangeMobNumberText = val => {
-    this.setState({phone: val})
-    this.phone = "+" + this.state.country.callingCode + this.state.phone
+    this.state.phone = val
+    this.phone = "+" + this.state.country.callingCode + this.state.phone    
   };
   // _onPhoneChange = (val) => {
   //   this.phone = val
