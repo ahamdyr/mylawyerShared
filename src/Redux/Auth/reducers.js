@@ -61,7 +61,7 @@ export const userPhoneNumber = (state = '', action) => {
 export const countryCode = (state = '', action) => {
   switch (action.type) {
     case 'setPhoneNumber':
-      return action.countryCode
+      return action.countryCode || state
     default:
       return state
   }
