@@ -42,12 +42,12 @@ export default class ProfileScreen extends React.Component {
     Alert.alert(
       'Switch account',
       `Any questions you asked as a user will be deleted once you switch to a lawyer.`,
-      [        
+      [
         {
           text: 'Cancel',
           style: 'cancel'
         },
-        { text: 'OK', onPress: () => this._switchAccount(), style: 'default' },
+        { text: 'OK', onPress: () => this._switchAccount(), style: 'default' }
       ],
       { cancelable: true }
     )
@@ -63,7 +63,10 @@ export default class ProfileScreen extends React.Component {
         <View style={{ flex: 1, backgroundColor: '#f6f6f6' }}>
           <View style={styles.headerStyle}>
             {type == 'lawyer' ? (
-              <BackIcon onPress={() => goBack()} style={styles.BackIcon} />
+              <BackIcon
+                onPress={() => navigate('SideMenu', { data: 'data' })}
+                style={styles.BackIcon}
+              />
             ) : null}
             <Text style={styles.headerTextStyle}>{'Your Profile'}</Text>
           </View>
@@ -88,7 +91,7 @@ export default class ProfileScreen extends React.Component {
               onPress={() => navigate('EditMyProfile')}
               editBtn={true}
             />
-            <View style={styles.inputsContainer}>              
+            <View style={styles.inputsContainer}>
               {displayName && (
                 <React.Fragment>
                   <Text style={[styles.labelStyle, { marginTop: 0 }]}>
@@ -126,7 +129,7 @@ export default class ProfileScreen extends React.Component {
               }}
             >
               {firebase.auth().currentUser.providerData[0].providerId ==
-              'password' && (
+                'password' && (
                 <SubmitBtn
                   style={styles.resetBtn}
                   text={'Change Password'}
@@ -149,7 +152,7 @@ export default class ProfileScreen extends React.Component {
             <WhiteX
               style={styles.closeIcon}
               onPress={() => {
-                goBack()
+                navigate('SideMenu', {data: 'data'})
               }}
             />
           )}
