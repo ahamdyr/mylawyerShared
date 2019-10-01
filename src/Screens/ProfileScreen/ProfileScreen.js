@@ -129,7 +129,7 @@ export default class ProfileScreen extends React.Component {
                 justifyContent: 'space-around'
               }}
             >
-              {firebase.auth().currentUser.providerData[0].providerId ==
+              {/* {firebase.auth().currentUser.providerData[0].providerId ==
                 'password' && (
                 <SubmitBtn
                   style={styles.resetBtn}
@@ -137,7 +137,7 @@ export default class ProfileScreen extends React.Component {
                   textStyle={styles.resetText}
                   onPress={() => navigate('ResetPassword')}
                 />
-              )}
+              )} */}
               <SideMenuBtn
                 btnTitle={'Deactivate Account'}
                 style={styles.deleteBtn}
