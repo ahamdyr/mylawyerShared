@@ -58,6 +58,7 @@ class SignUpWithPhone extends React.Component {
   render() {
     const { height, width } = Dimensions.get('window')
     const isSafeAreaSupported = Platform.OS === 'ios' && (height > 800 || width > 800)
+    const isSmallDevice = height < 650
     const { navigation } = this.props
     return (
       <SafeAreaView style={styles.container}>
@@ -77,7 +78,7 @@ class SignUpWithPhone extends React.Component {
         </View>
         {/* ==================================================== */}
         <View style={styles.formContainer}>
-          <View style={{ marginTop: 50 }} />
+          <View style={{ marginTop: isSmallDevice ? 10 : 50 }} />
           <SignUpWithPhoneForm
             ref="formRef"
             onPress={() => this.props.navigation.navigate('PhoneVerification', { action: 'signUp' })}
@@ -86,6 +87,7 @@ class SignUpWithPhone extends React.Component {
         {/* ==================================================== */}
         <View style={[
           styles.lowerThird,
+          isSmallDevice ? {height: 170} : null,
           isSafeAreaSupported ? { height: 200, marginBottom: 30 } : null
           ]}>
           <View style={styles.Btns}>
