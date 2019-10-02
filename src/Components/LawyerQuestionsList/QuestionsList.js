@@ -18,16 +18,18 @@ export default class QuestionsList extends React.PureComponent {
   _renderFooter = () => {
     return (
       <View style={{
-        height: 50,
+        height: 120,
         width: WIDTH,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
       }}>
         {
           this.props.questionsNoMore ?
             <StatusText text={'No more..'} />
             : this.props.questionsLoadingMore ?
-              <Spinner />
+              <View style={{height: 50}}>
+                <Spinner />
+              </View>
               : null
         }
       </View>
