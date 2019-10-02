@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   itemContainer: {
-    height: 240,
+    height: 220,
     width: 120,
     alignItems: 'center'
   },
