@@ -100,7 +100,7 @@ export const getUser = async () => {
     Store.dispatch(setCurrentUser(currentUser))
     let accessToken = currentUser.accessToken
     Store.dispatch(setAccessToken(accessToken))
-    registerExpoPushToken()
+    !__DEV__ ? registerExpoPushToken() : null
     userType == 'lawyer' ? 
       navigate('LawyerApp')
       //currentUser.isActivated ? navigate('LawyerApp') : navigate('Step4')
