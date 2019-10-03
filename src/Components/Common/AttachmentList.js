@@ -105,6 +105,7 @@ export default class AttachmentList extends React.PureComponent {
         <FlatList
           style={{marginRight: 5}}
           //data={this._list}
+          showsHorizontalScrollIndicator={false}
           data={attachs}
           renderItem={this._renderItem}
           horizontal={true}
