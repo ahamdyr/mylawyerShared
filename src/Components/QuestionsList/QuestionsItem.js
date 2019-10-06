@@ -21,7 +21,8 @@ class QuestionsItem extends React.PureComponent {
         topic,
         addedOn,
         by,
-        lastActivity
+        lastActivity,
+        isPrivate
     } = this.props.item.item
     //console.log('this.props.item.item  ',this.props.item.item)
     return (
@@ -68,6 +69,9 @@ class QuestionsItem extends React.PureComponent {
             />
             :<WaitingAnswer/>
           }
+          <Text style={styles.privacyText}>
+            {isPrivate == true ? 'Private' : 'Public'}
+          </Text>
           {
             (routeName == 'MyQuestions' && lastActivity.type == 'answer' && lastActivity.rate == null) ?
             <React.Fragment>
@@ -123,5 +127,14 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     textAlign: "center",
     color: "#ffffff"
+  },
+  privacyText: {
+    alignSelf: 'flex-end',
+    marginRight: 15,
+    marginTop: -30,
+    marginBottom: 23,
+    fontFamily:'Lato-Bold',
+    fontSize: 12,
+    color: "#0b7f7c",
   },
 });

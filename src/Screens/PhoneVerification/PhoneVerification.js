@@ -15,8 +15,8 @@ import { MAIN_COLOR, WIDTH } from '../../Components/Constants'
 
 import { 
   requestCode,
-  SignIn,
-  SignUp,
+  SignInWithPhone,
+  SignUpWithPhone,
   Update
 } from '../../Services/Login Services/PhoneLogin'
 import { navigate } from '../../Services/NavigationServices'
@@ -51,10 +51,10 @@ export default class PhoneVerification extends Component {
     );
   }
   _tryAgain = () => {
-    requestCode(this.props.phoneNumber)
+    requestCode(this.props.phoneNumber, this.props.countryCode)
   }
   componentDidMount() {
-    requestCode(this.props.phoneNumber)
+    requestCode(this.props.phoneNumber, this.props.countryCode)
   }
   _onChangeCodeText = (val) => {
     this.confCode = val;
@@ -66,9 +66,10 @@ export default class PhoneVerification extends Component {
     }
   }
   _onSubmitVerfCode = () => {    
+    let phone = `${this.props.countryCode}${this.props.phoneNumber}`
     let action = this.props.navigation.state.params.action
-    if(action == 'login') SignIn(this.confCode)
-    else if (action == 'signUp') SignUp(this.confCode, this.props.userName)
+    if(action == 'login') SignInWithPhone(phone, this.confCode)
+    else if (action == 'signUp') SignUpWithPhone(phone, this.confCode, this.props.userName)
     else if (action == 'update') Update(this.confCode) 
   }
 

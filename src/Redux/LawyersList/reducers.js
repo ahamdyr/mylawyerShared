@@ -8,7 +8,7 @@ import { mockLawyersList } from '../../Services/BackendServices/MockData'
 export const getLawyersSuccess = (state = [], action) => {
   switch (action.type) {
     case GET_LAWYERS_SUCCESS:
-      return [...action.lawyers, ...state]
+      return action.lawyers
     default:
       return state
   }

@@ -62,31 +62,6 @@ export default class SelectComponent extends React.PureComponent {
                 optionTemplate={this.renderOption}
                 modalStyle={styles.modalStyle}
               />
-              //   : <Picker
-              //     style={styles.picker}                  
-              //     mode={'dropdown'}
-              //     itemStyle={styles.pickerItem}
-              //     selectedValue={this.state.choosenLabel}
-              //     onValueChange={(itemValue) => this._onChange(itemValue)}
-              //   >
-              //     <Picker.Item
-              //       label={this._initialTopic.name}
-              //       value={this._initialTopic}
-              //       key={this._initialTopic.id}
-              //     />
-              //     {
-              //       getTopicsSuccess.map(topic => {
-              //         return (
-              //           <Picker.Item
-              //             label={topic.name}
-              //             value={topic}
-              //             key={topic.id}
-              //           />
-              //         )
-              //       })
-              //     }
-              //   </Picker>
-
               : <StatusText text={'No Topics Found!'} style={{ alignSelf: 'center', marginLeft: 20 }} />
         }
 

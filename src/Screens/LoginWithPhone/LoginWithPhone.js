@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity, BackHandler, SafeAreaView, Platform } fro
 import { styles } from './Styles'
 import LoginWithPhoneForm from '../../Components/AuthComponents/LoginWithPhoneForm'
 import { withNavigation } from 'react-navigation'
-import { SignIn } from '../../Services/Login Services/PhoneLogin'
+import { SignInWithPhone } from '../../Services/Login Services/PhoneLogin'
 import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory';
 import { navigate } from '../../Services/NavigationServices'
 
@@ -31,7 +31,7 @@ class LoginWithPhone extends React.Component {
         {/* login form */}
         <View style={styles.formContainer}>
           <LoginWithPhoneForm
-            onPress={(phoneNumber) => { SignIn(phoneNumber) }}
+            onPress={() => navigation.navigate('PhoneVerification', { action: 'login' })}
           />
         </View>
         {/* <View style={{ height: 100 }} /> */}

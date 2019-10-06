@@ -15,6 +15,8 @@ import { reviewAnswerApi } from '../../Services/BackendServices/AnswerServices'
 import { reAskApi } from '../../Services/BackendServices/LockService'
 import { navigate, goBack } from '../../Services/NavigationServices'
 import QuestionBody from '../../Components/Common/QuestionBody'
+import PrivacyButton from '../../Components/Common/PrivacyButton'
+
 export default class PrivateQuestionScreen extends React.Component {
 
   _question = this.props.navigation.getParam('question')
@@ -75,14 +77,17 @@ export default class PrivateQuestionScreen extends React.Component {
       topic,
       addedOn,
       by,
-      lastActivity
+      lastActivity,
+      canMakePublic,
+      canMakePrivate,
+      isPrivate
     } = this.props.navigation.getParam('question')
     var {
       answers,
       attachs,
       answersLoading,
       attachsLoading
-    } = this.props
+    } = this.props                   
     return (
       <SafeAreaView style={styles.container}>
 
@@ -95,6 +100,16 @@ export default class PrivateQuestionScreen extends React.Component {
           topicName={topic.name}
           title={title}
         />
+        {
+          canMakePrivate || canMakePublic ?
+            <PrivacyButton 
+              style={styles.privacy} 
+              isPrivate={isPrivate}
+              questionID={id}
+              accessToken={this._accessToken}
+            />
+            : null
+        }
         <QuestionBody body={body}/>
         <AttachmentBtn
           //attachs={attachs[id]}
@@ -251,5 +266,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 20,
     right: 16
-  }
+  },
+  privacy: {
+    alignSelf: 'flex-end',
+    marginRight: 15,
+  },
 });

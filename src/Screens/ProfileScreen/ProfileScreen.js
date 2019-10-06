@@ -42,12 +42,12 @@ export default class ProfileScreen extends React.Component {
     Alert.alert(
       'Switch account',
       `Any questions you asked as a user will be deleted once you switch to a lawyer.`,
-      [        
+      [
         {
           text: 'Cancel',
           style: 'cancel'
         },
-        { text: 'OK', onPress: () => this._switchAccount(), style: 'default' },
+        { text: 'OK', onPress: () => this._switchAccount(), style: 'default' }
       ],
       { cancelable: true }
     )
@@ -58,12 +58,16 @@ export default class ProfileScreen extends React.Component {
   render() {
     var { currentUser } = this.props
     var { displayName, email, phoneNumber, photoURL, id, type } = currentUser
+    //console.log('currentUser ',currentUser)
     return (
       <SafeAreaView style={styles.container}>
         <View style={{ flex: 1, backgroundColor: '#f6f6f6' }}>
           <View style={styles.headerStyle}>
             {type == 'lawyer' ? (
-              <BackIcon onPress={() => goBack()} style={styles.BackIcon} />
+              <BackIcon
+                onPress={() => navigate('SideMenu', { data: 'data' })}
+                style={styles.BackIcon}
+              />
             ) : null}
             <Text style={styles.headerTextStyle}>{'Your Profile'}</Text>
           </View>
@@ -77,7 +81,8 @@ export default class ProfileScreen extends React.Component {
               flex: 1,
               marginTop: 5,
               marginBottom: 100,
-              justifyContent: type == 'lawyer' ? 'space-around' : 'space-between'
+              justifyContent:
+                type == 'lawyer' ? 'space-around' : 'space-between'
             }}
           >
             <SubmitBtn
@@ -88,28 +93,34 @@ export default class ProfileScreen extends React.Component {
               editBtn={true}
             />
             <View style={styles.inputsContainer}>
-              <Text style={[styles.labelStyle, { marginTop: 0 }]}>
-                {'Full Name'}
-              </Text>
-              <Text style={styles.name}>{displayName}</Text>
-              <SeperatorLine style={styles.line} />
-              <Text style={styles.labelStyle}>{'Username'}</Text>
-              <Text style={styles.name}>{displayName.split(' ')[0] + id}</Text>
-              <SeperatorLine style={styles.line} />
-              {email ? (
+              {displayName && (
+                <React.Fragment>
+                  <Text style={[styles.labelStyle, { marginTop: 0 }]}>
+                    {'Full Name'}
+                  </Text>
+                  <Text style={styles.name}>{displayName}</Text>
+                  <SeperatorLine style={styles.line} />
+                  <Text style={styles.labelStyle}>{'Username'}</Text>
+                  <Text style={styles.name}>
+                    {displayName.split(' ')[0] + id}
+                  </Text>
+                  <SeperatorLine style={styles.line} />
+                </React.Fragment>
+              )}
+              {email && (
                 <React.Fragment>
                   <Text style={styles.labelStyle}>{'Email'}</Text>
                   <Text style={styles.name}>{email}</Text>
                   <SeperatorLine style={styles.line} />
                 </React.Fragment>
-              ) : null}
-              {phoneNumber ? (
+              )}
+              {phoneNumber && (
                 <React.Fragment>
                   <Text style={styles.labelStyle}>{'Phone'}</Text>
                   <Text style={styles.name}>{phoneNumber}</Text>
                   <SeperatorLine style={styles.line} />
                 </React.Fragment>
-              ) : null}
+              )}
             </View>
             <View
               style={{
@@ -118,15 +129,15 @@ export default class ProfileScreen extends React.Component {
                 justifyContent: 'space-around'
               }}
             >
-              {firebase.auth().currentUser.providerData[0].providerId ==
-              'password' ? (
+              {/* {firebase.auth().currentUser.providerData[0].providerId ==
+                'password' && (
                 <SubmitBtn
                   style={styles.resetBtn}
                   text={'Change Password'}
                   textStyle={styles.resetText}
                   onPress={() => navigate('ResetPassword')}
                 />
-              ) : null}
+              )} */}
               <SideMenuBtn
                 btnTitle={'Deactivate Account'}
                 style={styles.deleteBtn}
@@ -134,20 +145,18 @@ export default class ProfileScreen extends React.Component {
                 onPress={() => this._deleteAccount()}
               />
             </View>
-            {type == 'user' ? (
-              <SwitchBtn
-                onPress={() => this._onSwitchPress()}
-              />
-            ) : null}
+            {type == 'user' && (
+              <SwitchBtn onPress={() => this._onSwitchPress()} />
+            )}
           </View>
-          {type == 'user' ? (
+          {type == 'user' && (
             <WhiteX
               style={styles.closeIcon}
               onPress={() => {
-                goBack()
+                navigate('SideMenu', {data: 'data'})
               }}
             />
-          ) : null}
+          )}
         </View>
       </SafeAreaView>
     )

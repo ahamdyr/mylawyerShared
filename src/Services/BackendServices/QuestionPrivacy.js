@@ -1,19 +1,18 @@
 import axios from 'axios'
 
-export const askQuestionApi = async (topicID, accessToken, title, body, assignedTo) => {
-  let requestBody = new FormData()
-  requestBody.append('title', title)
-  requestBody.append('body', body)
-  assignedTo ? requestBody.append('assignedTo', assignedTo) : null
+export const changeQuestionPrivacyApi = async (questionID, privacy, accessToken) => {  
+  
+  let requestBody = privacy == 'Public' ? `makePublic=${true}` : `makePrivate=${true}`  
   
   return new Promise((resolve, reject) => {
-    axios.post(
-      `topics/${topicID}/questions/`, 
-      requestBody,   
+    axios.put(
+      `questions/${questionID}/`,
+      requestBody,
       {
         headers: {
+          'Authorization': `Bearer ${accessToken}`,
           'Accept': 'application/json',
-          'Authorization': `Bearer ${accessToken}`
+          "Content-Type": `application/x-www-form-urlencoded`
         }
       }
     ).then((res) => {

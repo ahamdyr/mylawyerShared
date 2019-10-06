@@ -55,27 +55,28 @@ export default class AttachmentList extends React.PureComponent {
       )
     }
     else {
+      let name = item.link.split('%2F')[2].split('?')[0]
+      let ext = name.split('.')[1]
+      let isFile = ext === 'pdf'
       return (
         <TouchableOpacity
           activeOpacity={1}
-          onPress={()=> Linking.openURL(item.link)}
+          onPress={() => Linking.openURL(item.link)}
           style={styles.itemContainer}
         >
-          <View style={styles.btnStyle}>
-            <Text style={styles.btnTxtStyle}>
-              {item.id}
-            </Text>
-          </View>
-          <Image
-            source={{ uri: item.link }}
-            style={{
-              width: 120,
-              height: 160,
-              marginTop: 20
-            }}
-          />
+          {/* <View style={styles.btnStyle}>
+            <Text style={styles.btnTxtStyle}>{item.id}</Text>
+          </View> */}
+          {isFile ? (
+            <Text style={styles.attachName}>{name}</Text>
+          ) : (
+            <Image
+              source={{ uri: item.link }}
+              style={styles.attachStyle}
+            />
+          )}
         </TouchableOpacity>
-      );
+      )
     }    
   };
   _keyExtractor = (item, index)=> String(index)
@@ -104,6 +105,7 @@ export default class AttachmentList extends React.PureComponent {
         <FlatList
           style={{marginRight: 5}}
           //data={this._list}
+          showsHorizontalScrollIndicator={false}
           data={attachs}
           renderItem={this._renderItem}
           horizontal={true}
@@ -137,8 +139,19 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   itemContainer: {
-    height: 240,
+    height: 220,
     width: 120,
     alignItems: 'center'
+  },
+  attachName: {
+    fontFamily: 'Lato-Regular',
+    fontSize: 14,
+    color: '#0b7f7c',
+    marginTop: 50
+  },
+  attachStyle: {
+    width: 120,
+    height: 160,
+    marginTop: 20
   }
 });

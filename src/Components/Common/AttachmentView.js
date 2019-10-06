@@ -36,7 +36,8 @@ export default class AttachmentView extends React.PureComponent {
 const styles = StyleSheet.create({
   container:{
     width:WIDTH,
-    height: 281.5,
+    height: 220,
+    //height: 281.5,
     backgroundColor: 'transparent',
     flexDirection: 'column',
     borderBottomWidth: 0.5,
@@ -52,7 +53,8 @@ const styles = StyleSheet.create({
   filesContainer:{
     //flexDirection:'row',
     //width: WIDTH,
-    height: 240,
+    //height: 240,
+    height: 220,
     marginLeft: 16,
     marginTop: 24
   },

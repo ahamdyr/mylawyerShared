@@ -37,6 +37,8 @@ export default class AttachmentList extends React.PureComponent {
 
 
   _renderItem = ({ item }) => {
+    let ext = item.name.split('.')[1]
+    let isFile = ext === 'pdf'
     return (
       <View style={styles.itemContainer}>
         <TouchableOpacity
@@ -47,14 +49,18 @@ export default class AttachmentList extends React.PureComponent {
             {'X'}
           </Text>
         </TouchableOpacity>
-        <Image
-          source={{ uri: item.uri }}
-          style={{
-            width: 120,
-            height: 160,
-            marginTop: 20
-          }}
-        />
+        {
+          isFile ? 
+            <Text style={styles.attachName}>{item.name}</Text>
+            : <Image
+                source={{ uri: item.uri }}
+                style={{
+                  width: 120,
+                  height: 160,
+                  marginTop: 20
+                }}
+              />
+        }
       </View>
     );
   };
@@ -115,5 +121,11 @@ const styles = StyleSheet.create({
     height: 240,
     width: 120,
     alignItems: 'center'
-  }
+  },
+  attachName: {
+    fontFamily: 'Lato-Regular',
+    fontSize: 14,
+    color: '#0b7f7c',
+    marginTop: 50
+  },
 });

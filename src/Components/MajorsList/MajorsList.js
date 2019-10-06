@@ -77,12 +77,12 @@ const styles = StyleSheet.create({
 
   },
   majorTitle: {
-    marginRight: 30,
+    marginLeft: 20,
     marginTop: 25,
     fontFamily: "Cairo-Black",
     fontSize: 20,
     letterSpacing: 0,
-    textAlign: "right",
+    textAlign: "left",
     color: "#131314"
   },
 });

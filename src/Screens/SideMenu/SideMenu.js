@@ -4,10 +4,7 @@ import SideMenuBtn from '../../Components/SideMenu/SideMenuBtn'
 import ImageIcon from '../../Components/Common/ImageIcon'
 import { WhiteX } from '../../Components/Social Components/SocialBtns'
 import { styles } from './Styles'
-import {
-  navigate,
-  goBack
-} from '../../Services/NavigationServices'
+import { navigate, goBack } from '../../Services/NavigationServices'
 import { defaultPicture } from '../../../assets'
 import { logOut } from '../../Services/AuthServices'
 
@@ -20,9 +17,10 @@ export default class SideMenu extends React.Component {
   render() {
     var {
       isLoggedUser,
-      userPhoto,
-      userType
+      userType,
+      currentUser
     } = this.props
+    var userPhoto = currentUser.photoURL
     var isUser = userType == 'user'
     return (
       <SafeAreaView style={styles.safeArea}>

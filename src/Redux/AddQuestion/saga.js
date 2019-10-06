@@ -40,9 +40,9 @@ function* submitQuestionSaga(action) {
     yield put(clearQuestion(false))
     //yield put(addQuestionLoading(false))
   } catch (error) {
-    console.log('ask question error ',error)
+    // console.log('ask question error ',error)
     showMessage({
-      message: 'Something went error!\n Try again!',
+      message: `${error}\n Try again!`,
       hideOnPress: true,
       duration: 3000,
       type: 'danger',

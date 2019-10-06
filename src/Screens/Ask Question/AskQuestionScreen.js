@@ -49,8 +49,8 @@ export default class AskQuestion extends React.Component {
       clearQuestion
     } = this.props
     var attachs = [...docs, ...imgs]
-    var lawyer = this.props.navigation.state.params.lawyer
-    
+    var lawyer = this.props.navigation.state.params ? this.props.navigation.state.params.lawyer : null
+
     if (addQuestionLoading) {
       return (
         <SafeAreaView style={{

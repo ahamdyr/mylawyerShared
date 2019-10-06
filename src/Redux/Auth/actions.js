@@ -35,10 +35,11 @@ export const setAccessToken = (accessToken) =>{
     accessToken
   }
 }
-export const setPhoneNumber = (phoneNumber) => {
+export const setPhoneNumber = (phoneNumber, countryCode) => {
   return {
     type:'setPhoneNumber',
-    phoneNumber
+    phoneNumber,
+    countryCode
   }
 }
 

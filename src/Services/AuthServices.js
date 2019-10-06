@@ -13,6 +13,7 @@ import {
     navigate,
     goBack
 } from './NavigationServices'
+import { registerExpoPushToken } from './ExpoNotifications'
 
 export const saveUser = async (currentUser, userType) => {
   try {
@@ -22,7 +23,10 @@ export const saveUser = async (currentUser, userType) => {
     Store.dispatch(setCurrentUser(currentUser))
     let accessToken = currentUser.accessToken
     Store.dispatch(setAccessToken(accessToken))
-    userType == 'lawyer' ? navigate('LawyerApp') : navigate('UserApp')
+    userType == 'lawyer' ? 
+      //navigate('LawyerApp')
+      currentUser.isActivated ? navigate('LawyerApp') : navigate('Step4')
+      : navigate('UserApp')
     AsyncStorage.setItem('currentUser', JSON.stringify(currentUser))
     AsyncStorage.setItem('userType', JSON.stringify(userType))
     //await AsyncStorage.setItem('accessToken', JSON.stringify(accessToken))  
@@ -89,13 +93,18 @@ export const getUser = async () => {
       Store.dispatch(setUserType(userType))
       //navigate('LawyerApp')
     }
-    await ReAuthenticate()
-    // let currentUserJson = await AsyncStorage.getItem('currentUser')
-    // let currentUser = JSON.parse(currentUserJson)     
-    // Store.dispatch(setCurrentUser(currentUser))
-    // Store.dispatch(setLoggedUser(true))
-    // let accessToken = currentUser.accessToken
-    // Store.dispatch(setAccessToken(accessToken))
+    // await ReAuthenticate()
+    Store.dispatch(setLoggedUser(true))
+    let currentUserJson = await AsyncStorage.getItem('currentUser')
+    let currentUser = JSON.parse(currentUserJson)     
+    Store.dispatch(setCurrentUser(currentUser))
+    let accessToken = currentUser.accessToken
+    Store.dispatch(setAccessToken(accessToken))
+    !__DEV__ ? registerExpoPushToken() : null
+    userType == 'lawyer' ? 
+      navigate('LawyerApp')
+      //currentUser.isActivated ? navigate('LawyerApp') : navigate('Step4')
+      : navigate('UserApp')
   }
   else navigate('UserApp')
 }

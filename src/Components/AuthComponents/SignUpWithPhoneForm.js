@@ -27,9 +27,9 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
     this.state = {
       phone: '',
       country: {
-        cca2: "EG",
-        callingCode: "20",
-        name: "Egypt"
+        cca2: "KW",
+        callingCode: "965",
+        name: "Kuwait"
       }
     };
   }
@@ -56,7 +56,7 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
         type: "danger"
       });
     else {
-      Store.dispatch(setPhoneNumber(this.phone));
+      Store.dispatch(setPhoneNumber(this.state.phone, this.state.country.callingCode));
       Store.dispatch(setUserName(this.userName));
       this.props.onPress();
     }
@@ -78,7 +78,7 @@ export default class SignUpWithPhoneForm extends React.PureComponent {
           <CountryPicker
             ref={countryPicker => (this.countryPicker = countryPicker)}
             closeable
-            //filterable
+            filterable
             onChange={this._changeCountry}
             cca2={this.state.country.cca2}
             translation="eng"

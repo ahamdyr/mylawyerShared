@@ -40,7 +40,7 @@ class LawsItem extends React.PureComponent {
           <View
             style={styles.lowerThird}
           >
-            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15.5 }}>
+            <Text style={styles.nameStyle}>
               {name}
             </Text>
             {/* <Text style={{ color: 'white', fontSize: 13.5 }}>
@@ -48,12 +48,12 @@ class LawsItem extends React.PureComponent {
             </Text> */}
             {
               this.props.item.hasOwnProperty('majors') ?
-                <Text style={{ color: 'white', fontSize: 13.5 }}>
+                <Text style={styles.majorStyle}>
                   {majors[0].name || 'Finance'}
                 </Text>
                 : null
             }
-            <RatingView rating={rate || 3} disabled={true} />
+            <RatingView rating={rate || 0} disabled={true} />
           </View>
         </View>
       </TouchableOpacity>
@@ -83,13 +83,13 @@ const styles = StyleSheet.create({
   lowerThird: {
     position: 'absolute',
     zIndex: 5,
-    //width: '100%',
+    width: '100%',
     paddingHorizontal: 13,
     paddingBottom: 21,
-    height: 103,
+    height: 100,
     bottom: 0,
-    justifyContent: 'space-between',
-    //alignItems:''
+    justifyContent: 'space-around',
+    backgroundColor: 'white'
   },
   lawyerPhoto: {
     flex: 1,
@@ -98,6 +98,17 @@ const styles = StyleSheet.create({
     borderRadius: 8
   },
   lawyerImage: {
-    position: 'absolute', top: 0, right: 0, left: 0, bottom: 0
+    position: 'absolute', top: 0, right: 0, left: 0, bottom: 100
+  },
+  nameStyle: { 
+    color: 'black', 
+    fontWeight: 'bold', 
+    fontSize: 15.5,
+    //backgroundColor: 'black' 
+  },
+  majorStyle: {
+    color: 'black', 
+    fontSize: 13.5,
+    //backgroundColor: 'black'
   },
 });
