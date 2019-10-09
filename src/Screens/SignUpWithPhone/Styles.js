@@ -5,17 +5,13 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: MAIN_COLOR,
-    //justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
   loginTextContainer:{
-    // position: 'absolute',
-    // top: 40,
-    // left: 0,
-    width: WIDTH,
-    //height: 20,
-    //backgroundColor: 'black',
-    //justifyContent: 'center',
+    flex: 3,
     alignItems: 'center',
+    justifyContent: 'center',
+    //backgroundColor: 'red'
   },
   loginText:{
     fontFamily: 'Lora-Regular',
@@ -24,16 +20,16 @@ export const styles = StyleSheet.create({
     //marginLeft: 130
   },
   formContainer:{
-    flex: 1,
-    alignItems: 'center'
+    flex: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+    //backgroundColor: 'blue'
   },
   lowerThird: {
-    height: 200,
-    position: 'absolute',
-    bottom: 0,
+    flex: 4,
     alignItems: 'center',
     justifyContent: 'space-between',
-    //marginTop: 20
+    //backgroundColor: 'red'
   },
   Btns: {
     height: 56,
