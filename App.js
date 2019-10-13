@@ -5,10 +5,8 @@ import * as Icon from '@expo/vector-icons'
 import Sentry from 'sentry-expo';
 import AppContainer from './src/Screens/App Container'
 import Updating from "./src/Screens/Updating"
-import { AppRegistry } from 'react-native';
-import withExpoRoot from './node_modules/expo/build/launch/withExpoRoot'
 
-class App extends React.Component {
+export default class App extends React.Component {
   
   async componentWillMount() {
     if (!__DEV__) {
@@ -83,6 +81,6 @@ class App extends React.Component {
     this.setState({ isLoadingComplete: true });
   };
 }
-export default AppRegistry.registerComponent('My Lawyer', () => withExpoRoot(App));
+
 // for navigation persistence
 //persistenceKey={"NavigationState"}
