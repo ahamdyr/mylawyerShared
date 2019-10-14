@@ -46,12 +46,14 @@
         "googleSignIn": {
           "reservedClientId": "com.googleusercontent.apps.357729817077-j8codho5u6os0c5qf12iq968g3jh4tl9"
         }
-      }
+      },
+      "publishBundlePath": "ios/my-lawyer/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/my-lawyer/Supporting/shell-app-manifest.json"
     },
     "android": {
       "config": {
         "googleSignIn": {
-          "apiKey": "AIzaSyCB76Ry4sEcSICgIhdP7EDRzRYhCNg8QhQ",          
+          "apiKey": "AIzaSyCB76Ry4sEcSICgIhdP7EDRzRYhCNg8QhQ",
           "certificateHash": "3C:8E:C1:6F:6F:1A:11:A1:3F:E0:A9:AC:74:47:24:EA:E2:DA:44:CD"
         }
       },
@@ -85,7 +87,9 @@
         "com.sec.android.provider.badge.permission.WRITE",
         "com.sonyericsson.home.permission.BROADCAST_BADGE"
       ],
-      "versionCode": 33
+      "versionCode": 33,
+      "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
+      "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     },
     "hooks": {
       "postPublish": [
@@ -102,6 +106,11 @@
     "scheme": "mylawyer",
     "facebookScheme": "fb397884647607821",
     "facebookAppId": "397884647607821",
-    "facebookDisplayName": "MyLawyer"
+    "facebookDisplayName": "MyLawyer",
+    "isDetached": true,
+    "detach": {
+      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v2.12.4-sdk34.0.0-ee3e7450-9ec2-4836-8c8c-335483e62917.tar.gz",
+      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.12.2-sdk34.0.0-767c7d3b-87b6-4f80-a9af-92ce67e2a49d.tar.gz"
+    }
   }
 }
