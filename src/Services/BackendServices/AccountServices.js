@@ -27,8 +27,8 @@ export const Register = async (type, token, provider, userPhoneNumber) => {
 }
 export const LoginWithMail = async (token) => {
   return new Promise((resolve, reject) => {
-    fetch(`${baseURL}account/authenticate/`,{
-      method: 'POST',
+    fetch(`${baseURL}account/login/`,{
+      method: 'GET',
       headers: {
         'Authorization': `Basic ${token}`
       }
@@ -48,7 +48,7 @@ export const SignUpWithMail = async (token, name, phone) => {
   let requestBody = `name=${name}&phone=${phone}`
   return new Promise((resolve, reject) => {
     axios.post(
-      `account/authenticate/`,
+      `account/register/`,
       requestBody,
       {
         headers: {
@@ -189,12 +189,35 @@ export const requestCodeApi = async (phoneNumber, countryCode) => {
     })
   })  
 }
-export const AuthWithPhoneApi = async (token, name) => {
+export const SignUpWithPhoneApi = async (token, name) => {
   let requestBody = name ? `name=${name}` : null
   return new Promise((resolve, reject) => {
     axios.post(
-      `account/authenticate/`,
+      `account/register/`,
       requestBody,
+      {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
+          "Authorization": `Twilio ${token}`
+        }
+      }
+    ).then((res) => {
+      if(res.data.data) {
+        resolve(res.data.data) 
+      }
+      else{
+        reject(res.data.error.message)
+      }
+    }).catch(err => {
+      reject(err)
+    })
+  })  
+}
+export const LogInWithPhoneApi = async (token) => {
+  return new Promise((resolve, reject) => {
+    axios.get(
+      `account/login/`,
       {
         headers: {
           'Accept': 'application/json',

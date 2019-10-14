@@ -1,5 +1,5 @@
 import { base64Token } from '../Guid'
-import { Register, Login, requestCodeApi, AuthWithPhoneApi } from '../BackendServices/AccountServices'
+import { requestCodeApi, SignUpWithPhoneApi, LogInWithPhoneApi } from '../BackendServices/AccountServices'
 import {
   saveUser,
   getUserType,
@@ -37,7 +37,7 @@ export const SignUpWithPhone = async (phone, confCode, userName) => {
     
     var userType = getUserType()
 
-    var currentUser = await AuthWithPhoneApi(backendToken, userName)
+    var currentUser = await SignUpWithPhoneApi(backendToken, userName)
 
     userType = currentUser.type
 
@@ -68,7 +68,7 @@ export const SignInWithPhone = async (phone, confCode) => {
     
     var userType = getUserType()
 
-    var currentUser = await AuthWithPhoneApi(backendToken)
+    var currentUser = await LogInWithPhoneApi(backendToken)
 
     userType = currentUser.type
     await saveUser(currentUser, userType)
