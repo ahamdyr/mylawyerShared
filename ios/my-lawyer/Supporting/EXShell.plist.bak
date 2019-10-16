@@ -11,6 +11,6 @@
 	<key>manifestUrl</key>
 	<string>exp://exp.host/@ahamdyr/mylawyer</string>
 	<key>releaseChannel</key>
-	<string>default</string>
+	<string>ios</string>
 </dict>
 </plist>
