@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppLoading, Asset, Updates } from 'expo';
+import { AppLoading, Updates } from 'expo';
 import * as Font from 'expo-font'
 import * as Icon from '@expo/vector-icons'
 // import * as Sentry from 'sentry-expo';
