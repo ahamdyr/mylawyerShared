@@ -86,6 +86,6 @@ class App extends React.Component {
     this.setState({ isLoadingComplete: true });
   };
 }
-export default AppRegistry.registerComponent('My Lawyer', () => withExpoRoot(App));
+export default AppRegistry.registerComponent('mylawyer', () => withExpoRoot(App));
 // for navigation persistence
 //persistenceKey={"NavigationState"}
