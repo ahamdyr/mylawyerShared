@@ -13,21 +13,24 @@ export default class MajorsScreen extends React.Component {
   }
 
   render() {
-    if(this.props.getMajorsLoading){
+    var isLoading = !this.props.getMajorsSuccess.length || 
+      !this.props.getMajorsSuccess[0].hasOwnProperty('lawyers')
+    
+    if(isLoading){
       return (<Spinner/>)
     }
-    if(!this.props.getMajorsSuccess.length){
-      return (
-        <SafeAreaView style={styles.container}>
-          <Text style={{
-            fontSize: 16,
-            color: '#0b7f7c'
-          }}>
-            No Lawyers Found!
-          </Text>
-        </SafeAreaView>
-      );
-    }
+    // if(!this.props.getMajorsSuccess.length){
+    //   return (
+    //     <SafeAreaView style={styles.container}>
+    //       <Text style={{
+    //         fontSize: 16,
+    //         color: '#0b7f7c'
+    //       }}>
+    //         No Lawyers Found!
+    //       </Text>
+    //     </SafeAreaView>
+    //   );
+    // }
     return (
       <SafeAreaView style={styles.container}>
         <MajorsList majors={this.props.getMajorsSuccess}/>

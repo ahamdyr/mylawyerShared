@@ -6,7 +6,7 @@ import {
 
 const mapStateToProps =  state => ({
   getMajorsSuccess: state.getMajorsSuccess,
-  getMajorsLoading: state.getMajorsLoading
+  //getMajorsLoading: state.getMajorsLoading
 })
 
 const mapDispatchersToProps = dispatch => ({
