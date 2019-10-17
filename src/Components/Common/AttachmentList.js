@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, FlatList, Text, Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
-import {Linking} from 'expo'
+import * as WebBrowser from 'expo-web-browser';
 import Spinner from '../../Screens/Spinner'
 import Store from '../../Redux/Store'
 import {
@@ -61,7 +61,7 @@ export default class AttachmentList extends React.PureComponent {
       return (
         <TouchableOpacity
           activeOpacity={1}
-          onPress={() => Linking.openURL(item.link)}
+          onPress={() => WebBrowser.openBrowserAsync(item.link)}
           style={styles.itemContainer}
         >
           {/* <View style={styles.btnStyle}>

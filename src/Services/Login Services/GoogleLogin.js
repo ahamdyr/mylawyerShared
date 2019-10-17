@@ -6,7 +6,6 @@ import { Register, Login } from '../BackendServices/AccountServices'
 import { saveUser, getUserType } from '../AuthServices'
 import { Platform } from 'react-native'
 import { goBack, navigate } from '../NavigationServices'
-import { Linking } from 'expo'
 
 const iOSClientId =
   '357729817077-pc4lpp2oramc13sopec41m5fbmdgk5ib.apps.googleusercontent.com'

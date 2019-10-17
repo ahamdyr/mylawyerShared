@@ -6,7 +6,7 @@ import StackRouter from './Stack Router'
 import TabRouter from './Tab Router'
 import {ScrollView, StyleSheet, View, Text} from 'react-native'
 import { DrawerItems, SafeAreaView } from 'react-navigation';
-import { Updates } from 'expo';
+
 
 import Constants from 'expo-constants';
 

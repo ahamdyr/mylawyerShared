@@ -8,7 +8,6 @@ import {
 } from '../AuthServices'
 import { Alert } from 'react-native'
 import { goBack, navigate } from '../NavigationServices'
-import { Linking } from 'expo'
 import * as WebBrowser from 'expo-web-browser'
 import {
   PhoneAuth,
@@ -25,9 +24,9 @@ import firebase from '../FirebaseServices/FirebaseApp'
 import 'firebase/auth'
 import _ from 'lodash'
 
-const captchaUrl = `https://my-lawyer-dea44.web.app/?appurl=${Linking.makeUrl(
-  ''
-)}`
+// const captchaUrl = `https://my-lawyer-dea44.web.app/?appurl=${Linking.makeUrl(
+//   ''
+// )}`
 
 export const SignUpWithPhone = async (phone, confCode, userName) => {
   try {
