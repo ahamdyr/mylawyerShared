@@ -88,18 +88,7 @@
       ],
       "versionCode": 34
     },
-    "hooks": {
-      "postPublish": [
-        {
-          "file": "sentry-expo/upload-sourcemaps",
-          "config": {
-            "organization": "mylawyer",
-            "project": "mylawyer",
-            "authToken": "8581c8c32df84f4aa450dd414e3e6d9b1eb95aab0b35495e94a8299929534d7a"
-          }
-        }
-      ]
-    },
+    
     "scheme": "mylawyer",
     "facebookScheme": "fb397884647607821",
     "facebookAppId": "397884647607821",

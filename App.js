@@ -2,7 +2,7 @@ import React from 'react';
 import { AppLoading, Asset, Updates } from 'expo';
 import * as Font from 'expo-font'
 import * as Icon from '@expo/vector-icons'
-import Sentry from 'sentry-expo';
+// import * as Sentry from 'sentry-expo';
 import AppContainer from './src/Screens/App Container'
 import Updating from "./src/Screens/Updating"
 import { AppRegistry } from 'react-native';
@@ -14,10 +14,13 @@ class App extends React.Component {
     if (!__DEV__) {
       this._checkForUpdates()
     }
-    // // Remove this once Sentry is correctly setup.
-    // Sentry.enableInExpoDevelopment = true;
-
-    await Sentry.config('https://86ca025673d64ac7ab30c2f1a571a2c1@sentry.io/1498419').install();
+    
+    // Sentry.init({
+    //   dsn: 'DSN',
+    //   //enableInExpoDevelopment: true,
+    //   debug: true
+    // });
+    // await Sentry.config('https://86ca025673d64ac7ab30c2f1a571a2c1@sentry.io/1498419').install();
   }
   state = {
     isLoadingComplete: false,
