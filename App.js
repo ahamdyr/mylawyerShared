@@ -14,8 +14,8 @@ class App extends React.Component {
     if (!__DEV__) {
       this._checkForUpdates()
     }
-    // Remove this once Sentry is correctly setup.
-    Sentry.enableInExpoDevelopment = true;
+    // // Remove this once Sentry is correctly setup.
+    // Sentry.enableInExpoDevelopment = true;
 
     await Sentry.config('https://86ca025673d64ac7ab30c2f1a571a2c1@sentry.io/1498419').install();
   }

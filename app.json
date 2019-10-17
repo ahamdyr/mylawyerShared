@@ -3,7 +3,7 @@
     "name": "My Lawyer",
     "slug": "mylawyer",
     "privacy": "public",
-    "sdkVersion": "34.0.0",
+    "sdkVersion": "35.0.0",
     "platforms": [
       "ios",
       "android"
@@ -31,7 +31,7 @@
     "ios": {
       "bundleIdentifier": "com.mylawyer.MyLawyer",
       "supportsTablet": false,
-      "buildNumber": "1.0.36",
+      "buildNumber": "1.0.39",
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "This app uses the photos to update your profile picture.",
         "NSCameraUsageDescription": "Allow My Lawyer experiences to use your camera"
@@ -52,7 +52,7 @@
     "android": {
       "config": {
         "googleSignIn": {
-          "apiKey": "AIzaSyCB76Ry4sEcSICgIhdP7EDRzRYhCNg8QhQ",          
+          "apiKey": "AIzaSyCB76Ry4sEcSICgIhdP7EDRzRYhCNg8QhQ",
           "certificateHash": "3C:8E:C1:6F:6F:1A:11:A1:3F:E0:A9:AC:74:47:24:EA:E2:DA:44:CD"
         }
       },
