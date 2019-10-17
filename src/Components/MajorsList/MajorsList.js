@@ -8,7 +8,7 @@ export default class MajorsList extends React.Component {
   renderItem = ({ item, index }) => {
     var { id, name, lawyers } = item
     return (
-      <View style={styles.majorContainer}>
+      <View>
         <Text 
           style={styles.majorTitle}
           onPress={()=>navigate('LawyersScreen', { major: item })}
@@ -25,43 +25,20 @@ export default class MajorsList extends React.Component {
   renderMajors = (majors) => {
     return (
       <FlatList
-        data={majors}        
+        data={majors}           
         keyExtractor={this._keyExtractor}
         renderItem={this.renderItem}
         scrollEnabled={true}
-        //onEndReached={this._handleMore}
         ItemSeparatorComponent={() => <View style={{ marginBottom: 8 }} />}
         onEndReachedThreshold={0.2}
-        //ListFooterComponent={this._renderFooter}
-        //ListHeaderComponent={this._renderHeader}
-        // refreshControl={
-        //   <RefreshControl
-        //     colors={['#0b7f7c']}
-        //     refreshing={this.state.refreshingProducts}
-        //     onRefresh={this._handleRefresh}
-        //   />
-        // }
-        style={{
-          flex: 1,
-          alignSelf: 'stretch',
-          // paddingLeft:23,
-          // paddingRight:23,
-          backgroundColor: '#f6f6f6'
-        }}
+        style={styles.majorContainer}
       />
     )
   }
 
   render() {
     return (
-      <View style={{
-        flex: 1,
-        alignSelf: 'stretch',
-        backgroundColor: '#f6f6f6',
-        alignItems: 'center',
-        justifyContent: 'center',
-
-      }}>
+      <View style={styles.container}>
         {this.renderMajors(this.props.majors)}
       </View>
     );
@@ -70,11 +47,16 @@ export default class MajorsList extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-
-
+    flex: 1,
+    alignSelf: 'stretch',
+    backgroundColor: '#f6f6f6',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   majorContainer: {
-
+    flex: 1,
+    alignSelf: 'stretch',
+    backgroundColor: '#f6f6f6'
   },
   majorTitle: {
     marginLeft: 20,
