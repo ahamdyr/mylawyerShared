@@ -27,7 +27,12 @@ const AppRouter = createStackNavigator({
 })
 
 const ModalStack =  createStackNavigator({
-  AppRouter:AppRouter,
+  AppRouter: {
+    screen: AppRouter,
+    navigationOptions: {
+      header : null
+    },
+  },
   SocialScreen: SocialScreen,
   Spinner: Spinner,
   LawyerDetails: LawyerDetails,

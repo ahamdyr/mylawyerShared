@@ -1,4 +1,5 @@
 {
   "javascript.suggest.autoImports": false,
-  "prettier.semi": false
+  "prettier.semi": false,
+  "git.ignoreLimitWarning": true
 }

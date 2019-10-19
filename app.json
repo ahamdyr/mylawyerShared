@@ -87,10 +87,12 @@
       ],
       "versionCode": 34
     },
-    
     "scheme": "mylawyer",
     "facebookScheme": "fb397884647607821",
     "facebookAppId": "397884647607821",
-    "facebookDisplayName": "MyLawyer"
-  }
+    "facebookDisplayName": "MyLawyer",
+    "entryPoint": "node_modules/expo/AppEntry.js"
+  },
+  "displayName": "My Lawyer",
+  "name": "mylawyer"
 }

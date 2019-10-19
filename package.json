@@ -1,16 +1,17 @@
 {
-  "main": "./node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "react-native start",
     "local": "expo start --localhost",
     "lan": "expo start --lan",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "postinstall": "node ./scripts/stfu.js",
-    "eject": "expo eject",
     "build:android": "expo build:android -t app-bundle --release-channel android",
     "build:devandroid": "expo build:android --release-channel devandroid",
     "build:ios": "expo build:ios --release-channel ios"
+  },
+  "rnpm":{
+    "assets": ["assets/fonts"]
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
@@ -31,7 +32,8 @@
     "google-libphonenumber": "^3.2.3",
     "prop-types": "^15.7.2",
     "react": "16.8.3",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "react-dom": "16.8.3",
+    "react-native": "0.59.10",
     "react-native-country-picker-modal": "^0.8.0",
     "react-native-custom-picker": "^0.4.0",
     "react-native-dropdown-menu": "^2.0.0",
@@ -44,8 +46,11 @@
     "react-native-loading-spinner-overlay": "^1.0.1",
     "react-native-reanimated": "~1.2.0",
     "react-native-screens": "~1.0.0-alpha.23",
+    "react-native-splash-screen": "^3.2.0",
     "react-native-star-rating": "^1.1.0",
+    "react-native-unimodules": "^0.7.0-rc.1",
     "react-native-vector-icons": "^6.4.2",
+    "react-native-web": "^0.11.7",
     "react-navigation": "^3.11.0",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
