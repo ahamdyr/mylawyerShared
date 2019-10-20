@@ -4,14 +4,14 @@ import {
   View, 
   TouchableOpacity,
   SafeAreaView,
-  Alert
+  Alert,
+  Linking
 } from 'react-native';
 import { styles } from './Styles'
 import {
   navigate,
   goBack
 } from '../../Services/NavigationServices'
-import * as WebBrowser from 'expo-web-browser';
 import BlackX from '../../Components/Common/BlackX'
 import RatingView from '../../Components/Lawyers List/RatingView'
 import ImageIcon from '../../Components/Common/ImageIcon'
@@ -85,9 +85,8 @@ export default class LawyerDetails extends React.Component {
             style={styles.footer}
             onPress={async()=> {
               lawyer.reachAccount ?
-                await WebBrowser.openBrowserAsync(lawyer.reachAccount)
-                : Alert.alert('Sorry',`${getFirstName(lawyer.name)} doesn\'t have reach account yet.`)         
-              //await WebBrowser.openBrowserAsync(`https://reachnetwork.co/${getFirstName(lawyer.name)}`)
+                await Linking.openURL(lawyer.reachAccount)
+                : Alert.alert('Sorry',`${getFirstName(lawyer.name)} doesn\'t have reach account yet.`)
             }}
           >
             <Text style={styles.footerText}>

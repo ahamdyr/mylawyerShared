@@ -8,7 +8,6 @@ import {
 } from '../AuthServices'
 import { Alert } from 'react-native'
 import { goBack, navigate } from '../NavigationServices'
-import * as WebBrowser from 'expo-web-browser'
 import {
   PhoneAuth,
   confirmationResult,
