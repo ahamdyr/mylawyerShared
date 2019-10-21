@@ -22,11 +22,15 @@ const CustomDrawerContentComponent = props => (
         <DrawerItems {...props} />
       </SafeAreaView>
     </ScrollView>
-    <View style={{justifyContent:'space-around', alignItems:'center'}}>
-      <Text>
-        {Constants.manifest.version}
-      </Text>
-    </View>
+    {
+      !__DEV__ && (
+        <View style={{justifyContent:'space-around', alignItems:'center'}}>
+          <Text>
+            {Constants.manifest.version}
+          </Text>
+        </View>
+      )
+    }
   </View>
   
 );

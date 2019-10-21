@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00AF5D5F99014CB492BDA2AB /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E603D02EBCF34E3C82F4F9B6 /* MaterialIcons.ttf */; };
 		01FF142F5378836A7E7681CE /* libPods-mylawyer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 256817964F3B93A59EF053E1 /* libPods-mylawyer.a */; };
@@ -41,6 +40,7 @@
 		E4E96CB250A641118F614691 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FF04294622B414ABE6DE538 /* Ionicons.ttf */; };
 		E5068FD0C55B4C7BA61D02C0 /* Lora-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9DE31B056EF41228A7CDE88 /* Lora-Regular.ttf */; };
 		FE1405A89900421784D5AA49 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 545AE6CC9FF147418B3BFE2C /* EvilIcons.ttf */; };
+		FD8317A19F45473685C77F2D /* LuxiSerif.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FF0C491E32240DEA7C42D4C /* LuxiSerif.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +98,7 @@
 		F9426D8015DA4FD7B1986465 /* Cairo-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cairo-Regular.ttf"; path = "../assets/fonts/Cairo-Regular.ttf"; sourceTree = "<group>"; };
 		FA30182EC50D411B93F07892 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		FB4A532E99C543A4A2022609 /* Cairo-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cairo-Bold.ttf"; path = "../assets/fonts/Cairo-Bold.ttf"; sourceTree = "<group>"; };
+		7FF0C491E32240DEA7C42D4C /* LuxiSerif.ttf */ = {isa = PBXFileReference; name = "LuxiSerif.ttf"; path = "../assets/fonts/LuxiSerif.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +168,7 @@
 				E0D04A5810534C45845A9392 /* NunitoSans-Bold.ttf */,
 				ADAF721AB8DE4758B2341F92 /* NunitoSans-Regular.ttf */,
 				E50672CFD85D4891B4902426 /* NunitoSans-SemiBold.ttf */,
+				7FF0C491E32240DEA7C42D4C /* LuxiSerif.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -331,6 +333,7 @@
 				633178FDAC4540799FC593F1 /* NunitoSans-Bold.ttf in Resources */,
 				D08AA561E5394ED8BE7EBCB3 /* NunitoSans-Regular.ttf in Resources */,
 				160AFE46CA604A1EB3999599 /* NunitoSans-SemiBold.ttf in Resources */,
+				FD8317A19F45473685C77F2D /* LuxiSerif.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,7 +46,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow My Lawyer to access your microphone</string>
 	<key>NSMotionUsageDescription</key>
-	<string>Allow My Lawyer to access your device&apos;s accelerometer</string>
+	<string>Allow My Lawyer to access your device's accelerometer</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Give My Lawyer periences permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -84,6 +84,7 @@
 		<string>NunitoSans-Bold.ttf</string>
 		<string>NunitoSans-Regular.ttf</string>
 		<string>NunitoSans-SemiBold.ttf</string>
+		<string>LuxiSerif.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

@@ -1,11 +1,7 @@
 import { createMaterialTopTabNavigator } from "react-navigation";
 import LockedQuestionsScreen from '../LawyerScreens/LockedQuestionsScreen'
 import SolvedQuestionsScreen from '../LawyerScreens/SolvedQuestionsScreen'
-import Constants from 'expo-constants';
-import { Dimensions } from "react-native";
-
-const statusBarHeight = Constants.statusBarHeight
-const {height, width} = Dimensions.get('window')
+import { STATUS_BAR_HEIGHT, WIDTH } from '../Components/Constants'
 
 export default  MyQuestionsTabs = createMaterialTopTabNavigator({
 
@@ -29,7 +25,7 @@ export default  MyQuestionsTabs = createMaterialTopTabNavigator({
   lazy:true,
   tabBarOptions :{
     style :{      
-      marginTop: statusBarHeight,
+      marginTop: STATUS_BAR_HEIGHT,
       backgroundColor:'#f6f6f6',
       height: 55 ,
     },
@@ -39,7 +35,7 @@ export default  MyQuestionsTabs = createMaterialTopTabNavigator({
       backgroundColor:'#0b7f7c'
     },
     tabStyle: {
-      width: width/2
+      width: WIDTH/2
     },
     labelStyle:{
       fontFamily: 'Lato-Regular',

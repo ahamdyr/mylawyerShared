@@ -13,6 +13,7 @@ export default class MajorsScreen extends React.Component {
   }
 
   render() {
+    // console.log(__DEV__)
     var isLoading = !this.props.getMajorsSuccess.length || 
       !this.props.getMajorsSuccess[0].hasOwnProperty('lawyers')
     
